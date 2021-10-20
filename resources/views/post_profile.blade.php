@@ -127,7 +127,7 @@
                                             <div class="card-body">{{$post_data->phone_number}}</div>
                                         </div>
                                         @endif
-                                        @if($post_data->emai != null)
+                                        @if($post_data->email != null)
                                         <div class="card card-success">
                                             <div class="card-header">Seller Email:</div>
                                             <div class="card-body">{{$post_data->email}}</div>
@@ -135,7 +135,7 @@
                                         @endif
                                         @if($post_data->seller_location != null)
                                         <div class="card card-success">
-                                            <div class="card-header">Seller Tel No:</div>
+                                            <div class="card-header">Seller Address:</div>
                                             <div class="card-body">{{$post_data->seller_location}}</div>
                                         </div>
                                         @endif
@@ -145,187 +145,206 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="card mt-2">
+                                <div class="card card-success mt-2">
+                                    <div class="card-header">
+                                        <div class="text-center"><h3 class="profile-username"><b>{{ $post_data->post_title}}</b></h3></div>
+                                    </div>
                                     <div class="card-body p-5">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="text-center"><h3 class="profile-username"><b>{{ $post_data->post_title}}</b></h3></div>
-                                            </div>
-                                        </div>
                                         <div class="row bg-light" style="border-radius: 15px">
                                             <div class="col-6 p-5">
-                                                <div class="form-group">
-                                                    @if($post_data->model != null)
-                                                    <label for="model">Model: </label>
-                                                    <span>{{$post_data->model}}</span>
-                                                    @endif
-                                                    <!--                                            @if($post_data->model == null)
-                                                                                                <span>-------</span>
-                                                                                                @endif-->
+                                                <div class="card card-success">
+                                                    <div class="card-header">
+
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="form-group">
+                                                            @if($post_data->model != null)
+                                                            <label for="model">Model: </label>
+                                                            <span>{{$post_data->model}}</span>
+                                                            @endif
+                                                            <!--                                            @if($post_data->model == null)
+                                                                                                        <span>-------</span>
+                                                                                                        @endif-->
+                                                        </div>
+                                                        <div class="form-group">
+                                                            @if($post_data->price != null)
+                                                            <label for="price">Price: </label>
+                                                            <span>{{$post_data->price}}</span>
+                                                            @endif
+                                                            <!--                                            @if($post_data->price == null)
+                                                                                                        <span>-------</span>
+                                                                                                        @endif-->
+                                                        </div>
+                                                        <div class="form-group">
+                                                            @if($post_data->manufactured_year != null)
+                                                            <label for="manufactured_year">Manufactured Year: </label>
+                                                            <span>{{$post_data->manufactured_year}}</span>
+                                                            @endif
+                                                            <!--                                            @if($post_data->manufactured_year == null)
+                                                                                                        <span>-------</span>
+                                                                                                        @endif-->
+                                                        </div>
+                                                        <div class="form-group">
+                                                            @if($post_data->condition != null)
+                                                            <label for="condition">Condition : </label>
+                                                            <span>{{$post_data->condition}}</span>
+                                                            @endif
+                                                            <!--                                            @if($post_data->condition == null)
+                                                                                                        <span>-------</span>
+                                                                                                        @endif-->
+                                                        </div>
+                                                        <div class="form-group">
+                                                            @if($post_data->engine_capacity != null)
+                                                            <label for="engine_capacity">Engine Capacity: </label>
+                                                            <span>{{$post_data->engine_capacity}}</span>
+                                                            @endif
+                                                            <!--                                            @if($post_data->engine_capacity == null)
+                                                                                                        <span>-------</span>
+                                                                                                        @endif-->
+                                                        </div>
+                                                        <div class="form-group">
+                                                            @if($post_data->millage != null)
+                                                            <label for="millage">Millage: </label>
+                                                            <span>{{$post_data->millage}}</span>
+                                                            @endif
+                                                            <!--                                            @if($post_data->millage == null)
+                                                                                                        <span>-------</span>
+                                                                                                        @endif-->
+                                                        </div>
+                                                        <div class="form-group">
+                                                            @if($post_data->part_used_in != null)
+                                                            <label for="part_used_in">Parts Used Brand: </label>
+                                                            <span class="ml-2">{{$data->part_used_in}}</span>
+                                                            @endif
+                                                            <!--                                            @if($post_data->part_used_in == null)
+                                                                                                        <span class="text-muted">-------</span>
+                                                                                                        @endif-->
+                                                        </div>
+                                                        <div class="form-group">
+                                                            @if($post_data->part_category != null)
+                                                            <label for="part_category">Part Category: </label>
+                                                            <span class="ml-2">{{$post_data->part_category}}</span>
+                                                            @endif
+                                                            <!--                                            @if($post_data->part_category == null)
+                                                                                                        <span class="text-muted">-------</span>
+                                                                                                        @endif-->
+                                                        </div>
+                                                        <div class="form-group">
+                                                            @if($post_data->transmission != null)
+                                                            <label for="transmission">Transmission: </label>
+                                                            <span class="ml-2">{{$post_data->transmission}}</span>
+                                                            @endif
+                                                            <!--                                            @if($post_data->transmission == null)
+                                                                                                        <span class="text-muted">-------</span>
+                                                                                                        @endif-->
+                                                        </div>
+                                                        <div class="form-group">
+                                                            @if($post_data->start_type != null)
+                                                            <label for="start_type">Start Type: </label>
+                                                            <span class="ml-2">{{$post_data->start_type}}</span>
+                                                            @endif
+                                                            <!--                                            @if($post_data->start_type == null)
+                                                                                                        <span class="text-muted">-------</span>
+                                                                                                        @endif-->
+                                                        </div>
+                                                        <div class="form-group">
+                                                            @if($post_data->fuel_type != null)
+                                                            <label for="fuel_type">Fuel Type: </label>
+                                                            <span class="ml-2">{{$post_data->fuel_type}}</span>
+                                                            @endif
+                                                            <!--                                            @if($post_data->fuel_type == null)
+                                                                                                        <span class="text-muted">-------</span>
+                                                                                                        @endif-->
+                                                        </div>
+                                                        <div class="form-group">
+                                                            @if($post_data->location != null)
+                                                            <label for="location">Vehicle Location: </label>
+                                                            <span class="ml-2">{{$post_data->location}}</span>
+                                                            @endif
+                                                            <!--                                            @if($post_data->fuel_type == null)
+                                                                                                        <span class="text-muted">-------</span>
+                                                                                                        @endif-->
+                                                        </div>
+                                                        <div class="form-group">
+                                                            @if($post_data->address != null)
+                                                            <label for="address">Address: </label>
+                                                            <span class="ml-2">{{$post_data->address}}</span>
+                                                            @endif
+                                                            <!--                                            @if($post_data->fuel_type == null)
+                                                                                                        <span class="text-muted">-------</span>
+                                                                                                        @endif-->
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    @if($post_data->price != null)
-                                                    <label for="price">Price: </label>
-                                                    <span>{{$post_data->price}}</span>
-                                                    @endif
-                                                    <!--                                            @if($post_data->price == null)
-                                                                                                <span>-------</span>
-                                                                                                @endif-->
-                                                </div>
-                                                <div class="form-group">
-                                                    @if($post_data->manufactured_year != null)
-                                                    <label for="manufactured_year">Manufactured Year: </label>
-                                                    <span>{{$post_data->manufactured_year}}</span>
-                                                    @endif
-                                                    <!--                                            @if($post_data->manufactured_year == null)
-                                                                                                <span>-------</span>
-                                                                                                @endif-->
-                                                </div>
-                                                <div class="form-group">
-                                                    @if($post_data->condition != null)
-                                                    <label for="condition">Condition : </label>
-                                                    <span>{{$post_data->condition}}</span>
-                                                    @endif
-                                                    <!--                                            @if($post_data->condition == null)
-                                                                                                <span>-------</span>
-                                                                                                @endif-->
-                                                </div>
-                                                <div class="form-group">
-                                                    @if($post_data->engine_capacity != null)
-                                                    <label for="engine_capacity">Engine Capacity: </label>
-                                                    <span>{{$post_data->engine_capacity}}</span>
-                                                    @endif
-                                                    <!--                                            @if($post_data->engine_capacity == null)
-                                                                                                <span>-------</span>
-                                                                                                @endif-->
-                                                </div>
-                                                <div class="form-group">
-                                                    @if($post_data->millage != null)
-                                                    <label for="millage">Millage: </label>
-                                                    <span>{{$post_data->millage}}</span>
-                                                    @endif
-                                                    <!--                                            @if($post_data->millage == null)
-                                                                                                <span>-------</span>
-                                                                                                @endif-->
-                                                </div>
-                                                <div class="form-group">
-                                                    @if($post_data->part_used_in != null)
-                                                    <label for="part_used_in">Parts Used Brand: </label>
-                                                    <span class="ml-2">{{$data->part_used_in}}</span>
-                                                    @endif
-                                                    <!--                                            @if($post_data->part_used_in == null)
-                                                                                                <span class="text-muted">-------</span>
-                                                                                                @endif-->
-                                                </div>
-                                                <div class="form-group">
-                                                    @if($post_data->part_category != null)
-                                                    <label for="part_category">Part Category: </label>
-                                                    <span class="ml-2">{{$post_data->part_category}}</span>
-                                                    @endif
-                                                    <!--                                            @if($post_data->part_category == null)
-                                                                                                <span class="text-muted">-------</span>
-                                                                                                @endif-->
-                                                </div>
-                                                <div class="form-group">
-                                                    @if($post_data->transmission != null)
-                                                    <label for="transmission">Transmission: </label>
-                                                    <span class="ml-2">{{$post_data->transmission}}</span>
-                                                    @endif
-                                                    <!--                                            @if($post_data->transmission == null)
-                                                                                                <span class="text-muted">-------</span>
-                                                                                                @endif-->
-                                                </div>
-                                                <div class="form-group">
-                                                    @if($post_data->start_type != null)
-                                                    <label for="start_type">Start Type: </label>
-                                                    <span class="ml-2">{{$post_data->start_type}}</span>
-                                                    @endif
-                                                    <!--                                            @if($post_data->start_type == null)
-                                                                                                <span class="text-muted">-------</span>
-                                                                                                @endif-->
-                                                </div>
-                                                <div class="form-group">
-                                                    @if($post_data->fuel_type != null)
-                                                    <label for="fuel_type">Fuel Type: </label>
-                                                    <span class="ml-2">{{$post_data->fuel_type}}</span>
-                                                    @endif
-                                                    <!--                                            @if($post_data->fuel_type == null)
-                                                                                                <span class="text-muted">-------</span>
-                                                                                                @endif-->
-                                                </div>
-                                                <div class="form-group">
-                                                    @if($post_data->location != null)
-                                                    <label for="location">Vehicle Location: </label>
-                                                    <span class="ml-2">{{$post_data->location}}</span>
-                                                    @endif
-                                                    <!--                                            @if($post_data->fuel_type == null)
-                                                                                                <span class="text-muted">-------</span>
-                                                                                                @endif-->
-                                                </div>
-                                                <div class="form-group">
-                                                    @if($post_data->address != null)
-                                                    <label for="address">Address: </label>
-                                                    <span class="ml-2">{{$post_data->address}}</span>
-                                                    @endif
-                                                    <!--                                            @if($post_data->fuel_type == null)
-                                                                                                <span class="text-muted">-------</span>
-                                                                                                @endif-->
-                                                </div>
-                                                <div class="form-group">
-                                                    @if($post_data->additional_info != null)
-                                                    <label for="additional_info">Description: </label>
-                                                    <span class="ml-2">{{$post_data->additional_info}}</span>
-                                                    @endif
-                                                    <!--                                            @if($post_data->additional_info == null)
-                                                                                                <span class="text-muted">-------</span>
-                                                                                                @endif-->
+                                                <div class="card card-success">
+                                                    <div class="card-header">
+
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="form-group">
+                                                            @if($post_data->additional_info != null)
+                                                            <label for="additional_info">Description: </label>
+                                                            <span class="ml-2">{{$post_data->additional_info}}</span>
+                                                            @endif
+                                                            <!--                                            @if($post_data->additional_info == null)
+                                                                                                        <span class="text-muted">-------</span>
+                                                                                                        @endif-->
+                                                        </div> 
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-6 p-5">
-                                                <div class="form-group">
-                                                    <label for="ongoing_lease">Ongoing Lease: </label><br>
-                                                    @if($post_data->on_going_lease != null)
-                                                    <label class="bg-warning p-1 m-1" style="border-radius: 5px;"></label><br>
-                                                    @endif
-                                                    @if($post_data->on_going_lease == null)
-                                                    <label class="bg-success p-1 m-1" style="border-radius: 5px;"></label><br>
-                                                    @endif
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="isAc">AC: </label><br>
-                                                    @if($post_data->isAc != null)
-                                                    <label class="bg-warning p-1 m-1" style="border-radius: 5px;"></label><br>
-                                                    @endif
-                                                    @if($post_data->isAc == null)
-                                                    <label class="bg-success p-1 m-1" style="border-radius: 5px;"></label><br>
-                                                    @endif
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="isPowerSteer">Power Steering: </label><br>
-                                                    @if($post_data->isPowerSteer != null)
-                                                    <label class="bg-warning p-1 m-1" style="border-radius: 5px;"></label><br>
-                                                    @endif
-                                                    @if($post_data->isPowerSteer == null)
-                                                    <label class="bg-success p-1 m-1" style="border-radius: 5px;"></label><br>
-                                                    @endif
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="isPowerMirroring">Power Mirroring: </label><br>
-                                                    @if($post_data->isPowerMirroring != null)
-                                                    <label class="bg-warning p-1 m-1" style="border-radius: 5px;"></label><br>
-                                                    @endif
-                                                    @if($post_data->isPowerMirroring == null)
-                                                    <label class="bg-success p-1 m-1" style="border-radius: 5px;"></label><br>
-                                                    @endif
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="isPowerWindow">Power Window: </label><br>
-                                                    @if($post_data->isPowerWindow != null)
-                                                    <label class="bg-warning p-1 m-1" style="border-radius: 5px;"></label><br>
-                                                    @endif
-                                                    @if($post_data->isPowerWindow == null)
-                                                    <label class="bg-success p-1 m-1" style="border-radius: 5px;"></label><br>
-                                                    @endif
+                                                <div class="card card-success">
+                                                    <div class="card-header">
+
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="form-group">
+                                                            <label for="ongoing_lease">Ongoing Lease: </label><br>
+                                                            @if($post_data->on_going_lease != null)
+                                                            <label class="bg-warning p-1 m-1" style="border-radius: 5px;"></label><br>
+                                                            @endif
+                                                            @if($post_data->on_going_lease == null)
+                                                            <label class="bg-success p-1 m-1" style="border-radius: 5px;"></label><br>
+                                                            @endif
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="isAc">AC: </label><br>
+                                                            @if($post_data->isAc != null)
+                                                            <label class="bg-warning p-1 m-1" style="border-radius: 5px;"></label><br>
+                                                            @endif
+                                                            @if($post_data->isAc == null)
+                                                            <label class="bg-success p-1 m-1" style="border-radius: 5px;"></label><br>
+                                                            @endif
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="isPowerSteer">Power Steering: </label><br>
+                                                            @if($post_data->isPowerSteer != null)
+                                                            <label class="bg-warning p-1 m-1" style="border-radius: 5px;"></label><br>
+                                                            @endif
+                                                            @if($post_data->isPowerSteer == null)
+                                                            <label class="bg-success p-1 m-1" style="border-radius: 5px;"></label><br>
+                                                            @endif
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="isPowerMirroring">Power Mirroring: </label><br>
+                                                            @if($post_data->isPowerMirroring != null)
+                                                            <label class="bg-warning p-1 m-1" style="border-radius: 5px;"></label><br>
+                                                            @endif
+                                                            @if($post_data->isPowerMirroring == null)
+                                                            <label class="bg-success p-1 m-1" style="border-radius: 5px;"></label><br>
+                                                            @endif
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="isPowerWindow">Power Window: </label><br>
+                                                            @if($post_data->isPowerWindow != null)
+                                                            <label class="bg-warning p-1 m-1" style="border-radius: 5px;"></label><br>
+                                                            @endif
+                                                            @if($post_data->isPowerWindow == null)
+                                                            <label class="bg-success p-1 m-1" style="border-radius: 5px;"></label><br>
+                                                            @endif
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -337,16 +356,16 @@
                             <div class="col-12">
                                 <div calss="row">
                                     <div class="col-12">
-                                        <div class="text-center"><b><h5>Related Results for your search</h5></b></div>
+                                        <div class="text-center text-success"><b><h5>Related Results for your search</h5></b></div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     @if($related_posts[0] != null)
                                     @foreach($related_posts as $post)
                                     <div class='col-12 col-md-6'>
-                                        <div class="card bg-light m-2">
-                                            <div class="card-header">
-                                                <b><a href="/api/get_post_profile/id/{{$post->id}}" style="color: black">{{$post->post_title}}</a></b>
+                                        <div class="card card-success m-2">
+                                            <div class="card-header text-light">
+                                                <b><a href="/api/get_post_profile/id/{{$post->id}}" style="color: black" class="text-light">{{$post->post_title}}</a></b>
                                             </div>
                                             <div class="card-body">
                                                 <div class="row">
