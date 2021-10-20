@@ -87,6 +87,7 @@ class PostController extends Controller {
                                 'vehicles.isPowerSteer',
                                 'vehicles.isPowerMirroring',
                                 'vehicles.isPowerWindow',
+                                'vehicles.vehicle_type',
                                 'spare_parts.part_used_in',
                                 'spare_parts.part_category',
                                 'posts.additional_info',
@@ -97,8 +98,14 @@ class PostController extends Controller {
                                 'posts.image_4',
                                 'posts.image_5',
                         )->first();
+        
+        $vehi_type = $post_data->vehicle_type;
 
-        return view('./post_profile', ['post_data' => $post_data]);
+        $post_by_vehi_type = Post::join('vehicles', 'posts.vehicle_id', 'vehicles.id')
+                ->where('vehicles.vehicle_type', $vehi_type)
+                ->paginate(5);
+
+        return view('./post_profile', ['post_data' => $post_data, 'related_posts' => $post_by_vehi_type]);
     }
 
     /**

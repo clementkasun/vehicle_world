@@ -341,42 +341,42 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-3">
-                                        <div class="card card-light">
-                                            sdadsadasdasd<br>
-                                            sdadsadasdasd<br>
-                                            sdadsadasdasd<br>
-                                            sdadsadasdasd<br>
-                                            sdadsadasdasd<br>
+                                    @if($related_posts[0] != null)
+                                    @foreach($related_posts as $post)
+                                    <div class='col-12 col-md-6'>
+                                        <div class="card bg-light m-2">
+                                            <div class="card-header">
+                                                <b><a href="/api/get_post_profile/id/{{$post->id}}" style="color: black">{{$post->post_title}}</a></b>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-5">
+                                                        <div class="portfolio-wrap text-center">
+                                                            <img src="{{asset('storage/'.$post->main_image)}}" class='img-fluid cover m-2' style='height: 7em; width: 90%' alt='main_img'/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-7">
+                                                        <span><b>Price:</b>  {{$post->price}} </span><br>
+                                                        <span><b>Location:</b>  {{$post->location}} </span><br>
+                                                        <span><b>Condition:</b>  {{$post->condition}} </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-3">
-                                        <div class="card card-light">
-                                            sdadsadasdasd<br>
-                                            sdadsadasdasd<br>
-                                            sdadsadasdasd<br>
-                                            sdadsadasdasd<br>
-                                            sdadsadasdasd<br>
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <div class="card card-light">
-                                            sdadsadasdasd<br>
-                                            sdadsadasdasd<br>
-                                            sdadsadasdasd<br>
-                                            sdadsadasdasd<br>
-                                            sdadsadasdasd<br>
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <div class="card card-light">
-                                            sdadsadasdasd<br>
-                                            sdadsadasdasd<br>
-                                            sdadsadasdasd<br>
-                                            sdadsadasdasd<br>
-                                            sdadsadasdasd<br>
-                                        </div>
-                                    </div>
+                                    @endforeach
+
+                                    @if(isset($request))
+                                    <div class="text-center mt-5">{{ $related_posts->appends($request)->links('pagination::bootstrap-4') }}</div>
+                                    @endif
+
+                                    @if(!isset($request))
+                                    <div class="text-center mt-5">{{ $related_posts->links('pagination::bootstrap-4') }}</div>
+                                    @endif
+
+                                    @endif
                                 </div>
                             </div>
                         </div>

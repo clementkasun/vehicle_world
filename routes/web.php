@@ -35,9 +35,7 @@ Route::get('/register_customer', function () {
 Route::get('/', [PostController::class, 'index']);
 Route::get('/dashboard', [PostController::class, 'index']);
 Route::any('/filtered_posts', [PostController::class, 'filtered_adds']);
-Route::get('/home', function(){
-    return view('home');
-});
+Route::get('/home', [PostController::class, 'index']);
 Route::get('/post_filtered', function(){
     return view('post_filtered');
 });
