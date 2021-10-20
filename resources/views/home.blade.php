@@ -426,8 +426,8 @@
                                     @foreach($posts as $post)
                                     <div class='col-12 col-md-6'>
                                         <div class="card card-success m-2">
-                                            <div class="card-header">
-                                                <b><a href="/api/get_post_profile/id/{{$post->id}}" style="color: black">{{$post->post_title}}</a></b>
+                                            <div class="card-header bg-success">
+                                                <b><a href="/api/get_post_profile/id/{{$post->id}}" class="text-light" style="color: black">{{$post->post_title}}</a></b>
                                             </div>
                                             <div class="card-body">
                                                 <div class="row">
@@ -465,7 +465,7 @@
                             <footer id="footer">
                                 <div class="container">
                                     <h3>VEHICLEWORLD</h3>
-                                    <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.</p>
+                                    <p>MAKE YOUR DREAM VEHICLE REALITY.ENGAGE WITH US TO PROSPEROUS FUTURE.</p>
                                     <div class="social-links">
                                         <a href="https://twitter.com" class="twitter"><i class="bx bxl-twitter"></i></a>
                                         <a href="https://www.facebook.com/kasunclement/" class="facebook"><i class="bx bxl-facebook"></i></a>

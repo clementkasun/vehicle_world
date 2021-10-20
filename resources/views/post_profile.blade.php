@@ -362,7 +362,7 @@
                                 <div class="row">
                                     @if($related_posts[0] != null)
                                     @foreach($related_posts as $post)
-                                    <div class='col-12 col-md-6'>
+                                    <div class='col-12 col-md-4'>
                                         <div class="card card-success m-2">
                                             <div class="card-header text-light">
                                                 <b><a href="/api/get_post_profile/id/{{$post->id}}" style="color: black" class="text-light">{{$post->post_title}}</a></b>
