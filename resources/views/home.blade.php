@@ -510,7 +510,7 @@ $(document).ready(function () {
     loadMakes(function () {
         $('#filter_btn').removeClass('d-none');
     });
-    $('.yearpicker').yearpicker();
+    //$('.yearpicker').yearpicker();
 
     $('#search_form').change(function () {
         var make = 'null';
