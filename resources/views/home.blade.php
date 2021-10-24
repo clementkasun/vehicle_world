@@ -382,8 +382,8 @@ div {
                                 <div class='row'>
                                     <div class="col-12">
 									<div class="input-group form-control">
-                                        <input type="text" id="year_min" name="year_min" class="yearpicker" placeholder="MIN" autocomplete="off" width="50%">
-                                        <input type="text" id="year_max" name="year_max" class="yearpicker" placeholder="MAX" autocomplete="off" width="50%">
+                                        <input type="text" id="year_min" name="year_min" class="yearpicker col-6" placeholder="MIN" autocomplete="off">
+                                        <input type="text" id="year_max" name="year_max" class="yearpicker col-6" placeholder="MAX" autocomplete="off">
 										</div>
                                     </div>
                                 </div>
