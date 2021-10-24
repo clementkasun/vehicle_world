@@ -116,7 +116,7 @@
                                 </div>
                             </div>
                             <div class="col-12 col-md-4 mt-5">
-                                <div class="card card-success">
+                                <div class="card card-success w-100">
                                     <div class="card-header">
                                         <h5><b>Contact Details</b></h5>
                                     </div>
@@ -145,13 +145,13 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="card card-success mt-2">
+                                <div class="card card-success mt-2 w-100">
                                     <div class="card-header">
                                         <div class="text-center"><h3 class="profile-username"><b>{{ $post_data->post_title}}</b></h3></div>
                                     </div>
-                                    <div class="card-body p-5">
+                                    <div class="card-body">
                                         <div class="row bg-light" style="border-radius: 15px">
-                                            <div class="col-12 col-md-6 p-5">
+                                            <div class="col-12 col-md-6">
                                                 <div class="card card-success">
                                                     <div class="card-header">
 
@@ -276,7 +276,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="card card-success">
+                                                <div class="card card-success w-100">
                                                     <div class="card-header">
 
                                                     </div>
@@ -293,8 +293,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-12 col-md-6 p-5">
-                                                <div class="card card-success">
+                                            <div class="col-12 col-md-6">
+                                                <div class="card card-success w-100">
                                                     <div class="card-header">
 
                                                     </div>
@@ -363,7 +363,7 @@
                                     @if($related_posts[0] != null)
                                     @foreach($related_posts as $post)
                                     <div class='col-12 col-md-4'>
-                                        <div class="card card-success m-5" style="height: 10em; width:100%">
+                                        <div class="card card-success m-5" style="height: 10em;">
                                             <a href="/api/get_post_profile/id/{{$post->id}}">
                                             <div class="card-body text-dark bg-light">
                                                 <div class="row">
