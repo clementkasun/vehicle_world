@@ -363,7 +363,7 @@
                                     @if($related_posts[0] != null)
                                     @foreach($related_posts as $post)
                                     <div class='col-12 col-md-4'>
-                                        <div class="card card-success m-5" style="height: 100%">
+                                        <div class="card card-success" style="height: 10em;">
                                             <a href="/api/get_post_profile/id/{{$post->id}}">
                                             <div class="card-body text-dark bg-light">
                                                 <div class="row">
