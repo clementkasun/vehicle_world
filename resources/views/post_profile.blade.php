@@ -51,7 +51,7 @@
                     </div>
                     <div class="card-body">
                         <div class="row bg-light">
-                            <div class="col-12 col-md-8 mt-5">
+                            <div class="col-12 col-md-8 mt-2">
                                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                     <ol class="carousel-indicators">
                                         @if($post_data->main_image != null)
@@ -96,7 +96,7 @@
                                         @endif
                                         @if($post_data->image_4 != null)
                                         <div class="carousel-item">
-                                            <img class="d-block w-100 img-responsive" src="{{asset("/storage/".$post_data->image_4)}}" style="height: 550px" alt="Fifth slide">
+                                            <img class="d-block w-100 img-responsive" src="{{asset("/storage/".$post_data->image_4)}}" style="height: 100%" alt="Fifth slide">
                                         </div>
                                         @endif
                                         @if($post_data->image_5 != null)
