@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Routing\Redirector;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller {
@@ -63,10 +64,9 @@ class CustomerController extends Controller {
                     'user_id' => $user->id,
                 ]);
             });
-
-            return array('status' => 1, 'Successfully Updated the Customer data!');
+            return array('status' => 1, 'Customer Data Saving is successfull!');
         } catch (Throwable $e) {
-            return array('status' => 0, 'Customer Data Upadation is Unsuccessfull!');
+            return array('status' => 0, 'Customer Data Saving is Unsuccessfull!');
         }
     }
 

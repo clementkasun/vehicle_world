@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Notification;
 
 Route::get('/login_cust', function () {
     return view('auth.login');
-});
+})->name('login_cust');
 
 Route::get('/register_customer', function () {
     return view('auth.CustomerRegister');
@@ -74,10 +74,14 @@ Route::get('/logout', [App\Http\Controllers\UserController::class, 'logout']); #
 #graduate registration
 Route::middleware(['auth:sanctum', 'verified'])->get('/post_registration', function () {
     return view('/registration/post_registration');
-});
+})->name('post_registration');
 
 Route::get('/test', function(){
     return view('test');
 });
 
 Route::get('/filtered_posts/make/{make}/model/{model}/post_type/{post_type}/vehi_type/{vehi_type}/condition/{condition}/price_range/{price_range}/year_min/{year_min}/year_max/{year_max}/gear_type/{gear_type}/fuel_type/{fuel_type}/location/{location}', [PostController::class , 'filtered_adds']);
+
+Route::get('/seller_profile', function(){
+    return view('seller_profile');
+});

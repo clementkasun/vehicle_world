@@ -101,8 +101,8 @@
                                             <select id="vehicle_type" name="vehicle_type" class="custom-select w-100">
                                                 <option value="All">All</option>
                                                 <option value="Car">Car</option>
-                                                <option value="Van">Van</option
-                                                ><option value="SUV">SUV</option>
+                                                <option value="Van">Van</option>
+                                                <option value="SUV">SUV</option>
                                                 <option value="Crew Cab">Crew Cab</option>
                                                 <option value="Wagon">Wagon</option>
                                                 <option value="Pickup">Pickup</option>
@@ -136,7 +136,7 @@
                                     <div class="form-group">
                                         <label for="price">Price</label>                                    
                                         <div id="the-basics">
-                                            <input type="number" class="form-control" name="price" id="price" placeholder='Enter the price' required>
+                                            <input type="number" class="form-control" name="price" id="price" placeholder='Enter the price' max="1999999999" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -303,9 +303,15 @@
                                         <label for="model"> Model *</label>
                                         <div><input type="text" class="form-control" name="model" id="model" placeholder="Enter the model name" required></div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group self-start d-none">
                                         <label for="start_type">Start Type</label>
-                                        <div><input type="text" class="form-control" name="start_type" id="start_type" placeholder="Enter the start type" required></div>
+                                        <div>
+                                            <select class="custom-select" name="start_type" id="start_type" required>
+                                                <option value="">Select the Start type</option>
+                                                <option value="Manual">Self Start</option>
+                                                <option value="Automatic">Kikstart</option>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="manufactured_year">Manufactured Year</label>
@@ -314,7 +320,11 @@
                                     <div class="form-group">
                                         <label for="transmission">Transmission</label>
                                         <div>
-                                            <input type="text" class="form-control" name="transmission" id="transmission" placeholder="Enter the transmission type" required>
+                                            <select class="custom-select" name="transmission" id="transmission" required>
+                                                <option value="">Select the Start type</option>
+                                                <option value="Manual">Manual</option>
+                                                <option value="Automatic">Automatic</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <!-- radio -->

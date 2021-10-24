@@ -328,7 +328,7 @@ function save_cus_details() {
         // ajaxRequest("POST", url, data, function (result) {
         if (result.status == 1) {
             Swal.fire(
-                    'Graduate registration',
+                    'Customer registration',
                     'Successfully Saved!',
                     'success'
                     );

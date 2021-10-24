@@ -51,8 +51,8 @@
                     </div>
                     <div class="card-body">
                         <div class="row bg-light">
-                            <div class="col-md-8 mt-5">
-                                <div id="carouselExampleIndicators" class="carousel slide mt-5" data-ride="carousel">
+                            <div class="col-12 col-md-8 mt-5">
+                                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                     <ol class="carousel-indicators">
                                         @if($post_data->main_image != null)
                                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -115,7 +115,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-md-4 mt-5">
+                            <div class="col-12 col-md-4 mt-5">
                                 <div class="card card-success">
                                     <div class="card-header">
                                         <h5><b>Contact Details</b></h5>
@@ -151,7 +151,7 @@
                                     </div>
                                     <div class="card-body p-5">
                                         <div class="row bg-light" style="border-radius: 15px">
-                                            <div class="col-6 p-5">
+                                            <div class="col-12 col-md-6 p-5">
                                                 <div class="card card-success">
                                                     <div class="card-header">
 
@@ -293,7 +293,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-6 p-5">
+                                            <div class="col-12 col-md-6 p-5">
                                                 <div class="card card-success">
                                                     <div class="card-header">
 
@@ -356,18 +356,16 @@
                             <div class="col-12">
                                 <div calss="row">
                                     <div class="col-12">
-                                        <div class="text-center text-success"><b><h5>Related Results for your search</h5></b></div>
+                                        <div class="text-center text-success bg-secondary p-2" style="border-radius: 5px"><b><h5>Related Results for your search</h5></b></div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     @if($related_posts[0] != null)
                                     @foreach($related_posts as $post)
                                     <div class='col-12 col-md-4'>
-                                        <div class="card card-success m-2">
-                                            <div class="card-header text-light">
-                                                <b><a href="/api/get_post_profile/id/{{$post->id}}" style="color: black" class="text-light">{{$post->post_title}}</a></b>
-                                            </div>
-                                            <div class="card-body">
+                                        <div class="card card-success m-5" style="height: 10em; width:100%">
+                                            <a href="/api/get_post_profile/id/{{$post->id}}">
+                                            <div class="card-body text-dark bg-light">
                                                 <div class="row">
                                                     <div class="col-5">
                                                         <div class="portfolio-wrap text-center">
@@ -375,14 +373,14 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-7">
+                                                        <b style="font-size: 18px" class="text-success">{{$post->post_title}}</b></br>
                                                         <span><b>Price:</b>  {{$post->price}} </span><br>
                                                         <span><b>Location:</b>  {{$post->location}} </span><br>
                                                         <span><b>Condition:</b>  {{$post->condition}} </span>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="card-footer">
-                                            </div>
+                                                </a>
                                         </div>
                                     </div>
                                     @endforeach

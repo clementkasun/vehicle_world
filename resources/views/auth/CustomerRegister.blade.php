@@ -45,7 +45,7 @@
                     <!-- /.card-header -->
                     <!-- form start -->
                     <div class="card-body">
-                        <form id='customer_registration'>
+                        <form id="graduate_registration">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -214,7 +214,7 @@
                             } else {
                                 $('#password_origin').removeClass('has-error');
                                 $('#password_confirm').removeClass('has-error');
-                                var is_valid = jQuery("#customer_registration").valid();
+                                var is_valid = jQuery("#graduate_registration").valid();
                                 if (is_valid) {
                                     Swal.fire({
                                         title: 'Are you sure?',

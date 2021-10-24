@@ -50,6 +50,16 @@
             .yearpicker{
                 background-color: white;
             }
+            
+            @font-face {
+  font-family: myFirstFont;
+  src: url(sansation_light.woff);
+}
+
+div {
+  font-family: myFirstFont;
+  font-size: 14px;
+}
 
         </style>
         <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -413,7 +423,7 @@
                     </form>
                 </section>
                 <!-- ======= Portfolio Section ======= -->
-                <section id="portfolio" class="portfolio">
+                <section id="portfolio" class="portfolio bg-white">
 
                     <div class="container">
                         <div class="section-title">
@@ -425,26 +435,24 @@
                                     @if($posts[0] != null)
                                     @foreach($posts as $post)
                                     <div class='col-12 col-md-6'>
-                                        <div class="card card-success m-2">
-                                            <div class="card-header bg-success">
-                                                <b><a href="/api/get_post_profile/id/{{$post->id}}" class="text-light" style="color: black">{{$post->post_title}}</a></b>
-                                            </div>
-                                            <div class="card-body">
+                                        <div class="card card-success m-2" style="height: 10em">
+                                            <a href="/api/get_post_profile/id/{{$post->id}}">
+                                            <div class="card-body bg-light">
                                                 <div class="row">
                                                     <div class="col-5">
                                                         <div class="portfolio-wrap text-center">
-                                                            <img src="{{asset('storage/'.$post->main_image)}}" class='img-fluid cover m-2' style='height: 7em; width: 90%' alt='main_img'/>
+                                                            <img src="{{asset('storage/'.$post->main_image)}}" class='img-fluid cover' style='height: 7em; width: 90%' alt='main_img'/>
                                                         </div>
                                                     </div>
-                                                    <div class="col-7">
+                                                    <div class="col-7 text-dark">
+                                                        <b style="font-size: 18px" class="text-success">{{$post->post_title}}</b><br>
                                                         <span><b>Price:</b>  {{$post->price}} </span><br>
                                                         <span><b>Location:</b>  {{$post->location}} </span><br>
                                                         <span><b>Condition:</b>  {{$post->condition}} </span>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="card-footer">
-                                            </div>
+                                                </a>
                                         </div>
                                     </div>
                                     @endforeach
