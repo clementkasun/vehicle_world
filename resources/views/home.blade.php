@@ -379,7 +379,7 @@ div {
                         <div class="row m-2">
                             <div class="form-group col-lg-6">
                                 <label for=""><b>Year Range</b></label><br>
-                                <div class='row'>
+                                <div class='row input-group'>
                                         <input type="text" id="year_min" name="year_min" class="yearpicker col-6 form-control" placeholder="MIN" autocomplete="off">
                                         <input type="text" id="year_max" name="year_max" class="yearpicker col-6 form-control" placeholder="MAX" autocomplete="off">
                                 </div>
