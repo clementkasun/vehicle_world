@@ -381,8 +381,8 @@ div {
                                 <label for=""><b>Year Range</b></label><br>
                                 <div class='row'>
                                     <div class="col-12">
-                                        <input type="text" id="year_min" name="year_min" class="yearpicker form-control" placeholder="MIN" autocomplete="off" width="100%">
-                                        <input type="text" id="year_max" name="year_max" class="yearpicker form-control" placeholder="MAX" autocomplete="off" width="100%">
+                                        <input type="text" id="year_min" name="year_min" class="yearpicker form-control" placeholder="MIN" autocomplete="off" width="50%">
+                                        <input type="text" id="year_max" name="year_max" class="yearpicker form-control" placeholder="MAX" autocomplete="off" width="50%">
                                     </div>
                                 </div>
                             </div>
