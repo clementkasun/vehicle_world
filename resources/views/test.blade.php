@@ -459,7 +459,7 @@
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="card card-light" id="advertiesments">
-                                                            <div class="card-body" style="height: 230px">
+                                                            <div class="card-body" style="height: 500px">
 
                                                             </div>
                                                         </div>
