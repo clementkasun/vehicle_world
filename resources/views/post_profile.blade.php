@@ -21,10 +21,8 @@
     }
 
     .mySlides {
-        display:none;
+        display: none;
     }
-
-
 </style>
 @endsection
 @section('content')
@@ -46,77 +44,81 @@
             <div class="col-md-12">
                 <!-- Profile Image -->
                 <div class="card card-secondary">
-                    <div class="card-header text-center">                
-                        <h4 class="text-light"><b><i> Sales Item Profile</i></b></h4>
+                    <div class="card-header text-center">
+                        <h4 class="text-light"><b>Sales Item Profile</b></h4>
                     </div>
                     <div class="card-body">
                         <div class="row bg-light">
                             <div class="col-12 col-md-8 mt-2">
-                                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                                    <ol class="carousel-indicators">
-                                        @if($post_data->main_image != null)
-                                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                        @endif
-                                        @if($post_data->image_1 != null)
-                                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                        @endif
-                                        @if($post_data->image_2 != null)
-                                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                                        @endif
-                                        @if($post_data->image_3 != null)
-                                        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                                        @endif
-                                        @if($post_data->image_4 != null)
-                                        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-                                        @endif
-                                        @if($post_data->image_5 != null)
-                                        <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
-                                        @endif
-                                    </ol>
-                                    <div class="carousel-inner">
-                                        @if($post_data->main_image != null)
-                                        <div class="carousel-item active">
-                                            <img class="d-block w-100 img-responsive" src="{{asset("/storage/".$post_data->main_image)}}" style="height: 100%" alt="First slide">
+                                <div class="card card-light">
+                                    <div class="card-body">
+                                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                            <ol class="carousel-indicators">
+                                                @if($post_data->main_image != null)
+                                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                                @endif
+                                                @if($post_data->image_1 != null)
+                                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                                @endif
+                                                @if($post_data->image_2 != null)
+                                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                                @endif
+                                                @if($post_data->image_3 != null)
+                                                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                                                @endif
+                                                @if($post_data->image_4 != null)
+                                                <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                                                @endif
+                                                @if($post_data->image_5 != null)
+                                                <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                                                @endif
+                                            </ol>
+                                            <div class="carousel-inner">
+                                                @if($post_data->main_image != null)
+                                                <div class="carousel-item active">
+                                                    <img class="d-block w-100 img-responsive" src="{{asset("/storage/".$post_data->main_image)}}" style="height: 100%" alt="First slide">
+                                                </div>
+                                                @endif
+                                                @if($post_data->image_1 != null)
+                                                <div class="carousel-item">
+                                                    <img class="d-block w-100 img-responsive" src="{{asset("/storage/".$post_data->image_1)}}" style="height: 100%" alt="Second slide">
+                                                </div>
+                                                @endif
+                                                @if($post_data->image_2 != null)
+                                                <div class="carousel-item">
+                                                    <img class="d-block w-100 img-responsive" src="{{asset("/storage/".$post_data->image_2)}}" style="height: 100%" alt="Third slide">
+                                                </div>
+                                                @endif
+                                                @if($post_data->image_3 != null)
+                                                <div class="carousel-item">
+                                                    <img class="d-block w-100 img-responsive" src="{{asset("/storage/".$post_data->image_3)}}" style="height: 100%" alt="Fourth slide">
+                                                </div>
+                                                @endif
+                                                @if($post_data->image_4 != null)
+                                                <div class="carousel-item">
+                                                    <img class="d-block w-100 img-responsive" src="{{asset("/storage/".$post_data->image_4)}}" style="height: 100%" alt="Fifth slide">
+                                                </div>
+                                                @endif
+                                                @if($post_data->image_5 != null)
+                                                <div class="carousel-item">
+                                                    <img class="d-block w-100 img-responsive" src="{{asset("/storage/".$post_data->image_5)}}" style="height: 100%" alt="Sixth slide">
+                                                </div>
+                                                @endif
+                                            </div>
+                                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
                                         </div>
-                                        @endif
-                                        @if($post_data->image_1 != null)
-                                        <div class="carousel-item">
-                                            <img class="d-block w-100 img-responsive" src="{{asset("/storage/".$post_data->image_1)}}" style="height: 100%" alt="Second slide">
-                                        </div>
-                                        @endif
-                                        @if($post_data->image_2 != null)
-                                        <div class="carousel-item">
-                                            <img class="d-block w-100 img-responsive" src="{{asset("/storage/".$post_data->image_2)}}" style="height: 100%" alt="Third slide">
-                                        </div>
-                                        @endif
-                                        @if($post_data->image_3 != null)
-                                        <div class="carousel-item">
-                                            <img class="d-block w-100 img-responsive" src="{{asset("/storage/".$post_data->image_3)}}" style="height: 100%" alt="Fourth slide">
-                                        </div>
-                                        @endif
-                                        @if($post_data->image_4 != null)
-                                        <div class="carousel-item">
-                                            <img class="d-block w-100 img-responsive" src="{{asset("/storage/".$post_data->image_4)}}" style="height: 100%" alt="Fifth slide">
-                                        </div>
-                                        @endif
-                                        @if($post_data->image_5 != null)
-                                        <div class="carousel-item">
-                                            <img class="d-block w-100 img-responsive" src="{{asset("/storage/".$post_data->image_5)}}" style="height: 100%" alt="Sixth slide">
-                                        </div>
-                                        @endif
                                     </div>
-                                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-4 mt-5">
-                                <div class="card card-success w-100">
+                            <div class="col-12 col-md-4">
+                                <div class="card card-success pb-4 w-100">
                                     <div class="card-header">
                                         <h5><b>Contact Details</b></h5>
                                     </div>
@@ -147,15 +149,14 @@
                             <div class="col-md-12">
                                 <div class="card card-success mt-2 w-100">
                                     <div class="card-header">
-                                        <div class="text-center"><h3 class="profile-username"><b>{{ $post_data->post_title}}</b></h3></div>
+                                        <div class="text-center">
+                                            <h5 class="profile-username"><b>{{ $post_data->post_title}}</b></h5>
+                                        </div>
                                     </div>
                                     <div class="card-body">
                                         <div class="row bg-light" style="border-radius: 15px">
                                             <div class="col-12 col-md-6">
                                                 <div class="card card-success">
-                                                    <div class="card-header">
-
-                                                    </div>
                                                     <div class="card-body">
                                                         <div class="form-group">
                                                             @if($post_data->model != null)
@@ -265,6 +266,12 @@
                                                                                                         <span class="text-muted">-------</span>
                                                                                                         @endif-->
                                                         </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <div class="card card-success w-100">
+                                                    <div class="card-body pb-4">
                                                         <div class="form-group">
                                                             @if($post_data->address != null)
                                                             <label for="address">Address: </label>
@@ -274,32 +281,7 @@
                                                                                                         <span class="text-muted">-------</span>
                                                                                                         @endif-->
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card card-success w-100">
-                                                    <div class="card-header">
-
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <div class="form-group">
-                                                            @if($post_data->additional_info != null)
-                                                            <label for="additional_info">Description: </label>
-                                                            <span class="ml-2">{{$post_data->additional_info}}</span>
-                                                            @endif
-                                                            <!--                                            @if($post_data->additional_info == null)
-                                                                                                        <span class="text-muted">-------</span>
-                                                                                                        @endif-->
-                                                        </div> 
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-6">
-                                                <div class="card card-success w-100">
-                                                    <div class="card-header">
-
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <div class="form-group">
+                                                        <div class="form-group pt-4">
                                                             <label for="ongoing_lease">Ongoing Lease: </label><br>
                                                             @if($post_data->on_going_lease != null)
                                                             <label class="bg-warning p-1 m-1" style="border-radius: 5px;"></label><br>
@@ -348,52 +330,73 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="card card-success w-100">
+                                                    <div class="card-header d-flex justify-content-center">
+                                                        <h5>Description</h5>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="form-group">
+                                                            @if($post_data->additional_info != null)
+                                                            <span class="ml-2">{{$post_data->additional_info}}</span>
+                                                            @endif
+                                                            <!--                                            @if($post_data->additional_info == null)
+                                                                                                        <span class="text-muted">-------</span>
+                                                                                                        @endif-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <div calss="row">
-                                    <div class="col-12">
-                                        <div class="text-center text-success bg-secondary p-2" style="border-radius: 5px"><b><h5>Related Results for your search</h5></b></div>
+                                <div class="card card-success">
+                                    <div class="card-header d-flex justify-content-center">
+                                        <h5>Related Results for your search</h5>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    @if($related_posts[0] != null)
-                                    @foreach($related_posts as $post)
-                                    <div class='col-12 col-md-4'>
-                                        <div class="card card-success mt-2" style="height: 10em;">
-                                            <a href="/api/get_post_profile/id/{{$post->id}}">
-                                            <div class="card-body text-dark bg-light">
-                                                <div class="row">
-                                                    <div class="col-5">
-                                                        <div class="portfolio-wrap text-center">
-                                                            <img src="{{asset('storage/'.$post->main_image)}}" class='img-fluid cover m-2' style='height: 7em; width: 90%' alt='main_img'/>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            @if($related_posts[0] != null)
+                                            @foreach($related_posts as $post)
+                                            <div class='col-12 col-md-4'>
+                                                <div class="card card-success mt-2" style="height: 10em;">
+                                                    <a href="/api/get_post_profile/id/{{$post->id}}">
+                                                        <div class="card-body text-dark bg-light">
+                                                            <div class="row">
+                                                                <div class="col-5">
+                                                                    <div class="portfolio-wrap text-center">
+                                                                        <img src="{{asset('storage/'.$post->main_image)}}" class='img-fluid cover m-2' style='height: 7em; width: 90%' alt='main_img' />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-7">
+                                                                    <b style="font-size: 18px" class="text-success">{{$post->post_title}}</b></br>
+                                                                    <span><b>Price:</b> {{$post->price}} </span><br>
+                                                                    <span><b>Location:</b> {{$post->location}} </span><br>
+                                                                    <span><b>Condition:</b> {{$post->condition}} </span>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-7">
-                                                        <b style="font-size: 18px" class="text-success">{{$post->post_title}}</b></br>
-                                                        <span><b>Price:</b>  {{$post->price}} </span><br>
-                                                        <span><b>Location:</b>  {{$post->location}} </span><br>
-                                                        <span><b>Condition:</b>  {{$post->condition}} </span>
-                                                    </div>
+                                                    </a>
                                                 </div>
                                             </div>
-                                                </a>
+                                            @endforeach
+
+                                            @if(isset($request))
+                                            <div class="text-center mt-5">{{ $related_posts->appends($request)->links('pagination::bootstrap-4') }}</div>
+                                            @endif
+
+                                            @if(!isset($request))
+                                            <div class="text-center mt-5">{{ $related_posts->links('pagination::bootstrap-4') }}</div>
+                                            @endif
+
+                                            @endif
                                         </div>
                                     </div>
-                                    @endforeach
-
-                                    @if(isset($request))
-                                    <div class="text-center mt-5">{{ $related_posts->appends($request)->links('pagination::bootstrap-4') }}</div>
-                                    @endif
-
-                                    @if(!isset($request))
-                                    <div class="text-center mt-5">{{ $related_posts->links('pagination::bootstrap-4') }}</div>
-                                    @endif
-
-                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -438,26 +441,26 @@
 <script src="../../../js/commenFunctions/file_upload.js"></script>
 
 <script>
-var slideIndex = 1;
-showDivs(slideIndex);
+    var slideIndex = 1;
+    showDivs(slideIndex);
 
-function plusDivs(n) {
-    showDivs(slideIndex += n);
-}
+    function plusDivs(n) {
+        showDivs(slideIndex += n);
+    }
 
-function showDivs(n) {
-    var i;
-    var x = document.getElementsByClassName("mySlides");
-    if (n > x.length) {
-        slideIndex = 1
+    function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        if (n > x.length) {
+            slideIndex = 1
+        }
+        if (n < 1) {
+            slideIndex = x.length
+        }
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        x[slideIndex - 1].style.display = "block";
     }
-    if (n < 1) {
-        slideIndex = x.length
-    }
-    for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
-    }
-    x[slideIndex - 1].style.display = "block";
-}
 </script>
 @endsection
