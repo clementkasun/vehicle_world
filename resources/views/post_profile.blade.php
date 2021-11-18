@@ -326,6 +326,9 @@
                                                             <label class="bg-success p-1 m-1" style="border-radius: 5px;"></label><br>
                                                             @endif
                                                         </div>
+                                                        <div class="form-group" id="advertiesments" style="height: 500px">
+                                                            asad
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

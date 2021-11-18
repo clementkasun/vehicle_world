@@ -456,6 +456,15 @@
                                                         <!-- </div> -->
                                                     </div>
                                                 </div>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="card card-light" id="advertiesments">
+                                                            <div class="card-body" style="height: 230px">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <!-- </div> -->
@@ -463,7 +472,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
-                                        <div class="card card-success">
+                                        <div class="card card-light">
                                             <div class="card-header d-flex justify-content-center">
                                                 <h5>Related Results for your search</h5>
                                             </div>
