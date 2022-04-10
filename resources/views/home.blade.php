@@ -486,13 +486,13 @@
                 $('#filter_btn').removeClass('d-none');
             });
             //$('.yearpicker').yearpicker();
-            let url = '/api/get_posts';
+            let url = './api/get_posts';
             loadTable(null, url, 'GET'); 
         });
 
         $('#filter_btn').click(function() {
             let data = $('#search_form').serializeArray();
-            let url = '/api/filtered_posts';
+            let url = './api/filtered_posts';
 
             loadTable(data, url, 'POST');                
         });
