@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>VEHICLEWORLD.COM</title>
+    <title>VEHICAUTO.COM</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -70,7 +70,7 @@
     <section id="topbar" class="d-flex align-items-center">
         <div class="container d-flex justify-content-center justify-content-md-between">
             <div class="contact-info d-flex align-items-center">
-                <i class="bi bi-envelope-fill"></i><a href="mailto:vehicleworld@gmail.com">vehicleworld@gmail.com</a>
+                <i class="bi bi-envelope-fill"></i><a href="mailto:vehicleworld@gmail.com">vehiauto@gmail.com</a>
                 <i class="bi bi-phone-fill phone-icon"></i> +94 763993288
             </div>
             <div class="social-links d-none d-md-block">
@@ -85,7 +85,7 @@
     <!-- ======= Header ======= -->
     <header id="header" class="d-flex align-items-center">
         <div class="container d-flex align-items-center">
-            <h2 class="logo me-auto">VEHICLEWORLD.COM</h2><i class="bi bi-list mobile-nav-toggle"></i>
+            <h2 class="logo me-auto">VEHIAUTO.COM</h2><i class="bi bi-list mobile-nav-toggle"></i>
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
@@ -112,8 +112,8 @@
                 <div class="carousel-item active" style="background-image: url({{asset('assets/img/slide/slide-1.jpg')}})">
                     <div class="carousel-container">
                         <div class="container">
-                            <h2 class="animate__animated animate__fadeInDown">WELCOME <span> VEHICLEWORLD</span></h2>
-                            <p class="animate__animated animate__fadeInUp">VEHICLEWORLD is marketplace for sell vehicles online in sri lanka.</p>
+                            <h2 class="animate__animated animate__fadeInDown">WELCOME <span> VEHIAUTO</span></h2>
+                            <p class="animate__animated animate__fadeInUp">VEHIAUTO is marketplace for sell vehicles online in sri lanka.</p>
                             <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
                         </div>
                     </div>
@@ -124,7 +124,7 @@
                     <div class="carousel-container">
                         <div class="container">
                             <h2 class="animate__animated animate__fadeInDown">Sell Vehicles Online</span></h2>
-                            <p class="animate__animated animate__fadeInUp">VEHICLEWORLD is marketplace for sell vehicles online in sri lanka.</p>
+                            <p class="animate__animated animate__fadeInUp">VEHIAUTO is marketplace for sell vehicles online in sri lanka.</p>
                             <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
                         </div>
                     </div>
@@ -135,7 +135,7 @@
                     <div class="carousel-container">
                         <div class="container">
                             <h2 class="animate__animated animate__fadeInDown">Buy and contact sellers</span></h2>
-                            <p class="animate__animated animate__fadeInUp">VEHICLEWORLD is marketplace for sell vehicles online in sri lanka.</p>
+                            <p class="animate__animated animate__fadeInUp">VEHIAUTO is marketplace for sell vehicles online in sri lanka.</p>
                             <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
                         </div>
                     </div>
@@ -184,7 +184,7 @@
 
             </div>
             <section id="search_container" class="bg-secondary text-light">
-                <form id="search_form" method="GET" action="">
+                <form id="search_form">
                     @csrf
                     <div class="row m-2">
                         <div class="form-group col-lg-3">
@@ -410,7 +410,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <button type="sumbit" id="filter_btn" class="btn btn-md btn-success d-none">SEARCH</button>
+                        <button type="button" id="filter_btn" class="btn btn-md btn-success d-none">SEARCH</button>
                     </div>
                     </div>
                 </form>
@@ -425,47 +425,22 @@
                     <div id="promoted_adds">
                         <div class="container">
                             <div class="row">
-                                @if($posts[0] != null)
-                                @foreach($posts as $post)
-                                <div class='col-12 col-md-6'>
-                                    <div class="card card-success m-2" style="height: 10em">
-                                        <a href="/api/get_post_profile/id/{{$post->id}}">
-                                            <div class="card-body bg-light">
-                                                <div class="row">
-                                                    <div class="col-5">
-                                                        <div class="portfolio-wrap text-center">
-                                                            <img src="{{asset('storage/'.$post->main_image)}}" class='img-fluid cover' style='height: 7em; width: 90%' alt='main_img' />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-7 text-dark">
-                                                        <b style="font-size: 18px" class="text-success">{{$post->post_title}}</b><br>
-                                                        <span><b>Price:</b> {{$post->price}} </span><br>
-                                                        <span><b>Location:</b> {{$post->location}} </span><br>
-                                                        <span><b>Condition:</b> {{$post->condition}} </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
+                                <div class='col-12'>
+                                    <table class="table table-responsive" id="ad_tbl">
+                                      <tbody>
+                                          <tr>
+                                              <td></td>
+                                          </tr>
+                                      </tbody>
+                                    </table>
                                 </div>
-                                @endforeach
-
-                                @if(isset($request))
-                                <div class="text-center mt-5">{{ $posts->appends($request)->links('pagination::bootstrap-4') }}</div>
-                                @endif
-
-                                @if(!isset($request))
-                                <div class="text-center mt-5">{{ $posts->links('pagination::bootstrap-4') }}</div>
-                                @endif
-
-                                @endif
                             </div>
                         </div>
             </section><!-- End Portfolio Section -->
     </main><!-- End #main -->
     <footer id="footer">
         <div class="container">
-            <h3>VEHICLEWORLD</h3>
+            <h3>VEHIAUTO.COM</h3>
             <p>MAKE YOUR DREAM VEHICLE REALITY.ENGAGE WITH US TO PROSPEROUS FUTURE.</p>
             <div class="social-links">
                 <a href="https://twitter.com" class="twitter"><i class="bx bxl-twitter"></i></a>
@@ -499,43 +474,27 @@
     <!-- UIkit JS -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.3/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.3/dist/js/uikit-icons.min.js"></script>
+    
 
     <!-- Template Main JS File -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="{{asset("/plugins/datatables/jquery.dataTables.js")}}"></script>
+    <script src="{{asset("/plugins/datatables-bs4/js/dataTables.bootstrap4.js")}}"></script>
     <script>
         $(document).ready(function() {
             loadMakes(function() {
                 $('#filter_btn').removeClass('d-none');
             });
             //$('.yearpicker').yearpicker();
+            let url = '/api/get_posts';
+            loadTable(null, url, 'GET'); 
+        });
 
-            $('#search_form').change(function() {
-                var make = 'null';
-                if ($('#cmb_make').val() != '') {
-                    make = $('#cmb_make').val();
-                }
-                var model = 'null';
-                if ($('#model').val() != '') {
-                    model = $('#model').val();
-                }
-                var post_type = $('#cmb_post_type').val();
-                var vehi_type = $('#cmb_vehi_type').val();
-                var condition = $('#cmb_condition').val();
-                var price_range = $('#cmb_price').val();
-                var location = $('#cmb_city').val();
-                var year_min = '0';
-                var year_max = '0';
-                if ($('#year_min').val() != '') {
-                    year_min = $('#year_min').val();
-                }
-                if ($('#year_max').val() != '') {
-                    year_max = $('#year_max').val();
-                }
-                var gear_type = $('#cmb_gear').val();
-                var fuel_type = $('#cmb_fuel_type').val();
-                $('#search_form').attr('action', '/filtered_posts/make/' + make + '/model/' + model + '/post_type/' + post_type + '/vehi_type/' + vehi_type + '/condition/' + condition + '/price_range/' + price_range + '/year_min/' + year_min + '/year_max/' + year_max + '/gear_type/' + gear_type + '/fuel_type/' + fuel_type + '/location/' + location);
-            });
+        $('#filter_btn').click(function() {
+            let data = $('#search_form').serializeArray();
+            let url = '/api/filtered_posts';
 
+            loadTable(data, url, 'POST');                
         });
 
         function loadMakes(callBack) {
@@ -556,6 +515,66 @@
                 }
             });
         }
+
+        function loadTable(data, url, method) {
+
+        let ad_tbl = $('#ad_tbl').DataTable({
+        destroy: true,
+        processing: true,
+        serverSide: false,
+        responsive: true,
+        dom: 'Bfrtip',
+        "pageLength": 50,
+        language: {
+            searchPlaceholder: "search"
+        },
+        "ajax": {
+            "url": url,
+            "data": data,
+            "type": method,
+            "dataSrc": "",
+            "headers": {
+                //            "X-XSRF-TOKEN": token,
+                'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr("content"),
+                'Accept': "application/json"
+            },
+        },
+        "columns": [
+            {
+                "data": "",
+                "render": function(data, type, row, meta){
+                    let html = '';
+                    html += '<div class="card card-success m-2" style="height: 10em">';
+                    html += '<a href="/api/get_post_profile/id/'+row.id+'">';
+                    html += '<div class="card-body bg-light">';
+                    html += '<div class="row">';
+                    html += '<div class="col-5">';
+                    html += '<div class="portfolio-wrap text-center">';
+                    html += "<img src='/storage/"+row.main_image+"' class='img-fluid cover' style='height: 10em; width: 90%' alt='main_img' />";
+                    html += '</div>';
+                    html += '</div>';
+                    html += '<div class="col-7 text-dark">';
+                    html += '<b style="font-size: 18px" class="text-success">'+row.post_title+'</b><br>';
+                    html += '<span><b>Price:</b>'+row.price+' </span><br>';
+                    html += '<span><b>Location:</b>'+row.location+' </span><br>';
+                    html += '<span><b>Condition:</b>'+row.condition+' </span>';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '</a>';
+                    html += '</div>';
+                    return html;
+                }
+            },
+        ],
+    });
+
+    //data table error handling
+    $.fn.dataTable.ext.errMode = 'none';
+    $('#ad_tbl').on('error.dt', function(e, settings, techNote, message) {
+        console.log('DataTables error: ', message);
+    });
+}
     </script>
 </body>
 

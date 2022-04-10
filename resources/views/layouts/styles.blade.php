@@ -166,5 +166,6 @@
     .twitter-typeahead {
         width: 100%;
     }
+
 </style>
 @endsection

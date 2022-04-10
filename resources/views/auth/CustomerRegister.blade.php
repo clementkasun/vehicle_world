@@ -20,16 +20,6 @@
 
 @section('content')
 <!-- Content Header (Page header) -->
-<section class=" content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-12 text-center">
-                <h1> <b class="text-primary">Customer Registration</b> </h1>
-            </div>
-        </div>
-    </div>
-    <!-- /.container-fluid -->
-</section>
 
 <!-- Main content -->
 <section class="content">
@@ -39,13 +29,13 @@
             <div class="col-md-12">
                 <!-- general form elements -->
                 <div class="card card-primary">
-                    <div class="card-header">
-                        <!-- <h1 class="card-title"><b>Customer Registration</b></h1> -->
+                    <div class="card-header text-center">
+                       <h1> <b class="text-light">Customer Registration</b> </h1>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
                     <div class="card-body">
-                        <form id="graduate_registration">
+                        <form id="cust_reg_frm">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -57,11 +47,23 @@
                                         <div><input type="text" class="form-control" name="lastName" id="lastName" value="" placeholder="LAST NAME" required></div>
                                     </div>
                                     <div class="form-group">
+                                        <div class="row">
+                                        <div class="col-6">
                                         <label for="contactNo">Mobile No*</label>
                                         <div class="input-group">
                                             <div class="custom-file">
                                                 <div><input type="text" class="form-control" name="contactNo" id="contactNo" value="" minlength="10" maxlength="10" placeholder="TELPHONE" required></div>
                                             </div>
+                                        </div>
+                                        </div>
+                                        <div class="col-6">
+                                        <label for="nic">NIC*</label>
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <div><input type="text" class="form-control" name="nic" id="nic" value="" placeholder="NIC" required></div>
+                                            </div>
+                                        </div>
+                                        </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -73,35 +75,35 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="nic">NIC*</label>
-                                        <div class="input-group">
-                                            <div class="custom-file">
-                                                <input type="text" class="form-control" name="nic" id="nic" value="" placeholder="NIC" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
+                                        <div class="row">
+                                        <div class="col-12">
                                         <label for="location">Location*</label>
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <textarea class="form-control" name="location" id="location" value="" placeholder="Location" required></textarea>
+                                                <div><textarea cols="70" rows="2"  class="form-control" name="location" id="location" value="" placeholder="Location" required></textarea></div>
                                             </div>
+                                        </div>
+                                        </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
+                                        <div class="row">
+                                        <div class="col-6">
                                         <label for="password_origin">Password*</label>
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input type="password" class="form-control" name="password_origin" id="password_origin" value="" placeholder="PASSWORD" required>
+                                                <div><input type="password" class="form-control" name="password_origin" id="password_origin" value="" placeholder="PASSWORD" required></div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
+                                        </div>
+                                        <div class="col-6">
                                         <label for="password_confirm">Confirm Password*</label>
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input type="password" class="form-control" name="password_confirm" id="password_confirm" value="" placeholder="CONFIRM PASSWORD" required>
+                                                <div><input type="password" class="form-control" name="password_confirm" id="password_confirm" value="" placeholder="CONFIRM PASSWORD" required></div>
                                             </div>
+                                        </div>
+                                        </div>
                                         </div>
                                     </div>
                                 </div>
@@ -110,7 +112,7 @@
                                         <div class="bg-light" style="width: 95%; height: 60%">
                                             <img src="{{asset('storage/System/avater.png')}}" style="width: 95%; height: 80%" /><br>
                                             <div>
-                                                <h1><b>VEHICLEWORLD.COM</b></h1>
+                                                <h1><b>VEHIAUTO.COM</b></h1>
                                             </div>
                                         </div>
                                     </div>
@@ -118,7 +120,7 @@
                             </div>
                             <!-- /.card-body -->
                             <div class="card-footer">
-                                <button id="save_customer" type="button" class=" btn btn-warning pl-5 pr-5"><b>SAVE</b></button>
+                                <button id="save_customer" type="button" class=" btn btn-lg btn-primary pl-5 pr-5"><b>SAVE</b></button>
                             </div>
                         </form>
                     </div>
@@ -160,9 +162,9 @@
 
 <!-- AdminLTE App -->
 <script>
-    var degree_registration;
+    var cust_reg_frm;
 
-    graduate_registration = jQuery("#graduate_registration").validate({
+    cust_reg_frm = jQuery("#cust_reg_frm").validate({
         errorClass: "invalid",
         rules: {
             tel: {
@@ -171,6 +173,9 @@
             email: {
                 valide_email: true,
             },
+            password_origin: {
+                valide_pass: true,
+            }
         },
         highlight: function(element) {
             $(element).parent().addClass('has-error');
@@ -190,34 +195,26 @@
     });
 
     $("#save_customer").click(function() {
-        var data = {
-            email: $('#email').val(),
-            nic: $('#nic').val()
-        };
-        let url_email_nic = "/api/is_email_nic_exist";
+          var is_valid = jQuery("#cust_reg_frm").valid();
+          if(is_valid){
+            var data = {
+              email: $('#email').val(),
+              nic: $('#nic').val()
+            };
+            let url_email_nic = "/api/is_email_nic_exist";
 
-        ajaxRequest("POST", url_email_nic, data, function(resp) {
-            if (resp == 1) {
-                $('#email').addClass('has-error');
+            ajaxRequest("POST", url_email_nic, data, function(resp) {
+              if (resp == 1) {
                 $('#nic').addClass('has-error');
-                Swal.fire("Failed!", "Email or NIC already exist!", "warning");
-            } else {
+                Swal.fire("Failed!", "NIC already exist!", "warning");
+              } else if(resp == 2) {
+                $('#email').addClass('has-error');
+                Swal.fire("Failed!", "Email already exist!", "warning");
+              }else{
                 $('#email').removeClass('has-error');
                 $('#nic').removeClass('has-error');
-                if ($('#password_origin').val() == '' || $('#password_confirm').val() == '') {
-                    $('#password_origin').addClass('has-error');
-                    $('#password_confirm').addClass('has-error');
-                    Swal.fire("Failed!", "Password fields is required to register!", "warning");
-                }
-                if ($('#password_origin').val() != $('#password_confirm').val()) {
-                    $('#password_origin').addClass('has-error');
-                    $('#password_confirm').addClass('has-error');
-                    Swal.fire("Failed!", "Confirm password is need to same as password!", "warning");
-                } else {
-                    $('#password_origin').removeClass('has-error');
-                    $('#password_confirm').removeClass('has-error');
-                    var is_valid = jQuery("#graduate_registration").valid();
-                    if (is_valid) {
+
+                if($('#password_origin').val() == $('#password_confirm').val()){
                         Swal.fire({
                             title: 'Are you sure?',
                             text: "Record will be Saved",
@@ -230,12 +227,16 @@
                                 save_cus_details();
                             }
                         });
-                    } else {
-                        Swal.fire("Failed!", "Invalid data found!", "warning");
-                    }
-                }
-            }
-        });
+                }else{
+                    Swal.fire({
+                      icon: 'error',
+                      title: 'Password confirmation',
+                      text: 'Password confirmation is invalid',
+                    });
+                }        
+               }
+            });
+          }
     });
 
     jQuery.validator.setDefaults({
@@ -267,6 +268,10 @@
     jQuery.validator.addMethod("valide_code", function(value, element) {
         return this.optional(element) || /^[a-zA-Z\s\d\_\-()]{1,100}$/.test(value);
     }, "Please enter a valid Code");
+
+    jQuery.validator.addMethod("valide_pass", function(value, element) {
+        return this.optional(element) || /^[a-zA-Z\s\d\_\-()]{6,10}$/.test(value);
+    }, "Please enter a valid password");
 
     jQuery.validator.addMethod("valid_name", function(value, element) {
         return this.optional(element) || /^[a-zA-Z\s\.\&\-()]*$/.test(value);

@@ -295,22 +295,34 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function filtered_adds($make, $model, $post_type, $vehi_type, $condition, $price_range, $year_min, $year_max, $gear_type, $fuel_type, $location)
+    public function filtered_adds(Request $request)
     {
 
         $request_data = [
-            "make" => $make,
-            "model" => $model,
-            "post_type" => $post_type,
-            "vehi_type" => $vehi_type,
-            "condition" => $condition,
-            "price_range" => $price_range,
-            "year_min" => $year_min,
-            "year_max" => $year_max,
-            "gear_type" => $gear_type,
-            "fuel_type" => $fuel_type,
-            "location" => $location
+            "make" => $request[1]['value'],
+            "model" => $request[2]['value'],
+            "post_type" => $request[3]['value'],
+            "vehi_type" => $request[4]['value'],
+            "condition" => $request[5]['value'],
+            "price_range" => $request[6]['value'],
+            "year_min" => $request[7]['value'],
+            "year_max" => $request[8]['value'],
+            "gear_type" => $request[9]['value'],
+            "fuel_type" => $request[10]['value'],
+            "location" => $request[11]['value']
         ];
+
+        $make = $request[1]['value'];
+        $post_type = $request[3]['value'];
+        $model = $request[2]['value'];
+        $vehi_type = $request[4]['value'];
+        $condition = $request[5]['value'];
+        $price_range = $request[6]['value'];
+        $year_min = $request[7]['value'];
+        $year_max = $request[8]['value'];
+        $gear_type = $request[9]['value'];
+        $fuel_type = $request[10]['value'];
+        $location = $request[11]['value'];
 
         if ($post_type == "VEHI") {
 
@@ -320,11 +332,11 @@ class PostController extends Controller
                 ->leftjoin('vehicle_makes', 'vehicles.make_id', 'vehicle_makes.id');
 
             $post = $post->when($location != 'any', function ($p) use ($location) {
-                return $p->where('posts.location', 'LIKE', $location);
+                return $p->where('posts.location', 'like', '%' . $location . '%');
             });
 
             $post = $post->when($condition != 'any', function ($p) use ($condition) {
-                return $p->where('posts.condition', 'LIKE', $condition);
+                return $p->where('posts.condition', 'like', '%' . $condition . '%');
             });
 
             $post = $post->when($price_range != 'Any', function ($p) use ($price_range) {
@@ -343,36 +355,36 @@ class PostController extends Controller
                 }
             });
 
-            $post = $post->when($make != 'null', function ($p) use ($make) {
+            $post = $post->when($make != null, function ($p) use ($make) {
                 return $p->where('vehicles.make_id', '=', $make);
             });
 
-            $post = $post->when($model != 'null', function ($p) use ($model) {
-                return $p->where('vehicles.model', 'LIKE', $model);
+            $post = $post->when($model != null, function ($p) use ($model) {
+                return $p->where('vehicles.model', 'like', '%' . $model . '%');
             });
 
-            $post = $post->when($year_min == '0' && $year_max != '0', function ($p) use ($year_max) {
+            $post = $post->when($year_min == 0 && $year_max != 0, function ($p) use ($year_max) {
                 return $p->where('vehicles.manufactured_year', '<=', $year_max);
             });
 
-            $post = $post->when($year_min != '0' && $year_max == '0', function ($p) use ($year_min) {
+            $post = $post->when($year_min != 0 && $year_max == 0, function ($p) use ($year_min) {
                 return $p->where('vehicles.manufactured_year', '>=', $year_min);
             });
 
-            $post = $post->when($year_min != '0' && $year_max != '0', function ($p) use ($year_min, $year_max) {
+            $post = $post->when($year_min != 0 && $year_max != 0, function ($p) use ($year_min, $year_max) {
                 return $p->whereBetween('vehicles.manufactured_year', [$year_min, $year_max]);
             });
 
             $post = $post->when($fuel_type != 'any', function ($p) use ($fuel_type) {
-                return $p->where('vehicles.fuel_type', 'LIKE', $fuel_type);
+                return $p->where('vehicles.fuel_type', 'like', '%' . $fuel_type . '%');
             });
 
             $post = $post->when($gear_type != 'any', function ($p) use ($gear_type) {
-                return $p->where('vehicles.transmission', 'LIKE', $gear_type);
+                return $p->where('vehicles.transmission','like', '%' . $gear_type . '%');
             });
 
             $post = $post->when($vehi_type != 'any', function ($p) use ($vehi_type) {
-                return $p->where('vehicles.vehicle_type', 'LIKE', $vehi_type);
+                return $p->where('vehicles.vehicle_type', 'like', '%' . $vehi_type . '%');
             });
 
             $post = $post->when($post_type == "VEHI", function ($p) {
@@ -401,9 +413,10 @@ class PostController extends Controller
                     'posts.created_at'
                 );
             });
-            $filtered_post_data = $post->paginate(100);
-
-            return view('/home', ['posts' => $filtered_post_data, 'request' => $request_data]);
+            $filtered_post_data = $post->get();
+             
+            return $filtered_post_data;
+           
         }
 
         if ($post_type == "SPARE") {
@@ -413,11 +426,11 @@ class PostController extends Controller
                 ->join('vehicle_makes', 'spare_parts.make_id', 'vehicle_makes.id');
 
             $post = $post->when($location != 'any', function ($p) use ($location) {
-                return $p->where('posts.location', 'LIKE', $location);
+                return $p->where('posts.location','like', '%' . $location . '%');
             });
 
             $post = $post->when($condition != 'any', function ($p) use ($condition) {
-                return $p->where('posts.condition', 'LIKE', $condition);
+                return $p->where('posts.condition', 'like', '%' . $condition . '%');
             });
 
             $post = $post->when($price_range != 'Any', function ($p) use ($price_range) {
@@ -456,8 +469,10 @@ class PostController extends Controller
                     'posts.created_at'
                 );
             });
-            $filtered_spare_data = $post->paginate(100);
-            return view('home', ['posts' => $filtered_spare_data, 'request' => $request_data]);
+            
+            $filtered_post_data = $post->get();
+             
+            return $filtered_post_data;
         }
     }
 

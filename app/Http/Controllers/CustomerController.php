@@ -170,15 +170,15 @@ class CustomerController extends Controller {
         $email = $request->email;
         $nic = $request->nic;
         $cust_nic = User::where('nic', '=', $nic)->first();
+        $user_nic = User::where('nic', '=', $nic)->first();
         $user_email = User::where('email', '=', $email)->first();
         $cust_email = Customer::where('email', '=', $email)->first();
-
-        if (is_null($cust_nic) && is_null($user_email) && is_null($cust_email)) {
-            return 0;
-        } 
         
-        if(!is_null($cust_nic) || !is_null($user_email) || !is_null($cust_email)){
+        if(!is_null($user_nic) || !is_null($cust_nic)){
             return 1;
+        }
+        if(!is_null($user_email) || !is_null($cust_email)){
+            return 2;
         }
     }
 }

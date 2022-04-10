@@ -62,3 +62,4 @@ Route::post('/save_customer', [CustomerController::class, 'store']);
 
 Route::post('/is_email_nic_exist', [CustomerController::class, 'email_nic_exist']);
 
+Route::post('/filtered_posts', [PostController::class, 'filtered_adds']);
