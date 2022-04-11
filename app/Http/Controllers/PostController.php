@@ -412,7 +412,7 @@ class PostController extends Controller
                     'posts.created_at'
                 );
             });
-            $filtered_post_data = $post->get();
+            $filtered_post_data = $post->toSql();
              dd($filtered_post_data);
             return $filtered_post_data;
            
@@ -469,7 +469,7 @@ class PostController extends Controller
                 );
             });
             
-            $filtered_post_data = $post->get();
+            $filtered_post_data = $post->toSql();
              dd($filtered_post_data);
             return $filtered_post_data;
         }
