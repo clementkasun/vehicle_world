@@ -297,7 +297,7 @@ class PostController extends Controller
      */
     public function filtered_adds(Request $request)
     {
-
+dd($request);
         $request_data = [
             "make" => $request[1]['value'],
             "model" => $request[2]['value'],
