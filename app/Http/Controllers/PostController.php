@@ -322,7 +322,7 @@ class PostController extends Controller
         $gear_type = $request[9]['value'];
         $fuel_type = $request[10]['value'];
         $location = $request[11]['value'];
-
+dd($year_min.' '.$year_max);
         if ($post_type == "VEHI") {
 
             $post = Post::where('posts.deleted_at', '=', null)
@@ -413,7 +413,6 @@ class PostController extends Controller
                 );
             });
             $filtered_post_data = $post->toSql();
-             dd($filtered_post_data);
             return $filtered_post_data;
            
         }
@@ -470,7 +469,6 @@ class PostController extends Controller
             });
             
             $filtered_post_data = $post->toSql();
-             dd($filtered_post_data);
             return $filtered_post_data;
         }
     }
