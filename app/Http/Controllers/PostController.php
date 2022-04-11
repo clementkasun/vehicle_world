@@ -298,17 +298,17 @@ class PostController extends Controller
     public function filtered_adds(Request $request)
     {
         $request_data = [
-            "make" => $request[1]['value'],
-            "model" => $request[2]['value'],
-            "post_type" => $request[3]['value'],
-            "vehi_type" => $request[4]['value'],
-            "condition" => $request[5]['value'],
-            "price_range" => $request[6]['value'],
-            "location" => $request[7]['value'],
-            "year_min" => $request[8]['value'],
-            "year_max" => $request[9]['value'],
-            "gear_type" => $request[10]['value'],
-            "fuel_type" => $request[11]['value'],
+              'make' => $request[1]['value'],
+              'post_type' => $request[3]['value'],
+              'model' => $request[2]['value'],
+              'vehi_type' => $request[4]['value'],
+              'condition' => $request[5]['value'],
+              'price_range' => $request[6]['value'],
+              'location' => $request[7]['value'],
+              'year_min' => $request[8]['value'],
+              'year_max' => $request[9]['value'],
+              'gear_type' => $request[10]['value'],
+              'fuel_type' => $request[11]['value'],
         ];
 
         $make = $request[1]['value'];
@@ -317,11 +317,11 @@ class PostController extends Controller
         $vehi_type = $request[4]['value'];
         $condition = $request[5]['value'];
         $price_range = $request[6]['value'];
-        $year_min = $request[7]['value'];
-        $year_max = $request[8]['value'];
-        $gear_type = $request[9]['value'];
-        $fuel_type = $request[10]['value'];
-        $location = $request[11]['value'];
+        $location = $request[7]['value'];
+        $year_min = $request[8]['value'];
+        $year_max = $request[9]['value'];
+        $gear_type = $request[10]['value'];
+        $fuel_type = $request[11]['value'];
         
         if ($post_type == "VEHI") {
 
@@ -366,9 +366,9 @@ class PostController extends Controller
                 return $p->where('vehicles.manufactured_year', '<=', $year_max);
             });
 
-            // $post = $post->when($year_min != 0 && $year_max == 0, function ($p) use ($year_min) {
-            //     return $p->where('vehicles.manufactured_year', '>=', $year_min);
-            // });
+            $post = $post->when($year_min != 0 && $year_max == 0, function ($p) use ($year_min) {
+                return $p->where('vehicles.manufactured_year', '>=', $year_min);
+            });
 
             $post = $post->when($year_min != 0 && $year_max != 0, function ($p) use ($year_min, $year_max) {
                 return $p->whereBetween('vehicles.manufactured_year', [$year_min, $year_max]);
