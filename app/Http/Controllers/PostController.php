@@ -366,9 +366,9 @@ class PostController extends Controller
                 return $p->where('vehicles.manufactured_year', '<=', $year_max);
             });
 
-            $post = $post->when($year_min != 0 && $year_max == 0, function ($p) use ($year_min) {
-                return $p->where('vehicles.manufactured_year', '>=', $year_min);
-            });
+            // $post = $post->when($year_min != 0 && $year_max == 0, function ($p) use ($year_min) {
+            //     return $p->where('vehicles.manufactured_year', '>=', $year_min);
+            // });
 
             $post = $post->when($year_min != 0 && $year_max != 0, function ($p) use ($year_min, $year_max) {
                 return $p->whereBetween('vehicles.manufactured_year', [$year_min, $year_max]);
@@ -412,7 +412,7 @@ class PostController extends Controller
                     'posts.created_at'
                 );
             });
-            $filtered_post_data = $post->toSql();
+            $filtered_post_data = $post->get();
             return $filtered_post_data;
            
         }
@@ -468,7 +468,7 @@ class PostController extends Controller
                 );
             });
             
-            $filtered_post_data = $post->toSql();
+            $filtered_post_data = $post->get();
             return $filtered_post_data;
         }
     }
