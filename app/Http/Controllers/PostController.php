@@ -304,11 +304,11 @@ class PostController extends Controller
             "vehi_type" => $request[4]['value'],
             "condition" => $request[5]['value'],
             "price_range" => $request[6]['value'],
-            "year_min" => $request[7]['value'],
-            "year_max" => $request[8]['value'],
-            "gear_type" => $request[9]['value'],
-            "fuel_type" => $request[10]['value'],
-            "location" => $request[11]['value']
+            "location" => $request[7]['value'],
+            "year_min" => $request[8]['value'],
+            "year_max" => $request[9]['value'],
+            "gear_type" => $request[10]['value'],
+            "fuel_type" => $request[11]['value'],
         ];
 
         $make = $request[1]['value'];
@@ -322,7 +322,7 @@ class PostController extends Controller
         $gear_type = $request[9]['value'];
         $fuel_type = $request[10]['value'];
         $location = $request[11]['value'];
-dd($year_min.' '.$year_max);
+        
         if ($post_type == "VEHI") {
 
             $post = Post::where('posts.deleted_at', '=', null)
