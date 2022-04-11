@@ -427,11 +427,7 @@
                             <div class="row">
                                 <div class='col-12'>
                                     <table class="table table-responsive" id="ad_tbl">
-                                      <tbody>
-                                          <tr>
-                                              <td></td>
-                                          </tr>
-                                      </tbody>
+                                      <tbody></tbody>
                                     </table>
                                 </div>
                             </div>
@@ -544,16 +540,17 @@
                 "data": "",
                 "render": function(data, type, row, meta){
                     let html = '';
-                    html += '<div class="card card-success m-2" style="height: 10em">';
+                    html += '<div class="row">';
+                    html += '<div class="card card-success m-2">';
                     html += '<a href="/api/get_post_profile/id/'+row.id+'">';
                     html += '<div class="card-body bg-light">';
                     html += '<div class="row">';
-                    html += '<div class="col-5">';
+                    html += '<div class="col-3">';
                     html += '<div class="portfolio-wrap text-center">';
                     html += "<img src='/storage/"+row.main_image+"' class='img-fluid cover' style='height: 10em; width: 90%' alt='main_img' />";
                     html += '</div>';
                     html += '</div>';
-                    html += '<div class="col-7 text-dark">';
+                    html += '<div class="col-9 text-dark">';
                     html += '<b style="font-size: 18px" class="text-success">'+row.post_title+'</b><br>';
                     html += '<span><b>Price:</b>'+row.price+' </span><br>';
                     html += '<span><b>Location:</b>'+row.location+' </span><br>';
@@ -562,6 +559,7 @@
                     html += '</div>';
                     html += '</div>';
                     html += '</a>';
+                    html += '</div>';
                     html += '</div>';
                     return html;
                 }
