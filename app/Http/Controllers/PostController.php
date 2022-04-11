@@ -297,7 +297,6 @@ class PostController extends Controller
      */
     public function filtered_adds(Request $request)
     {
-dd($request);
         $request_data = [
             "make" => $request[1]['value'],
             "model" => $request[2]['value'],
@@ -414,7 +413,7 @@ dd($request);
                 );
             });
             $filtered_post_data = $post->get();
-             
+             dd($filtered_post_data);
             return $filtered_post_data;
            
         }
@@ -471,7 +470,7 @@ dd($request);
             });
             
             $filtered_post_data = $post->get();
-             
+             dd($filtered_post_data);
             return $filtered_post_data;
         }
     }
