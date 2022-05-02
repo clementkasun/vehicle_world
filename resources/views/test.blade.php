@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>VEHICLEWORLD.COM</title>
+    <title>VEHIAUTO.COM</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -122,7 +122,7 @@
     <!-- ======= Header ======= -->
     <header id="header" class="d-flex align-items-center">
         <div class="container d-flex align-items-center">
-            <h2 class="logo me-auto">VEHICLEWORLD.COM</h2><i class="bi bi-list mobile-nav-toggle"></i>
+            <h2 class="logo me-auto">VEHIAUTO.COM</h2><i class="bi bi-list mobile-nav-toggle"></i>
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
@@ -520,33 +520,12 @@
                 <a href="https://www.linkedin.com" class="linkedin"><i class="bx bxl-linkedin"></i></a>
             </div>
             <div class="copyright">
-                &copy; Copyright <strong><span>Vehicleworld.com</span></strong>. All Rights Reserved
+                &copy; Copyright <strong><span>vehiauto.com</span></strong>. All Rights Reserved
             </div>
         </div>
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
     </footer>
     <!--End Footer-->
-
-    <!-- Vendor JS Files -->
-    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
-    <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
-    <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/commenFunctions/functions.js') }}"></script>
-    <script src="{{ asset('plugins/yearpicker/yearpicker.js') }}"></script>
-    <script src="{{ asset('plugins/select2/js/select2.js') }}"></script>
-    <script src="{{ asset('plugins/sweetalert2/sweetalert2.min.js') }}"></script>
-    <script src="{{ asset('plugins/jquery-ui/jquery-ui.js') }}"></script>
-    <script src="{{ asset('plugins/jquery.tws/jquery.tws.js') }}"></script>
-
-    <!-- UIkit JS -->
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.3/dist/js/uikit.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.3/dist/js/uikit-icons.min.js"></script>
-
-    <!-- Template Main JS File -->
-    <script src="{{ asset('assets/js/main.js') }}"></script>
     <!-- Vendor JS Files -->
     <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
