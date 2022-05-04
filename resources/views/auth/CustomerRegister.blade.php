@@ -253,7 +253,7 @@
                             }).then((result) => {
                                 if (result.value) {
                                     save_cus_details(function(){
-                                        window.location = "/login";
+                                        window.location = "/login_cust";
                                     });
                                 }
                             });
