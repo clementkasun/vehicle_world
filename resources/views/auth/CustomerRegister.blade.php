@@ -229,7 +229,7 @@
                     email: $('#email').val(),
                     nic: $('#nic').val()
                 };
-                let url_email_nic = "/api/is_email_nic_exist";
+                let url_email_nic = "./api/is_email_nic_exist";
 
                 ajaxRequest("POST", url_email_nic, data, function(resp) {
                     if (resp == 1) {
@@ -241,7 +241,7 @@
                     } else {
                         $('#email').removeClass('has-error');
                         $('#nic').removeClass('has-error');
-
+                    }else{
                         if ($('#password_origin').val() == $('#password_confirm').val()) {
                             Swal.fire({
                                 title: 'Are you sure?',
