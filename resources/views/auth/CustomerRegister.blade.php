@@ -241,7 +241,6 @@
                     } else {
                         $('#email').removeClass('has-error');
                         $('#nic').removeClass('has-error');
-                    }else{
                         if ($('#password_origin').val() == $('#password_confirm').val()) {
                             Swal.fire({
                                 title: 'Are you sure?',
