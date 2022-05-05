@@ -97,9 +97,8 @@
             display: none;
         }
     </style>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-208237465-1">
-    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2365603589658807"
+     crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -245,8 +244,6 @@
                                                         </div>
                                                         @endif
                                                     </div>
-                                                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2365603589658807"
-     crossorigin="anonymous"></script>
                                                 </div>
                                             </div>
                                         </div>
