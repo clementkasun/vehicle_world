@@ -350,7 +350,7 @@
                                                                                                         <span class="text-muted">-------</span>
                                                                                                         @endif-->
                                                             </div>
-                                                            <div class="form-group col-md-4">
+                                                            <div class="form-group col-md-8">
                                                             @if($post_data->additional_info != null)
                                                             <label for="additional_info">Additional Info: </label>
                                                             <span id="additional_info">{{$post_data->additional_info}}</span>
