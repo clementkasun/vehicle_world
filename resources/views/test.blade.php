@@ -350,6 +350,12 @@
                                                                                                         <span class="text-muted">-------</span>
                                                                                                         @endif-->
                                                             </div>
+                                                            <div class="form-group">
+                                                            @if($post_data->additional_info != null)
+                                                            <label for="additional_info">Additional Info: </label><br>
+                                                            <span class="ml-2" id="additional_info">{{$post_data->additional_info}}</span>
+                                                            @endif
+                                                            </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="form-group col-md-4">
@@ -429,12 +435,6 @@
                                                                 <label class="bg-success p-1 m-1" style="border-radius: 5px;"></label><br>
                                                                 @endif
                                                             </div> 
-                                                            <div class="form-group">
-                                                            @if($post_data->additional_info != null)
-                                                            <label for="additional_info">Additional Info: </label><br>
-                                                            <span class="ml-2" id="additional_info">{{$post_data->additional_info}}</span>
-                                                            @endif
-                                                            </div>
                                                             </div>
                                                         </div>
                                                         <div class="card-footer">

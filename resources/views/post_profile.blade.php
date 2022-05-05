@@ -367,6 +367,12 @@
 <span class="text-muted">-------</span>
 @endif-->
                                                 </div>
+                                                <div class="form-group">
+                                                    @if($post_data->additional_info != null)
+                                                        <label for="additional_info">Additional Info: </label><br>
+                                                        <span class="ml-2" id="additional_info">{{$post_data->additional_info}}</span>
+                                                    @endif
+                                                </div>
                                                 <div class="form-group pt-4">
                                                     <label for="ongoing_lease">Ongoing Lease: </label><br>
                                                     @if ($post_data->on_going_lease != null)
@@ -434,17 +440,6 @@
                                         <div class="card card-success w-100">
                                             <div class="card-header d-flex justify-content-center">
                                                 <h5>Description</h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="form-group">
-                                                    @if ($post_data->additional_info != null)
-                                                        <span
-                                                            class="ml-2">{{ $post_data->additional_info }}</span>
-                                                    @endif
-                                                    <!--                                            @if ($post_data->additional_info == null)
-<span class="text-muted">-------</span>
-@endif-->
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
