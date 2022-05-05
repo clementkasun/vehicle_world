@@ -542,7 +542,7 @@
                     let html = '';
                     html += '<div class="row">';
                     html += '<div class="card card-success m-2">';
-                    html += '<a href="/api/get_post_profile/id/'+row.id+'">';
+                    html += '<a href="/public/api/get_post_profile/id/'+row.id+'">';
                     html += '<div class="card-body bg-light">';
                     html += '<div class="row">';
                     html += '<div class="col-3">';
