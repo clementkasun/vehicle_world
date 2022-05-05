@@ -547,7 +547,7 @@
                     html += '<div class="row">';
                     html += '<div class="col-3">';
                     html += '<div class="portfolio-wrap text-center">';
-                    html += "<img src='/storage/"+row.main_image+"' class='img-fluid cover' style='height: 10em; width: 90%' alt='main_img' />";
+                    html += "<img src='/public/storage/"+row.main_image+"' class='img-fluid cover' style='height: 10em; width: 90%' alt='main_img' />";
                     html += '</div>';
                     html += '</div>';
                     html += '<div class="col-9 text-dark">';
