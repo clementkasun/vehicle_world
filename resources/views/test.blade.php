@@ -245,6 +245,8 @@
                                                         </div>
                                                         @endif
                                                     </div>
+                                                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2365603589658807"
+     crossorigin="anonymous"></script>
                                                 </div>
                                             </div>
                                         </div>
