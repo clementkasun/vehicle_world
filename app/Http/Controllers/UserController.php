@@ -262,9 +262,8 @@ class UserController extends Controller
 
     public function myProfile()
     {
-        $aUser = Auth::user();
-        $pageAuth = $aUser->authentication(config('auth.privileges.userCreate'));
-        return view('my_profile', ['user' => $aUser, 'pageAuth' => $pageAuth]);
+        $user = Auth::user();
+        return view('user_profile', ['user_profile_data' => $user]);
     }
 
     public function changeMyPass()

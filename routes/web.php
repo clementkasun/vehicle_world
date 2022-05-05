@@ -8,7 +8,7 @@ use App\Models\Vacancy;
 use App\Notifications\VacancyNotification;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Notification;
-
+use App\Http\Controllers\UserController;
 /*
   |--------------------------------------------------------------------------
   | Web Routes
@@ -51,3 +51,5 @@ Route::get('/test', [PostController::class, 'index_two']);
 Route::get('/seller_profile', function () {
     return view('seller_profile');
 });
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/user_profile', [UserController::class, 'myProfile']);
