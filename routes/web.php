@@ -53,3 +53,6 @@ Route::get('/seller_profile', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/user_profile', [UserController::class, 'myProfile']);
+Route::get('/about_us', function(){
+    return view('about_us');
+});

@@ -1,108 +1,150 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+@extends('layouts.admin')
+@extends('layouts.styles')
+@extends('layouts.scripts')
+@extends('layouts.navbar')
+@extends('layouts.footer')
+@section('pageStyles')
+<style>
+    .has-error{
+        color:red;
+    }
 
-    <title>VEHIAUTO.COM</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+    }
 
-    <!-- Favicons -->
-    <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
-    <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    .switch input { 
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
 
-    <!-- Vendor CSS Files -->
-    <link href="{{ asset('assets/vendor/animate.css/animate.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('plugins/yearpicker/yearpicker.css') }}" rel="stylesheet">
-    <link href="{{ asset('plugins/select2/css/select2.css') }}" rel="stylesheet">
-    <link href="{{ asset('plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('plugins/jqpaginator/jqpaginator.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('plugins/jquery-ui/jquery-ui.css') }}" rel="stylesheet">
-    <!-- UIkit CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.7.3/dist/css/uikit.min.css" />
-    <!-- Template Main CSS File -->
-    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
-    <style>
-        .add-font {
-            font-size: 14px;
-            color: #003e80;
-        }
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
 
-        .current {
-            color: green;
-        }
+    input:checked + .slider {
+        background-color: #2196F3;
+    }
 
-        .w-5 {
-            display: none;
-        }
+    input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
 
-        .yearpicker {
-            background-color: white;
-        }
+    input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
 
-        @font-face {
-            font-family: myFirstFont;
-            src: url(sansation_light.woff);
-        }
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
 
-        div {
-            font-family: myFirstFont;
-            font-size: 14px;
-        }
-    </style>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-208237465-1">
-    </script>
-</head>
+    .slider.round:before {
+        border-radius: 50%;
+    }
 
-<body>
-    <!-- ======= Top Bar ======= -->
-    <section id="topbar" class="d-flex align-items-center">
-        <div class="container d-flex justify-content-center justify-content-md-between">
-            <div class="contact-info d-flex align-items-center">
-                <i class="bi bi-envelope-fill"></i><a href="mailto:vehicleworld@gmail.com">vehiauto@gmail.com</a>
-                <i class="bi bi-phone-fill phone-icon"></i> +94 763993288
-            </div>
-            <div class="social-links d-none d-md-block">
-                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
-            </div>
-        </div>
-    </section>
+    .typeahead,
+    .tt-query,
+    .tt-hint {
+        height: 30px;
+        padding: 8px 12px;
+        font-size: 24px;
+        line-height: 30px;
+        border: 2px solid #ccc;
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        border-radius: 8px;
+        outline: none;
+    }
 
-    <!-- ======= Header ======= -->
-    <header id="header" class="d-flex align-items-center">
-        <div class="container d-flex align-items-center">
-            <h2 class="logo me-auto">VEHIAUTO.COM</h2><i class="bi bi-list mobile-nav-toggle"></i>
-            <nav id="navbar" class="navbar">
-                <ul>
-                    <li><a class="nav-link scrollto active" href="{{ asset('home') }}">Home</a></li>
-                    <li><a class="nav-link scrollto" href="{{ asset('about') }}">About</a></li>
-                    <li><a class="nav-link scrollto" href="{{ asset('services') }}">Services</a></li>
-                    <li><a class="nav-link scrollto" href="{{ asset('post_registration') }}"><span class="btn btn-warning">post your add</span></a></li>
-                    <li><a class="nav-link scrollto" href="{{ asset('user_profile') }}">Account</a></li>
-                    <li><a class="nav-link scrollto" href="{{ asset('contact') }}">Contact</a></li>
-                    <li><a class="nav-link scrollto" href="{{ asset('login_cust') }}">Login</a></li>
-                    <li><a class="nav-link scrollto" href="{{ asset('register_customer') }}">Register</a></li>
-                </ul>
-            </nav><!-- .navbar -->
-        </div>
-    </header><!-- End Header -->
+    .typeahead {
+        background-color: #fff;
+    }
 
-    <!-- ======= Hero Section ======= -->
-    <section id="hero">
+    .typeahead:focus {
+        border: 2px solid #0097cf;
+    }
+
+    .tt-query {
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    }
+
+    .tt-hint {
+        color: #999
+    }
+
+    .tt-dropdown-menu {
+        width: 422px;
+        margin-top: 3px;
+        padding: 8px 0;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        border-radius: 8px;
+        -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+        -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+        box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    }
+
+    .tt-suggestion {
+        padding: 3px 20px;
+        font-size: 18px;
+        line-height: 24px;
+        color: black;
+        background-color: white;
+    }
+
+    .tt-suggestion.tt-cursor {
+        color: #fff;
+        background-color: #0097cf;
+    }
+
+    .tt-suggestion p {
+        margin: 0;
+        font-size: 18px;
+        text-align: left;
+    }
+
+    .twitter-typeahead {
+        width: 100%;
+    }
+
+</style>
+@endsection
+@section('content')
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
         <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
 
@@ -152,10 +194,8 @@
         </div>
     </section><!-- End Hero -->
 
-    <main id="main">
-
-        <!-- ======= Featured Services Section ======= -->
-        <section id="featured-services" class="featured-services section-bg">
+    <!-- ======= Featured Services Section ======= -->
+    <section id="featured-services" class="featured-services section-bg">
             <div class="container">
 
                 <div class="row no-gutters">
@@ -433,50 +473,10 @@
                             </div>
                         </div>
             </section><!-- End Portfolio Section -->
-    </main><!-- End #main -->
-    <footer id="footer">
-        <div class="container">
-            <h3>VEHIAUTO.COM</h3>
-            <p>MAKE YOUR DREAM VEHICLE REALITY. ENGAGE WITH US TO PROSPEROUS FUTURE.</p>
-            <div class="social-links">
-                <a href="https://twitter.com" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="https://www.facebook.com/kasunclement/" class="facebook"><i class="bx bxl-facebook"></i></a>
-                <a href="https://www.instergram.com" class="instagram"><i class="bx bxl-instagram"></i></a>
-                <a href="https://google-plus.com" class="google-plus"><i class="bx bxl-skype"></i></a>
-                <a href="https://www.linkedin.com" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-            </div>
-            <div class="copyright">
-                <strong>Copyright &copy; <?php echo date("Y"); ?> <a href="#">VEHIAUTO.COM</a></strong>
-            </div>
-        </div>
-        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-    </footer>
-    <!--End Footer-->
+@endsection
 
-    <!-- Vendor JS Files -->
-    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
-    <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
-    <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/commenFunctions/functions.js') }}"></script>
-    <script src="{{ asset('plugins/yearpicker/yearpicker.js') }}"></script>
-    <script src="{{ asset('plugins/select2/js/select2.js') }}"></script>
-    <script src="{{ asset('plugins/sweetalert2/sweetalert2.min.js') }}"></script>
-    <script src="{{ asset('plugins/jquery-ui/jquery-ui.js') }}"></script>
-    <script src="{{ asset('plugins/jquery.tws/jquery.tws.js') }}"></script>
-
-    <!-- UIkit JS -->
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.3/dist/js/uikit.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.3/dist/js/uikit-icons.min.js"></script>
-    
-
-    <!-- Template Main JS File -->
-    <script src="{{ asset('assets/js/main.js') }}"></script>
-    <script src="{{asset("/plugins/datatables/jquery.dataTables.js")}}"></script>
-    <script src="{{asset("/plugins/datatables-bs4/js/dataTables.bootstrap4.js")}}"></script>
-    <script>
+@section('pageScripts') 
+<script>
         $(document).ready(function() {
             loadMakes(function() {
                 $('#filter_btn').removeClass('d-none');
@@ -574,6 +574,4 @@
     });
 }
     </script>
-</body>
-
-</html>
+@endsection
