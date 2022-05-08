@@ -8,7 +8,11 @@
     <title>VEHIAUTO.COM</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
+<!-- Theme style -->
+<link rel="stylesheet" href="{{asset('/dist/css/adminlte.min.css')}}">
 
+<!-- Template Main CSS File -->
+<link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 </head>
 
 <body>

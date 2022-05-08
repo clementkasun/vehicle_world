@@ -1,6 +1,6 @@
 @section('navbar')
-   <!-- ======= Top Bar ======= -->
-   <section id="topbar" class="d-flex align-items-center">
+ <!-- ======= Top Bar ======= -->
+ <section id="topbar" class="d-flex align-items-center">
         <div class="container d-flex justify-content-center justify-content-md-between">
             <div class="contact-info d-flex align-items-center">
                 <i class="bi bi-envelope-fill"></i><a href="mailto:vehicleworld@gmail.com">vehiauto@gmail.com</a>
@@ -22,7 +22,7 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto active" href="{{ asset('home') }}">Home</a></li>
-                    <li><a class="nav-link scrollto" href="{{ asset('about') }}">About</a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('about_us') }}">About</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('services') }}">Services</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('post_registration') }}"><span class="btn btn-warning">post your add</span></a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('user_profile') }}">Account</a></li>
@@ -34,5 +34,4 @@
             <!-- .navbar -->
         </div>
     </header>
-    <!-- End Header -->
 @endsection

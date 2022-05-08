@@ -13,8 +13,9 @@
                 @yield('navbar')
             </nav>
             <!-- Navbar -->
-            <!-- Main Sidebar Container -->
-
+            <nav>
+                @yield('middlebar')
+            </nav>
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 @yield('content')

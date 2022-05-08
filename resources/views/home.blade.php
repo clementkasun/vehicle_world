@@ -1,9 +1,21 @@
-@extends('layouts.admin')
-@extends('layouts.styles')
-@extends('layouts.scripts')
-@extends('layouts.navbar')
-@extends('layouts.footer')
-@section('pageStyles')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <!-- daterange picker -->
+<link rel="stylesheet" href="{{asset('/plugins/daterangepicker/daterangepicker.css')}}">
+<!-- Select2 -->
+<link rel="stylesheet" href="{{asset('/plugins/select2/css/select2.min.css')}}">
+<link rel="stylesheet" href="{{asset('/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+<!-- Theme style -->
+<link rel="stylesheet" href="{{asset('/dist/css/adminlte.min.css')}}">
+<!-- Template Main CSS File -->
+<link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+<link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="{{ asset('assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
 <style>
     .has-error{
         color:red;
@@ -140,10 +152,46 @@
     }
 
 </style>
-@endsection
-@section('content')
-  <!-- ======= Hero Section ======= -->
-  <section id="hero">
+</head>
+<body>
+    <!-- ======= Top Bar ======= -->
+   <section id="topbar" class="d-flex align-items-center">
+        <div class="container d-flex justify-content-center justify-content-md-between">
+            <div class="contact-info d-flex align-items-center">
+                <i class="bi bi-envelope-fill"></i><a href="mailto:vehicleworld@gmail.com">vehiauto@gmail.com</a>
+                <i class="bi bi-phone-fill phone-icon"></i> +94 763993288
+            </div>
+            <div class="social-links d-none d-md-block">
+                <a href="https://twitter.com/VehiautoC" target="_blank" class="twitter"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="d-flex align-items-center">
+        <div class="container d-flex align-items-center">
+            <h2 class="logo me-auto">VEHIAUTO.COM</h2><i class="bi bi-list mobile-nav-toggle"></i>
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto active" href="{{ asset('home') }}">Home</a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('about_us') }}">About</a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('services') }}">Services</a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('post_registration') }}"><span class="btn btn-warning">post your add</span></a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('user_profile') }}">Account</a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('contact') }}">Contact</a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('login_cust') }}">Login</a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('register_customer') }}">Register</a></li>
+                </ul>
+            </nav>
+            <!-- .navbar -->
+        </div>
+    </header>
+    <!-- End Header -->
+    <!-- ======= Hero Section ======= -->
+    <section id="hero">
         <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
 
@@ -222,6 +270,7 @@
                 </div>
 
             </div>
+    </section>
             <section id="search_container" class="bg-secondary text-light">
                 <form id="search_form">
                     @csrf
@@ -407,7 +456,8 @@
                                     <option value="Warakapola">Warakapola</option>
                                     <option value="Weligama">Weligama</option>
                                     <option value="Welimada">Welimada</option>
-                                    <option value="Welisara">Welisara</option <option value="Wennappuwa">Wennappuwa</option>
+                                    <option value="Welisara">Welisara</option>
+                                    <option value="Wennappuwa">Wennappuwa</option>
                                 </select>
                             </div>
                         </div>
@@ -448,7 +498,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row d-flex justify-content-center">
                         <button type="button" id="filter_btn" class="btn btn-md btn-success d-none">SEARCH</button>
                     </div>
                     </div>
@@ -471,12 +521,27 @@
                                 </div>
                             </div>
                         </div>
-            </section><!-- End Portfolio Section -->
-@endsection
+            </section><!-- End Portfolio Section -->  
+            <footer id="footer">
+        <div class="container">
+            <h3>VEHIAUTO.COM</h3>
+            <p>MAKE YOUR DREAM VEHICLE REALITY. ENGAGE WITH US TO PROSPEROUS FUTURE.</p>
+            <div class="social-links">
+                <a href="https://twitter.com" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="https://www.facebook.com/kasunclement/" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="https://www.instergram.com" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="https://google-plus.com" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="https://www.linkedin.com" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+            <div class="copyright">
+                <strong>Copyright &copy; <?php echo date("Y"); ?> <a href="#">VEHIAUTO.COM</a></strong>
+            </div>
+        </div>
+        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    </footer>
+    <!--End Footer-->
+</body>
 
-@section('pageScripts')
-<!--Data Tables -->
-<script src="{{asset('/plugins/datatables/jquery.dataTables.js')}}"></script> 
 <script>
         $(document).ready(function() {
             loadMakes(function() {
@@ -548,7 +613,7 @@
                     html += '<div class="row">';
                     html += '<div class="col-3">';
                     html += '<div class="portfolio-wrap text-center">';
-                    html += "<img src='/storage/"+row.main_image+"' style='height: 10em; width: 90%' alt='main_img' />";
+                    html += "<img src='/storage/"+row.main_image+"' style='height: 10em; width: 100%' alt='main_img' />";
                     html += '</div>';
                     html += '</div>';
                     html += '<div class="col-9 text-dark">';
@@ -575,4 +640,9 @@
     });
 }
     </script>
-@endsection
+</html>
+
+
+
+
+
