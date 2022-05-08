@@ -1,4 +1,3 @@
-
 @extends('layouts.admin')
 @extends('layouts.styles')
 @extends('layouts.scripts')
@@ -466,7 +465,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class='col-12'>
-                                    <table class="table table-responsive" id="ad_tbl">
+                                    <table class="table" id="ad_tbl">
                                       <tbody></tbody>
                                     </table>
                                 </div>
@@ -475,7 +474,9 @@
             </section><!-- End Portfolio Section -->
 @endsection
 
-@section('pageScripts') 
+@section('pageScripts')
+<!--Data Tables -->
+<script src="{{asset('/plugins/datatables/jquery.dataTables.js')}}"></script> 
 <script>
         $(document).ready(function() {
             loadMakes(function() {
@@ -541,13 +542,13 @@
                 "render": function(data, type, row, meta){
                     let html = '';
                     html += '<div class="row">';
-                    html += '<div class="card card-success m-2">';
+                    html += '<div class="card card-success m-2 col-md-12">';
                     html += '<a href="/public/api/get_post_profile/id/'+row.id+'">';
                     html += '<div class="card-body bg-light">';
                     html += '<div class="row">';
                     html += '<div class="col-3">';
                     html += '<div class="portfolio-wrap text-center">';
-                    html += "<img src='/public/storage/"+row.main_image+"' style='height: 10em; width: 90%' alt='main_img' />";
+                    html += "<img src='/storage/"+row.main_image+"' style='height: 10em; width: 90%' alt='main_img' />";
                     html += '</div>';
                     html += '</div>';
                     html += '<div class="col-9 text-dark">';

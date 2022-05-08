@@ -7,7 +7,7 @@
                 <i class="bi bi-phone-fill phone-icon"></i> +94 763993288
             </div>
             <div class="social-links d-none d-md-block">
-                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                <a href="https://twitter.com/VehiautoC" target="_blank" class="twitter"><i class="bi bi-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
                 <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
                 <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
@@ -30,7 +30,9 @@
                     <li><a class="nav-link scrollto" href="{{ asset('login_cust') }}">Login</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('register_customer') }}">Register</a></li>
                 </ul>
-            </nav><!-- .navbar -->
+            </nav>
+            <!-- .navbar -->
         </div>
-    </header><!-- End Header -->
+    </header>
+    <!-- End Header -->
 @endsection

@@ -50,7 +50,7 @@ Route::post('/sanctum/token', [UserController::class, 'authToken']);
 Route::post('/save_post', [PostController::class, 'store']);
 Route::get('/get_posts', [PostController::class, 'show']);
 Route::get('/get_post_profile/id/{post_id}', [PostController::class, 'get_post_profile']);
-Route::get('/get_posts_type/id/{post_id}/{post_type}', [PostController::class, 'edit']);
+Route::get('/get_posts_type/id/{post_id}', [PostController::class, 'edit']);
 Route::get('/get_selected_post/id/{post_id}', [PostController::class, 'get_selected_post']);
 //Route::any('/filtered_posts', [PostController::class, 'filtered_adds']);
 Route::put('/update_post/id/{post_id}', [PostController::class, 'update']);
@@ -62,4 +62,4 @@ Route::post('/save_customer', [CustomerController::class, 'store']);
 
 Route::post('/is_email_nic_exist', [CustomerController::class, 'email_nic_exist']);
 
-Route::post('/filtered_posts', [PostController::class, 'filtered_adds']);
+Route::post('/filtered_posts', [PostController::class, 'filtered_posts']);

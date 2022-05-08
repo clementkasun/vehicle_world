@@ -1,37 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-    <title>VEHIAUTO.COM</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
-
-    <!-- Favicons -->
-    <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
-    <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-    <!-- Vendor CSS Files -->
-    <link href="{{ asset('assets/vendor/animate.css/animate.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('plugins/yearpicker/yearpicker.css') }}" rel="stylesheet">
-    <link href="{{ asset('plugins/select2/css/select2.css') }}" rel="stylesheet">
-    <link href="{{ asset('plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('plugins/jqpaginator/jqpaginator.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('plugins/jquery-ui/jquery-ui.css') }}" rel="stylesheet">
-    <!-- UIkit CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.7.3/dist/css/uikit.min.css" />
-    <!-- Template Main CSS File -->
-    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+@extends('layouts.admin')
+@extends('layouts.styles')
+@extends('layouts.scripts')
+@extends('layouts.navbar')
+@extends('layouts.footer')
+@section('pageStyles')
     <style>
         .add-font {
             font-size: 14px;
@@ -49,93 +21,20 @@
         .yearpicker {
             background-color: white;
         }
-    </style>
-    <link rel="stylesheet" href="../../../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-    <!-- Bootstrap4 Duallistbox -->
-    <!--<link rel="stylesheet" href="../../../plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">-->
-    <!-- Theme style -->
-    <!--<link rel="stylesheet" href="../../../dist/css/adminlte.min.css">-->
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="../../../plugins/sweetalert2/sweetalert2.min.css">
-    <link rel="stylesheet" href="../../../plugins/w3/w3.css">
-    <!-- sweet alert -->
-    <link rel="stylesheet" href="{{asset("/plugins/fontawesome-free/css/all.min.css")}}">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- daterange picker -->
-    <link rel="stylesheet" href="{{asset("/plugins/daterangepicker/daterangepicker.css")}}">
-    <!-- iCheck for checkboxes and radio inputs -->
-    <link rel="stylesheet" href="{{asset("/plugins/fontawesome-free/css/all.min.css")}}">
-    <!-- Bootstrap Color Picker -->
-    <link rel="stylesheet" href="{{asset("/plugins/fontawesome-free/css/all.min.css")}}">
-    <!-- Tempusdominus Bbootstrap 4 -->
-    <link rel="stylesheet" href="{{asset("/plugins/fontawesome-free/css/all.min.css")}}">
-    <!-- Select2 -->
 
-
-
-    <link rel="stylesheet" href="{{asset("/plugins/select2/css/select2.min.css")}}">
-    <link rel="stylesheet" href="{{asset("/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css")}}">
-    <!-- Bootstrap4 Duallistbox -->
-    <link rel="stylesheet" href="{{asset("/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css")}}">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{asset("/dist/css/adminlte.min.css")}}">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <!--tosts-->
-    <!-- Toastr -->
-    <link rel="stylesheet" href="{{asset("/plugins/toastr/toastr.min.css")}}">
-    <!-- SweetAlert2 -->
-    <link rel="stylesheet" href="{{asset("/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css")}}">
-
-    <style>
-        .invalid {
-            color: #FF0000;
+        @font-face {
+            font-family: myFirstFont;
+            src: url(sansation_light.woff);
         }
 
-        .mySlides {
-            display: none;
+        div {
+            font-family: myFirstFont;
+            font-size: 14px;
         }
+
     </style>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2365603589658807"
-     crossorigin="anonymous"></script>
-</head>
-
-<body>
-    <!-- ======= Top Bar ======= -->
-    <section id="topbar" class="d-flex align-items-center">
-        <div class="container d-flex justify-content-center justify-content-md-between">
-            <div class="contact-info d-flex align-items-center">
-                <i class="bi bi-envelope-fill"></i><a href="mailto:vehicleworld@gmail.com">vehicleworld@gmail.com</a>
-                <i class="bi bi-phone-fill phone-icon"></i> +94 763993288
-            </div>
-            <div class="social-links d-none d-md-block">
-                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ======= Header ======= -->
-    <header id="header" class="d-flex align-items-center">
-        <div class="container d-flex align-items-center">
-            <h2 class="logo me-auto">VEHIAUTO.COM</h2><i class="bi bi-list mobile-nav-toggle"></i>
-            <nav id="navbar" class="navbar">
-                <ul>
-                    <li><a class="nav-link scrollto active" href="/home">Home</a></li>
-                    <li><a class="nav-link scrollto" href="#about">About</a></li>
-                    <li><a class="nav-link scrollto" href="#services">Services</a></li>
-                    <li><a class="nav-link scrollto" href="{{ asset('post_registration') }}">Post Create</a></li>
-                    <li><a class="nav-link scrollto" href="#contact">Account</a></li>
-                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                    <li><a class="nav-link scrollto" href="{{ asset('login_cust') }}">Login</a></li>
-                    <li><a class="nav-link scrollto" href="{{ asset('register_customer') }}">Register</a></li>
-                </ul>
-            </nav><!-- .navbar -->
-        </div>
-    </header><!-- End Header -->
+@endsection
+@section('content')
 
     <main id="main">
         <!-- ======= Featured Services Section ======= -->
@@ -507,44 +406,11 @@
         </section>
 
     </main><!-- End #main -->
-    <footer id="footer">
-        <div class="container">
-            <h3>VEHICLEWORLD</h3>
-            <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.</p>
-            <div class="social-links">
-                <a href="https://twitter.com" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="https://www.facebook.com/kasunclement/" class="facebook"><i class="bx bxl-facebook"></i></a>
-                <a href="https://www.instergram.com" class="instagram"><i class="bx bxl-instagram"></i></a>
-                <a href="https://google-plus.com" class="google-plus"><i class="bx bxl-skype"></i></a>
-                <a href="https://www.linkedin.com" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-            </div>
-            <div class="copyright">
-                &copy; Copyright <strong><span>vehiauto.com</span></strong>. All Rights Reserved
-            </div>
-        </div>
-        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-    </footer>
-    <!--End Footer-->
-    <!-- Vendor JS Files -->
-    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
-    <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
-    <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/commenFunctions/functions.js') }}"></script>
-    <script src="{{ asset('plugins/yearpicker/yearpicker.js') }}"></script>
-    <script src="{{ asset('plugins/select2/js/select2.js') }}"></script>
-    <script src="{{ asset('plugins/sweetalert2/sweetalert2.min.js') }}"></script>
-    <script src="{{ asset('plugins/jquery-ui/jquery-ui.js') }}"></script>
-    <script src="{{ asset('plugins/jquery.tws/jquery.tws.js') }}"></script>
+    
+    @endsection
 
-    <!-- UIkit JS -->
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.3/dist/js/uikit.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.3/dist/js/uikit-icons.min.js"></script>
+    @section('pageScripts')
 
-    <!-- Template Main JS File -->
-    <script src="{{ asset('assets/js/main.js') }}"></script>
     <script>
         var slideIndex = 1;
         showDivs(slideIndex);
@@ -565,9 +431,8 @@
             for (i = 0; i < x.length; i++) {
                 x[i].style.display = "none";
             }
-            x[slideIndex - 1].style.display = "block";
+            x[slideIndex - 1].setAttribute(style.display) = "block";
         }
     </script>
-</body>
 
-</html>s
+@endsection

@@ -35,9 +35,9 @@ Route::get('/home', [PostController::class, 'index']);
 Route::get('/post_filtered', function () {
     return view('post_filtered');
 });
-Route::get('/post_profile', function () {
-    return view('post_profile');
-});
+// Route::get('/post_profile', function () {
+//     return view('post_profile');
+// });
 
 Route::get('/logout', [App\Http\Controllers\UserController::class, 'logout']); # post
 
@@ -46,13 +46,14 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/post_registration', funct
     return view('/registration/post_registration');
 })->name('post_registration');
 
-Route::get('/test', [PostController::class, 'index_two']);
+Route::get('/test', [PostController::class, 'index']);
 
 Route::get('/seller_profile', function () {
     return view('seller_profile');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/user_profile', [UserController::class, 'myProfile']);
-Route::get('/about_us', function(){
+Route::
+get('/about_us', function(){
     return view('about_us');
 });
