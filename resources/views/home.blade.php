@@ -504,13 +504,15 @@
                     </div>
                 </form>
             </section>
+            <!-- hitwebcounter Code START -->
+            <span class="mt-5 d-flex justify-content-center"><b>Visits: </b><img src="https://hitwebcounter.com/counter/counter.php?page=7985375&style=0006&nbdigits=5&type=page&initCount=0" title="Free Counter" Alt="web counter" border="0" height="25px" width="100px"/></a></span>                
             <!-- ======= Portfolio Section ======= -->
             <section id="portfolio" class="portfolio bg-white">
 
                 <div class="container">
-                    <div class="section-title">
+                    <!-- <div class="section-title">
                         <h2>PROMOTING ADDS</h2>
-                    </div>
+                    </div> -->
                     <div id="promoted_adds">
                         <div class="container">
                             <div class="row">
