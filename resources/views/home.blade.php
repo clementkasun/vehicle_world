@@ -178,7 +178,7 @@
                 <ul>
                     <li><a class="nav-link scrollto active" href="{{ asset('home') }}">Home</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('about_us') }}">About</a></li>
-                    <li><a class="nav-link scrollto" href="{{ asset('services') }}">Services</a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('about_us') }}">Services</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('post_registration') }}"><span class="btn btn-warning">post your add</span></a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('user_profile') }}">Account</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('contact') }}">Contact</a></li>
@@ -543,7 +543,19 @@
     </footer>
     <!--End Footer-->
 </body>
+    <!-- Page script -->
+    <script src="{{ asset('/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('../../../dist/js/adminlte.min.js') }}"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{ asset('./../../../dist/js/demo.js') }}"></script>
 
+    <!-- Bootstrap 4 -->
+    <script src="{{ asset('/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+    <script src="{{ asset('/dist/js/demo.js') }}"></script>
+    <script src="{{asset('/plugins/datatables/jquery.dataTables.js')}}"></script> 
+    <!--commen functions-->
+    <script src="{{ asset('/js/commenFunctions/functions.js') }}" type="text/javascript"></script>
 <script>
         $(document).ready(function() {
             loadMakes(function() {

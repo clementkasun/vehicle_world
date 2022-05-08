@@ -634,7 +634,7 @@
                             'Successfully Posted!',
                             'success'
                         );
-                        window.location.href = "/home";
+                        window.location.href = "/public/home";
                         //            location.reload();
                     } else {
                         Swal.fire({

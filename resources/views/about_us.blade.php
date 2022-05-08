@@ -154,7 +154,7 @@ a:hover, a:active {
                 <ul>
                     <li><a class="nav-link scrollto active" href="{{ asset('home') }}">Home</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('about_us') }}">About</a></li>
-                    <li><a class="nav-link scrollto" href="{{ asset('services') }}">Services</a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('about_us') }}">Services</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('post_registration') }}"><span class="btn btn-warning">post your add</span></a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('user_profile') }}">Account</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('contact') }}">Contact</a></li>
