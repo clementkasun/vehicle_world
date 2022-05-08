@@ -152,13 +152,12 @@ a:hover, a:active {
             <h2 class="logo me-auto">VEHIAUTO.COM</h2><i class="bi bi-list mobile-nav-toggle"></i>
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="/home">Home</a></li>
-                    <li><a class="nav-link scrollto" href="#about">About</a></li>
-                    <li><a class="nav-link scrollto" href="#services">Services</a></li>
-                    <li><a class="nav-link scrollto" href="{{ asset('post_registration') }}"><span
-                                class="btn btn-warning">post your add</span></a></li>
-                    <li><a class="nav-link scrollto" href="#contact">Account</a></li>
-                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                    <li><a class="nav-link scrollto active" href="{{ asset('home') }}">Home</a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('about_us') }}">About</a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('services') }}">Services</a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('post_registration') }}"><span class="btn btn-warning">post your add</span></a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('user_profile') }}">Account</a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('contact') }}">Contact</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('login_cust') }}">Login</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('register_customer') }}">Register</a></li>
                 </ul>
