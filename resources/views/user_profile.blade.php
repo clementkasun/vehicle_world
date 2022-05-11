@@ -66,7 +66,7 @@
           $user_path = ''; 
           (isset($user_profile_data['profile_photo_path']))? $user_path = $user_profile_data['profile_photo_path'] : $user_path = 'https://cdn.sstatic.net/Img/unified/sprites.svg?v=e5e58ae7df45';
         ?>
-        <img src="{{ '/storage/'.$user_path}}" class="avatar img-circle img-thumbnail" alt="avatar">
+        <img src="{{ './storage/'.$user_path}}" class="avatar img-circle img-thumbnail" alt="avatar">
         <h6>Upload a different photo...</h6>
         <input type="file" class="text-center center-block file-upload">
       </div></hr><br>
