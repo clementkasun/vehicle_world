@@ -7,6 +7,7 @@ use App\Models\Customer;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Routing\Redirector;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CustomerController extends Controller {
 
@@ -27,7 +28,7 @@ class CustomerController extends Controller {
      */
     public function store(Request $request) {
         try {
-            \DB::transaction(function () {
+            // \DB::transaction(function () {
                 request()->validate([
                     'firstName' => 'required|max:50|string',
                     'lastName' => 'sometimes|nullable|max:50|string',
@@ -37,7 +38,8 @@ class CustomerController extends Controller {
                     'nic' => 'required',
                     'roll' => 'integer|required',
                     'password' => 'required|min:6',
-                    'city' => 'required|max:255|string'
+                    'city' => 'required|max:255|string',
+                    'file' => 'required'
                         // 'institute' => 'required|integer',
                 ]);
 
@@ -50,6 +52,18 @@ class CustomerController extends Controller {
                 $user->nic = request('nic');
                 $user->roll_id = request('roll');
                 $user->password = Hash::make(request('password'));
+                
+                $random_name = uniqid('user_image');
+                if ($request->file != 'undefined') {
+                    $main_ext = $request->file->extension();
+                    $path_main = $request->file('file')->storeAs(
+                        '/public/user_images', $random_name . '.' . $main_ext
+                    );
+                    $image_path = str_replace("public/", "/", $path_main);
+                    $user->profile_photo_path = $image_path;
+                }
+               
+                
                 $user->save();
 
                 $first_name = request('firstName');
@@ -63,7 +77,7 @@ class CustomerController extends Controller {
                     'city' => request('city'),
                     'user_id' => $user->id,
                 ]);
-            });
+            // });
             return array('status' => 1, 'Customer Data Saving is successfull!');
         } catch (Throwable $e) {
             return array('status' => 0, 'Customer Data Saving is Unsuccessfull!');

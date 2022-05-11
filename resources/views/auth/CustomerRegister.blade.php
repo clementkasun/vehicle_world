@@ -101,8 +101,9 @@
                             <div class="form-group">
                                 <label for="nic">NIC*</label>
                                 <div><input type="text" class="form-control" name="nic" id="nic" value=""
-                                        placeholder="NIC" required></div>
+                                placeholder="NIC" required></div>
                             </div>
+                            <label>Profile Picture: <input type="file" class="form-control" id="file_input" accept="image/*"></label>
                         </div>
                         <div class="col-md-6">
                             <label for="email">Email</label>

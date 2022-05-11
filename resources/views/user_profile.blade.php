@@ -62,7 +62,11 @@
               
 
       <div class="text-center">
-        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+        <?php
+          $user_path = ''; 
+          (isset($user_profile_data['profile_photo_path']))? $user_path = $user_profile_data['profile_photo_path'] : $user_path = 'https://cdn.sstatic.net/Img/unified/sprites.svg?v=e5e58ae7df45';
+        ?>
+        <img src="{{ '/storage/'.$user_path}}" class="avatar img-circle img-thumbnail" alt="avatar">
         <h6>Upload a different photo...</h6>
         <input type="file" class="text-center center-block file-upload">
       </div></hr><br>
@@ -93,11 +97,10 @@
     	<div class="col-sm-9">
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-                <li><a data-toggle="tab" href="#messages">Menu 1</a></li>
+                <li><a data-toggle="tab" href="#add">Adds</a></li>
                 <li><a data-toggle="tab" href="#settings">Menu 2</a></li>
               </ul>
 
-              
           <div class="tab-content">
             <div class="tab-pane active" id="home">
                 <hr>
@@ -106,14 +109,14 @@
                           
                           <div class="col-xs-6">
                               <label for="first_name"><h4>First name</h4></label>
-                              <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                              <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any." value="{{$user_profile_data['name']}}">
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-6">
                             <label for="last_name"><h4>Last name</h4></label>
-                              <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
+                              <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any." value="{{$user_profile_data['name']}}">
                           </div>
                       </div>
           
@@ -121,28 +124,22 @@
                           
                           <div class="col-xs-6">
                               <label for="phone"><h4>Phone</h4></label>
-                              <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
+                              <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any." value="{{$user_profile_data['contact_no']}}">
                           </div>
                       </div>
-          
-                      <div class="form-group">
-                          <div class="col-xs-6">
-                             <label for="mobile"><h4>Mobile</h4></label>
-                              <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any.">
-                          </div>
-                      </div>
+                      
                       <div class="form-group">
                           
                           <div class="col-xs-6">
                               <label for="email"><h4>Email</h4></label>
-                              <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
-                          </div>
-                      </div>
+                              <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email." value="{{$user_profile_data['email']}}">
+                            </div>
+                        </div>
                       <div class="form-group">
                           
                           <div class="col-xs-6">
                               <label for="email"><h4>Location</h4></label>
-                              <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location">
+                              <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location" value="{{$user_profile_data['address']}}">
                           </div>
                       </div>
                       <div class="form-group">
@@ -163,7 +160,6 @@
                            <div class="col-xs-12">
                                 <br>
                               	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                               	<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
                             </div>
                       </div>
               	</form>
@@ -171,82 +167,32 @@
               <hr>
               
              </div><!--/tab-pane-->
-             <div class="tab-pane" id="messages">
-               
-               <h2></h2>
-               
-               <hr>
-                  <form class="form" action="##" method="post" id="registrationForm">
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="first_name"><h4>First name</h4></label>
-                              <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                            <label for="last_name"><h4>Last name</h4></label>
-                              <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
-                          </div>
-                      </div>
-          
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="phone"><h4>Phone</h4></label>
-                              <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
-                          </div>
-                      </div>
-          
-                      <div class="form-group">
-                          <div class="col-xs-6">
-                             <label for="mobile"><h4>Mobile</h4></label>
-                              <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="email"><h4>Email</h4></label>
-                              <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="email"><h4>Location</h4></label>
-                              <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="password"><h4>Password</h4></label>
-                              <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                            <label for="password2"><h4>Verify</h4></label>
-                              <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                           <div class="col-xs-12">
-                                <br>
-                              	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                               	<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
-                            </div>
-                      </div>
-              	</form>
-               
-             </div><!--/tab-pane-->
+             <div class="tab-pane" id="add">
+                 <table class="table table-striped" id="user_posts">
+                   <thead>
+                       <th>#</th>
+                       <th>Title</th>
+                       <th>Type</th>
+                       <th>Price</th>
+                       <th>Location</th>
+                       <th>Created Date</th>
+                   </thead>
+                   <tbody>
+                       @foreach($user_adds as $user_add)
+                       <tr>
+                           <td>{{$loop->index+1}}</td>
+                           <td>{{$user_add->post_title}}</td>
+                           <td>{{$user_add->post_type}}</td>
+                           <td>{{$user_add->price}}</td>
+                           <td>{{$user_add->location}}</td>
+                           <td>{{$user_add->created_at}}</td>
+                           <td><button class="del" data-id="{{$user_add->id}}">Delete</buttton></td>
+                       </tr>
+                       @endforeach
+                   </tbody>
+                 </table>
+            </div><!--/tab-pane-->
              <div class="tab-pane" id="settings">
-            		
-               	
                   <hr>
                   <form class="form" action="##" method="post" id="registrationForm">
                       <div class="form-group">
@@ -358,11 +304,12 @@
 
     <!--commen functions-->
     <script src="{{ asset('/js/commenFunctions/functions.js') }}" type="text/javascript"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{asset('/plugins/datatables/jquery.dataTables.js')}}"></script> 
 <script>
     $(document).ready(function() {
-
     
-var readURL = function(input) {
+    var readURL = function(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
 
@@ -373,6 +320,15 @@ var readURL = function(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+
+$('.del').on('click', function(){
+   let id = $(this).data('id');
+   ajaxRequest("DELETE", "./api/delete_post/id/"+id, null, function(resp) {
+       (resp.status == 1) ? code = 'Success' : code = 'Error';  
+       swal.fire(code, resp.message);
+       location.reload();
+   });
+});
 
 
 $(".file-upload").on('change', function(){

@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use App\Models\Post;
+use App\Models\Customer;
 
 class UserController extends Controller
 {
@@ -243,9 +245,6 @@ class UserController extends Controller
         $pageAuth = $Auser->authentication(config('auth.privileges.userCreate'));
         return view('user', ['levels' => $level, 'users' => $users, 'pageAuth' => $pageAuth]);
 
-
-
-
         if ($msg) {
             LogActivity::addToLog('Delete Done: UserController', $user);
         } else {
@@ -263,7 +262,9 @@ class UserController extends Controller
     public function myProfile()
     {
         $user = Auth::user();
-        return view('user_profile', ['user_profile_data' => $user]);
+        $cust_id = Customer::where('user_id', $user->id)->first()->id;
+        $user_adds = Post::where('cust_id', $cust_id)->get();
+        return view('user_profile', ['user_profile_data' => $user, 'user_adds' => $user_adds]);
     }
 
     public function changeMyPass()

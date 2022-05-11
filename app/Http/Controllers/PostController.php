@@ -81,6 +81,10 @@ class PostController extends Controller
     public function destroy($id)
     {
         $remove_post = $this->postRepository->removePost($id);
-        return $remove_post;
+        if($remove_post == true){
+            return array('status' => 1, 'message' => 'Successfully deleted the post');
+        }else{
+            return array('status' => 0, 'message' => 'Post deletion was unsuccessful');
+        }
     }
 }

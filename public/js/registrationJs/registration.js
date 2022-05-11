@@ -9,6 +9,7 @@ function save_cus_details(callBack) {
         city: $('#location').val(),
         roll: 2,
         password: $('#password_origin').val(),
+        file: $('#file_input').prop('files')[0]
     };
 
     ulploadFileWithData(url, object, function(result) {
