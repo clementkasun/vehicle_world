@@ -222,7 +222,7 @@ class PostRepository implements PostInterface{
                 'posts.post_title',
                 'posts.vehicle_id',
                 'users.id AS user_id',
-                'users.first_name',
+                'users.name',
                 'users.last_name',
                 'users.contact_no',
                 'users.nic',
