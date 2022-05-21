@@ -13,31 +13,24 @@
     <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
     <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
-    <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
-
     <!-- Vendor CSS Files -->
-    <link href="{{ asset('assets/vendor/animate.css/animate.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/yearpicker/yearpicker.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/select2/css/select2.css') }}" rel="stylesheet">
-    <link href="{{ asset('plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('plugins/jqpaginator/jqpaginator.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('plugins/jquery-ui/jquery-ui.css') }}" rel="stylesheet">
-    <!-- UIkit CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.7.3/dist/css/uikit.min.css" />
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
- 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-208237465-1">
-    </script>
+    <!-- Vendor CSS Files -->
+  <!-- <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <!-- <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"> -->
+    <style>
+        .has-error {
+            color: red;
+        }
+    </style>
 </head>
 
 <body>
@@ -66,8 +59,7 @@
                     <li><a class="nav-link scrollto active" href="/home">Home</a></li>
                     <li><a class="nav-link scrollto" href="#about">About</a></li>
                     <li><a class="nav-link scrollto" href="#services">Services</a></li>
-                    <li><a class="nav-link scrollto" href="{{ asset('post_registration') }}"><span
-                                class="btn btn-warning">post your add</span></a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('post_registration') }}"><span class="btn btn-warning">post your add</span></a></li>
                     <li><a class="nav-link scrollto" href="#contact">Account</a></li>
                     <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('login_cust') }}">Login</a></li>
@@ -78,8 +70,8 @@
     </header><!-- End Header -->
 
     <main id="main">
-        <div class="card card-success">
-            <div class="card-header">
+        <div class="card card-primary">
+            <div class="card-header bg-success text-light">
                 <h3 class="card-title text-center">Advertiesment Registration form</h3>
             </div>
             <!-- /.card-header -->
@@ -87,397 +79,404 @@
             <div class="card-body">
                 <form id='post_registration'>
                     <div class="row">
-                        <!--<div class="col-md-12">-->
-                        <section id="post_section" class="col-md-6">
-                            <input type="text" id="user_id" name="user_id" value="{{ Auth::id() }}" hidden>
-                            <div class="form-group">
-                                <label for="post_type">Post Type</label>
-                                <div>
-                                    <select class="custom-select w-100" id="post_type" name="post_type" required>
-                                        <option value="">Not Selected</option>
-                                        <option value="VEHICLE">Vehicle</option>
-                                        <option value="SPARE PART">Spare Part</option>
-                                        <option value="WANTED">Wanted</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="post_title">Post Title</label>
-                                <div>
-                                    <input type="text" class="form-control" id="post_title" name="post_title"
-                                        placeholder="Enter the post title" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="vehicle_type">Vehicle type</label>
-                                <div>
-                                    <select id="vehicle_type" name="vehicle_type" class="custom-select w-100">
-                                        <option value="All">All</option>
-                                        <option value="Car">Car</option>
-                                        <option value="Van">Van</option>
-                                        <option value="SUV">SUV</option>
-                                        <option value="Crew Cab">Crew Cab</option>
-                                        <option value="Wagon">Wagon</option>
-                                        <option value="Pickup">Pickup</option>
-                                        <option value="Bus">Bus</option>
-                                        <option value="Lorry">Lorry</option>
-                                        <option value="Three Wheel">Three Wheel</option>
-                                        <option value="Tractor">Tractor</option>
-                                        <option value="Heavy-Duty">Heavy-Duty</option>
-                                        <option value="Other">Other</option>
-                                        <option value="Motorcycle">Motorcycle</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="condition">Condition</label>
-                                <div>
-                                    <select class="custom-select w-100" id="condition" name="condition" required>
-                                        <option value="">Not Selected</option>
-                                        <option value="Used">Used</option>
-                                        <option value="New">Brand New</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="make_id">Make</label>
-                                <div>
-                                    <select class="custom-select w-100" id="make_id" name="make_id" required>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="price">Price</label>
-                                <div id="the-basics">
-                                    <input type="number" class="form-control" name="price" id="price"
-                                        placeholder='Enter the price' max="1999999999" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="address">Address</label>
-                                <div>
-                                    <textarea id="address" name="address" class="form-control" placeholder="Enter the address" required></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="location">City</label>
-                                <div>
-                                    <select id="location" name="cmb_city" class="form-control">
-                                        <option value=""> Any City </option>
-                                        <option value="Ambalangoda">Ambalangoda</option>
-                                        <option value="Ampara">Ampara</option>
-                                        <option value="Anuradapura">Anuradapura</option>
-                                        <option value="Avissawella">Avissawella</option>
-                                        <option value="Bandaragama">Bandaragama</option>
-                                        <option value="Badulla">Badulla</option>
-                                        <option value="Balangoda">Balangoda</option>
-                                        <option value="Bandarawela">Bandarawela</option>
-                                        <option value="Battaramulla">Battaramulla</option>
-                                        <option value="Batticaloa">Batticaloa</option>
-                                        <option value="Beruwala">Beruwala</option>
-                                        <option value="Boralesgamuwa">Boralesgamuwa</option>
-                                        <option value="Chavakacheri">Chavakacheri</option>
-                                        <option value="Chilaw">Chilaw</option>
-                                        <option value="Colombo">Colombo</option>
-                                        <option value="Daluguma">Daluguma</option>
-                                        <option value="Dambulla">Dambulla</option>
-                                        <option value="Dehiwala-Mount-Lavinia">Dehiwala-Mount</option>
-                                        <option value="Divulapitiya">Divulapitiya</option>
-                                        <option value="Dompe">Dompe</option>
-                                        <option value="Eheliyagoda">Eheliyagoda</option>
-                                        <option value="Embilipitiya">Embilipitiya</option>
-                                        <option value="Eravur">Eravur</option>
-                                        <option value="Galle">Galle</option>
-                                        <option value="Gampaha">Gampaha</option>
-                                        <option value="Gampola">Gampola</option>
-                                        <option value="Hambantota">Hambantota</option>
-                                        <option value="Hanwella">Hanwella</option>
-                                        <option value="Haputale">Haputale</option>
-                                        <option value="Harispattuwa">Harispattuwa</option>
-                                        <option value="Hatton">Hatton</option>
-                                        <option value="Hendala">Hendala</option>
-                                        <option value="Homagama">Homagama</option>
-                                        <option value="Horana">Horana</option>
-                                        <option value="Ja-Ela">Ja-Ela</option>
-                                        <option value="Jaffna">Jaffna</option>
-                                        <option value="Kurunegala">Kurunegala</option>
-                                        <option value="Kadawatha">Kadawatha</option>
-                                        <option value="Kadugannawa">Kadugannawa</option>
-                                        <option value="Kaduwela">Kaduwela</option>
-                                        <option value="Kalawana">Kalawana</option>
-                                        <option value="Kalmunai">Kalmunai</option>
-                                        <option value="Kalutara">Kalutara</option>
-                                        <option value="Kandana">Kandana</option>
-                                        <option value="Kandy">Kandy</option>
-                                        <option value="Kattankudy">Kattankudy</option>
-                                        <option value="Katunayake">Katunayake</option>
-                                        <option value="Kegalle">Kegalle</option>
-                                        <option value="Kelaniya">Kelaniya</option>
-                                        <option value="Kesbewa">Kesbewa</option>
-                                        <option value="Keselwatta">Keselwatta</option>
-                                        <option value="Kilinochchi">Kilinochchi</option>
-                                        <option value="Kiribathgoda">Kiribathgoda</option>
-                                        <option value="Kolonnawa">Kolonnawa</option>
-                                        <option value="Kotikawatta">Kotikawatta</option>
-                                        <option value="Kotte">Kotte</option>
-                                        <option value="Kottawa">Kottawa</option>
-                                        <option value="Kuliyapitiya">Kuliyapitiya</option>
-                                        <option value="Kurunegala">Kurunegala</option>
-                                        <option value="Maharagama">Maharagama</option>
-                                        <option value="Mahiyanganaya">Mahiyanganaya</option>
-                                        <option value="Malabe">Malabe</option>
-                                        <option value="Mannar">Mannar</option>
-                                        <option value="Matale">Matale</option>
-                                        <option value="Matara">Matara</option>
-                                        <option value="Matugama">Matugama</option>
-                                        <option value="Mawanella">Mawanella</option>
-                                        <option value="Minuwangoda">Minuwangoda</option>
-                                        <option value="Mirigama">Mirigama</option>
-                                        <option value="Moneragala">Moneragala</option>
-                                        <option value="Moratuwa">Moratuwa</option>
-                                        <option value="Mullaitivu">Mullaitivu</option>
-                                        <option value="Mulleriyawa">Mulleriyawa</option>
-                                        <option value="Nawalapitiya">Nawalapitiya</option>
-                                        <option value="Negombo">Negombo</option>
-                                        <option value="Nittambuwa">Nittambuwa</option>
-                                        <option value="Nuwara-Eliya">Nuwara-Eliya</option>
-                                        <option value="Nugegoda">Nugegoda</option>
-                                        <option value="Padukka">Padukka</option>
-                                        <option value="Panadura">Panadura</option>
-                                        <option value="Pannipitiya">Pannipitiya</option>
-                                        <option value="Peliyagoda">Peliyagoda</option>
-                                        <option value="Piliyandala">Piliyandala</option>
-                                        <option value="Polgahawela">Polgahawela</option>
-                                        <option value="Polonnaruwa">Polonnaruwa</option>
-                                        <option value="Puttalam">Puttalam</option>
-                                        <option value="Ragama">Ragama</option>
-                                        <option value="Ratnapura">Ratnapura</option>
-                                        <option value="Seethawakapura">Seethawakapura</option>
-                                        <option value="Sigiriya">Sigiriya</option>
-                                        <option value="Talawakele">Talawakele</option>
-                                        <option value="Tangalle">Tangalle</option>
-                                        <option value="Trincomalee">Trincomalee</option>
-                                        <option value="Valvettithurai">Valvettithurai</option>
-                                        <option value="Vavuniya">Vavuniya</option>
-                                        <option value="Wattala">Wattala</option>
-                                        <option value="Wattegama">Wattegama</option>
-                                        <option value="Warakapola">Warakapola</option>
-                                        <option value="Weligama">Weligama</option>
-                                        <option value="Welimada">Welimada</option>
-                                        <option value="Welisara">Welisara</option <option value="Wennappuwa">Wennappuwa
-                                        </option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="additional_info">Description</label>
-                                <div>
-                                    <textarea id="additional_info" name="additional_info" class="form-control"
-                                        placeholder="Enter the description"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="main_image">Main Image</label>
-                                <div>
-                                    <input type="file" class="form-control" id="main_image" name="main_image"
-                                        required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="image_one">Image 1</label>
-                                <div>
-                                    <input type="file" class="form-control" id="image_one" name="image_one" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="image_two">Image 2</label>
-                                <div>
-                                    <input type="file" class="form-control" id="image_two" name="image_two" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="image_three">Image 3</label>
-                                <div>
-                                    <input type="file" class="form-control" id="image_three" name="image_three"
-                                        required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="image_four">Image 4</label>
-                                <div>
-                                    <input type="file" class="form-control" id="image_four" name="image_four"
-                                        required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="image_five">Image 5</label>
-                                <div>
-                                    <input type="file" class="form-control" id="image_five" name="image_five"
-                                        required>
-                                </div>
-                            </div>
-                        </section>
-                        <section id="vehicle_sec" class="d-none col-md-6">
-                            <div class="form-group">
-                                <label for="model"> Model *</label>
-                                <div><input type="text" class="form-control" name="model" id="model"
-                                        placeholder="Enter the model name" required></div>
-                            </div>
-                            <div class="form-group self-start d-none">
-                                <label for="start_type">Start Type</label>
-                                <div>
-                                    <select class="custom-select" name="start_type" id="start_type" required>
-                                        <option value="">Select the Start type</option>
-                                        <option value="Manual">Self Start</option>
-                                        <option value="Automatic">Kikstart</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="manufactured_year">Manufactured Year</label>
-                                <div><input type="text" class="form-control" name="manufactured_year"
-                                        id="manufactured_year" placeholder="Please enter the manufactured year"
-                                        required></div>
-                            </div>
-                            <div class="form-group">
-                                <label for="transmission">Transmission</label>
-                                <div>
-                                    <select class="custom-select" name="transmission" id="transmission" required>
-                                        <option value="">Select the Start type</option>
-                                        <option value="Manual">Manual</option>
-                                        <option value="Automatic">Automatic</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <!-- radio -->
-                            <div class="form-group">
-                                <label for="fuel_type">Fuel Type</label>
-                                <div>
-                                    <select name="fuel_type" id="fuel_type" class="custom-select w-100" required>
-                                        <option value="">Select Fuel Type</option>
-                                        <option value="Diesel">Diesel</option>
-                                        <option value="Petrol">Petrol</option>
-                                        <option value="Electric">Electric</option>
-                                        <option value="Hybrid">Hybrid</option>
-                                        <option value="Gas">Gas</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="engine_capacity">Engine Capacity</label>
-                                <div><input type="text" class="form-control" name="engine_capacity"
-                                        id="engine_capacity" required></div>
-                            </div>
-                            <div class="form-group">
-                                <label for="millage">Millage</label>
-                                <div>
-                                    <input type="text" class="form-control" name="millage" id="millage" required>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-lg-3">
-                                    <label for="isAc">AC</label>
-                                    <div>
-                                        <input type="checkbox" name="isAc" id="isAc">
+                        <section id="post_section" class="col-12 col-md-6">
+                            <div class="card card-light">
+                                <div class="card-body">
+                                    <input type="text" id="user_id" name="user_id" value="{{ Auth::id() }}" hidden>
+                                    <div class="form-group">
+                                        <label for="post_type">Post Type</label>
+                                        <div>
+                                            <select class="form-control" id="post_type" name="post_type" required>
+                                                <option value="">Not Selected</option>
+                                                <option value="VEHICLE">Vehicle</option>
+                                                <option value="SPARE PART">Spare Part</option>
+                                                <option value="WANTED">Wanted</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group col-lg-3">
-                                    <label for="isPowerSteer">Power Steer</label><br>
-                                    <div>
-                                        <input type="checkbox" name="isPowerSteer" id="isPowerSteer">
+                                    <div class="form-group">
+                                        <label for="post_title">Post Title</label>
+                                        <div>
+                                            <input type="text" class="form-control" id="post_title" name="post_title" placeholder="Enter the post title" required>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group col-lg-3">
-                                    <label for="isPowerMirroring">Power Mirroring</label>
-                                    <div>
-                                        <input type="checkbox" name="isPowerMirroring" id="isPowerMirroring">
+                                    <div class="form-group">
+                                        <label for="vehicle_type">Vehicle type</label>
+                                        <div>
+                                            <select id="vehicle_type" name="vehicle_type" class="form-control">
+                                                <option value="All">All</option>
+                                                <option value="Car">Car</option>
+                                                <option value="Van">Van</option>
+                                                <option value="SUV">SUV</option>
+                                                <option value="Crew Cab">Crew Cab</option>
+                                                <option value="Wagon">Wagon</option>
+                                                <option value="Pickup">Pickup</option>
+                                                <option value="Bus">Bus</option>
+                                                <option value="Lorry">Lorry</option>
+                                                <option value="Three Wheel">Three Wheel</option>
+                                                <option value="Tractor">Tractor</option>
+                                                <option value="Heavy-Duty">Heavy-Duty</option>
+                                                <option value="Other">Other</option>
+                                                <option value="Motorcycle">Motorcycle</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group col-lg-3">
-                                    <label for="isPowerWindow">Power Window</label>
-                                    <div>
-                                        <input type="checkbox" name="isPowerMirroring" id="isPowerWindow">
+                                    <div class="form-group">
+                                        <label for="condition">Condition</label>
+                                        <div>
+                                            <select class="form-control" id="condition" name="condition" required>
+                                                <option value="">Not Selected</option>
+                                                <option value="Used">Used</option>
+                                                <option value="New">Brand New</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-lg-3">
-                                    <label for="on_going_lease">On Going Lease</label>
-                                    <div>
-                                        <input type="checkbox" name="on_going_lease" id="on_going_lease">
+                                    <div class="form-group">
+                                        <label for="make_id">Make</label>
+                                        <div>
+                                            <select class="form-control" id="make_id" name="make_id" required>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="price">Price</label>
+                                        <div id="the-basics">
+                                            <input type="number" class="form-control" name="price" id="price" placeholder='Enter the price' max="1999999999" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="address">Address</label>
+                                        <div>
+                                            <textarea id="address" name="address" class="form-control" placeholder="Enter the address" required></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="location">City</label>
+                                        <div>
+                                            <select id="location" name="cmb_city" class="form-control">
+                                                <option value=""> Any City </option>
+                                                <option value="Ambalangoda">Ambalangoda</option>
+                                                <option value="Ampara">Ampara</option>
+                                                <option value="Anuradapura">Anuradapura</option>
+                                                <option value="Avissawella">Avissawella</option>
+                                                <option value="Bandaragama">Bandaragama</option>
+                                                <option value="Badulla">Badulla</option>
+                                                <option value="Balangoda">Balangoda</option>
+                                                <option value="Bandarawela">Bandarawela</option>
+                                                <option value="Battaramulla">Battaramulla</option>
+                                                <option value="Batticaloa">Batticaloa</option>
+                                                <option value="Beruwala">Beruwala</option>
+                                                <option value="Boralesgamuwa">Boralesgamuwa</option>
+                                                <option value="Chavakacheri">Chavakacheri</option>
+                                                <option value="Chilaw">Chilaw</option>
+                                                <option value="Colombo">Colombo</option>
+                                                <option value="Daluguma">Daluguma</option>
+                                                <option value="Dambulla">Dambulla</option>
+                                                <option value="Dehiwala-Mount-Lavinia">Dehiwala-Mount</option>
+                                                <option value="Divulapitiya">Divulapitiya</option>
+                                                <option value="Dompe">Dompe</option>
+                                                <option value="Eheliyagoda">Eheliyagoda</option>
+                                                <option value="Embilipitiya">Embilipitiya</option>
+                                                <option value="Eravur">Eravur</option>
+                                                <option value="Galle">Galle</option>
+                                                <option value="Gampaha">Gampaha</option>
+                                                <option value="Gampola">Gampola</option>
+                                                <option value="Hambantota">Hambantota</option>
+                                                <option value="Hanwella">Hanwella</option>
+                                                <option value="Haputale">Haputale</option>
+                                                <option value="Harispattuwa">Harispattuwa</option>
+                                                <option value="Hatton">Hatton</option>
+                                                <option value="Hendala">Hendala</option>
+                                                <option value="Homagama">Homagama</option>
+                                                <option value="Horana">Horana</option>
+                                                <option value="Ja-Ela">Ja-Ela</option>
+                                                <option value="Jaffna">Jaffna</option>
+                                                <option value="Kurunegala">Kurunegala</option>
+                                                <option value="Kadawatha">Kadawatha</option>
+                                                <option value="Kadugannawa">Kadugannawa</option>
+                                                <option value="Kaduwela">Kaduwela</option>
+                                                <option value="Kalawana">Kalawana</option>
+                                                <option value="Kalmunai">Kalmunai</option>
+                                                <option value="Kalutara">Kalutara</option>
+                                                <option value="Kandana">Kandana</option>
+                                                <option value="Kandy">Kandy</option>
+                                                <option value="Kattankudy">Kattankudy</option>
+                                                <option value="Katunayake">Katunayake</option>
+                                                <option value="Kegalle">Kegalle</option>
+                                                <option value="Kelaniya">Kelaniya</option>
+                                                <option value="Kesbewa">Kesbewa</option>
+                                                <option value="Keselwatta">Keselwatta</option>
+                                                <option value="Kilinochchi">Kilinochchi</option>
+                                                <option value="Kiribathgoda">Kiribathgoda</option>
+                                                <option value="Kolonnawa">Kolonnawa</option>
+                                                <option value="Kotikawatta">Kotikawatta</option>
+                                                <option value="Kotte">Kotte</option>
+                                                <option value="Kottawa">Kottawa</option>
+                                                <option value="Kuliyapitiya">Kuliyapitiya</option>
+                                                <option value="Kurunegala">Kurunegala</option>
+                                                <option value="Maharagama">Maharagama</option>
+                                                <option value="Mahiyanganaya">Mahiyanganaya</option>
+                                                <option value="Malabe">Malabe</option>
+                                                <option value="Mannar">Mannar</option>
+                                                <option value="Matale">Matale</option>
+                                                <option value="Matara">Matara</option>
+                                                <option value="Matugama">Matugama</option>
+                                                <option value="Mawanella">Mawanella</option>
+                                                <option value="Minuwangoda">Minuwangoda</option>
+                                                <option value="Mirigama">Mirigama</option>
+                                                <option value="Moneragala">Moneragala</option>
+                                                <option value="Moratuwa">Moratuwa</option>
+                                                <option value="Mullaitivu">Mullaitivu</option>
+                                                <option value="Mulleriyawa">Mulleriyawa</option>
+                                                <option value="Nawalapitiya">Nawalapitiya</option>
+                                                <option value="Negombo">Negombo</option>
+                                                <option value="Nittambuwa">Nittambuwa</option>
+                                                <option value="Nuwara-Eliya">Nuwara-Eliya</option>
+                                                <option value="Nugegoda">Nugegoda</option>
+                                                <option value="Padukka">Padukka</option>
+                                                <option value="Panadura">Panadura</option>
+                                                <option value="Pannipitiya">Pannipitiya</option>
+                                                <option value="Peliyagoda">Peliyagoda</option>
+                                                <option value="Piliyandala">Piliyandala</option>
+                                                <option value="Polgahawela">Polgahawela</option>
+                                                <option value="Polonnaruwa">Polonnaruwa</option>
+                                                <option value="Puttalam">Puttalam</option>
+                                                <option value="Ragama">Ragama</option>
+                                                <option value="Ratnapura">Ratnapura</option>
+                                                <option value="Seethawakapura">Seethawakapura</option>
+                                                <option value="Sigiriya">Sigiriya</option>
+                                                <option value="Talawakele">Talawakele</option>
+                                                <option value="Tangalle">Tangalle</option>
+                                                <option value="Trincomalee">Trincomalee</option>
+                                                <option value="Valvettithurai">Valvettithurai</option>
+                                                <option value="Vavuniya">Vavuniya</option>
+                                                <option value="Wattala">Wattala</option>
+                                                <option value="Wattegama">Wattegama</option>
+                                                <option value="Warakapola">Warakapola</option>
+                                                <option value="Weligama">Weligama</option>
+                                                <option value="Welimada">Welimada</option>
+                                                <option value="Welisara">Welisara</option <option value="Wennappuwa">Wennappuwa
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="additional_info">Description</label>
+                                        <div>
+                                            <textarea id="additional_info" name="additional_info" class="form-control" placeholder="Enter the description"></textarea>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </section>
-                        <section id="spare_part_sec" class="d-none col-md-6">
-                            <div class="form-group">
-                                <label for="part_category">Part Category</label>
-                                <div>
-                                    <select id="part_category" name="part_category" class="form-control w-100" required>
-                                        <option value="">Select</option>
-                                        <option value="Air Conditioning &amp; Heating">Air Conditioning &amp; Heating
-                                        </option>
-                                        <option value="Air Intake &amp; Fuel Delivery">Air Intake &amp; Fuel Delivery
-                                        </option>
-                                        <option value="Axles &amp; Axle Parts">Axles &amp; Axle Parts</option>
-                                        <option value="Battery">Battery</option>
-                                        <option value="Brakes">Brakes</option>
-                                        <option value="Car Audio Systems">Car Audio Systems</option>
-                                        <option value="Car DVR">Car DVR</option>
-                                        <option value="Car Tuning &amp; Styling">Car Tuning &amp; Styling</option>
-                                        <option value="Carburetor">Carburetor</option>
-                                        <option value="Chassis">Chassis</option>
-                                        <option value="Electrical Components">Electrical Components</option>
-                                        <option value="Emission Systems">Emission Systems</option>
-                                        <option value="Engine Cooling">Engine Cooling</option>
-                                        <option value="Engines &amp; Engine Parts">Engines &amp; Engine Parts</option>
-                                        <option value="Exhausts &amp; Exhaust Parts">Exhausts &amp; Exhaust Parts
-                                        </option>
-                                        <option value="External &amp; Body Parts">External &amp; Body Parts</option>
-                                        <option value="External Lights &amp; Indicators">External Lights &amp;
-                                            Indicators</option>
-                                        <option value="Footrests, Pedals &amp; Pegs">Footrests, Pedals &amp; Pegs
-                                        </option>
-                                        <option value="Freezer">Freezer</option>
-                                        <option value="Gauges, Dials &amp; Instruments">Gauges, Dials &amp; Instruments
-                                        </option>
-                                        <option value="Generator">Generator</option>
-                                        <option value="GPS &amp; In-Car Technology">GPS &amp; In-Car Technology</option>
-                                        <option value="Handlebars, Grips &amp; Levers">Handlebars, Grips &amp; Levers
-                                        </option>
-                                        <option value="Helmets, Clothing &amp; Protection">Helmets, Clothing &amp;
-                                            Protection</option>
-                                        <option value="Interior Parts &amp; Furnishings">Interior Parts &amp;
-                                            Furnishings</option>
-                                        <option value="Lighting &amp; Indicators">Lighting &amp; Indicators</option>
-                                        <option value="Mirrors">Mirrors</option>
-                                        <option value="Oils, Lubricants &amp; Fluids">Oils, Lubricants &amp; Fluids
-                                        </option>
-                                        <option value="Other">Other</option>
-                                        <option value="Reverse Camera">Reverse Camera</option>
-                                        <option value="Seating">Seating</option>
-                                        <option value="Service Kits">Service Kits</option>
-                                        <option value="Silencer">Silencer</option>
-                                        <option value="Starter Motors">Starter Motors</option>
-                                        <option value="Stickers">Stickers</option>
-                                        <option value="Suspension, Steering &amp; Handling">Suspension, Steering &amp;
-                                            Handling</option>
-                                        <option value="Transmission &amp; Drivetrain">Transmission &amp; Drivetrain
-                                        </option>
-                                        <option value="Turbos &amp; Superchargers">Turbos &amp; Superchargers</option>
-                                        <option value="Wheels, Tyres &amp; Rims">Wheels, Tyres &amp; Rims</option>
-                                        <option value="Windscreen Wipers &amp; Washers">Windscreen Wipers &amp; Washers
-                                        </option>
-                                    </select>
+                        <section id="vehicle_sec" class="d-none col-12 col-md-6">
+                            <div class="card card-light">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="main_image">Main Image</label>
+                                        <div>
+                                            <input type="file" class="form-control" id="main_image" name="main_image" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="image_one">Image 1</label>
+                                        <div>
+                                            <input type="file" class="form-control" id="image_one" name="image_one" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="image_two">Image 2</label>
+                                        <div>
+                                            <input type="file" class="form-control" id="image_two" name="image_two" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="image_three">Image 3</label>
+                                        <div>
+                                            <input type="file" class="form-control" id="image_three" name="image_three" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="image_four">Image 4</label>
+                                        <div>
+                                            <input type="file" class="form-control" id="image_four" name="image_four" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="image_five">Image 5</label>
+                                        <div>
+                                            <input type="file" class="form-control" id="image_five" name="image_five" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card card-light mt-1">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="model"> Model *</label>
+                                        <div><input type="text" class="form-control" name="model" id="model" placeholder="Enter the model name" required></div>
+                                    </div>
+                                    <div class="form-group self-start d-none">
+                                        <label for="start_type">Start Type</label>
+                                        <div>
+                                            <select class="form-control" name="start_type" id="start_type" required>
+                                                <option value="">Select the Start type</option>
+                                                <option value="Manual">Self Start</option>
+                                                <option value="Automatic">Kikstart</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="manufactured_year">Manufactured Year</label>
+                                        <div><input type="text" class="form-control" name="manufactured_year" id="manufactured_year" placeholder="Please enter the manufactured year" required></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="transmission">Transmission</label>
+                                        <div>
+                                            <select class="form-control" name="transmission" id="transmission" required>
+                                                <option value="">Select the Start type</option>
+                                                <option value="Manual">Manual</option>
+                                                <option value="Automatic">Automatic</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- radio -->
+                                    <div class="form-group">
+                                        <label for="fuel_type">Fuel Type</label>
+                                        <div>
+                                            <select name="fuel_type" id="fuel_type" class="form-control" required>
+                                                <option value="">Select Fuel Type</option>
+                                                <option value="Diesel">Diesel</option>
+                                                <option value="Petrol">Petrol</option>
+                                                <option value="Electric">Electric</option>
+                                                <option value="Hybrid">Hybrid</option>
+                                                <option value="Gas">Gas</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="engine_capacity">Engine Capacity</label>
+                                        <div><input type="text" class="form-control" name="engine_capacity" id="engine_capacity" required></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="millage">Millage</label>
+                                        <div>
+                                            <input type="text" class="form-control" name="millage" id="millage" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card card-light mt-1">
+                                <div id="four_wheel_features" class="card-body">
+                                    <div class="row">
+                                        <div class="form-group col-lg-3">
+                                            <label for="isAc">AC</label>
+                                            <div>
+                                                <input type="checkbox" name="isAc" id="isAc">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-3">
+                                            <label for="isPowerSteer">Power Steer</label><br>
+                                            <div>
+                                                <input type="checkbox" name="isPowerSteer" id="isPowerSteer">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-3">
+                                            <label for="isPowerMirroring">Power Mirroring</label>
+                                            <div>
+                                                <input type="checkbox" name="isPowerMirroring" id="isPowerMirroring">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-3">
+                                            <label for="isPowerWindow">Power Window</label>
+                                            <div>
+                                                <input type="checkbox" name="isPowerMirroring" id="isPowerWindow">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-lg-3">
+                                            <label for="on_going_lease">On Going Lease</label>
+                                            <div>
+                                                <input type="checkbox" name="on_going_lease" id="on_going_lease">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section id="spare_part_sec" class="d-none col-12 col-md-6">
+                            <div class="card card-light">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="part_category">Part Category</label>
+                                        <div>
+                                            <select id="part_category" name="part_category" class="form-control" required>
+                                                <option value="">Select</option>
+                                                <option value="Air Conditioning &amp; Heating">Air Conditioning &amp; Heating
+                                                </option>
+                                                <option value="Air Intake &amp; Fuel Delivery">Air Intake &amp; Fuel Delivery
+                                                </option>
+                                                <option value="Axles &amp; Axle Parts">Axles &amp; Axle Parts</option>
+                                                <option value="Battery">Battery</option>
+                                                <option value="Brakes">Brakes</option>
+                                                <option value="Car Audio Systems">Car Audio Systems</option>
+                                                <option value="Car DVR">Car DVR</option>
+                                                <option value="Car Tuning &amp; Styling">Car Tuning &amp; Styling</option>
+                                                <option value="Carburetor">Carburetor</option>
+                                                <option value="Chassis">Chassis</option>
+                                                <option value="Electrical Components">Electrical Components</option>
+                                                <option value="Emission Systems">Emission Systems</option>
+                                                <option value="Engine Cooling">Engine Cooling</option>
+                                                <option value="Engines &amp; Engine Parts">Engines &amp; Engine Parts</option>
+                                                <option value="Exhausts &amp; Exhaust Parts">Exhausts &amp; Exhaust Parts
+                                                </option>
+                                                <option value="External &amp; Body Parts">External &amp; Body Parts</option>
+                                                <option value="External Lights &amp; Indicators">External Lights &amp;
+                                                    Indicators</option>
+                                                <option value="Footrests, Pedals &amp; Pegs">Footrests, Pedals &amp; Pegs
+                                                </option>
+                                                <option value="Freezer">Freezer</option>
+                                                <option value="Gauges, Dials &amp; Instruments">Gauges, Dials &amp; Instruments
+                                                </option>
+                                                <option value="Generator">Generator</option>
+                                                <option value="GPS &amp; In-Car Technology">GPS &amp; In-Car Technology</option>
+                                                <option value="Handlebars, Grips &amp; Levers">Handlebars, Grips &amp; Levers
+                                                </option>
+                                                <option value="Helmets, Clothing &amp; Protection">Helmets, Clothing &amp;
+                                                    Protection</option>
+                                                <option value="Interior Parts &amp; Furnishings">Interior Parts &amp;
+                                                    Furnishings</option>
+                                                <option value="Lighting &amp; Indicators">Lighting &amp; Indicators</option>
+                                                <option value="Mirrors">Mirrors</option>
+                                                <option value="Oils, Lubricants &amp; Fluids">Oils, Lubricants &amp; Fluids
+                                                </option>
+                                                <option value="Other">Other</option>
+                                                <option value="Reverse Camera">Reverse Camera</option>
+                                                <option value="Seating">Seating</option>
+                                                <option value="Service Kits">Service Kits</option>
+                                                <option value="Silencer">Silencer</option>
+                                                <option value="Starter Motors">Starter Motors</option>
+                                                <option value="Stickers">Stickers</option>
+                                                <option value="Suspension, Steering &amp; Handling">Suspension, Steering &amp;
+                                                    Handling</option>
+                                                <option value="Transmission &amp; Drivetrain">Transmission &amp; Drivetrain
+                                                </option>
+                                                <option value="Turbos &amp; Superchargers">Turbos &amp; Superchargers</option>
+                                                <option value="Wheels, Tyres &amp; Rims">Wheels, Tyres &amp; Rims</option>
+                                                <option value="Windscreen Wipers &amp; Washers">Windscreen Wipers &amp; Washers
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </section>
                         <!--</div>-->
                     </div>
                     <!-- /.card-body -->
-
-                    <div class="card-footer">
-                        <button id="save_post" type="button" class="btn btn-primary pl-5 pr-5">Save</button>
+                    <div class="card-footer d-flex justify-content-end">
+                        <button id="save_post" type="button" class="btn btn-primary pl-5 pr-5">Save Post</button>
                     </div>
                 </form>
             </div>
@@ -491,19 +490,16 @@
             <p>MAKE YOUR DREAM VEHICLE REALITY. ENGAGE WITH US TO PROSPEROUS FUTURE.</p>
             <div class="social-links">
                 <a href="https://twitter.com" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="https://www.facebook.com/kasunclement/" class="facebook"><i
-                        class="bx bxl-facebook"></i></a>
+                <a href="https://www.facebook.com/kasunclement/" class="facebook"><i class="bx bxl-facebook"></i></a>
                 <a href="https://www.instergram.com" class="instagram"><i class="bx bxl-instagram"></i></a>
                 <a href="https://google-plus.com" class="google-plus"><i class="bx bxl-skype"></i></a>
                 <a href="https://www.linkedin.com" class="linkedin"><i class="bx bxl-linkedin"></i></a>
             </div>
             <div class="copyright">
-                <strong>Copyright &copy; <?php echo date('Y'); ?> <a
-                        href="http://www.classifield.qa.mkesell.com">VEHIAUTO.COM</a></strong>
+                <strong>Copyright &copy; <?php echo date('Y'); ?> <a href="http://www.classifield.qa.mkesell.com">VEHIAUTO.COM</a></strong>
             </div>
         </div>
-        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-                class="bi bi-arrow-up-short"></i></a>
+        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
     </footer>
     <!-- Page script -->
 
@@ -556,14 +552,13 @@
             }
         });
 
+        $('#vehicle_type').change(function() {
+            ($(this).val() != 'Motorcycle') ? $('#four_wheel_features').removeClass('d-none'): $('#four_wheel_features').addClass('d-none');
+        });
+
         $(window).on('load', function() {
             loadMakesCombo();
-
-            $('#post_type').select2();
-            $('#vehicle_type').select2();
-            $('#condition').select2();
-            $('#fuel_type').select2();
-            $('#part_category').select2();
+            $('#make_id').select2();
         });
 
         function loadMakesCombo(selected, callBack) {

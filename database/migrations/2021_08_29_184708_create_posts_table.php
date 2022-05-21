@@ -29,10 +29,10 @@ class CreatePostsTable extends Migration {
             $table->text('image_5')->nullable();
             $table->unsignedBigInteger('vehicle_id')->nullable();
             $table->unsignedBigInteger('spare_part_id')->nullable();
-            $table->unsignedBigInteger('cust_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('vehicle_id')->references('id')->on('vehicles')->onDelete('restrict')->onUpdate('cascade');
             $table->foreign('spare_part_id')->references('id')->on('spare_parts')->onDelete('restrict')->onUpdate('cascade');
-            $table->foreign('cust_id')->references('id')->on('customers')->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

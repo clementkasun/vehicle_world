@@ -14,9 +14,7 @@
     <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -60,7 +58,6 @@
             font-family: myFirstFont;
             font-size: 14px;
         }
-
     </style>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-208237465-1">
@@ -84,47 +81,39 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="firstName">First Name*</label>
-                                <div><input type="text" class="form-control" name="firstName" id="firstName" value=""
-                                        placeholder="FIRST NAME" required></div>
+                                <div><input type="text" class="form-control" name="firstName" id="firstName" value="" placeholder="FIRST NAME" required></div>
                             </div>
                             <div class="form-group">
                                 <label for="lastName">Last Name*</label>
-                                <div><input type="text" class="form-control" name="lastName" id="lastName" value=""
-                                        placeholder="LAST NAME" required></div>
+                                <div><input type="text" class="form-control" name="lastName" id="lastName" value="" placeholder="LAST NAME" required></div>
                             </div>
                             <div class="form-group">
                                 <label for="contactNo">Mobile No*</label>
-                                <div><input type="text" class="form-control" name="contactNo" id="contactNo" value=""
-                                        minlength="10" maxlength="10" placeholder="TELPHONE" required>
+                                <div><input type="text" class="form-control" name="contactNo" id="contactNo" value="" minlength="10" maxlength="10" placeholder="TELPHONE" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="nic">NIC*</label>
-                                <div><input type="text" class="form-control" name="nic" id="nic" value=""
-                                placeholder="NIC" required></div>
+                                <div><input type="text" class="form-control" name="nic" id="nic" value="" placeholder="NIC" required></div>
                             </div>
                             <label>Profile Picture: <input type="file" class="form-control" id="file_input" accept="image/*"></label>
                         </div>
                         <div class="col-md-6">
                             <label for="email">Email</label>
                             <div class="form-group">
-                                <input type="email" class="form-control" name="email" id="email" value=""
-                                    placeholder="EMAIL">
+                                <input type="email" class="form-control" name="email" id="email" value="" placeholder="EMAIL">
                             </div>
                             <div class="form-group">
                                 <label for="location">Location*</label>
-                                <textarea cols="70" rows="2" class="form-control" name="location" id="location" value="" placeholder="Location"
-                                    required></textarea>
+                                <textarea cols="70" rows="2" class="form-control" name="location" id="location" value="" placeholder="Location" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="password_origin">Password*</label>
-                                <div><input type="password" class="form-control" name="password_origin"
-                                        id="password_origin" value="" placeholder="PASSWORD" required></div>
+                                <div><input type="password" class="form-control" name="password_origin" id="password_origin" value="" placeholder="PASSWORD" required></div>
                             </div>
                             <div class="form-group">
                                 <label for="password_confirm">Confirm Password*</label>
-                                <div><input type="password" class="form-control" name="password_confirm"
-                                        id="password_confirm" value="" placeholder="CONFIRM PASSWORD" required>
+                                <div><input type="password" class="form-control" name="password_confirm" id="password_confirm" value="" placeholder="CONFIRM PASSWORD" required>
                                 </div>
                             </div>
                         </div>
@@ -136,8 +125,6 @@
                 <a href="/login" class="btn btn-lg btn-success"><b>Login</b></a>
             </div>
             <!-- /.card -->
-            <!-- /.card -->
-            <!-- /.card -->
         </div>
     </main><!-- End #main -->
     <footer id="footer">
@@ -146,19 +133,16 @@
             <p>MAKE YOUR DREAM VEHICLE REALITY. ENGAGE WITH US TO PROSPEROUS FUTURE.</p>
             <div class="social-links">
                 <a href="https://twitter.com" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="https://www.facebook.com/kasunclement/" class="facebook"><i
-                        class="bx bxl-facebook"></i></a>
+                <a href="https://www.facebook.com/kasunclement/" class="facebook"><i class="bx bxl-facebook"></i></a>
                 <a href="https://www.instergram.com" class="instagram"><i class="bx bxl-instagram"></i></a>
                 <a href="https://google-plus.com" class="google-plus"><i class="bx bxl-skype"></i></a>
                 <a href="https://www.linkedin.com" class="linkedin"><i class="bx bxl-linkedin"></i></a>
             </div>
             <div class="copyright">
-                <strong>Copyright &copy; <?php echo date('Y'); ?> <a
-                        href="http://www.classifield.qa.mkesell.com">VEHIAUTO.COM</a></strong>
+                <strong>Copyright &copy; <?php echo date('Y'); ?> <a href="http://www.classifield.qa.mkesell.com">VEHIAUTO.COM</a></strong>
             </div>
         </div>
-        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-                class="bi bi-arrow-up-short"></i></a>
+        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
     </footer>
     <!-- Page script -->
     <script src="{{ asset('/plugins/jquery/jquery.min.js') }}"></script>
@@ -226,13 +210,25 @@
         $("#save_customer").click(function() {
             var is_valid = jQuery("#cust_reg_frm").valid();
             if (is_valid) {
-                var data = {
+                var validation_data = {
                     email: $('#email').val(),
-                    nic: $('#nic').val()
+                    nic: $('#nic').val(),
+                };
+                let object = {
+                    firstName: $('#firstName').val(),
+                    lastName: $('#lastName').val(),
+                    contactNo: $('#contactNo').val(),
+                    address: $('#location').val(),
+                    email: $('#email').val(),
+                    nic: $('#nic').val(),
+                    city: $('#location').val(),
+                    roll: 2,
+                    password: $('#password_origin').val(),
+                    file: $('#file_input').prop('files')[0]
                 };
                 let url_email_nic = "./api/is_email_nic_exist";
 
-                ajaxRequest("POST", url_email_nic, data, function(resp) {
+                ajaxRequest("POST", url_email_nic, validation_data, function(resp) {
                     if (resp == 1) {
                         $('#nic').addClass('has-error');
                         Swal.fire("Failed!", "NIC already exist!", "warning");
@@ -252,7 +248,7 @@
                                 confirmButtonText: 'Yes!'
                             }).then((result) => {
                                 if (result.value) {
-                                    save_cus_details(function(){
+                                    save_cus_details(object, function() {
                                         window.location = "./login_cust";
                                     });
                                 }

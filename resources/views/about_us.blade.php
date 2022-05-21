@@ -1,17 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+      <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <title>VEHIAUTO.COM</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+    <!-- daterange picker -->
+<link rel="stylesheet" href="{{asset('/plugins/daterangepicker/daterangepicker.css')}}">
+<!-- Select2 -->
+<link rel="stylesheet" href="{{asset('/plugins/select2/css/select2.min.css')}}">
+<link rel="stylesheet" href="{{asset('/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+<!-- Theme style -->
+<link rel="stylesheet" href="{{asset('/dist/css/adminlte.min.css')}}">
+<!-- Template Main CSS File -->
+<link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+<link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="{{ asset('assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
 <!------ Include the above in your HEAD tag ---------->
-    <style>
+<style>
        body {
     font-family: 'Roboto';font-size: 16px;
 }
@@ -119,26 +142,25 @@ a:hover, a:active {
 
 
     </style>
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{asset('/dist/css/adminlte.min.css')}}">
+         <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <!-- Template Main CSS File -->
-    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-208237465-1">
-    </script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+
 </head>
-
 <body>
     <!-- ======= Top Bar ======= -->
-    <section id="topbar" class="d-flex align-items-center">
+   <section id="topbar" class="d-flex align-items-center">
         <div class="container d-flex justify-content-center justify-content-md-between">
             <div class="contact-info d-flex align-items-center">
                 <i class="bi bi-envelope-fill"></i><a href="mailto:vehicleworld@gmail.com">vehiauto@gmail.com</a>
                 <i class="bi bi-phone-fill phone-icon"></i> +94 763993288
             </div>
             <div class="social-links d-none d-md-block">
-                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                <a href="https://twitter.com/VehiautoC" target="_blank" class="twitter"><i class="bi bi-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
                 <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
                 <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
@@ -161,19 +183,13 @@ a:hover, a:active {
                     <li><a class="nav-link scrollto" href="{{ asset('login_cust') }}">Login</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('register_customer') }}">Register</a></li>
                 </ul>
-            </nav><!-- .navbar -->
+            </nav>
+            <!-- .navbar -->
         </div>
-    </header><!-- End Header -->
-
-    <main id="main">
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-
-<div class="aboutus-section">
+    </header>
+    <section>
+        <!-- End Header -->
+    <div class="aboutus-section">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-6 col-xs-12">
@@ -184,11 +200,11 @@ a:hover, a:active {
                         <a class="aboutus-more" href="#">read more</a>
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-6 col-xs-12">
+                <!-- <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="aboutus-banner">
                         <img src="http://themeinnovation.com/demo2/html/build-up/img/home1/about1.jpg" alt="">
                     </div>
-                </div>
+                </div> -->
                 <div class="col-md-5 col-sm-6 col-xs-12">
                     <div class="feature">
                         <div class="feature-box">
@@ -229,57 +245,55 @@ a:hover, a:active {
             </div>
         </div>
     </div>
-                                                      
-    </main><!-- End #main -->
+    </section>
     <footer id="footer">
         <div class="container">
             <h3>VEHIAUTO.COM</h3>
             <p>MAKE YOUR DREAM VEHICLE REALITY. ENGAGE WITH US TO PROSPEROUS FUTURE.</p>
             <div class="social-links">
                 <a href="https://twitter.com" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="https://www.facebook.com/kasunclement/" class="facebook"><i
-                        class="bx bxl-facebook"></i></a>
+                <a href="https://www.facebook.com/kasunclement/" class="facebook"><i class="bx bxl-facebook"></i></a>
                 <a href="https://www.instergram.com" class="instagram"><i class="bx bxl-instagram"></i></a>
                 <a href="https://google-plus.com" class="google-plus"><i class="bx bxl-skype"></i></a>
                 <a href="https://www.linkedin.com" class="linkedin"><i class="bx bxl-linkedin"></i></a>
             </div>
             <div class="copyright">
-                <strong>Copyright &copy; <?php echo date('Y'); ?> <a
-                        href="http://www.classifield.qa.mkesell.com">VEHIAUTO.COM</a></strong>
+                <strong>Copyright &copy; <?php echo date("Y"); ?> <a href="#">VEHIAUTO.COM</a></strong>
             </div>
         </div>
-        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-                class="bi bi-arrow-up-short"></i></a>
     </footer>
+    <!--End Footer-->
+</body>
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
     <!-- Page script -->
     <script src="{{ asset('/plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('../../../dist/js/adminlte.min.js') }}"></script>
-    <script src="{{ asset('/dist/js/demo.js') }}"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{ asset('./../../../dist/js/demo.js') }}"></script>
 
+    <!-- Bootstrap 4 -->
+    <script src="{{ asset('/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+    <script src="{{ asset('/dist/js/demo.js') }}"></script>
+    <script src="{{asset('/plugins/datatables/jquery.dataTables.js')}}"></script> 
     <!--commen functions-->
     <script src="{{ asset('/js/commenFunctions/functions.js') }}" type="text/javascript"></script>
-<script>
-    $(document).ready(function() {
-
-    
-var readURL = function(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('.avatar').attr('src', e.target.result);
-        }
-
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-
-
-$(".file-upload").on('change', function(){
-    readURL(this);
-});
-});
-</script>
-</body>
+    <!-- Select2 -->
+    <script src="{{ asset('/plugins/select2/js/select2.full.min.js') }}"></script>
 
 </html>
+
+
+
+
+
+
+

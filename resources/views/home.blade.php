@@ -5,6 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
+      <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
     <!-- daterange picker -->
 <link rel="stylesheet" href="{{asset('/plugins/daterangepicker/daterangepicker.css')}}">
 <!-- Select2 -->
@@ -182,6 +199,7 @@
                     <li><a class="nav-link scrollto" href="{{ asset('post_registration') }}"><span class="btn btn-warning">post your add</span></a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('user_profile') }}">Account</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('contact') }}">Contact</a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('logout') }}">Logout</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('login_cust') }}">Login</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('register_customer') }}">Register</a></li>
                 </ul>
@@ -278,7 +296,7 @@
                         <div class="form-group col-lg-3">
                             <label for="cmb_make"><b>MAKE</b></label>
                             <div>
-                                <select id="cmb_make" name="cmb_make" class="form-control"></select>
+                                <select id="cmb_make" name="cmb_make" class="form-control select2"></select>
                             </div>
                         </div>
                         <div class="form-group col-lg-3">
@@ -354,7 +372,7 @@
                         <div class="form-group col-lg-4">
                             <label for="cmb_city"><b>LOCATION</b></label>
                             <div>
-                                <select id="cmb_city" name="cmb_city" class="form-control">
+                                <select id="cmb_city" name="cmb_city" class="form-control select2">
                                     <option value="any"> Any City </option>
                                     <option value="Ambalangoda">Ambalangoda</option>
                                     <option value="Ampara">Ampara</option>
@@ -543,6 +561,15 @@
     </footer>
     <!--End Footer-->
 </body>
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
     <!-- Page script -->
     <script src="{{ asset('/plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('../../../dist/js/adminlte.min.js') }}"></script>
@@ -556,8 +583,14 @@
     <script src="{{asset('/plugins/datatables/jquery.dataTables.js')}}"></script> 
     <!--commen functions-->
     <script src="{{ asset('/js/commenFunctions/functions.js') }}" type="text/javascript"></script>
+    <!-- Select2 -->
+    <script src="{{ asset('/plugins/select2/js/select2.full.min.js') }}"></script>
 <script>
         $(document).ready(function() {
+
+            $('#cmb_make').select2();
+            $('#cmb_city').select2();
+
             loadMakes(function() {
                 $('#filter_btn').removeClass('d-none');
             });

@@ -262,8 +262,7 @@ class UserController extends Controller
     public function myProfile()
     {
         $user = Auth::user();
-        $cust_id = Customer::where('user_id', $user->id)->first()->id;
-        $user_adds = Post::where('cust_id', $cust_id)->get();
+        $user_adds = Post::where('user_id', $user->id)->get();
         return view('user_profile', ['user_profile_data' => $user, 'user_adds' => $user_adds]);
     }
 

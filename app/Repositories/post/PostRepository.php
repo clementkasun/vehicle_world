@@ -16,7 +16,7 @@ class PostRepository implements PostInterface{
 
     public function indexData(){
         $post_all = Post::where('posts.deleted_at', '=', null)
-            ->join('customers', 'posts.cust_id', 'customers.id')
+            ->join('users', 'posts.user_id', 'users.id')
             ->leftjoin('spare_parts', 'posts.spare_part_id', 'spare_parts.id')
             ->leftjoin('vehicles', 'posts.vehicle_id', 'vehicles.id')
             ->leftjoin('vehicle_makes', 'vehicles.make_id', 'spare_parts.make_id', 'vehicle_makes.id')
@@ -25,7 +25,7 @@ class PostRepository implements PostInterface{
                 'posts.post_type',
                 'posts.post_title',
                 'posts.vehicle_id',
-                'customers.id AS customer_id',
+                'users.id AS user_id',
                 'posts.main_image',
                 'posts.condition',
                 'vehicles.model',
@@ -53,7 +53,7 @@ class PostRepository implements PostInterface{
 
     public function getAllPost(){
         $post_all = Post::where('posts.deleted_at', '=', null)
-        ->join('customers', 'posts.cust_id', 'customers.id')
+        ->join('users', 'posts.user_id', 'users.id')
         ->leftjoin('spare_parts', 'posts.spare_part_id', 'spare_parts.id')
         ->leftjoin('vehicles', 'posts.vehicle_id', 'vehicles.id')
         ->join('vehicle_makes', 'vehicles.make_id', 'vehicle_makes.id')
@@ -62,7 +62,7 @@ class PostRepository implements PostInterface{
             'posts.post_type',
             'posts.post_title',
             'posts.vehicle_id',
-            'customers.id AS customer_id',
+            'users.id AS user_id',
             'posts.main_image',
             'posts.condition',
             'vehicles.model',
@@ -95,8 +95,6 @@ class PostRepository implements PostInterface{
             $post_type = $request->post_type;
 
             $user_id = $request->user_id;
-            $customer = Customer::where('user_id', '=', $user_id)->first();
-            $customer_id = $customer->id;
             $post_id = '';
 
             $post_save = Post::create([
@@ -105,7 +103,7 @@ class PostRepository implements PostInterface{
                 'condition' => $request->condition,
                 'price' => $request->price,
                 'additional_info' => $request->additional_info,
-                'cust_id' => $customer_id,
+                'user_id' => $user_id,
                 'location' => $request->location,
                 'address' => $request->address,
             ]);
@@ -214,7 +212,7 @@ class PostRepository implements PostInterface{
     {
         $post_data = Post::where('posts.deleted_at', '=', null)
             ->where('posts.id', '=', $post_id)
-            ->join('customers', 'posts.cust_id', 'customers.id')
+            ->join('users', 'posts.user_id', 'users.id')
             ->leftjoin('spare_parts', 'posts.spare_part_id', 'spare_parts.id')
             ->leftjoin('vehicles', 'posts.vehicle_id', 'vehicles.id')
             ->leftjoin('vehicle_makes', 'vehicles.make_id', 'spare_parts.make_id', 'vehicle_makes.id')
@@ -223,11 +221,13 @@ class PostRepository implements PostInterface{
                 'posts.post_type',
                 'posts.post_title',
                 'posts.vehicle_id',
-                'customers.id AS customer_id',
-                'customers.cust_name',
-                'customers.phone_number',
-                'customers.email',
-                'customers.city AS seller_location',
+                'users.id AS user_id',
+                'users.first_name',
+                'users.last_name',
+                'users.contact_no',
+                'users.nic',
+                'users.email',
+                'users.address AS seller_location',
                 'posts.main_image',
                 'posts.condition',
                 'vehicles.model',
@@ -297,7 +297,7 @@ class PostRepository implements PostInterface{
         if ($post_type == "VEHI") {
 
             $post = Post::where('posts.deleted_at', '=', null)
-                ->join('customers', 'posts.cust_id', 'customers.id')
+                ->join('users', 'posts.user_id', 'users.id')
                 ->leftjoin('vehicles', 'posts.vehicle_id', 'vehicles.id')
                 ->leftjoin('vehicle_makes', 'vehicles.make_id', 'vehicle_makes.id');
 
@@ -390,7 +390,7 @@ class PostRepository implements PostInterface{
 
         if ($post_type == "SPARE") {
             $post = Post::where('posts.deleted_at', '=', null)
-                ->join('customers', 'posts.cust_id', 'customers.id')
+                ->join('users', 'posts.user_id', 'users.id')
                 ->join('spare_parts', 'posts.spare_part_id', 'spare_parts.id')
                 ->join('vehicle_makes', 'spare_parts.make_id', 'vehicle_makes.id');
 

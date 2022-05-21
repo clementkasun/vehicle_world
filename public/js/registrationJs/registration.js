@@ -1,16 +1,5 @@
-function save_cus_details(callBack) {
+function save_cus_details(object,callBack) {
     url = "./api/save_customer";
-    let object = {
-        firstName: $('#firstName').val(),
-        lastName: $('#lastName').val(),
-        contactNo: $('#contactNo').val(),
-        email: $('#email').val(),
-        nic: $('#nic').val(),
-        city: $('#location').val(),
-        roll: 2,
-        password: $('#password_origin').val(),
-        file: $('#file_input').prop('files')[0]
-    };
 
     ulploadFileWithData(url, object, function(result) {
         // ajaxRequest("POST", url, data, function (result) {

@@ -17,7 +17,7 @@ class CustomerController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return view(registration . customer_reg);
+        return view('registration.customer_reg');
     }
 
     /**
@@ -28,7 +28,7 @@ class CustomerController extends Controller {
      */
     public function store(Request $request) {
         try {
-            // \DB::transaction(function () {
+            \DB::transaction(function () use($request){
                 request()->validate([
                     'firstName' => 'required|max:50|string',
                     'lastName' => 'sometimes|nullable|max:50|string',
@@ -44,9 +44,11 @@ class CustomerController extends Controller {
                 ]);
 
                 $user = new User();
+                $first_name = request('firstName');
+                $last_name = request('lastName');
                 $user->email = request('email');
-                $user->name = request('firstName');
-                $user->last_name = request('lastName');
+                $user->name = $first_name;
+                $user->last_name = $last_name;
                 $user->address = request('address');
                 $user->contact_no = request('contactNo');
                 $user->nic = request('nic');
@@ -66,18 +68,7 @@ class CustomerController extends Controller {
                 
                 $user->save();
 
-                $first_name = request('firstName');
-                $last_name = request('lastName');
-                $cust_name = $first_name . " " . $last_name;
-
-                Customer::create([
-                    'cust_name' => $cust_name,
-                    'phone_number' => request('contactNo'),
-                    'email' => request('email'),
-                    'city' => request('city'),
-                    'user_id' => $user->id,
-                ]);
-            // });
+            });
             return array('status' => 1, 'Customer Data Saving is successfull!');
         } catch (Throwable $e) {
             return array('status' => 0, 'Customer Data Saving is Unsuccessfull!');
@@ -91,7 +82,7 @@ class CustomerController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show() {
-        $customer_data = Customer::User()->get();
+        $customer_data = Customer::with('User')->get();
         return $customer_data;
     }
 
@@ -102,7 +93,7 @@ class CustomerController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        $customer_id_data = Customer::Where('id', $id)->User()->get();
+        $customer_id_data = Customer::Where('id', $id)->with('User')->get();
         return $customer_id_data;
     }
 
@@ -115,7 +106,7 @@ class CustomerController extends Controller {
      */
     public function update(Request $request, $id) {
         try {
-            \DB::transaction(function () {
+            \DB::transaction(function () use($id){
                 request()->validate([
                     'firstName' => 'required|max:50|string',
                     'lastName' => 'sometimes|nullable|max:50|string',
@@ -128,15 +119,7 @@ class CustomerController extends Controller {
                     'city' => 'required|max:255|string'
                         // 'institute' => 'required|integer',
                 ]);
-
-                $customer = Customer::find($id);
-                $user_id = $customer->user_id;
-                $cust_name = request('firstName') + request('lastName');
-                $customer->cust_name = $cust_name;
-                $customer->phone_number = request('contactNo');
-                $customer->email = request('email');
-                $customer->city = request('city');
-                $customer->save();
+                $user_id = Auth()->user()->id;
 
                 $user = User::where('user_id', $user_id)->first();
                 $user->email = request('email');

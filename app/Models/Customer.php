@@ -12,7 +12,7 @@ class Customer extends Model {
     protected $fillable = array('cust_name', 'phone_number', 'email', 'city', 'user_id');
 
     public function User() {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function Post() {
