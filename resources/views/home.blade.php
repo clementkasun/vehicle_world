@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{csrf_token()}}" />
-    <meta name="api-token" content="{{auth()->user()->api_token}}" />
     <title>Home Page</title>
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
