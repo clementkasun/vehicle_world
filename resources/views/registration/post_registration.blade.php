@@ -553,7 +553,7 @@
 
         function loadMakesCombo(selected, callBack) {
             let option = '';
-            ajaxRequest("GET", "/api/get_makes/", null, function(resp) {
+            ajaxRequest("GET", "./api/get_makes/", null, function(resp) {
                 if (resp.length == 0) {
                     option += '<option value="">No Data</option>';
                 } else {
