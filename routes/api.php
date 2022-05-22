@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RollController;
 use App\Http\Controllers\UserController;
@@ -46,6 +47,7 @@ Route::post('/add_user', [UserController::class, 'create']); //add a user
 Route::post('/auth_test', [JsonResultsController::class, 'authTest']);
 Route::post('/sanctum/token', [UserController::class, 'authToken']);
 
+
 //apis for post 
 Route::post('/save_post', [PostController::class, 'store']);
 Route::get('/get_posts', [PostController::class, 'show']);
@@ -53,13 +55,14 @@ Route::get('/get_post_profile/id/{post_id}', [PostController::class, 'get_post_p
 Route::get('/get_posts_type/id/{post_id}', [PostController::class, 'edit']);
 Route::get('/get_selected_post/id/{post_id}', [PostController::class, 'get_selected_post']);
 //Route::any('/filtered_posts', [PostController::class, 'filtered_adds']);
-Route::put('/update_post/id/{post_id}', [PostController::class, 'update']);
+Route::post('/update_post/id/{post_id}', [PostController::class, 'update']);
 Route::delete('/delete_post/id/{post_id}', [PostController::class, 'destroy']);
 
 Route::get('get_makes', [VehicleMakeController::class, 'get_vehicle_makes']);
 
-Route::post('/save_customer', [CustomerController::class, 'store']);
-
+Route::post('/save_customer', [CustomerController::class, 'createCustomer']);
 Route::post('/is_email_nic_exist', [CustomerController::class, 'email_nic_exist']);
 
 Route::post('/filtered_posts', [PostController::class, 'filtered_posts']);
+Route::put('/update_basic_data/id/{user_id}', [CustomerController::class, 'updateBasicData']);
+Route::put('/change_password/id/{user_id}', [CustomerController::class, 'changePassword']);

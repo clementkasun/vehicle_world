@@ -7,7 +7,7 @@ interface PostInterface {
     public function createPost($request);
     public function getAllPost();
     public function showPostProfile($id);
-    public function filteredPosts($rquest);
+    public function filteredPosts($request);
     public function removePost($id);
     public function postUpdate($request, $id);
     public function removeExpiredPost();

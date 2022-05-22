@@ -14,7 +14,7 @@ class SparePart extends Model {
     protected $fillable = array('make_id', 'part_used_in', 'part_category');
 
     public function Post() {
-        return $this->belongsTo(Post::class);
+        return $this->hasMany(Post::class);
     }
 
     public function VehicleMake() {

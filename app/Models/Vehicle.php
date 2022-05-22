@@ -11,7 +11,8 @@ class Vehicle extends Model {
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = array('vehicle_type',
+    protected $fillable = array(
+        'vehicle_type',
         'vehicle_condition',
         'make_id',
         'model',
@@ -30,7 +31,7 @@ class Vehicle extends Model {
         'additional_info');
 
     public function Post() {
-        return $this->belongsTo(Post::class);
+        return $this->hasMany(Post::class);
     }
 
     public function VehicleMake() {

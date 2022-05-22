@@ -3,7 +3,7 @@ function ajaxRequest(Method, url, data, callBack) {
         type: Method,
         headers: {
             "Authorization": $('meta[name=csrf-token]').attr("content"),
-            "Accept": "application/json"
+            'Accept': 'application/json',
         },
         url: url,
         data: data,

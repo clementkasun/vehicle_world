@@ -74,7 +74,7 @@
             <!-- /.card-header -->
             <!-- form start -->
             <div class="card-body">
-                <form id='post_registration'>
+                <form id='post_update' data-post-id="{{$post_data['id']}}">
                     <div class="row">
                         <section id="post_section" class="col-12 col-md-6">
                             <div class="card card-light">
@@ -387,7 +387,7 @@
                                         <div class="form-group col-lg-3">
                                             <label for="isPowerWindow">Power Window</label>
                                             <div>
-                                                <input type="checkbox" name="isPowerWindow" id="isPowerWindow">
+                                                <input type="checkbox" name="isPowerMirroring" id="isPowerWindow">
                                             </div>
                                         </div>
                                     </div>
@@ -473,7 +473,7 @@
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
-                        <button id="save_post" type="button" class="btn btn-primary pl-5 pr-5">Save Post</button>
+                        <button id="update_post" type="button" class="btn btn-primary pl-5 pr-5">Update Post</button>
                     </div>
                 </form>
             </div>
@@ -527,10 +527,52 @@
     <script src="{{ asset('/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
     <!-- SweetAlert2 -->
     <script src="{{ asset('/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- AdminLTE App -->
     <script>
         $(document).ready(function() {
-            loadMakesCombo();
+            let vehicle_type = '{{$post_data["vehicle_type"]}}';
+            let post_type = '{{$post_data["post_type"]}}';
+            let part_cat = '{{$post_data["part_category"]}}';
+            let post_title = '{{$post_data["post_title"]}}';
+            let condition = '{{$post_data["condition"]}}';
+            let make_id = '{{$post_data["make_id"]}}';
+            let price = '{{$post_data["price"]}}';
+            let address = '{{$post_data["address"]}}';
+            let location = '{{$post_data["location"]}}';
+            let desc = '{{$post_data["additional_info"]}}';
+            let model = '{{$post_data["model"]}}';
+            let start_type = '{{$post_data["start_type"]}}';
+            let manufactured_year = '{{$post_data["manufactured_year"]}}';
+            let fuel_type = '{{$post_data["fuel_type"]}}';
+            let engine_capacity = '{{$post_data["engine_capacity"]}}';
+            let millage = '{{$post_data["millage"]}}';
+            let transmission = '{{$post_data["transmission"]}}';
+
+            ('{{$post_data["isAc"]}}' == '0')?  $('#isAc').prop('checked', false): $('#isAc').prop('checked', true);
+            ('{{$post_data["on_going_lease"]}}' == '0')?  $('#on_going_lease').prop('checked', false): $('#on_going_lease').prop('checked', true);
+            ('{{$post_data["isPowerSteer"]}}' == '0')?  $('#isPowerSteer').prop('checked', false): $('#isPowerSteer').prop('checked', true);
+            ('{{$post_data["isPowerMirroring"]}}' == '0')?  $('#isPowerMirroring').prop('checked', false): $('#isPowerMirroring').prop('checked', true);
+            ('{{$post_data["isPowerWindow"]}}' == '0')?  $('#isPowerWindow').prop('checked', false): $('#isPowerWindow').prop('checked', true);
+
+            $('#vehicle_type').val(vehicle_type).change();
+            $('#post_type').val(post_type).change();
+            $('#post_title').val(post_title).change();
+            $('#condition').val(condition).change();
+            loadMakesCombo(make_id, '');
+            $('#price').val(price);
+            $('#address').val(address);
+            $('#location').val(location);
+            $('#additional_info').text(desc);
+            $('#model').val(model);
+            $('#start_type').val(start_type);
+            $('#manufactured_year').val(manufactured_year);
+            $("#transmission").val(transmission);
+            $("#fuel_type").val(fuel_type);
+            $("#engine_capacity").val(engine_capacity);
+            $("#millage").val(millage);
+            $('#part_category').val(part_cat);
+     
             $('#make_id').select2();
             $('#location').select2();
         });
@@ -576,8 +618,8 @@
             });
         }
 
-        $("#save_post").click(function() {
-            var is_valid = jQuery("#post_registration").valid();
+        $("#update_post").click(function() {
+            var is_valid = jQuery("#post_update").valid();
             if (is_valid) {
                 let object = {
                     user_id: $('#user_id').val(),
@@ -612,18 +654,14 @@
                 object.image_four = $('#image_four')[0].files[0];
                 object.image_five = $('#image_five')[0].files[0];
 
-                let url = "/api/save_post";
+                let url = "/api/update_post/id/" + $('#post_update').data('post-id');
                 ulploadFileWithData(url, object, function(result) {
-                    // ajaxRequest("POST", url, data, function (result) {
                     if (result.status == 1) {
-                        // $("#post_registration")[0].reset;
                         Swal.fire(
                             'Post Registration',
-                            'Successfully Posted!',
+                            'Successfully updated!',
                             'success'
                         );
-                        window.location.href = "/public/home";
-                        //            location.reload();
                     } else {
                         Swal.fire({
                             icon: 'error',
@@ -631,7 +669,6 @@
                             text: result.msg
                         })
                     }
-                    //        $('#degree_registration').trigger("reset");
                     if (typeof callBack !== 'undefined' && callBack != null && typeof callBack ===
                         "function") {
                         callBack(result);
@@ -640,8 +677,8 @@
             }
         });
 
-        var post_registration;
-        post_registration = $("#post_registration").validate({
+        var post_update;
+        post_update = $("#post_update").validate({
             errorClass: "invalid",
             rules: {
                 tel: {

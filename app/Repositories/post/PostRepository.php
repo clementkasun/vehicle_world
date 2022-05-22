@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Repositories\post;
 
@@ -7,14 +7,14 @@ use App\Models\Customer;
 use App\Models\Vehicle;
 use App\Models\SparePart;
 use App\Models\Post;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Auth;
 
-class PostRepository implements PostInterface{
+class PostRepository implements PostInterface
+{
 
-    public function indexData(){
+    public function indexData()
+    {
         $post_all = Post::where('posts.deleted_at', '=', null)
             ->join('users', 'posts.user_id', 'users.id')
             ->leftjoin('spare_parts', 'posts.spare_part_id', 'spare_parts.id')
@@ -47,49 +47,51 @@ class PostRepository implements PostInterface{
                 'posts.additional_info',
                 'posts.created_at'
             )->paginate(50);
-            
-            return $post_all;
-    }
-
-    public function getAllPost(){
-        $post_all = Post::where('posts.deleted_at', '=', null)
-        ->join('users', 'posts.user_id', 'users.id')
-        ->leftjoin('spare_parts', 'posts.spare_part_id', 'spare_parts.id')
-        ->leftjoin('vehicles', 'posts.vehicle_id', 'vehicles.id')
-        ->join('vehicle_makes', 'vehicles.make_id', 'vehicle_makes.id')
-        ->select(
-            'posts.id AS id',
-            'posts.post_type',
-            'posts.post_title',
-            'posts.vehicle_id',
-            'users.id AS user_id',
-            'posts.main_image',
-            'posts.condition',
-            'vehicles.model',
-            'posts.location',
-            'posts.address',
-            'vehicles.start_type',
-            'vehicles.manufactured_year',
-            'posts.price',
-            'vehicles.on_going_lease',
-            'vehicles.transmission',
-            'vehicles.fuel_type',
-            'vehicles.engine_capacity',
-            'vehicles.millage',
-            'vehicles.isAc',
-            'vehicles.isPowerSteer',
-            'vehicles.isPowerMirroring',
-            'vehicles.isPowerWindow',
-            'spare_parts.part_used_in',
-            'spare_parts.part_category',
-            'posts.additional_info',
-            'posts.created_at'
-        )->get();
 
         return $post_all;
     }
 
-    public function createPost($request){
+    public function getAllPost()
+    {
+        $post_all = Post::where('posts.deleted_at', '=', null)
+            ->join('users', 'posts.user_id', 'users.id')
+            ->leftjoin('spare_parts', 'posts.spare_part_id', 'spare_parts.id')
+            ->leftjoin('vehicles', 'posts.vehicle_id', 'vehicles.id')
+            ->join('vehicle_makes', 'vehicles.make_id', 'vehicle_makes.id')
+            ->select(
+                'posts.id AS id',
+                'posts.post_type',
+                'posts.post_title',
+                'posts.vehicle_id',
+                'users.id AS user_id',
+                'posts.main_image',
+                'posts.condition',
+                'vehicles.model',
+                'posts.location',
+                'posts.address',
+                'vehicles.start_type',
+                'vehicles.manufactured_year',
+                'posts.price',
+                'vehicles.on_going_lease',
+                'vehicles.transmission',
+                'vehicles.fuel_type',
+                'vehicles.engine_capacity',
+                'vehicles.millage',
+                'vehicles.isAc',
+                'vehicles.isPowerSteer',
+                'vehicles.isPowerMirroring',
+                'vehicles.isPowerWindow',
+                'spare_parts.part_used_in',
+                'spare_parts.part_category',
+                'posts.additional_info',
+                'posts.created_at'
+            )->get();
+
+        return $post_all;
+    }
+
+    public function createPost($request)
+    {
         try {
             DB::beginTransaction();
             $post_type = $request->post_type;
@@ -109,6 +111,18 @@ class PostRepository implements PostInterface{
             ]);
             $post_id = $post_save->id;
 
+            $isAc = 0;
+            $isPowerSteer = 0;
+            $isPowerMirroring = 0;
+            $isPowerWindow = 0;
+            $on_going_lease = 0;
+
+            ($request->isAc == 'on') ? $isAc = 1: null;
+            ($request->isPowerSteer == 'on') ? $isPowerSteer = 1: null;
+            ($request->isPowerMirroring == 'on') ? $isPowerMirroring = 1: null;
+            ($request->isPowerWindow == 'on') ? $isPowerWindow = 1: null;
+            ($request->on_going_lease == 'on') ? $on_going_lease = 1: null;
+
             if (strstr($post_type, "VEHI") || strstr($post_type, "WAN")) {
 
                 $vehicle_data_save = Vehicle::create([
@@ -117,15 +131,15 @@ class PostRepository implements PostInterface{
                     'make_id' => $request->make_id,
                     'start_type' => $request->start_type,
                     'manufactured_year' => $request->manufactured_year,
-                    'on_going_lease' => $request->on_going_lease,
+                    'on_going_lease' => $on_going_lease,
                     'transmission' => $request->transmission,
                     'fuel_type' => $request->fuel_type,
                     'engine_capacity' => $request->engine_capacity,
                     'millage' => $request->millage,
-                    'isAc' => $request->isAc,
-                    'isPowerSteer' => $request->isPowerSteer,
-                    'isPowerMirroring' => $request->isPowerMirroring,
-                    'isPowerWindow' => $request->isPowerWindow,
+                    'isAc' =>$isAc,
+                    'isPowerSteer' => $isPowerSteer,
+                    'isPowerMirroring' => $isPowerMirroring,
+                    'isPowerWindow' => $isPowerWindow,
                 ]);
                 $vehicle_id = $vehicle_data_save->id;
 
@@ -215,7 +229,7 @@ class PostRepository implements PostInterface{
             ->join('users', 'posts.user_id', 'users.id')
             ->leftjoin('spare_parts', 'posts.spare_part_id', 'spare_parts.id')
             ->leftjoin('vehicles', 'posts.vehicle_id', 'vehicles.id')
-            ->leftjoin('vehicle_makes', 'vehicles.make_id', 'spare_parts.make_id', 'vehicle_makes.id')
+            ->leftjoin('vehicle_makes', 'vehicles.make_id', 'vehicle_makes.id')
             ->select(
                 'posts.id AS id',
                 'posts.post_type',
@@ -255,6 +269,8 @@ class PostRepository implements PostInterface{
                 'posts.image_3',
                 'posts.image_4',
                 'posts.image_5',
+                'vehicles.make_id',
+                'vehicle_makes.make_name'
             )->first();
 
         $vehi_type = $post_data->vehicle_type;
@@ -269,17 +285,17 @@ class PostRepository implements PostInterface{
     public function filteredPosts($request)
     {
         $request_data = [
-              'make' => $request[1]['value'],
-              'post_type' => $request[3]['value'],
-              'model' => $request[2]['value'],
-              'vehi_type' => $request[4]['value'],
-              'condition' => $request[5]['value'],
-              'price_range' => $request[6]['value'],
-              'location' => $request[7]['value'],
-              'year_min' => $request[8]['value'],
-              'year_max' => $request[9]['value'],
-              'gear_type' => $request[10]['value'],
-              'fuel_type' => $request[11]['value'],
+            'make' => $request[1]['value'],
+            'post_type' => $request[3]['value'],
+            'model' => $request[2]['value'],
+            'vehi_type' => $request[4]['value'],
+            'condition' => $request[5]['value'],
+            'price_range' => $request[6]['value'],
+            'location' => $request[7]['value'],
+            'year_min' => $request[8]['value'],
+            'year_max' => $request[9]['value'],
+            'gear_type' => $request[10]['value'],
+            'fuel_type' => $request[11]['value'],
         ];
 
         $make = $request[1]['value'];
@@ -293,7 +309,7 @@ class PostRepository implements PostInterface{
         $year_max = $request[9]['value'];
         $gear_type = $request[10]['value'];
         $fuel_type = $request[11]['value'];
-        
+
         if ($post_type == "VEHI") {
 
             $post = Post::where('posts.deleted_at', '=', null)
@@ -350,7 +366,7 @@ class PostRepository implements PostInterface{
             });
 
             $post = $post->when($gear_type != 'any', function ($p) use ($gear_type) {
-                return $p->where('vehicles.transmission','like', '%' . $gear_type . '%');
+                return $p->where('vehicles.transmission', 'like', '%' . $gear_type . '%');
             });
 
             $post = $post->when($vehi_type != 'any', function ($p) use ($vehi_type) {
@@ -385,7 +401,6 @@ class PostRepository implements PostInterface{
             });
             $filtered_post_data = $post->get();
             return $filtered_post_data;
-           
         }
 
         if ($post_type == "SPARE") {
@@ -395,7 +410,7 @@ class PostRepository implements PostInterface{
                 ->join('vehicle_makes', 'spare_parts.make_id', 'vehicle_makes.id');
 
             $post = $post->when($location != 'any', function ($p) use ($location) {
-                return $p->where('posts.location','like', '%' . $location . '%');
+                return $p->where('posts.location', 'like', '%' . $location . '%');
             });
 
             $post = $post->when($condition != 'any', function ($p) use ($condition) {
@@ -438,19 +453,20 @@ class PostRepository implements PostInterface{
                     'posts.created_at'
                 );
             });
-            
+
             $filtered_post_data = $post->get();
             return $filtered_post_data;
         }
     }
 
-    public function postUpdate($request, $post_id){
+    public function postUpdate($request, $id)
+    {
         try {
             DB::beginTransaction();
 
             $post_type = $request->post_type;
             //get the post from id
-            $post_update = Post::find($post_id);
+            $post_update = Post::find($id);
             $post_update->post_title = $request->post_title;
             $post_update->post_type = $post_type;
             $post_update->condition = $request->condition;
@@ -495,11 +511,11 @@ class PostRepository implements PostInterface{
                 'image_five' => 'mimes:jpeg,bmp,png', // Only allow .jpg, .bmp and .png file types.
             ]);
 
-            $random_name = uniqid($post_id);
+            $random_name = uniqid($id);
             if ($request->main_image != null) {
                 $main_ext = $request->main_image->extension();
                 $path_main = $request->file('main_image')->storeAs(
-                    '/public/post_images' . '/' . $post_id,
+                    '/public/post_images' . '/' . $id,
                     'main_img' . '.' . $random_name . '.' . $main_ext
                 );
                 $post_update->main_image = str_replace("public/", "/", $path_main);
@@ -507,7 +523,7 @@ class PostRepository implements PostInterface{
             if ($request->image_one != null) {
                 $img_one_ext = $request->image_one->extension();
                 $path_one = $request->file('image_one')->storeAs(
-                    '/public/post_images' . '/' . $post_id,
+                    '/public/post_images' . '/' . $id,
                     'img_one' . '.' . $random_name . '.' . $img_one_ext
                 );
                 $post_update->image_1 = str_replace("public/", "/", $path_one);
@@ -515,7 +531,7 @@ class PostRepository implements PostInterface{
             if ($request->image_two != null) {
                 $img_two_ext = $request->image_two->extension();
                 $path_two = $request->file('image_two')->storeAs(
-                    '/public/post_images' . '/' . $post_id,
+                    '/public/post_images' . '/' . $id,
                     'img_two' . '.' . $random_name . '.' . $img_two_ext
                 );
                 $post_update->image_2 = str_replace("public/", "/", $path_two);
@@ -523,7 +539,7 @@ class PostRepository implements PostInterface{
             if ($request->image_three != null) {
                 $img_three_ext = $request->image_three->extension();
                 $path_three = $request->file('image_three')->storeAs(
-                    '/public/post_images' . '/' . $post_id,
+                    '/public/post_images' . '/' . $id,
                     'img_three' . '.' . $random_name . '.' . $img_three_ext
                 );
                 $post_update->image_3 = str_replace("public/", "/", $path_three);
@@ -531,7 +547,7 @@ class PostRepository implements PostInterface{
             if ($request->image_four != null) {
                 $img_four_ext = $request->image_four->extension();
                 $path_four = $request->file('image_four')->storeAs(
-                    '/public/post_images' . '/' . $post_id,
+                    '/public/post_images' . '/' . $id,
                     'img_four' . '.' . $random_name . '.' . $img_four_ext
                 );
                 $post_update->image_4 = str_replace("public/", "/", $path_main);
@@ -539,7 +555,7 @@ class PostRepository implements PostInterface{
             if ($request->image_five != null) {
                 $img_five_ext = $request->image_five->extension();
                 $path_five = $request->file('image_five')->storeAs(
-                    '/public/post_images' . '/' . $post_id,
+                    '/public/post_images' . '/' . $id,
                     'img_five' . '.' . $random_name . '.' . $img_five_ext
                 );
                 $post_update->image_5 = str_replace("public/", "/", $path_five);
@@ -554,7 +570,8 @@ class PostRepository implements PostInterface{
         }
     }
 
-    public function removePost($post_id){
+    public function removePost($post_id)
+    {
         try {
             $post = Post::find($post_id);
             $post_data = $post->first();
@@ -580,29 +597,28 @@ class PostRepository implements PostInterface{
         }
     }
 
-    public function removeExpiredPost(){
-       try{
-           $prev_same_date = \Carbon\Carbon::now().subYear();
-           $get_expired_post = Post::whereDate('create_at', $prev_same_date);
-           $main_img_path = $get_expired_post->main_image;
-               $img_one_path = $get_expired_post->image_1;
-               $img_two_path = $get_expired_post->image_2;
-               $img_three_path = $get_expired_post->image_3;
-               $img_four_path = $get_expired_post->image_4;
-               $img_path_five = $get_expired_post->image_5;
+    public function removeExpiredPost()
+    {
+        try {
+            $prev_same_date = \Carbon\Carbon::now() . subYear();
+            $get_expired_post = Post::whereDate('create_at', $prev_same_date);
+            $main_img_path = $get_expired_post->main_image;
+            $img_one_path = $get_expired_post->image_1;
+            $img_two_path = $get_expired_post->image_2;
+            $img_three_path = $get_expired_post->image_3;
+            $img_four_path = $get_expired_post->image_4;
+            $img_path_five = $get_expired_post->image_5;
 
-               Storage::delete($main_img_path);
-               Storage::delete($img_one_path);
-               Storage::delete($img_two_path);
-               Storage::delete($img_three_path);
-               Storage::delete($img_four_path);
-               Storage::delete($img_path_five);
-               $get_expired_post->delete();
-               return array('status' => 'Successfully removed the expired post!');
-       }catch(\Exception $ex){
-               return array('status' => 'expired post data removal unsuccessfull!');
-       }
+            Storage::delete($main_img_path);
+            Storage::delete($img_one_path);
+            Storage::delete($img_two_path);
+            Storage::delete($img_three_path);
+            Storage::delete($img_four_path);
+            Storage::delete($img_path_five);
+            $get_expired_post->delete();
+            return array('status' => 'Successfully removed the expired post!');
+        } catch (\Exception $ex) {
+            return array('status' => 'expired post data removal unsuccessfull!');
+        }
     }
 }
-
-?>

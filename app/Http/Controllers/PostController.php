@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use App\Repositories\post\PostRepository;
 
@@ -29,6 +26,12 @@ class PostController extends Controller
         return view('./post_profile', $post_profile_data);
     }
 
+    public function get_post_update_form($post_id)
+    {
+        $post_profile_data = $this->postRepository->showPostProfile($post_id);
+        return view('./registration/post_update', $post_profile_data);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -37,8 +40,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $store_post = $this->postRepository->createPost($request);
-        return $store_post;
+        return $this->postRepository->createPost($request);
     }
 
     /**
@@ -49,14 +51,12 @@ class PostController extends Controller
      */
     public function show()
     {
-        $show_all_post = $this->postRepository->getAllPost();
-        return $show_all_post;
+        return $this->postRepository->getAllPost();
     }
 
 
     public function filtered_posts(Request $request){
-        $filetered_post = $this->postRepository->filteredPosts($request);
-        return $filetered_post;
+        return $this->postRepository->filteredPosts($request);
     }
 
     /**
@@ -66,10 +66,9 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $post_id)
+    public function update(Request $request, $id)
     {
-        $update_post = $this->postRepository->postUpdate($request, $post_id);
-        return $update_post;
+        return $this->postRepository->postUpdate($request, $id);
     }
 
     /**

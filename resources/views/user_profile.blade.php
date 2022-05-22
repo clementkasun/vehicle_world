@@ -9,7 +9,8 @@
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
+    <meta name="csrf-token" content="{{csrf_token()}}" />
+    <meta name="api-token" content="{{auth()->user()->api_token}}" />
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
@@ -33,6 +34,8 @@
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/fixedheader/3.2.3/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="{{ asset('assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
     <style>
         .has-error {
@@ -200,6 +203,7 @@
                     <li><a class="nav-link scrollto" href="{{ asset('post_registration') }}"><span class="btn btn-warning">post your add</span></a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('user_profile') }}">Account</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('contact') }}">Contact</a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('logout') }}">Logout</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('login_cust') }}">Login</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('register_customer') }}">Register</a></li>
                 </ul>
@@ -226,18 +230,6 @@
                         </div>
 
                         <h3 class="profile-username text-center">{{$user_profile_data['name']}} {{$user_profile_data['name']}}</h3>
-
-                        <!-- <ul class="list-group list-group-unbordered mb-3">
-                    <li class="list-group-item">
-                        <b>Contact No :</b> <a class="float-right">{{$user_profile_data['contact_no']}}</a>
-                    </li>
-                    <li class="list-group-item">
-                        <b>Email :</b> <a class="float-right">{{$user_profile_data['email']}}</a>
-                    </li>
-                    <li class="list-group-item">
-                        <b>Address : </b> <a class="float-right">{{$user_profile_data['address']}}</a>
-                    </li>
-                </ul> -->
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -293,7 +285,8 @@
                                         <th>Price</th>
                                         <th>Location</th>
                                         <th>Created Date</th>
-                                        <th>Actions</th>
+                                        <th></th>
+                                        <th></th>
                                     </thead>
                                     <tbody>
                                         @foreach($user_adds as $user_add)
@@ -306,7 +299,9 @@
                                             <td>{{$user_add->created_at}}</td>
                                             <td>
                                                 <button class="btn btn-primary del" data-id="{{$user_add->id}}">Delete</buttton>
-                                                    <button class="btn btn-primary edit ml-1" data-id="{{$user_add->id}}">Edit</buttton>
+                                            </td>
+                                            <td>
+                                                <a href="/post_edit/id/{{$user_add->id}}" class="btn btn-primary edit ml-1">Edit</a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -315,63 +310,81 @@
                             </div>
                             <!-- /.tab-pane -->
 
-                            <div class="tab-pane" id="settings">
-                                <form class="form-horizontal" id="user_update_frm">
-                                    <div class="form-group row">
-                                        <label for="firstName" class="col-sm-2 col-form-label">First Name</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                            <div class="tab-pane" id="settings" data-user-id="{{$user_profile_data['id']}}">
+                                <div class="card card-light">
+                                    <div class="card-body">
+                                        <form class="form-horizontal" id="user_update_frm">
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="firstName" class="col-form-label">First Name</label>
+                                                    <div>
+                                                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="lastName" class="col-form-label">Last Name</label>
+                                                    <div>
+                                                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="email" class="col-form-label">Email</label>
+                                                    <div>
+                                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="contactNo" class="col-form-label">Contact No</label>
+                                                    <div>
+                                                        <input type="tel" class="form-control" id="contactNo" name="contactNo" placeholder="Contact No" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="nic" class="col-form-label">NIC</label>
+                                                    <div>
+                                                        <input type="nic" class="form-control" id="nic" name="nic" placeholder="NIC" required>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="address" class="col-form-label">Address</label>
+                                                    <div>
+                                                        <textarea class="form-control" id="address" name="address" placeholder="Address" required></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="form-group">
+                                            <button type="button" class="btn btn-warning" id="update_user_data">Update User Data</button>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="lastName" class="col-sm-2 col-form-label">Last Name</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="lastName" placeholder="Last Name">
-                                        </div>
+                                </div>
+                                <div class="card card-light">
+                                    <div class="card-body">
+                                        <form class="form-horizontal" id="pass_change_frm">
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="user_pass" class="col-form-label">New Password</label>
+                                                    <div><input type="password" class="form-control" id="user_pass" placeholder="Enter New Password" required></div>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="pass_retype" class="col-form-label">Re-enter Password</label>
+                                                    <div><input type="password" class="form-control" id="pass_retype" placeholder="Re-Enter Your New Password" required></div>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="email" class="col-sm-2 col-form-label">Email</label>
-                                        <div class="col-sm-10">
-                                            <input type="email" class="form-control" id="email" placeholder="Email">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="contact_no" class="col-sm-2 col-form-label">Contact No</label>
-                                        <div class="col-sm-10">
-                                            <input type="tel" class="form-control" id="contact_no" placeholder="Contact No">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="user_location" class="col-sm-2 col-form-label">Address</label>
-                                        <div class="col-sm-10">
-                                            <textarea class="form-control" id="user_location" placeholder="Address"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="offset-sm-2 col-sm-10">
-                                            <button type="button" class="btn btn-warning" id="update_user_date">Update User Data</button>
-                                        </div>
-                                    </div>
-                                </form>
-                                <form class="form-horizontal" id="pass_change_frm">
-                                    <div class="form-group row">
-                                        <label for="user_pass" class="col-sm-2 col-form-label">First Name</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="user_pass" placeholder="Enter New Password">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="pass_re_enter" class="col-sm-2 col-form-label">Last Name</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="pass_re_enter" placeholder="Re-Enter Your New Password">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="offset-sm-2 col-sm-10">
+                                    <div class="card-footer">
+                                        <div class="form-group">
                                             <button type="button" class="btn btn-warning" id="change_pass">Change Password</button>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                         <!-- /.tab-content -->
@@ -428,10 +441,22 @@
 <script src="{{ asset('/js/commenFunctions/functions.js') }}" type="text/javascript"></script>
 <!-- Select2 -->
 <script src="{{ asset('/plugins/select2/js/select2.full.min.js') }}"></script>
+<!--commen functions-->
+<script src="{{ asset('/js/commenFunctions/functions.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/js/commenFunctions/file_upload.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/js/registrationJs/registration.js') }}" type="text/javascript"></script>
+<!-- validation -->
+<script src="{{ asset('/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/fixedheader/3.2.3/js/dataTables.fixedHeader.min.js"></script>
 <script>
     $(document).ready(function() {
+        var table = $('#user_posts').DataTable({
+            responsive: true
+        });
 
+        new $.fn.dataTable.FixedHeader(table);
         var readURL = function(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -453,11 +478,207 @@
             location.reload();
         });
 
-
         $(".file-upload").on('change', function() {
             readURL(this);
         });
+
+        var user_profile;
+        user_profile = $("#user_update_frm").validate({
+            errorClass: "invalid",
+            rules: {
+                contactNo: {
+                    valid_lk_phone: true,
+                },
+                email: {
+                    valide_email: true,
+                }
+            },
+            highlight: function(element) {
+                $(element).parent().addClass('has-error');
+            },
+            unhighlight: function(element) {
+                $(element).parent().removeClass('has-error');
+            },
+            errorElement: 'span',
+            errorClass: 'validation-error-message help-block form-helper bold',
+            errorPlacement: function(error, element) {
+                if (element.parent('.input-group').length) {
+                    error.insertAfter(element.parent());
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+        });
+
+        var user_pass_form;
+        user_pass_form = $("#pass_change_frm").validate({
+            errorClass: "invalid",
+            rules: {
+                user_pass: {
+                    valide_code: true,
+                },
+                pass_retype: {
+                    valide_code: true,
+                }
+            },
+            highlight: function(element) {
+                $(element).parent().addClass('has-error');
+            },
+            unhighlight: function(element) {
+                $(element).parent().removeClass('has-error');
+            },
+            errorElement: 'span',
+            errorClass: 'validation-error-message help-block form-helper bold',
+            errorPlacement: function(error, element) {
+                if (element.parent('.input-group').length) {
+                    error.insertAfter(element.parent());
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+        });
     });
+
+    $("#update_user_data").click(function() {
+        let is_valid = jQuery("#user_update_frm").valid();
+        if (is_valid) {
+
+            let data = $('#user_update_frm').serializeArray();
+            let user_id = $('#settings').data('user-id');
+            let url = "./api/update_basic_data/id/" + user_id;
+
+            let url_email_nic = "./api/is_email_nic_exist";
+            let validation_data = {
+                email: $('#email').val(),
+                nic: $('#nic').val()
+            };
+            ajaxRequest("POST", url_email_nic, validation_data, function(resp) {
+                if (resp == 1) {
+                    $('#nic').addClass('has-error');
+                    Swal.fire("Failed!", "NIC already exist!", "warning");
+                } else if (resp == 2) {
+                    $('#email').addClass('has-error');
+                    Swal.fire("Failed!", "Email already exist!", "warning");
+                } else {
+                    $('#email').removeClass('has-error');
+                    $('#nic').removeClass('has-error');
+                    ajaxRequest("PUT", url, data, function(result) {
+                        if (result.status == 1) {
+                            $("#user_update_frm")[0].reset;
+                            Swal.fire(
+                                'Basic user data updation',
+                                'Successfully Updated!',
+                                'success'
+                            );
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: result.msg
+                            })
+                        }
+                        if (typeof callBack !== 'undefined' && callBack != null && typeof callBack ===
+                            "function") {
+                            callBack(result);
+                        }
+                    });
+                }
+            });
+        }
+    });
+
+    $('#change_pass').click(function() {
+        let is_valid = jQuery("#pass_change_frm").valid();
+        if (is_valid) {
+
+            let data = {
+                password: $('#user_pass').val()
+            };
+            let user_id = $('#settings').data('user-id');
+
+            if ($('#user_pass').val() != '' && $('#pass_retype').val() != '') {
+                if ($('#user_pass').val() === $('#pass_retype').val() && $('#user_pass').val().length > 5 && $('#pass_retype').val().length > 5) {
+                    let url = "./api/change_password/id/" + user_id;
+
+                    ajaxRequest("PUT", url, data, function(result) {
+                        if (result.status == 1) {
+                            $("#pass_change_frm")[0].reset;
+                            Swal.fire(
+                                'Password change',
+                                'Successfully changed!',
+                                'success'
+                            );
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: result.msg
+                            })
+                        }
+                        if (typeof callBack !== 'undefined' && callBack != null && typeof callBack ===
+                            "function") {
+                            callBack(result);
+                        }
+                    });
+                } else {
+                    Swal.fire(
+                        'Password confirmation',
+                        'Password confirmation failed!',
+                        'error'
+                    );
+                }
+            } else {
+                Swal.fire(
+                    'Form Validation',
+                    'Password and confirmation must completed!',
+                    'error'
+                );
+            }
+
+        }
+    });
+
+
+    jQuery.validator.setDefaults({
+        errorElement: "span",
+        ignore: ":hidden:not(select.chosen-select)",
+        errorPlacement: function(error, element) {
+            // Add the `help-block` class to the error element
+            error.addClass("help-block");
+            if (element.prop("type") === "checkbox") {
+                //                error.insertAfter(element.parent("label"));
+                error.appendTo(element.parents("validate-parent"));
+            } else if (element.is("select.chosen-select")) {
+                error.insertAfter(element.siblings(".chosen-container"));
+            } else if (element.prop("type") === "radio") {
+                error.appendTo(element.parents("div.validate-parent"));
+            } else {
+                error.insertAfter(element);
+            }
+        },
+        highlight: function(element, errorClass, validClass) {
+            jQuery(element).parents(".validate-parent").addClass("has-error").removeClass("has-success");
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            jQuery(element).parents(".validate-parent").removeClass("has-error");
+        }
+    });
+    jQuery.validator.addMethod("valide_code", function(value, element) {
+        return this.optional(element) || /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/.test(value);
+    }, "Please enter a valid Code");
+    jQuery.validator.addMethod("valid_name", function(value, element) {
+        return this.optional(element) || /^[a-zA-Z\s\.\&\-()]*$/.test(value);
+    }, "Please enter a valid name");
+    jQuery.validator.addMethod("valid_date", function(value, element) {
+        return this.optional(element) || /^\d{4}\-\d{2}\-\d{2}$/.test(value);
+    }, "Please enter a valid date ex. 2017-03-27");
+    jQuery.validator.addMethod("valide_email", function(value, element) {
+        return this.optional(element) || /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/.test(value);
+    }, "Please enter a valid email addresss");
+    jQuery.validator.addMethod("valid_lk_phone", function(value, element) {
+        return this.optional(element) || /^0[7][0-9]{8}$/.test(value);
+    }, "Please enter a valid phone number");
+</script>
 </script>
 
 </html>

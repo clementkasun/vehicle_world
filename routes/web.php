@@ -1,13 +1,8 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
-use App\Models\User;
-use App\Models\Graduate;
-use App\Models\Notifications;
-use App\Models\Vacancy;
-use App\Notifications\VacancyNotification;
 use App\Http\Controllers\PostController;
-use Illuminate\Support\Facades\Notification;
 use App\Http\Controllers\UserController;
 /*
   |--------------------------------------------------------------------------
@@ -23,37 +18,20 @@ use App\Http\Controllers\UserController;
 Route::get('/login_cust', function () {
     return view('auth.login');
 })->name('login_cust');
-
-Route::get('/register_customer', function () {
-    return view('auth.CustomerRegister');
-});
-
+Route::get('/register_customer', [CustomerController::class, 'index']);
 Route::get('/', [PostController::class, 'index']);
 Route::get('/dashboard', [PostController::class, 'index']);
-// Route::any('/filtered_posts', [PostController::class, 'filtered_adds']);
 Route::get('/home', [PostController::class, 'index']);
 Route::get('/post_filtered', function () {
     return view('post_filtered');
 });
-// Route::get('/post_profile', function () {
-//     return view('post_profile');
-// });
-
-Route::get('/logout', [App\Http\Controllers\UserController::class, 'logout']); # post
-
-#graduate registration
+Route::get('/logout', [CustomerController::class, 'logout']); # post
 Route::middleware(['auth:sanctum', 'verified'])->get('/post_registration', function () {
     return view('/registration/post_registration');
 })->name('post_registration');
-
 Route::get('/test', [PostController::class, 'index']);
-
-Route::get('/seller_profile', function () {
-    return view('seller_profile');
-});
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/user_profile', [UserController::class, 'myProfile']);
-Route::
-get('/about_us', function(){
+Route::middleware(['auth:sanctum', 'verified'])->get('/user_profile', [CustomerController::class, 'myProfile']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/post_edit/id/{post_id}', [PostController::class, 'get_post_update_form']);
+Route::get('/about_us', function(){
     return view('about_us');
 });

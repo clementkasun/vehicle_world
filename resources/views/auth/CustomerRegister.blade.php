@@ -8,70 +8,69 @@
     <title>VEHIAUTO.COM</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
-
+    <meta name="csrf-token" content="{{csrf_token()}}" />
+    <meta name="api-token" content="{{auth()->user()->api_token}}" />
     <!-- Favicons -->
     <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
     <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
     <!-- Vendor CSS Files -->
     <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/yearpicker/yearpicker.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/select2/css/select2.css') }}" rel="stylesheet">
-    <link href="{{ asset('plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('plugins/jqpaginator/jqpaginator.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('plugins/jquery-ui/jquery-ui.css') }}" rel="stylesheet">
-    <!-- UIkit CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.7.3/dist/css/uikit.min.css" />
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <style>
-        .add-font {
-            font-size: 14px;
-            color: #003e80;
-        }
-
-        .current {
-            color: green;
-        }
-
-        .w-5 {
-            display: none;
-        }
-
-        .yearpicker {
-            background-color: white;
-        }
-
-        @font-face {
-            font-family: myFirstFont;
-            src: url(sansation_light.woff);
-        }
-
-        div {
-            font-family: myFirstFont;
-            font-size: 14px;
+        .has-error {
+            color: red;
         }
     </style>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-208237465-1">
-    </script>
 </head>
 
-<body>
-    <!-- End Header -->
+<body class="container-fluid">
+    <!-- ======= Top Bar ======= -->
+    <section id="topbar" class="d-flex align-items-center">
+        <div class="container d-flex justify-content-center justify-content-md-between">
+            <div class="contact-info d-flex align-items-center">
+                <i class="bi bi-envelope-fill"></i><a href="mailto:vehicleworld@gmail.com">vehiauto@gmail.com</a>
+                <i class="bi bi-phone-fill phone-icon"></i> +94 763993288
+            </div>
+            <div class="social-links d-none d-md-block">
+                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="d-flex align-items-center">
+        <div class="container d-flex align-items-center">
+            <h2 class="logo me-auto">VEHIAUTO.COM</h2><i class="bi bi-list mobile-nav-toggle"></i>
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto active" href="{{ asset('home') }}">Home</a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('about_us') }}">About</a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('about_us') }}">Services</a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('post_registration') }}"><span class="btn btn-warning">post your add</span></a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('user_profile') }}">Account</a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('contact') }}">Contact</a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('logout') }}">Logout</a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('login_cust') }}">Login</a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('register_customer') }}">Register</a></li>
+                </ul>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
 
     <main id="main">
         <!-- general form elements -->
         <div class="card card-light">
             <div class="card-header text-center">
-                <h1> <b>Customer Registration</b> </h1>
+                <h2> <b>Customer Registration</b> </h2>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
@@ -79,53 +78,64 @@
                 <form id="cust_reg_frm">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="firstName">First Name*</label>
-                                <div><input type="text" class="form-control" name="firstName" id="firstName" value="" placeholder="FIRST NAME" required></div>
-                            </div>
-                            <div class="form-group">
-                                <label for="lastName">Last Name*</label>
-                                <div><input type="text" class="form-control" name="lastName" id="lastName" value="" placeholder="LAST NAME" required></div>
-                            </div>
-                            <div class="form-group">
-                                <label for="contactNo">Mobile No*</label>
-                                <div><input type="text" class="form-control" name="contactNo" id="contactNo" value="" minlength="10" maxlength="10" placeholder="TELPHONE" required>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="firstName">First Name*</label>
+                                    <div><input type="text" class="form-control" name="firstName" id="firstName" value="" placeholder="first name" required></div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="lastName">Last Name*</label>
+                                    <div><input type="text" class="form-control" name="lastName" id="lastName" value="" placeholder="last name" required></div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="nic">NIC*</label>
-                                <div><input type="text" class="form-control" name="nic" id="nic" value="" placeholder="NIC" required></div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="contactNo">Mobile No*</label>
+                                    <div><input type="text" class="form-control" name="contactNo" id="contactNo" value="" minlength="10" maxlength="10" placeholder="mobile number" required>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="nic">NIC*</label>
+                                    <div><input type="text" class="form-control" name="nic" id="nic" value="" placeholder="national identity card number" required></div>
+                                </div>
                             </div>
-                            <label>Profile Picture: <input type="file" class="form-control" id="file_input" accept="image/*"></label>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="file_input">Profile Picture: </label>
+                                    <input type="file" class="form-control" id="file_input" accept="image/*">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" name="email" id="email" value="" placeholder="email address">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="location">Location*</label>
+                                    <textarea cols="70" rows="2" class="form-control" name="location" id="location" value="" placeholder="location" required></textarea>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="form-group col-md-6">
+                                    <label for="password_origin">Password*</label>
+                                    <div><input type="password" class="form-control" name="password_origin" id="password_origin" value="" placeholder="password" required></div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="password_confirm">Confirm Password*</label>
+                                    <div><input type="password" class="form-control" name="password_confirm" id="password_confirm" value="" placeholder="retype password" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="save_customer" type="button" class=" btn btn-primary"><b>Register</b></button>
                         </div>
-                        <div class="col-md-6">
-                            <label for="email">Email</label>
-                            <div class="form-group">
-                                <input type="email" class="form-control" name="email" id="email" value="" placeholder="EMAIL">
-                            </div>
-                            <div class="form-group">
-                                <label for="location">Location*</label>
-                                <textarea cols="70" rows="2" class="form-control" name="location" id="location" value="" placeholder="Location" required></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="password_origin">Password*</label>
-                                <div><input type="password" class="form-control" name="password_origin" id="password_origin" value="" placeholder="PASSWORD" required></div>
-                            </div>
-                            <div class="form-group">
-                                <label for="password_confirm">Confirm Password*</label>
-                                <div><input type="password" class="form-control" name="password_confirm" id="password_confirm" value="" placeholder="CONFIRM PASSWORD" required>
-                                </div>
-                            </div>
+                        <div class="col-md-6 d-flex justify-content-center">
+                          <img src="./dist/img/reg.png" width="75%" height="auto"/>
                         </div>
                         <!-- /.card-body -->
                 </form>
             </div>
-            <div class="card-footer">
-                <button id="save_customer" type="button" class=" btn btn-lg btn-primary"><b>Register</b></button>
-                <a href="/login" class="btn btn-lg btn-success"><b>Login</b></a>
-            </div>
-            <!-- /.card -->
         </div>
+        <!-- /.card -->
     </main><!-- End #main -->
     <footer id="footer">
         <div class="container">
@@ -146,38 +156,40 @@
     </footer>
     <!-- Page script -->
     <script src="{{ asset('/plugins/jquery/jquery.min.js') }}"></script>
-    <!-- jQuery UI 1.11.4 -->
-    <script src="{{ asset('/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
-    <script src="../../../dist/js/adminlte.min.js"></script>
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+    <script src="{{ asset('../../../dist/js/adminlte.min.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="./../../../dist/js/demo.js"></script>
+    <script src="{{ asset('./../../../dist/js/demo.js') }}"></script>
 
     <!-- Bootstrap 4 -->
     <script src="{{ asset('/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
-    <!--Component Js -->
-    <script src="{{ asset('/js/combo.js') }}"></script>
-    <!--Data Tables -->
-    <script src="{{ asset('/plugins/datatables/jquery.dataTables.js') }}"></script>
-    <script src="{{ asset('/plugins/datatables-bs4/js/dataTables.bootstrap4.js') }}"></script>
-    <!--Tosts-->
-    <script src="{{ asset('/plugins/toastr/toastr.min.js') }}"></script>
-    <!-- Toastr -->
-    <!-- SweetAlert2 -->
-    <script src="{{ asset('/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
     <script src="{{ asset('/dist/js/demo.js') }}"></script>
-
+    <script src="{{asset('/plugins/datatables/jquery.dataTables.js')}}"></script>
+    <!--commen functions-->
+    <script src="{{ asset('/js/commenFunctions/functions.js') }}" type="text/javascript"></script>
+    <!-- Select2 -->
+    <script src="{{ asset('/plugins/select2/js/select2.full.min.js') }}"></script>
     <!--commen functions-->
     <script src="{{ asset('/js/commenFunctions/functions.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/js/commenFunctions/file_upload.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/js/registrationJs/registration.js') }}" type="text/javascript"></script>
     <!-- validation -->
     <script src="{{ asset('/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
-
+    <!-- SweetAlert2 -->
+    <script src="{{ asset('/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
     <script>
         var cust_reg_frm;
 
-        cust_reg_frm = jQuery("#cust_reg_frm").validate({
+        cust_reg_frm = $("#cust_reg_frm").validate({
             errorClass: "invalid",
             rules: {
                 tel: {
@@ -208,7 +220,7 @@
         });
 
         $("#save_customer").click(function() {
-            var is_valid = jQuery("#cust_reg_frm").valid();
+            var is_valid = $("#cust_reg_frm").valid();
             if (is_valid) {
                 var validation_data = {
                     email: $('#email').val(),
@@ -321,7 +333,6 @@
             return this.optional(element) || /^(19|20)\d{2}$/.test(value);
         }, "Please enter a valid year");
     </script>
-
 </body>
 
 </html>
