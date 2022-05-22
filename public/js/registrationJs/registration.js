@@ -23,34 +23,6 @@ function save_cus_details(object,callBack) {
     });
 }
 
-//function deleteGraduate(id, callBack) {
-//    if (confirm('Are sure to delete the Graduate!')) {
-//        url = "api/delete_graduate/" + id;
-//        ajaxRequest("DELETE", url, false, function (result) {
-//            console.log(result);
-//            if (result.status == 1) {
-//                $('#tbl_registered_graduates').ajax.reload();
-//                Swal.fire(
-//                        'Graduate registration',
-//                        'Successfully Deleted!',
-//                        'success'
-//                        );
-//                location.reload();
-//            } else {
-//                Swal.fire({
-//                    icon: 'error',
-//                    title: 'Oops...',
-//                    text: 'Something went wrong!',
-//                })
-//            }
-//
-//            if (typeof callBack !== 'undefined' && callBack != null && typeof callBack === "function") {
-//                callBack(result);
-//            }
-//        });
-//    }
-//}
-
 function delete_image(path, type) {
 
     if (path != '') {

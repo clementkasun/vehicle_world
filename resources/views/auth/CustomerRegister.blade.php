@@ -127,7 +127,7 @@
                             <button id="save_customer" type="button" class=" btn btn-primary"><b>Register</b></button>
                         </div>
                         <div class="col-md-6 d-flex justify-content-center">
-                          <img src="./dist/img/reg.png" width="75%" height="auto"/>
+                          <img class="mt-2" src="./dist/img/reg.png" width="75%" height="auto"/>
                         </div>
                         <!-- /.card-body -->
                 </form>
@@ -182,8 +182,7 @@
     <script src="{{ asset('/js/registrationJs/registration.js') }}" type="text/javascript"></script>
     <!-- validation -->
     <script src="{{ asset('/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
-    <!-- SweetAlert2 -->
-    <script src="{{ asset('/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         var cust_reg_frm;
 
