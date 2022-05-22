@@ -16,8 +16,8 @@ class CustomerRepository implements CustomerInterface
 {
     public function createCustomer($request)
     {
-        try {
-            \DB::transaction(function () use ($request) {
+        // try {
+        //     \DB::transaction(function () use ($request) {
                 request()->validate([
                     'firstName' => 'required|max:50|string',
                     'lastName' => 'sometimes|nullable|max:50|string',
@@ -56,11 +56,11 @@ class CustomerRepository implements CustomerInterface
 
 
                 $user->save();
-            });
-            return array('status' => 1, 'Customer Data Saving is successfull!');
-        } catch (Throwable $e) {
-            return array('status' => 0, 'Customer Data Saving is Unsuccessfull!');
-        }
+            // });
+        //     return array('status' => 1, 'Customer Data Saving is successfull!');
+        // } catch (Throwable $e) {
+        //     return array('status' => 0, 'Customer Data Saving is Unsuccessfull!');
+        // }
     }
 
     public function showCustomers()
