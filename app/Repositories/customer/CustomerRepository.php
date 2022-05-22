@@ -148,10 +148,7 @@ class CustomerRepository implements CustomerInterface
 
         if ($user_nic) {
             return 1;
-        }else{
-            return 0;
-        }
-        if ($user_email) {
+        }elseif($user_email) {
             return 2;
         }else{
             return 0;
