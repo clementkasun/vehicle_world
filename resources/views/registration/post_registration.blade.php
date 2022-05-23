@@ -264,48 +264,48 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="vehicle_sec" class="d-none col-12 col-md-6 mt-1">
+                        <div class="col-12 col-md-6 mt-1">
                             <div class="card card-light">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="main_image">Main Image</label>
                                         <div>
-                                            <input type="file" class="form-control" id="main_image" name="main_image" required>
+                                            <input type="file" class="form-control" id="main_image" name="main_image" accept="image/*">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="image_one">Image 1</label>
                                         <div>
-                                            <input type="file" class="form-control" id="image_one" name="image_one" required>
+                                            <input type="file" class="form-control" id="image_one" name="image_one" accept="image/*">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="image_two">Image 2</label>
                                         <div>
-                                            <input type="file" class="form-control" id="image_two" name="image_two" required>
+                                            <input type="file" class="form-control" id="image_two" name="image_two" accept="image/*">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="image_three">Image 3</label>
                                         <div>
-                                            <input type="file" class="form-control" id="image_three" name="image_three" required>
+                                            <input type="file" class="form-control" id="image_three" name="image_three" accept="image/*">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="image_four">Image 4</label>
                                         <div>
-                                            <input type="file" class="form-control" id="image_four" name="image_four" required>
+                                            <input type="file" class="form-control" id="image_four" name="image_four" accept="image/*">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="image_five">Image 5</label>
                                         <div>
-                                            <input type="file" class="form-control" id="image_five" name="image_five" required>
+                                            <input type="file" class="form-control" id="image_five" name="image_five" accept="image/*">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card card-light mt-1">
+                            <div class="card card-light mt-1 vehicle-sec">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="model"> Model *</label>
@@ -361,7 +361,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card card-light mt-1">
+                            <div class="card card-light mt-1 vehicle-sec">
                                 <div id="four_wheel_features" class="card-body">
                                     <div class="row">
                                         <div class="form-group col-lg-3">
@@ -535,14 +535,14 @@
         $('#post_type').change(function() {
             if ($(this).val() == 'VEHICLE' || $(this).val() == 'WANTED') {
                 $('#spare_part_sec').addClass('d-none');
-                $('#vehicle_sec').removeClass('d-none');
+                $('.vehicle-sec').removeClass('d-none');
             }
             if ($(this).val() == 'SPARE PART') {
-                $('#vehicle_sec').addClass('d-none');
+                $('.vehicle-sec').addClass('d-none');
                 $('#spare_part_sec').removeClass('d-none');
             }
             if ($(this).val() == '') {
-                $('#vehicle_sec').addClass('d-none');
+                $('.vehicle-sec').addClass('d-none');
                 $('#spare_part_sec').addClass('d-none');
             }
         });

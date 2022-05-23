@@ -270,37 +270,37 @@
                                     <div class="form-group">
                                         <label for="main_image">Main Image</label>
                                         <div>
-                                            <input type="file" class="form-control" id="main_image" name="main_image" required>
+                                            <input type="file" class="form-control" id="main_image" name="main_image" accept="image/*">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="image_one">Image 1</label>
                                         <div>
-                                            <input type="file" class="form-control" id="image_one" name="image_one" required>
+                                            <input type="file" class="form-control" id="image_one" name="image_one" accept="image/*">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="image_two">Image 2</label>
                                         <div>
-                                            <input type="file" class="form-control" id="image_two" name="image_two" required>
+                                            <input type="file" class="form-control" id="image_two" name="image_two" accept="image/*">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="image_three">Image 3</label>
                                         <div>
-                                            <input type="file" class="form-control" id="image_three" name="image_three" required>
+                                            <input type="file" class="form-control" id="image_three" name="image_three" accept="image/*">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="image_four">Image 4</label>
                                         <div>
-                                            <input type="file" class="form-control" id="image_four" name="image_four" required>
+                                            <input type="file" class="form-control" id="image_four" name="image_four" accept="image/*">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="image_five">Image 5</label>
                                         <div>
-                                            <input type="file" class="form-control" id="image_five" name="image_five" required>
+                                            <input type="file" class="form-control" id="image_five" name="image_five" accept="image/*">
                                         </div>
                                     </div>
                                 </div>

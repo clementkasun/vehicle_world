@@ -571,19 +571,21 @@
 
 <!-- Template Main JS File -->
 <script src="assets/js/main.js"></script>
+
 <!-- Page script -->
 <script src="{{ asset('/plugins/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('../../../dist/js/adminlte.min.js') }}"></script>
+
 <!-- AdminLTE for demo purposes -->
-<script src="{{ asset('./../../../dist/js/demo.js') }}"></script>
+<script src="{{ asset('/dist/js/adminlte.min.js') }}"></script>
 
 <!-- Bootstrap 4 -->
 <script src="{{ asset('/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-
 <script src="{{ asset('/dist/js/demo.js') }}"></script>
 <script src="{{asset('/plugins/datatables/jquery.dataTables.js')}}"></script>
+
 <!--commen functions-->
 <script src="{{ asset('/js/commenFunctions/functions.js') }}" type="text/javascript"></script>
+
 <!-- Select2 -->
 <script src="{{ asset('/plugins/select2/js/select2.full.min.js') }}"></script>
 <script>
