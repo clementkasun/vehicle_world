@@ -160,7 +160,12 @@ class PostRepository implements PostInterface
             }
 
             $request->validate([
-                'main_image' => 'required|mimes:jpeg,bmp,png', // Only allow .jpg, .bmp and .png file types.
+                'main_image' => 'sometimes|nullable|image|mimes:jpeg,bmp,png,gif|max:2048', // Only allow .jpg, .bmp and .png file types.
+                'image_one' => 'sometimes|nullable|image|mimes:jpeg,bmp,png,gif|max:2048', // Only allow .jpg, .bmp and .png file types.
+                'image_two' => 'sometimes|nullable|image|mimes:jpeg,bmp,png,gif|max:2048', // Only allow .jpg, .bmp and .png file types.
+                'image_three' => 'sometimes|nullable|image|mimes:jpeg,bmp,png,gif|max:2048', // Only allow .jpg, .bmp and .png file types.
+                'image_four' => 'sometimes|nullable|image|mimes:jpeg,bmp,png,gif|max:2048', // Only allow .jpg, .bmp and .png file types.
+                'image_five' => 'sometimes|nullable|image|mimes:jpeg,bmp,png,gif|max:2048', // Only allow .jpg, .bmp and .png file types.
             ]);
             //get the post to update
             $image_path_update = Post::find($post_id);
@@ -476,21 +481,34 @@ class PostRepository implements PostInterface
         $post_update->address = $request->address;
         $post_update->save();
 
+
+        $isAc = 0;
+        $isPowerSteer = 0;
+        $isPowerMirroring = 0;
+        $isPowerWindow = 0;
+        $on_going_lease = 0;
+
+        ($request->isAc == 'on') ? $isAc = 1 : null;
+        ($request->isPowerSteer == 'on') ? $isPowerSteer = 1 : null;
+        ($request->isPowerMirroring == 'on') ? $isPowerMirroring = 1 : null;
+        ($request->isPowerWindow == 'on') ? $isPowerWindow = 1 : null;
+        ($request->on_going_lease == 'on') ? $on_going_lease = 1 : null;
+
         if (strstr($post_type, "VEHI")) {
             $vehicle_id = $post_update->vehicle_id;
             $vehicle = Vehicle::find($vehicle_id);
             $vehicle->model = $request->model;
             $vehicle->start_type = $request->start_type;
             $vehicle->manufactured_year = $request->manufactured_year;
-            $vehicle->on_going_lease = $request->on_going_lease;
+            $vehicle->on_going_lease =  $on_going_lease;
             $vehicle->transmission = $request->transmission;
             $vehicle->fuel_type = $request->fuel_type;
             $vehicle->engine_capacity = $request->engine_capacity;
             $vehicle->millage = $request->millage;
-            $vehicle->isAc = $request->isAc;
-            $vehicle->isPowerSteer = $request->isPowerSteer;
-            $vehicle->isPowerMirroring = $request->isPowerMirroring;
-            $vehicle->isPowerWindow = $request->isPowerWindow;
+            $vehicle->isAc = $isAc;
+            $vehicle->isPowerSteer =   $isPowerSteer;
+            $vehicle->isPowerMirroring = $isPowerMirroring;
+            $vehicle->isPowerWindow = $isPowerWindow;
             $vehicle->save();
         }
 
@@ -503,12 +521,12 @@ class PostRepository implements PostInterface
         }
 
         $request->validate([
-            'main_image' => 'sometimes|required|nullable|image|mimes:jpeg,bmp,png,gif|max:2048', // Only allow .jpg, .bmp and .png file types.
-            'image_one' => 'sometimes|required|nullable|image|mimes:jpeg,bmp,png,gif|max:2048', // Only allow .jpg, .bmp and .png file types.
-            'image_two' => 'sometimes|required|nullable|image|mimes:jpeg,bmp,png,gif|max:2048', // Only allow .jpg, .bmp and .png file types.
-            'image_three' => 'sometimes|required|nullable|image|mimes:jpeg,bmp,png,gif|max:2048', // Only allow .jpg, .bmp and .png file types.
-            'image_four' => 'sometimes|required|nullable|image|mimes:jpeg,bmp,png,gif|max:2048', // Only allow .jpg, .bmp and .png file types.
-            'image_five' => 'sometimes|required|nullable|image|mimes:jpeg,bmp,png,gif|max:2048', // Only allow .jpg, .bmp and .png file types.
+            'main_image' => 'sometimes|nullable|image|mimes:jpeg,bmp,png,gif|max:2048', // Only allow .jpg, .bmp and .png file types.
+            'image_one' => 'sometimes|nullable|image|mimes:jpeg,bmp,png,gif|max:2048', // Only allow .jpg, .bmp and .png file types.
+            'image_two' => 'sometimes|nullable|image|mimes:jpeg,bmp,png,gif|max:2048', // Only allow .jpg, .bmp and .png file types.
+            'image_three' => 'sometimes|nullable|image|mimes:jpeg,bmp,png,gif|max:2048', // Only allow .jpg, .bmp and .png file types.
+            'image_four' => 'sometimes|nullable|image|mimes:jpeg,bmp,png,gif|max:2048', // Only allow .jpg, .bmp and .png file types.
+            'image_five' => 'sometimes|nullable|image|mimes:jpeg,bmp,png,gif|max:2048', // Only allow .jpg, .bmp and .png file types.
         ]);
 
         $random_name = uniqid($id);
