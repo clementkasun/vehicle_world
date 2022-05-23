@@ -159,18 +159,18 @@ class PostRepository implements PostInterface
                 $spare_part_id_update->save();
             }
 
-            $request->validate([
-                'main_image' => 'sometimes|required|image', // Only allow .jpg, .bmp and .png file types.
-                'image_one' => 'sometimes|required|image', // Only allow .jpg, .bmp and .png file types.
-                'image_two' => 'sometimes|required|image', // Only allow .jpg, .bmp and .png file types.
-                'image_three' => 'sometimes|required|image', // Only allow .jpg, .bmp and .png file types.
-                'image_four' => 'sometimes|required|image', // Only allow .jpg, .bmp and .png file types.
-                'image_five' => 'sometimes|required|image', // Only allow .jpg, .bmp and .png file types.
-            ]);
+            // $request->validate([
+            //     'main_image' => 'sometimes|required|image', // Only allow .jpg, .bmp and .png file types.
+            //     'image_one' => 'sometimes|required|image', // Only allow .jpg, .bmp and .png file types.
+            //     'image_two' => 'sometimes|required|image', // Only allow .jpg, .bmp and .png file types.
+            //     'image_three' => 'sometimes|required|image', // Only allow .jpg, .bmp and .png file types.
+            //     'image_four' => 'sometimes|required|image', // Only allow .jpg, .bmp and .png file types.
+            //     'image_five' => 'sometimes|required|image', // Only allow .jpg, .bmp and .png file types.
+            // ]);
             //get the post to update
             $image_path_update = Post::find($post_id);
             $random_name = uniqid($post_id);
-            if ($request->main_image != 'undefined') {
+            if ($request->main_image != 'null') {
                 $main_ext = $request->main_image->extension();
                 $path_main = $request->file('main_image')->storeAs(
                     '/public/post_images' . '/' . $post_id,
@@ -178,7 +178,7 @@ class PostRepository implements PostInterface
                 );
                 $image_path_update->main_image = str_replace("public/", "/", $path_main);
             }
-            if ($request->image_one != 'undefined') {
+            if ($request->image_one != 'null') {
                 $img_one_ext = $request->image_one->extension();
                 $path_one = $request->file('image_one')->storeAs(
                     '/public/post_images' . '/' . $post_id,
@@ -186,7 +186,7 @@ class PostRepository implements PostInterface
                 );
                 $image_path_update->image_1 = str_replace("public/", "/", $path_one);
             }
-            if ($request->image_two != 'undefined') {
+            if ($request->image_two != 'null') {
                 $img_two_ext = $request->image_two->extension();
                 $path_two = $request->file('image_two')->storeAs(
                     '/public/post_images' . '/' . $post_id,
@@ -194,7 +194,7 @@ class PostRepository implements PostInterface
                 );
                 $image_path_update->image_2 = str_replace("public/", "/", $path_two);
             }
-            if ($request->image_three != 'undefined') {
+            if ($request->image_three != 'null') {
                 $img_three_ext = $request->image_three->extension();
                 $path_three = $request->file('image_three')->storeAs(
                     '/public/post_images' . '/' . $post_id,
@@ -202,7 +202,7 @@ class PostRepository implements PostInterface
                 );
                 $image_path_update->image_3 = str_replace("public/", "/", $path_three);
             }
-            if ($request->image_four != 'undefined') {
+            if ($request->image_four != 'null') {
                 $img_four_ext = $request->image_four->extension();
                 $path_four = $request->file('image_four')->storeAs(
                     '/public/post_images' . '/' . $post_id,
@@ -210,7 +210,7 @@ class PostRepository implements PostInterface
                 );
                 $image_path_update->image_4 = str_replace("public/", "/", $path_main);
             }
-            if ($request->image_five != 'undefined') {
+            if ($request->image_five != 'null') {
                 $img_five_ext = $request->image_five->extension();
                 $path_five = $request->file('image_five')->storeAs(
                     '/public/post_images' . '/' . $post_id,
@@ -531,7 +531,7 @@ class PostRepository implements PostInterface
 
         $random_name = uniqid($id);
         dd($request->main_image);
-        if ($request->main_image != null) {
+        if ($request->main_image != "null") {
             $main_ext = $request->main_image->extension();
             $path_main = $request->file('main_image')->storeAs(
                 '/public/post_images' . '/' . $id,
@@ -539,7 +539,7 @@ class PostRepository implements PostInterface
             );
             $post_update->main_image = str_replace("public/", "/", $path_main);
         }
-        if ($request->image_one != null) {
+        if ($request->image_one != "null") {
             $img_one_ext = $request->image_one->extension();
             $path_one = $request->file('image_one')->storeAs(
                 '/public/post_images' . '/' . $id,
@@ -547,7 +547,7 @@ class PostRepository implements PostInterface
             );
             $post_update->image_1 = str_replace("public/", "/", $path_one);
         }
-        if ($request->image_two != null) {
+        if ($request->image_two != "null") {
             $img_two_ext = $request->image_two->extension();
             $path_two = $request->file('image_two')->storeAs(
                 '/public/post_images' . '/' . $id,
@@ -555,7 +555,7 @@ class PostRepository implements PostInterface
             );
             $post_update->image_2 = str_replace("public/", "/", $path_two);
         }
-        if ($request->image_three != null) {
+        if ($request->image_three != "null") {
             $img_three_ext = $request->image_three->extension();
             $path_three = $request->file('image_three')->storeAs(
                 '/public/post_images' . '/' . $id,
@@ -563,7 +563,7 @@ class PostRepository implements PostInterface
             );
             $post_update->image_3 = str_replace("public/", "/", $path_three);
         }
-        if ($request->image_four != null) {
+        if ($request->image_four != "null") {
             $img_four_ext = $request->image_four->extension();
             $path_four = $request->file('image_four')->storeAs(
                 '/public/post_images' . '/' . $id,
@@ -571,7 +571,7 @@ class PostRepository implements PostInterface
             );
             $post_update->image_4 = str_replace("public/", "/", $path_main);
         }
-        if ($request->image_five != null) {
+        if ($request->image_five != "null") {
             $img_five_ext = $request->image_five->extension();
             $path_five = $request->file('image_five')->storeAs(
                 '/public/post_images' . '/' . $id,
