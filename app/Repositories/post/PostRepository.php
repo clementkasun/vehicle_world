@@ -530,7 +530,7 @@ class PostRepository implements PostInterface
         // ]);
 
         $random_name = uniqid($id);
-        dd($request->main_image == null);
+        dd($request->main_image);
         if ($request->main_image != null) {
             $main_ext = $request->main_image->extension();
             $path_main = $request->file('main_image')->storeAs(
