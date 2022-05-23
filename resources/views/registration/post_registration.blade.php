@@ -606,32 +606,32 @@
                 object.image_three = ($('#image_three')[0].files[0] != undefined) ? $('#image_three')[0].files[0] : null;
                 object.image_four = ($('#image_four')[0].files[0] != undefined) ? $('#image_four')[0].files[0] : null;
                 object.image_five = ($('#image_five')[0].files[0] != undefined) ? $('#image_five')[0].files[0] : null;
-console.log(object);
-                // let url = "./api/save_post";
-                // ulploadFileWithData(url, object, function(result) {
-                //     // ajaxRequest("POST", url, data, function (result) {
-                //     if (result.status == 1) {
-                //         // $("#post_registration")[0].reset;
-                //         Swal.fire(
-                //             'Post Registration',
-                //             'Successfully Posted!',
-                //             'success'
-                //         );
-                //         window.location.href = "/public/home";
-                //         //            location.reload();
-                //     } else {
-                //         Swal.fire({
-                //             icon: 'error',
-                //             title: 'Oops...',
-                //             text: result.msg
-                //         })
-                //     }
-                //     //        $('#degree_registration').trigger("reset");
-                //     if (typeof callBack !== 'undefined' && callBack != null && typeof callBack ===
-                //         "function") {
-                //         callBack(result);
-                //     }
-                // });
+
+                let url = "./api/save_post";
+                ulploadFileWithData(url, object, function(result) {
+                    // ajaxRequest("POST", url, data, function (result) {
+                    if (result.status == 1) {
+                        // $("#post_registration")[0].reset;
+                        Swal.fire(
+                            'Post Registration',
+                            'Successfully Posted!',
+                            'success'
+                        );
+                        window.location.href = "/public/home";
+                        //            location.reload();
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: result.msg
+                        })
+                    }
+                    //        $('#degree_registration').trigger("reset");
+                    if (typeof callBack !== 'undefined' && callBack != null && typeof callBack ===
+                        "function") {
+                        callBack(result);
+                    }
+                });
             }
         });
 
