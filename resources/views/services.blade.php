@@ -208,8 +208,8 @@
             <div class="row">
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="aboutus">
-                        <h2 class="aboutus-title">About Us</h2>
-                        <p class="aboutus-text">We are vehicle sale platform which facilitates the ability to post without any charges.</p>
+                        <h2 class="aboutus-title">Services</h2>
+                        <p class="aboutus-text">We offer various services for your vehicle requirements.</p>
                         <p class="aboutus-text">Join with us to find and buy profitable assets</p>
                         <a class="aboutus-more" href="/more">read more</a>
                     </div>

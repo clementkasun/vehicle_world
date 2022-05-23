@@ -24,6 +24,16 @@
         .has-error {
             color: red;
         }
+
+        footer {
+            position: relative;
+            padding: 10px 10px 0px 10px;
+            bottom: 0;
+            width: 100%;
+            /* Height of the footer*/ 
+            height: 20em;
+            background: grey;
+        }
     </style>
 </head>
 
@@ -52,10 +62,10 @@
                 <ul>
                     <li><a class="nav-link scrollto active" href="{{ asset('home') }}">Home</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('about_us') }}">About</a></li>
-                    <li><a class="nav-link scrollto" href="{{ asset('about_us') }}">Services</a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('services') }}">Services</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('post_registration') }}"><span class="btn btn-warning">post your add</span></a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('user_profile') }}">Account</a></li>
-                    <li><a class="nav-link scrollto" href="{{ asset('contact') }}">Contact</a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('contacts') }}">Contact</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('logout') }}">Logout</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('login_cust') }}">Login</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('register_customer') }}">Register</a></li>
