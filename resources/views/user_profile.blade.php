@@ -299,7 +299,7 @@
                                                 <button class="btn btn-primary del float-left" data-id="{{$user_add->id}}">Delete</buttton>
                                             </td>
                                             <td>
-                                                <a href="/post_edit/id/{{$user_add->id}}" class="btn btn-primary edit float-left">Edit Data</a>
+                                                <a href="./post_edit/id/{{$user_add->id}}" class="btn btn-primary edit float-left">Edit Data</a>
                                             </td>
                                         </tr>
                                         @endforeach
