@@ -461,8 +461,8 @@ class PostRepository implements PostInterface
 
     public function postUpdate($request, $id)
     {
-        // try {
-        //     DB::beginTransaction();
+        try {
+            DB::beginTransaction();
 
         $post_type = $request->post_type;
         //get the post from id
@@ -571,12 +571,12 @@ class PostRepository implements PostInterface
         }
 
 
-        //     DB::commit();
-        //     return array('status' => 1, 'msg' => 'Post has Updated successfully!');
-        // } catch (\Exception $e) {
-        //     DB::rollBack();
-        //     return array('status' => 0, 'msg' => 'Post Updation is Unsuccessfull!');
-        // }
+            DB::commit();
+            return array('status' => 1, 'msg' => 'Post has Updated successfully!');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return array('status' => 0, 'msg' => 'Post Updation is Unsuccessfull!');
+        }
     }
 
     public function removePost($post_id)
