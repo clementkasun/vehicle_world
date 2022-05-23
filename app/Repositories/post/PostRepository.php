@@ -520,14 +520,14 @@ class PostRepository implements PostInterface
             $spare_part_update->save();
         }
  
-        $request->validate([
-            'main_image' => 'nullable|image', // Only allow .jpg, .bmp and .png file types.
-            'image_one' => 'nullable|sometimes|image|mimes:jpeg,bmp,png,jpg,svg|max:2000', // Only allow .jpg, .bmp and .png file types.
-            'image_two' => 'nullable|sometimes|image|mimes:jpeg,bmp,png,jpg,svg|max:2000', // Only allow .jpg, .bmp and .png file types.
-            'image_three' => 'nullable|sometimes|image|mimes:jpeg,bmp,png,jpg,svg|max:2000', // Only allow .jpg, .bmp and .png file types.
-            'image_four' => 'nullable|sometimes|image|mimes:jpeg,bmp,png,jpg,svg|max:2000', // Only allow .jpg, .bmp and .png file types.
-            'image_five' => 'nullable|sometimes|image|mimes:jpeg,bmp,png,jpg,svg|max:2000', // Only allow .jpg, .bmp and .png file types.
-        ]);
+        // $request->validate([
+        //     'main_image' => 'nullable|sometimes|image|mimes:jpeg,bmp,png,jpg,svg|max:2000', // Only allow .jpg, .bmp and .png file types.
+        //     'image_one' => 'nullable|sometimes|image|mimes:jpeg,bmp,png,jpg,svg|max:2000', // Only allow .jpg, .bmp and .png file types.
+        //     'image_two' => 'nullable|sometimes|image|mimes:jpeg,bmp,png,jpg,svg|max:2000', // Only allow .jpg, .bmp and .png file types.
+        //     'image_three' => 'nullable|sometimes|image|mimes:jpeg,bmp,png,jpg,svg|max:2000', // Only allow .jpg, .bmp and .png file types.
+        //     'image_four' => 'nullable|sometimes|image|mimes:jpeg,bmp,png,jpg,svg|max:2000', // Only allow .jpg, .bmp and .png file types.
+        //     'image_five' => 'nullable|sometimes|image|mimes:jpeg,bmp,png,jpg,svg|max:2000', // Only allow .jpg, .bmp and .png file types.
+        // ]);
 
         $random_name = uniqid($id);
         if ($request->main_image != null) {
