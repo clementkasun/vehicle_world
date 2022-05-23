@@ -296,10 +296,10 @@
                                             <td>{{$user_add->location}}</td>
                                             <td>{{$user_add->created_at}}</td>
                                             <td>
-                                                <button class="btn btn-primary del" data-id="{{$user_add->id}}">Delete</buttton>
+                                                <button class="btn btn-primary del float-left" data-id="{{$user_add->id}}">Delete</buttton>
                                             </td>
                                             <td>
-                                                <a href="/post_edit/id/{{$user_add->id}}" class="btn btn-primary edit ml-1">Edit</a>
+                                                <a href="/post_edit/id/{{$user_add->id}}" class="btn btn-primary edit float-left">Edit Data</a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -451,7 +451,10 @@
 <script>
     $(document).ready(function() {
         var table = $('#user_posts').DataTable({
-            responsive: true
+            responsive: true,
+            searching: false, 
+            paging: false,
+            info: false
         });
 
         new $.fn.dataTable.FixedHeader(table);

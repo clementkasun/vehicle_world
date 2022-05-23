@@ -74,7 +74,7 @@
             <div class="card-body">
                 <form id='post_registration'>
                     <div class="row">
-                        <section id="post_section" class="col-12 col-md-6">
+                        <div id="post_section" class="col-12 col-md-6">
                             <div class="card card-light">
                                 <div class="card-body">
                                     <input type="text" id="user_id" name="user_id" value="{{ Auth::id() }}" hidden>
@@ -263,8 +263,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </section>
-                        <section id="vehicle_sec" class="d-none col-12 col-md-6">
+                        </div>
+                        <div id="vehicle_sec" class="d-none col-12 col-md-6 mt-1">
                             <div class="card card-light">
                                 <div class="card-body">
                                     <div class="form-group">
@@ -399,8 +399,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </section>
-                        <section id="spare_part_sec" class="d-none col-12 col-md-6">
+                        </div>
+                        <div id="spare_part_sec" class="d-none col-12 col-md-6">
                             <div class="card card-light">
                                 <div class="card-body">
                                     <div class="form-group">
@@ -466,7 +466,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </section>
+                        </div>
                         <!--</div>-->
                     </div>
                     <!-- /.card-body -->
