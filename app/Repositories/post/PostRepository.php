@@ -510,57 +510,58 @@ class PostRepository implements PostInterface
                 'image_four' => 'sometimes|required|nullable|image|mimes:jpeg,bmp,png,gif|max:2048', // Only allow .jpg, .bmp and .png file types.
                 'image_five' => 'sometimes|required|nullable|image|mimes:jpeg,bmp,png,gif|max:2048', // Only allow .jpg, .bmp and .png file types.
             ]);
+
+            $random_name = uniqid($id);
+            if ($request->main_image != null) {
+                $main_ext = $request->main_image->extension();
+                $path_main = $request->file('main_image')->storeAs(
+                    '/public/post_images' . '/' . $id,
+                    'main_img' . '.' . $random_name . '.' . $main_ext
+                );
+                $post_update->main_image = str_replace("public/", "/", $path_main);
+            }
+            if ($request->image_one != null) {
+                $img_one_ext = $request->image_one->extension();
+                $path_one = $request->file('image_one')->storeAs(
+                    '/public/post_images' . '/' . $id,
+                    'img_one' . '.' . $random_name . '.' . $img_one_ext
+                );
+                $post_update->image_1 = str_replace("public/", "/", $path_one);
+            }
+            if ($request->image_two != null) {
+                $img_two_ext = $request->image_two->extension();
+                $path_two = $request->file('image_two')->storeAs(
+                    '/public/post_images' . '/' . $id,
+                    'img_two' . '.' . $random_name . '.' . $img_two_ext
+                );
+                $post_update->image_2 = str_replace("public/", "/", $path_two);
+            }
+            if ($request->image_three != null) {
+                $img_three_ext = $request->image_three->extension();
+                $path_three = $request->file('image_three')->storeAs(
+                    '/public/post_images' . '/' . $id,
+                    'img_three' . '.' . $random_name . '.' . $img_three_ext
+                );
+                $post_update->image_3 = str_replace("public/", "/", $path_three);
+            }
+            if ($request->image_four != null) {
+                $img_four_ext = $request->image_four->extension();
+                $path_four = $request->file('image_four')->storeAs(
+                    '/public/post_images' . '/' . $id,
+                    'img_four' . '.' . $random_name . '.' . $img_four_ext
+                );
+                $post_update->image_4 = str_replace("public/", "/", $path_main);
+            }
+            if ($request->image_five != null) {
+                $img_five_ext = $request->image_five->extension();
+                $path_five = $request->file('image_five')->storeAs(
+                    '/public/post_images' . '/' . $id,
+                    'img_five' . '.' . $random_name . '.' . $img_five_ext
+                );
+                $post_update->image_5 = str_replace("public/", "/", $path_five);
+            }
         }
 
-        $random_name = uniqid($id);
-        if ($request->main_image != null) {
-            $main_ext = $request->main_image->extension();
-            $path_main = $request->file('main_image')->storeAs(
-                '/public/post_images' . '/' . $id,
-                'main_img' . '.' . $random_name . '.' . $main_ext
-            );
-            $post_update->main_image = str_replace("public/", "/", $path_main);
-        }
-        if ($request->image_one != null) {
-            $img_one_ext = $request->image_one->extension();
-            $path_one = $request->file('image_one')->storeAs(
-                '/public/post_images' . '/' . $id,
-                'img_one' . '.' . $random_name . '.' . $img_one_ext
-            );
-            $post_update->image_1 = str_replace("public/", "/", $path_one);
-        }
-        if ($request->image_two != null) {
-            $img_two_ext = $request->image_two->extension();
-            $path_two = $request->file('image_two')->storeAs(
-                '/public/post_images' . '/' . $id,
-                'img_two' . '.' . $random_name . '.' . $img_two_ext
-            );
-            $post_update->image_2 = str_replace("public/", "/", $path_two);
-        }
-        if ($request->image_three != null) {
-            $img_three_ext = $request->image_three->extension();
-            $path_three = $request->file('image_three')->storeAs(
-                '/public/post_images' . '/' . $id,
-                'img_three' . '.' . $random_name . '.' . $img_three_ext
-            );
-            $post_update->image_3 = str_replace("public/", "/", $path_three);
-        }
-        if ($request->image_four != null) {
-            $img_four_ext = $request->image_four->extension();
-            $path_four = $request->file('image_four')->storeAs(
-                '/public/post_images' . '/' . $id,
-                'img_four' . '.' . $random_name . '.' . $img_four_ext
-            );
-            $post_update->image_4 = str_replace("public/", "/", $path_main);
-        }
-        if ($request->image_five != null) {
-            $img_five_ext = $request->image_five->extension();
-            $path_five = $request->file('image_five')->storeAs(
-                '/public/post_images' . '/' . $id,
-                'img_five' . '.' . $random_name . '.' . $img_five_ext
-            );
-            $post_update->image_5 = str_replace("public/", "/", $path_five);
-        }
         $post_update->save();
 
         //     DB::commit();
