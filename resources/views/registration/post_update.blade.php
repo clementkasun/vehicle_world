@@ -641,7 +641,7 @@
                     isPowerWindow: $('input[name="isPowerWindow"]:checked').val(),
                     part_category: $('#part_category').val(),
                 };
-
+console.log($('#main_image')[0]);
                 object.main_image = ($('#main_image')[0].files[0] != 'undefined') ? $('#main_image')[0].files[0] : null;
                 object.image_one = ($('#image_one')[0].files[0] != 'undefined') ? $('#image_one')[0].files[0] : null;
                 object.image_two = ($('#image_two')[0].files[0] != 'undefined') ? $('#image_two')[0].files[0] : null;
