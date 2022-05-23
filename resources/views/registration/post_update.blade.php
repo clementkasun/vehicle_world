@@ -399,80 +399,80 @@
                                     </div>
                                 </div>
                             </div>
-                        </section>
-                        <section id="spare_part_sec" class="d-none col-12 col-md-6">
-                            <div class="card card-light">
-                                <div class="card-body">
-                                    <div class="form-group">
-                                        <label for="part_category">Part Category</label>
-                                        <div>
-                                            <select id="part_category" name="part_category" class="form-control" required>
-                                                <option value="">Select</option>
-                                                <option value="Air Conditioning &amp; Heating">Air Conditioning &amp; Heating
-                                                </option>
-                                                <option value="Air Intake &amp; Fuel Delivery">Air Intake &amp; Fuel Delivery
-                                                </option>
-                                                <option value="Axles &amp; Axle Parts">Axles &amp; Axle Parts</option>
-                                                <option value="Battery">Battery</option>
-                                                <option value="Brakes">Brakes</option>
-                                                <option value="Car Audio Systems">Car Audio Systems</option>
-                                                <option value="Car DVR">Car DVR</option>
-                                                <option value="Car Tuning &amp; Styling">Car Tuning &amp; Styling</option>
-                                                <option value="Carburetor">Carburetor</option>
-                                                <option value="Chassis">Chassis</option>
-                                                <option value="Electrical Components">Electrical Components</option>
-                                                <option value="Emission Systems">Emission Systems</option>
-                                                <option value="Engine Cooling">Engine Cooling</option>
-                                                <option value="Engines &amp; Engine Parts">Engines &amp; Engine Parts</option>
-                                                <option value="Exhausts &amp; Exhaust Parts">Exhausts &amp; Exhaust Parts
-                                                </option>
-                                                <option value="External &amp; Body Parts">External &amp; Body Parts</option>
-                                                <option value="External Lights &amp; Indicators">External Lights &amp;
-                                                    Indicators</option>
-                                                <option value="Footrests, Pedals &amp; Pegs">Footrests, Pedals &amp; Pegs
-                                                </option>
-                                                <option value="Freezer">Freezer</option>
-                                                <option value="Gauges, Dials &amp; Instruments">Gauges, Dials &amp; Instruments
-                                                </option>
-                                                <option value="Generator">Generator</option>
-                                                <option value="GPS &amp; In-Car Technology">GPS &amp; In-Car Technology</option>
-                                                <option value="Handlebars, Grips &amp; Levers">Handlebars, Grips &amp; Levers
-                                                </option>
-                                                <option value="Helmets, Clothing &amp; Protection">Helmets, Clothing &amp;
-                                                    Protection</option>
-                                                <option value="Interior Parts &amp; Furnishings">Interior Parts &amp;
-                                                    Furnishings</option>
-                                                <option value="Lighting &amp; Indicators">Lighting &amp; Indicators</option>
-                                                <option value="Mirrors">Mirrors</option>
-                                                <option value="Oils, Lubricants &amp; Fluids">Oils, Lubricants &amp; Fluids
-                                                </option>
-                                                <option value="Other">Other</option>
-                                                <option value="Reverse Camera">Reverse Camera</option>
-                                                <option value="Seating">Seating</option>
-                                                <option value="Service Kits">Service Kits</option>
-                                                <option value="Silencer">Silencer</option>
-                                                <option value="Starter Motors">Starter Motors</option>
-                                                <option value="Stickers">Stickers</option>
-                                                <option value="Suspension, Steering &amp; Handling">Suspension, Steering &amp;
-                                                    Handling</option>
-                                                <option value="Transmission &amp; Drivetrain">Transmission &amp; Drivetrain
-                                                </option>
-                                                <option value="Turbos &amp; Superchargers">Turbos &amp; Superchargers</option>
-                                                <option value="Wheels, Tyres &amp; Rims">Wheels, Tyres &amp; Rims</option>
-                                                <option value="Windscreen Wipers &amp; Washers">Windscreen Wipers &amp; Washers
-                                                </option>
-                                            </select>
+                            </section>
+                            <section id="spare_part_sec" class="d-none col-12 col-md-6">
+                                <div class="card card-light">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="part_category">Part Category</label>
+                                            <div>
+                                                <select id="part_category" name="part_category" class="form-control" required>
+                                                    <option value="">Select</option>
+                                                    <option value="Air Conditioning &amp; Heating">Air Conditioning &amp; Heating
+                                                    </option>
+                                                    <option value="Air Intake &amp; Fuel Delivery">Air Intake &amp; Fuel Delivery
+                                                    </option>
+                                                    <option value="Axles &amp; Axle Parts">Axles &amp; Axle Parts</option>
+                                                    <option value="Battery">Battery</option>
+                                                    <option value="Brakes">Brakes</option>
+                                                    <option value="Car Audio Systems">Car Audio Systems</option>
+                                                    <option value="Car DVR">Car DVR</option>
+                                                    <option value="Car Tuning &amp; Styling">Car Tuning &amp; Styling</option>
+                                                    <option value="Carburetor">Carburetor</option>
+                                                    <option value="Chassis">Chassis</option>
+                                                    <option value="Electrical Components">Electrical Components</option>
+                                                    <option value="Emission Systems">Emission Systems</option>
+                                                    <option value="Engine Cooling">Engine Cooling</option>
+                                                    <option value="Engines &amp; Engine Parts">Engines &amp; Engine Parts</option>
+                                                    <option value="Exhausts &amp; Exhaust Parts">Exhausts &amp; Exhaust Parts
+                                                    </option>
+                                                    <option value="External &amp; Body Parts">External &amp; Body Parts</option>
+                                                    <option value="External Lights &amp; Indicators">External Lights &amp;
+                                                        Indicators</option>
+                                                    <option value="Footrests, Pedals &amp; Pegs">Footrests, Pedals &amp; Pegs
+                                                    </option>
+                                                    <option value="Freezer">Freezer</option>
+                                                    <option value="Gauges, Dials &amp; Instruments">Gauges, Dials &amp; Instruments
+                                                    </option>
+                                                    <option value="Generator">Generator</option>
+                                                    <option value="GPS &amp; In-Car Technology">GPS &amp; In-Car Technology</option>
+                                                    <option value="Handlebars, Grips &amp; Levers">Handlebars, Grips &amp; Levers
+                                                    </option>
+                                                    <option value="Helmets, Clothing &amp; Protection">Helmets, Clothing &amp;
+                                                        Protection</option>
+                                                    <option value="Interior Parts &amp; Furnishings">Interior Parts &amp;
+                                                        Furnishings</option>
+                                                    <option value="Lighting &amp; Indicators">Lighting &amp; Indicators</option>
+                                                    <option value="Mirrors">Mirrors</option>
+                                                    <option value="Oils, Lubricants &amp; Fluids">Oils, Lubricants &amp; Fluids
+                                                    </option>
+                                                    <option value="Other">Other</option>
+                                                    <option value="Reverse Camera">Reverse Camera</option>
+                                                    <option value="Seating">Seating</option>
+                                                    <option value="Service Kits">Service Kits</option>
+                                                    <option value="Silencer">Silencer</option>
+                                                    <option value="Starter Motors">Starter Motors</option>
+                                                    <option value="Stickers">Stickers</option>
+                                                    <option value="Suspension, Steering &amp; Handling">Suspension, Steering &amp;
+                                                        Handling</option>
+                                                    <option value="Transmission &amp; Drivetrain">Transmission &amp; Drivetrain
+                                                    </option>
+                                                    <option value="Turbos &amp; Superchargers">Turbos &amp; Superchargers</option>
+                                                    <option value="Wheels, Tyres &amp; Rims">Wheels, Tyres &amp; Rims</option>
+                                                    <option value="Windscreen Wipers &amp; Washers">Windscreen Wipers &amp; Washers
+                                                    </option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </section>
-                        <!--</div>-->
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer">
-                        <button id="update_post" type="button" class="btn btn-primary pl-5 pr-5">Update Post</button>
-                    </div>
+                            </section>
+                            <!--</div>-->
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <button id="update_post" type="button" class="btn btn-primary pl-5 pr-5">Update Post</button>
+                        </div>
                 </form>
             </div>
             <!-- /.card -->
@@ -642,33 +642,33 @@
                     part_category: $('#part_category').val(),
                 };
 
-                object.main_image = $('#main_image')[0].files[0];
-                object.image_one = $('#image_one')[0].files[0];
-                object.image_two = $('#image_two')[0].files[0];
-                object.image_three = $('#image_three')[0].files[0];
-                object.image_four = $('#image_four')[0].files[0];
-                object.image_five = $('#image_five')[0].files[0];
-console.log($('#main_image')[0].files[0]);
-                // let url = "/public/api/update_post/id/" + $('#post_update').data('post-id');
-                // ulploadFileWithData(url, object, function(result) {
-                //     if (result.status == 1) {
-                //         Swal.fire(
-                //             'Post Registration',
-                //             'Successfully updated!',
-                //             'success'
-                //         );
-                //     } else {
-                //         Swal.fire({
-                //             icon: 'error',
-                //             title: 'Oops...',
-                //             text: result.msg
-                //         })
-                //     }
-                //     if (typeof callBack !== 'undefined' && callBack != null && typeof callBack ===
-                //         "function") {
-                //         callBack(result);
-                //     }
-                // });
+                object.main_image = ($('#main_image')[0].files[0] != 'undefined') ? $('#main_image')[0].files[0] : null;
+                object.image_one = ($('#image_one')[0].files[0] != 'undefined') ? $('#image_one')[0].files[0] : null;
+                object.image_two = ($('#image_two')[0].files[0] != 'undefined') ? $('#image_two')[0].files[0] : null;
+                object.image_three = ($('#image_three')[0].files[0] != 'undefined') ? $('#image_three')[0].files[0] : null;
+                object.image_four = ($('#image_four')[0].files[0] != 'undefined') ? $('#image_four')[0].files[0] : null;
+                object.image_five = ($('#image_five')[0].files[0] != 'undefined') ? $('#image_five')[0].files[0] : null;
+
+                let url = "/public/api/update_post/id/" + $('#post_update').data('post-id');
+                ulploadFileWithData(url, object, function(result) {
+                    if (result.status == 1) {
+                        Swal.fire(
+                            'Post Registration',
+                            'Successfully updated!',
+                            'success'
+                        );
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: result.msg
+                        })
+                    }
+                    if (typeof callBack !== 'undefined' && callBack != null && typeof callBack ===
+                        "function") {
+                        callBack(result);
+                    }
+                });
             }
         });
 
