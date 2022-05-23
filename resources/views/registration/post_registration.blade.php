@@ -600,12 +600,12 @@
                     part_category: $('#part_category').val(),
                 };
 
-                object.main_image = ($('#main_image')[0].files[0] != 'undefined') ? $('#main_image')[0].files[0] : null;
-                object.image_one = ($('#image_one')[0].files[0] != 'undefined') ? $('#image_one')[0].files[0] : null;
-                object.image_two = ($('#image_two')[0].files[0] != 'undefined') ? $('#image_two')[0].files[0] : null;
-                object.image_three = ($('#image_three')[0].files[0] != 'undefined') ? $('#image_three')[0].files[0] : null;
-                object.image_four = ($('#image_four')[0].files[0] != 'undefined') ? $('#image_four')[0].files[0] : null;
-                object.image_five = ($('#image_five')[0].files[0] != 'undefined') ? $('#image_five')[0].files[0] : null;
+                object.main_image = ($('#main_image')[0].files[0] != undefined) ? $('#main_image')[0].files[0] : null;
+                object.image_one = ($('#image_one')[0].files[0] != undefined) ? $('#image_one')[0].files[0] : null;
+                object.image_two = ($('#image_two')[0].files[0] != undefined) ? $('#image_two')[0].files[0] : null;
+                object.image_three = ($('#image_three')[0].files[0] != undefined) ? $('#image_three')[0].files[0] : null;
+                object.image_four = ($('#image_four')[0].files[0] != undefined) ? $('#image_four')[0].files[0] : null;
+                object.image_five = ($('#image_five')[0].files[0] != undefined) ? $('#image_five')[0].files[0] : null;
 
                 let url = "./api/save_post";
                 ulploadFileWithData(url, object, function(result) {
