@@ -507,9 +507,7 @@
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <!-- Page script -->
     <script src="{{ asset('/plugins/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('../../../dist/js/adminlte.min.js') }}"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="{{ asset('./../../../dist/js/demo.js') }}"></script>
+    <script src="{{ asset('/dist/js/adminlte.min.js') }}"></script>
 
     <!-- Bootstrap 4 -->
     <script src="{{ asset('/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -651,7 +649,7 @@
                 object.image_four = $('#image_four')[0].files[0];
                 object.image_five = $('#image_five')[0].files[0];
 
-                let url = "/api/update_post/id/" + $('#post_update').data('post-id');
+                let url = "/public/api/update_post/id/" + $('#post_update').data('post-id');
                 ulploadFileWithData(url, object, function(result) {
                     if (result.status == 1) {
                         Swal.fire(
