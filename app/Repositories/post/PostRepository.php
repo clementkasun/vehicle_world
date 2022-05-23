@@ -117,11 +117,11 @@ class PostRepository implements PostInterface
             $isPowerWindow = 0;
             $on_going_lease = 0;
 
-            ($request->isAc == 'on') ? $isAc = 1: null;
-            ($request->isPowerSteer == 'on') ? $isPowerSteer = 1: null;
-            ($request->isPowerMirroring == 'on') ? $isPowerMirroring = 1: null;
-            ($request->isPowerWindow == 'on') ? $isPowerWindow = 1: null;
-            ($request->on_going_lease == 'on') ? $on_going_lease = 1: null;
+            ($request->isAc == 'on') ? $isAc = 1 : null;
+            ($request->isPowerSteer == 'on') ? $isPowerSteer = 1 : null;
+            ($request->isPowerMirroring == 'on') ? $isPowerMirroring = 1 : null;
+            ($request->isPowerWindow == 'on') ? $isPowerWindow = 1 : null;
+            ($request->on_going_lease == 'on') ? $on_going_lease = 1 : null;
 
             if (strstr($post_type, "VEHI") || strstr($post_type, "WAN")) {
 
@@ -136,7 +136,7 @@ class PostRepository implements PostInterface
                     'fuel_type' => $request->fuel_type,
                     'engine_capacity' => $request->engine_capacity,
                     'millage' => $request->millage,
-                    'isAc' =>$isAc,
+                    'isAc' => $isAc,
                     'isPowerSteer' => $isPowerSteer,
                     'isPowerMirroring' => $isPowerMirroring,
                     'isPowerWindow' => $isPowerWindow,
@@ -464,103 +464,104 @@ class PostRepository implements PostInterface
         // try {
         //     DB::beginTransaction();
 
-            $post_type = $request->post_type;
-            //get the post from id
-            $post_update = Post::find($id);
-            $post_update->post_title = $request->post_title;
-            $post_update->post_type = $post_type;
-            $post_update->condition = $request->condition;
-            $post_update->price = $request->price;
-            $post_update->additional_info = $request->additional_info;
-            $post_update->location = $request->location;
-            $post_update->address = $request->address;
-            $post_update->save();
+        $post_type = $request->post_type;
+        //get the post from id
+        $post_update = Post::find($id);
+        $post_update->post_title = $request->post_title;
+        $post_update->post_type = $post_type;
+        $post_update->condition = $request->condition;
+        $post_update->price = $request->price;
+        $post_update->additional_info = $request->additional_info;
+        $post_update->location = $request->location;
+        $post_update->address = $request->address;
+        $post_update->save();
 
-            if (strstr($post_type, "VEHI")) {
-                $vehicle_id = $post_update->vehicle_id;
-                $vehicle = Vehicle::find($vehicle_id);
-                $vehicle->model = $request->model;
-                $vehicle->start_type = $request->start_type;
-                $vehicle->manufactured_year = $request->manufactured_year;
-                $vehicle->on_going_lease = $request->on_going_lease;
-                $vehicle->transmission = $request->transmission;
-                $vehicle->fuel_type = $request->fuel_type;
-                $vehicle->engine_capacity = $request->engine_capacity;
-                $vehicle->millage = $request->millage;
-                $vehicle->isAc = $request->isAc;
-                $vehicle->isPowerSteer = $request->isPowerSteer;
-                $vehicle->isPowerMirroring = $request->isPowerMirroring;
-                $vehicle->isPowerWindow = $request->isPowerWindow;
-                $vehicle->save();
-            }
+        if (strstr($post_type, "VEHI")) {
+            $vehicle_id = $post_update->vehicle_id;
+            $vehicle = Vehicle::find($vehicle_id);
+            $vehicle->model = $request->model;
+            $vehicle->start_type = $request->start_type;
+            $vehicle->manufactured_year = $request->manufactured_year;
+            $vehicle->on_going_lease = $request->on_going_lease;
+            $vehicle->transmission = $request->transmission;
+            $vehicle->fuel_type = $request->fuel_type;
+            $vehicle->engine_capacity = $request->engine_capacity;
+            $vehicle->millage = $request->millage;
+            $vehicle->isAc = $request->isAc;
+            $vehicle->isPowerSteer = $request->isPowerSteer;
+            $vehicle->isPowerMirroring = $request->isPowerMirroring;
+            $vehicle->isPowerWindow = $request->isPowerWindow;
+            $vehicle->save();
+        }
 
-            if (strstr($post_type, "SPARE")) {
-                $spare_part_id = $post_update->spare_part_id;
-                $spare_part_update = SparePart::find($spare_part_id);
-                $spare_part_update->part_used_in = $request->part_used_in;
-                $spare_part_update->part_category = $request->part_category;
-                $spare_part_update->save();
-            }
-
+        if (strstr($post_type, "SPARE")) {
+            $spare_part_id = $post_update->spare_part_id;
+            $spare_part_update = SparePart::find($spare_part_id);
+            $spare_part_update->part_used_in = $request->part_used_in;
+            $spare_part_update->part_category = $request->part_category;
+            $spare_part_update->save();
+        }
+        if ($request->main_image != null && $request->image_one != null && $request->image_two != null && $request->image_three != null && $request->image_five != null) {
             $request->validate([
-                'main_image' => 'nullable|image', // Only allow .jpg, .bmp and .png file types.
-                'image_one' => 'nullable|image', // Only allow .jpg, .bmp and .png file types.
-                'image_two' => 'nullable|image', // Only allow .jpg, .bmp and .png file types.
-                'image_three' => 'nullable|image', // Only allow .jpg, .bmp and .png file types.
-                'image_four' => 'nullable|image', // Only allow .jpg, .bmp and .png file types.
-                'image_five' => 'nullable|image', // Only allow .jpg, .bmp and .png file types.
+                'main_image' => 'sometimes|required|nullable|image|mimes:jpeg,bmp,png,gif|max:2048', // Only allow .jpg, .bmp and .png file types.
+                'image_one' => 'sometimes|required|nullable|image|mimes:jpeg,bmp,png,gif|max:2048', // Only allow .jpg, .bmp and .png file types.
+                'image_two' => 'sometimes|required|nullable|image|mimes:jpeg,bmp,png,gif|max:2048', // Only allow .jpg, .bmp and .png file types.
+                'image_three' => 'sometimes|required|nullable|image|mimes:jpeg,bmp,png,gif|max:2048', // Only allow .jpg, .bmp and .png file types.
+                'image_four' => 'sometimes|required|nullable|image|mimes:jpeg,bmp,png,gif|max:2048', // Only allow .jpg, .bmp and .png file types.
+                'image_five' => 'sometimes|required|nullable|image|mimes:jpeg,bmp,png,gif|max:2048', // Only allow .jpg, .bmp and .png file types.
             ]);
+        }
 
-            $random_name = uniqid($id);
-            if ($request->main_image != null) {
-                $main_ext = $request->main_image->extension();
-                $path_main = $request->file('main_image')->storeAs(
-                    '/public/post_images' . '/' . $id,
-                    'main_img' . '.' . $random_name . '.' . $main_ext
-                );
-                $post_update->main_image = str_replace("public/", "/", $path_main);
-            }
-            if ($request->image_one != null) {
-                $img_one_ext = $request->image_one->extension();
-                $path_one = $request->file('image_one')->storeAs(
-                    '/public/post_images' . '/' . $id,
-                    'img_one' . '.' . $random_name . '.' . $img_one_ext
-                );
-                $post_update->image_1 = str_replace("public/", "/", $path_one);
-            }
-            if ($request->image_two != null) {
-                $img_two_ext = $request->image_two->extension();
-                $path_two = $request->file('image_two')->storeAs(
-                    '/public/post_images' . '/' . $id,
-                    'img_two' . '.' . $random_name . '.' . $img_two_ext
-                );
-                $post_update->image_2 = str_replace("public/", "/", $path_two);
-            }
-            if ($request->image_three != null) {
-                $img_three_ext = $request->image_three->extension();
-                $path_three = $request->file('image_three')->storeAs(
-                    '/public/post_images' . '/' . $id,
-                    'img_three' . '.' . $random_name . '.' . $img_three_ext
-                );
-                $post_update->image_3 = str_replace("public/", "/", $path_three);
-            }
-            if ($request->image_four != null) {
-                $img_four_ext = $request->image_four->extension();
-                $path_four = $request->file('image_four')->storeAs(
-                    '/public/post_images' . '/' . $id,
-                    'img_four' . '.' . $random_name . '.' . $img_four_ext
-                );
-                $post_update->image_4 = str_replace("public/", "/", $path_main);
-            }
-            if ($request->image_five != null) {
-                $img_five_ext = $request->image_five->extension();
-                $path_five = $request->file('image_five')->storeAs(
-                    '/public/post_images' . '/' . $id,
-                    'img_five' . '.' . $random_name . '.' . $img_five_ext
-                );
-                $post_update->image_5 = str_replace("public/", "/", $path_five);
-            }
-            $post_update->save();
+        $random_name = uniqid($id);
+        if ($request->main_image != null) {
+            $main_ext = $request->main_image->extension();
+            $path_main = $request->file('main_image')->storeAs(
+                '/public/post_images' . '/' . $id,
+                'main_img' . '.' . $random_name . '.' . $main_ext
+            );
+            $post_update->main_image = str_replace("public/", "/", $path_main);
+        }
+        if ($request->image_one != null) {
+            $img_one_ext = $request->image_one->extension();
+            $path_one = $request->file('image_one')->storeAs(
+                '/public/post_images' . '/' . $id,
+                'img_one' . '.' . $random_name . '.' . $img_one_ext
+            );
+            $post_update->image_1 = str_replace("public/", "/", $path_one);
+        }
+        if ($request->image_two != null) {
+            $img_two_ext = $request->image_two->extension();
+            $path_two = $request->file('image_two')->storeAs(
+                '/public/post_images' . '/' . $id,
+                'img_two' . '.' . $random_name . '.' . $img_two_ext
+            );
+            $post_update->image_2 = str_replace("public/", "/", $path_two);
+        }
+        if ($request->image_three != null) {
+            $img_three_ext = $request->image_three->extension();
+            $path_three = $request->file('image_three')->storeAs(
+                '/public/post_images' . '/' . $id,
+                'img_three' . '.' . $random_name . '.' . $img_three_ext
+            );
+            $post_update->image_3 = str_replace("public/", "/", $path_three);
+        }
+        if ($request->image_four != null) {
+            $img_four_ext = $request->image_four->extension();
+            $path_four = $request->file('image_four')->storeAs(
+                '/public/post_images' . '/' . $id,
+                'img_four' . '.' . $random_name . '.' . $img_four_ext
+            );
+            $post_update->image_4 = str_replace("public/", "/", $path_main);
+        }
+        if ($request->image_five != null) {
+            $img_five_ext = $request->image_five->extension();
+            $path_five = $request->file('image_five')->storeAs(
+                '/public/post_images' . '/' . $id,
+                'img_five' . '.' . $random_name . '.' . $img_five_ext
+            );
+            $post_update->image_5 = str_replace("public/", "/", $path_five);
+        }
+        $post_update->save();
 
         //     DB::commit();
         //     return array('status' => 1, 'msg' => 'Post has Updated successfully!');
