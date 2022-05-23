@@ -609,7 +609,7 @@
                 object.image_four = $('#image_four')[0].files[0];
                 object.image_five = $('#image_five')[0].files[0];
 
-                let url = "/api/save_post";
+                let url = "./api/save_post";
                 ulploadFileWithData(url, object, function(result) {
                     // ajaxRequest("POST", url, data, function (result) {
                     if (result.status == 1) {
