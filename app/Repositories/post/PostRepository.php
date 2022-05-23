@@ -519,9 +519,9 @@ class PostRepository implements PostInterface
             $spare_part_update->part_category = $request->part_category;
             $spare_part_update->save();
         }
-        dd(is_null($request->main_iamge));
+ 
         $request->validate([
-            'main_image' => 'nullable|sometimes|image|mimes:jpeg,bmp,png,jpg,svg|max:2000', // Only allow .jpg, .bmp and .png file types.
+            'main_image' => 'nullable|image', // Only allow .jpg, .bmp and .png file types.
             'image_one' => 'nullable|sometimes|image|mimes:jpeg,bmp,png,jpg,svg|max:2000', // Only allow .jpg, .bmp and .png file types.
             'image_two' => 'nullable|sometimes|image|mimes:jpeg,bmp,png,jpg,svg|max:2000', // Only allow .jpg, .bmp and .png file types.
             'image_three' => 'nullable|sometimes|image|mimes:jpeg,bmp,png,jpg,svg|max:2000', // Only allow .jpg, .bmp and .png file types.
