@@ -648,7 +648,7 @@
                 object.image_three = $('#image_three')[0].files[0];
                 object.image_four = $('#image_four')[0].files[0];
                 object.image_five = $('#image_five')[0].files[0];
-
+console.log(object.main_image = $('#main_image')[0].files[0]);
                 let url = "/public/api/update_post/id/" + $('#post_update').data('post-id');
                 ulploadFileWithData(url, object, function(result) {
                     if (result.status == 1) {
