@@ -510,7 +510,7 @@ class PostRepository implements PostInterface
             'image_four' => 'sometimes|required|nullable|image|mimes:jpeg,bmp,png,gif|max:2048', // Only allow .jpg, .bmp and .png file types.
             'image_five' => 'sometimes|required|nullable|image|mimes:jpeg,bmp,png,gif|max:2048', // Only allow .jpg, .bmp and .png file types.
         ]);
-
+dd($request->main_image);
         $random_name = uniqid($id);
         if ($request->main_image != null) {
             $main_ext = $request->main_image->extension();
