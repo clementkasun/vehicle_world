@@ -521,12 +521,12 @@ class PostRepository implements PostInterface
         }
 
         $request->validate([
-            'main_image' => 'sometimes|required|image', // Only allow .jpg, .bmp and .png file types.
-            'image_one' => 'sometimes|required|image', // Only allow .jpg, .bmp and .png file types.
-            'image_two' => 'sometimes|required|image', // Only allow .jpg, .bmp and .png file types.
-            'image_three' => 'sometimes|required|image', // Only allow .jpg, .bmp and .png file types.
-            'image_four' => 'sometimes|required|image', // Only allow .jpg, .bmp and .png file types.
-            'image_five' => 'sometimes|required|image', // Only allow .jpg, .bmp and .png file types.
+            'main_image' => 'nullable|image', // Only allow .jpg, .bmp and .png file types.
+            'image_one' => 'nullable|image', // Only allow .jpg, .bmp and .png file types.
+            'image_two' => 'nullable|image', // Only allow .jpg, .bmp and .png file types.
+            'image_three' => 'nullable|image', // Only allow .jpg, .bmp and .png file types.
+            'image_four' => 'nullable|image', // Only allow .jpg, .bmp and .png file types.
+            'image_five' => 'nullable|image', // Only allow .jpg, .bmp and .png file types.
         ]);
 
         $random_name = uniqid($id);
