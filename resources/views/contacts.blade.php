@@ -79,6 +79,7 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto active" href="{{ asset('home') }}">Home</a></li>
+                    <li><a class="nav-link scrollto active" href="{{ asset('testing') }}">Analyze</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('about_us') }}">About</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('about_us') }}">Services</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('post_registration') }}"><span class="btn btn-warning">post your add</span></a></li>
