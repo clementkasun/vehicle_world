@@ -74,7 +74,7 @@
             <div class="card-body">
                 <form id='post_update' data-post-id="{{$post_data['id']}}">
                     <div class="row">
-                        <section id="post_section" class="col-12 col-md-6">
+                        <div id="post_section" class="col-12 col-md-6">
                             <div class="card card-light">
                                 <div class="card-body">
                                     <input type="text" id="user_id" name="user_id" value="{{ Auth::id() }}" hidden>
@@ -263,8 +263,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </section>
-                        <section id="vehicle_sec" class="d-none col-12 col-md-6">
+                        </div>
+                        <div class="col-12 col-md-6 mt-1">
                             <div class="card card-light">
                                 <div class="card-body">
                                     <div class="form-group">
@@ -305,7 +305,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card card-light mt-1">
+                            <div class="vehicle_sec card card-light mt-1">
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="model"> Model *</label>
@@ -361,7 +361,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card card-light mt-1">
+                            <div class="vehicle_sec card card-light mt-1">
                                 <div id="four_wheel_features" class="card-body">
                                     <div class="row">
                                         <div class="form-group col-lg-3">
@@ -544,11 +544,11 @@
             let millage = '{{$post_data["millage"]}}';
             let transmission = '{{$post_data["transmission"]}}';
 
-            ('{{$post_data["isAc"]}}' == '0')?  $('#isAc').prop('checked', false): $('#isAc').prop('checked', true);
-            ('{{$post_data["on_going_lease"]}}' == '0')?  $('#on_going_lease').prop('checked', false): $('#on_going_lease').prop('checked', true);
-            ('{{$post_data["isPowerSteer"]}}' == '0')?  $('#isPowerSteer').prop('checked', false): $('#isPowerSteer').prop('checked', true);
-            ('{{$post_data["isPowerMirroring"]}}' == '0')?  $('#isPowerMirroring').prop('checked', false): $('#isPowerMirroring').prop('checked', true);
-            ('{{$post_data["isPowerWindow"]}}' == '0')?  $('#isPowerWindow').prop('checked', false): $('#isPowerWindow').prop('checked', true);
+            ('{{$post_data["isAc"]}}' == '0') ? $('#isAc').prop('checked', false): $('#isAc').prop('checked', true);
+            ('{{$post_data["on_going_lease"]}}' == '0') ? $('#on_going_lease').prop('checked', false): $('#on_going_lease').prop('checked', true);
+            ('{{$post_data["isPowerSteer"]}}' == '0') ? $('#isPowerSteer').prop('checked', false): $('#isPowerSteer').prop('checked', true);
+            ('{{$post_data["isPowerMirroring"]}}' == '0') ? $('#isPowerMirroring').prop('checked', false): $('#isPowerMirroring').prop('checked', true);
+            ('{{$post_data["isPowerWindow"]}}' == '0') ? $('#isPowerWindow').prop('checked', false): $('#isPowerWindow').prop('checked', true);
 
             $('#vehicle_type').val(vehicle_type).change();
             $('#post_type').val(post_type).change();
@@ -567,7 +567,7 @@
             $("#engine_capacity").val(engine_capacity);
             $("#millage").val(millage);
             $('#part_category').val(part_cat);
-     
+
             $('#make_id').select2();
             $('#location').select2();
         });
@@ -575,14 +575,14 @@
         $('#post_type').change(function() {
             if ($(this).val() == 'VEHICLE' || $(this).val() == 'WANTED') {
                 $('#spare_part_sec').addClass('d-none');
-                $('#vehicle_sec').removeClass('d-none');
+                $('.vehicle_sec').removeClass('d-none');
             }
             if ($(this).val() == 'SPARE PART') {
-                $('#vehicle_sec').addClass('d-none');
+                $('.vehicle_sec').addClass('d-none');
                 $('#spare_part_sec').removeClass('d-none');
             }
             if ($(this).val() == '') {
-                $('#vehicle_sec').addClass('d-none');
+                $('.vehicle_sec').addClass('d-none');
                 $('#spare_part_sec').addClass('d-none');
             }
         });

@@ -503,12 +503,12 @@ class PostRepository implements PostInterface
             }
 
             $request->validate([
-                'main_image' => 'sometimes|mimes:jpeg,bmp,png', // Only allow .jpg, .bmp and .png file types.
-                'image_one' => 'sometimes|mimes:jpeg,bmp,png', // Only allow .jpg, .bmp and .png file types.
-                'image_two' => 'sometimes|mimes:jpeg,bmp,png', // Only allow .jpg, .bmp and .png file types.
-                'image_three' => 'sometimes|mimes:jpeg,bmp,png', // Only allow .jpg, .bmp and .png file types.
-                'image_four' => 'sometimes|mimes:jpeg,bmp,png', // Only allow .jpg, .bmp and .png file types.
-                'image_five' => 'sometimes|mimes:jpeg,bmp,png', // Only allow .jpg, .bmp and .png file types.
+                'main_image' => 'sometimes|nullable|mimes:jpeg,bmp,png', // Only allow .jpg, .bmp and .png file types.
+                'image_one' => 'sometimes|nullable|mimes:jpeg,bmp,png', // Only allow .jpg, .bmp and .png file types.
+                'image_two' => 'sometimes|nullable|mimes:jpeg,bmp,png', // Only allow .jpg, .bmp and .png file types.
+                'image_three' => 'sometimes|nullable|mimes:jpeg,bmp,png', // Only allow .jpg, .bmp and .png file types.
+                'image_four' => 'sometimes|nullable|mimes:jpeg,bmp,png', // Only allow .jpg, .bmp and .png file types.
+                'image_five' => 'sometimes|nullable|mimes:jpeg,bmp,png', // Only allow .jpg, .bmp and .png file types.
             ]);
 
             $random_name = uniqid($id);
