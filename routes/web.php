@@ -3,7 +3,8 @@
 use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController;
+
 /*
   |--------------------------------------------------------------------------
   | Web Routes
@@ -23,6 +24,7 @@ Route::get('/logout', [CustomerController::class, 'logout']); # post
 Route::get('/test', [PostController::class, 'index']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/user_profile', [CustomerController::class, 'myProfile']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/post_edit/id/{post_id}', [PostController::class, 'get_post_update_form']);
+Route::get('/analysis', [DashboardController::class, 'index']);
 
 Route::get('/login_cust', function () {
     return view('auth.login');
@@ -41,7 +43,4 @@ Route::get('/services', function(){
 });
 Route::get('/contacts', function(){
     return view('contacts');
-});
-Route::get('/testing', function(){
-    return view('testing1');
 });

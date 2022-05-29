@@ -7,6 +7,7 @@ use App\Http\Controllers\LevelController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\VehicleMakeController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TestJsonController;
 use App\Http\Controllers\JsonResultsController;
 
@@ -66,3 +67,5 @@ Route::post('/is_email_nic_exist', [CustomerController::class, 'email_nic_exist'
 Route::post('/filtered_posts', [PostController::class, 'filtered_posts']);
 Route::put('/update_basic_data/id/{user_id}', [CustomerController::class, 'updateBasicData']);
 Route::put('/change_password/id/{user_id}', [CustomerController::class, 'changePassword']);
+Route::put('/sold_post_as_sold/id/{post_id}', [PostController::class, 'soldPost']);
+Route::get('/get_current_sales', [DashboardController::class, 'getCurrentYearSales']);

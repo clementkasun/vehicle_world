@@ -3,10 +3,10 @@
 namespace App\Repositories\post;
 
 use App\Repositories\post\PostInterface;
-use App\Models\Customer;
 use App\Models\Vehicle;
 use App\Models\SparePart;
 use App\Models\Post;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -270,7 +270,8 @@ class PostRepository implements PostInterface
                 'posts.image_4',
                 'posts.image_5',
                 'vehicles.make_id',
-                'vehicle_makes.make_name'
+                'vehicle_makes.make_name',
+                'posts.status'
             )->first();
 
         $vehi_type = $post_data->vehicle_type;
@@ -464,111 +465,111 @@ class PostRepository implements PostInterface
         try {
             DB::beginTransaction();
 
-        $post_type = $request->post_type;
-        //get the post from id
-        $post_update = Post::find($id);
-        $post_update->post_title = $request->post_title;
-        $post_update->post_type = $post_type;
-        $post_update->condition = $request->condition;
-        $post_update->price = $request->price;
-        $post_update->additional_info = $request->additional_info;
-        $post_update->location = $request->location;
-        $post_update->address = $request->address;
-        $post_update->save();
-
-
-        $isAc = 0;
-        $isPowerSteer = 0;
-        $isPowerMirroring = 0;
-        $isPowerWindow = 0;
-        $on_going_lease = 0;
-
-        ($request->isAc == 'on') ? $isAc = 1 : null;
-        ($request->isPowerSteer == 'on') ? $isPowerSteer = 1 : null;
-        ($request->isPowerMirroring == 'on') ? $isPowerMirroring = 1 : null;
-        ($request->isPowerWindow == 'on') ? $isPowerWindow = 1 : null;
-        ($request->on_going_lease == 'on') ? $on_going_lease = 1 : null;
-
-        if (strstr($post_type, "VEHI")) {
-            $vehicle_id = $post_update->vehicle_id;
-            $vehicle = Vehicle::find($vehicle_id);
-            $vehicle->model = $request->model;
-            $vehicle->start_type = $request->start_type;
-            $vehicle->manufactured_year = $request->manufactured_year;
-            $vehicle->on_going_lease =  $on_going_lease;
-            $vehicle->transmission = $request->transmission;
-            $vehicle->fuel_type = $request->fuel_type;
-            $vehicle->engine_capacity = $request->engine_capacity;
-            $vehicle->millage = $request->millage;
-            $vehicle->isAc = $isAc;
-            $vehicle->isPowerSteer =   $isPowerSteer;
-            $vehicle->isPowerMirroring = $isPowerMirroring;
-            $vehicle->isPowerWindow = $isPowerWindow;
-            $vehicle->save();
-        }
-
-        if (strstr($post_type, "SPARE")) {
-            $spare_part_id = $post_update->spare_part_id;
-            $spare_part_update = SparePart::find($spare_part_id);
-            $spare_part_update->part_used_in = $request->part_used_in;
-            $spare_part_update->part_category = $request->part_category;
-            $spare_part_update->save();
-        }
-
-        // $request->validate([
-        //     'main_image' => 'nullable|sometimes|image|mimes:jpeg,bmp,png,jpg,svg|max:2000', // Only allow .jpg, .bmp and .png file types.
-        //     'image_one' => 'nullable|sometimes|image|mimes:jpeg,bmp,png,jpg,svg|max:2000', // Only allow .jpg, .bmp and .png file types.
-        //     'image_two' => 'nullable|sometimes|image|mimes:jpeg,bmp,png,jpg,svg|max:2000', // Only allow .jpg, .bmp and .png file types.
-        //     'image_three' => 'nullable|sometimes|image|mimes:jpeg,bmp,png,jpg,svg|max:2000', // Only allow .jpg, .bmp and .png file types.
-        //     'image_four' => 'nullable|sometimes|image|mimes:jpeg,bmp,png,jpg,svg|max:2000', // Only allow .jpg, .bmp and .png file types.
-        //     'image_five' => 'nullable|sometimes|image|mimes:jpeg,bmp,png,jpg,svg|max:2000', // Only allow .jpg, .bmp and .png file types.
-        // ]);
-
-        $random_name = uniqid($id);
-        if ($request->main_image != "null" && $request->image_one != "null" && $request->image_two != "null" && $request->image_three != "null" && $request->image_four != "null" && $request->image_five != "null") {
-            $main_ext = $request->main_image->extension();
-            $path_main = $request->file('main_image')->storeAs(
-                '/public/post_images' . '/' . $id,
-                'main_img' . '.' . $random_name . '.' . $main_ext
-            );
-            $post_update->main_image = str_replace("public/", "/", $path_main);
-
-            $img_one_ext = $request->image_one->extension();
-            $path_one = $request->file('image_one')->storeAs(
-                '/public/post_images' . '/' . $id,
-                'img_one' . '.' . $random_name . '.' . $img_one_ext
-            );
-            $post_update->image_1 = str_replace("public/", "/", $path_one);
-
-            $img_two_ext = $request->image_two->extension();
-            $path_two = $request->file('image_two')->storeAs(
-                '/public/post_images' . '/' . $id,
-                'img_two' . '.' . $random_name . '.' . $img_two_ext
-            );
-            $post_update->image_2 = str_replace("public/", "/", $path_two);
-
-            $img_three_ext = $request->image_three->extension();
-            $path_three = $request->file('image_three')->storeAs(
-                '/public/post_images' . '/' . $id,
-                'img_three' . '.' . $random_name . '.' . $img_three_ext
-            );
-            $post_update->image_3 = str_replace("public/", "/", $path_three);
-
-            $img_four_ext = $request->image_four->extension();
-            $path_four = $request->file('image_four')->storeAs(
-                '/public/post_images' . '/' . $id,
-                'img_four' . '.' . $random_name . '.' . $img_four_ext
-            );
-            $post_update->image_4 = str_replace("public/", "/", $path_main);
-
-            $img_five_ext = $request->image_five->extension();
-            $path_five = $request->file('image_five')->storeAs(
-                '/public/post_images' . '/' . $id,
-                'img_five' . '.' . $random_name . '.' . $img_five_ext
-            );
-            $post_update->image_5 = str_replace("public/", "/", $path_five);
+            $post_type = $request->post_type;
+            //get the post from id
+            $post_update = Post::find($id);
+            $post_update->post_title = $request->post_title;
+            $post_update->post_type = $post_type;
+            $post_update->condition = $request->condition;
+            $post_update->price = $request->price;
+            $post_update->additional_info = $request->additional_info;
+            $post_update->location = $request->location;
+            $post_update->address = $request->address;
             $post_update->save();
-        }
+
+
+            $isAc = 0;
+            $isPowerSteer = 0;
+            $isPowerMirroring = 0;
+            $isPowerWindow = 0;
+            $on_going_lease = 0;
+
+            ($request->isAc == 'on') ? $isAc = 1 : null;
+            ($request->isPowerSteer == 'on') ? $isPowerSteer = 1 : null;
+            ($request->isPowerMirroring == 'on') ? $isPowerMirroring = 1 : null;
+            ($request->isPowerWindow == 'on') ? $isPowerWindow = 1 : null;
+            ($request->on_going_lease == 'on') ? $on_going_lease = 1 : null;
+
+            if (strstr($post_type, "VEHI")) {
+                $vehicle_id = $post_update->vehicle_id;
+                $vehicle = Vehicle::find($vehicle_id);
+                $vehicle->model = $request->model;
+                $vehicle->start_type = $request->start_type;
+                $vehicle->manufactured_year = $request->manufactured_year;
+                $vehicle->on_going_lease =  $on_going_lease;
+                $vehicle->transmission = $request->transmission;
+                $vehicle->fuel_type = $request->fuel_type;
+                $vehicle->engine_capacity = $request->engine_capacity;
+                $vehicle->millage = $request->millage;
+                $vehicle->isAc = $isAc;
+                $vehicle->isPowerSteer =   $isPowerSteer;
+                $vehicle->isPowerMirroring = $isPowerMirroring;
+                $vehicle->isPowerWindow = $isPowerWindow;
+                $vehicle->save();
+            }
+
+            if (strstr($post_type, "SPARE")) {
+                $spare_part_id = $post_update->spare_part_id;
+                $spare_part_update = SparePart::find($spare_part_id);
+                $spare_part_update->part_used_in = $request->part_used_in;
+                $spare_part_update->part_category = $request->part_category;
+                $spare_part_update->save();
+            }
+
+            // $request->validate([
+            //     'main_image' => 'nullable|sometimes|image|mimes:jpeg,bmp,png,jpg,svg|max:2000', // Only allow .jpg, .bmp and .png file types.
+            //     'image_one' => 'nullable|sometimes|image|mimes:jpeg,bmp,png,jpg,svg|max:2000', // Only allow .jpg, .bmp and .png file types.
+            //     'image_two' => 'nullable|sometimes|image|mimes:jpeg,bmp,png,jpg,svg|max:2000', // Only allow .jpg, .bmp and .png file types.
+            //     'image_three' => 'nullable|sometimes|image|mimes:jpeg,bmp,png,jpg,svg|max:2000', // Only allow .jpg, .bmp and .png file types.
+            //     'image_four' => 'nullable|sometimes|image|mimes:jpeg,bmp,png,jpg,svg|max:2000', // Only allow .jpg, .bmp and .png file types.
+            //     'image_five' => 'nullable|sometimes|image|mimes:jpeg,bmp,png,jpg,svg|max:2000', // Only allow .jpg, .bmp and .png file types.
+            // ]);
+
+            $random_name = uniqid($id);
+            if ($request->main_image != "null" && $request->image_one != "null" && $request->image_two != "null" && $request->image_three != "null" && $request->image_four != "null" && $request->image_five != "null") {
+                $main_ext = $request->main_image->extension();
+                $path_main = $request->file('main_image')->storeAs(
+                    '/public/post_images' . '/' . $id,
+                    'main_img' . '.' . $random_name . '.' . $main_ext
+                );
+                $post_update->main_image = str_replace("public/", "/", $path_main);
+
+                $img_one_ext = $request->image_one->extension();
+                $path_one = $request->file('image_one')->storeAs(
+                    '/public/post_images' . '/' . $id,
+                    'img_one' . '.' . $random_name . '.' . $img_one_ext
+                );
+                $post_update->image_1 = str_replace("public/", "/", $path_one);
+
+                $img_two_ext = $request->image_two->extension();
+                $path_two = $request->file('image_two')->storeAs(
+                    '/public/post_images' . '/' . $id,
+                    'img_two' . '.' . $random_name . '.' . $img_two_ext
+                );
+                $post_update->image_2 = str_replace("public/", "/", $path_two);
+
+                $img_three_ext = $request->image_three->extension();
+                $path_three = $request->file('image_three')->storeAs(
+                    '/public/post_images' . '/' . $id,
+                    'img_three' . '.' . $random_name . '.' . $img_three_ext
+                );
+                $post_update->image_3 = str_replace("public/", "/", $path_three);
+
+                $img_four_ext = $request->image_four->extension();
+                $path_four = $request->file('image_four')->storeAs(
+                    '/public/post_images' . '/' . $id,
+                    'img_four' . '.' . $random_name . '.' . $img_four_ext
+                );
+                $post_update->image_4 = str_replace("public/", "/", $path_main);
+
+                $img_five_ext = $request->image_five->extension();
+                $path_five = $request->file('image_five')->storeAs(
+                    '/public/post_images' . '/' . $id,
+                    'img_five' . '.' . $random_name . '.' . $img_five_ext
+                );
+                $post_update->image_5 = str_replace("public/", "/", $path_five);
+                $post_update->save();
+            }
 
 
             DB::commit();
@@ -609,7 +610,7 @@ class PostRepository implements PostInterface
     public function removeExpiredPost()
     {
         try {
-            $prev_same_date = \Carbon\Carbon::now() . subYear();
+            $prev_same_date = Carbon::now() . subYear();
             $get_expired_post = Post::whereDate('create_at', $prev_same_date);
             $main_img_path = $get_expired_post->main_image;
             $img_one_path = $get_expired_post->image_1;
@@ -629,5 +630,94 @@ class PostRepository implements PostInterface
         } catch (\Exception $ex) {
             return array('status' => 'expired post data removal unsuccessfull!');
         }
+    }
+
+    public function changePostAsSold($id)
+    {
+        $selected_post = Post::find($id);
+        $selected_post->status = 1;
+        $selected_post->save();
+
+        if ($selected_post == true) {
+            return array('status' => 1, 'msg' => 'Successfully changed the status');
+        } else {
+            return array('status' => 0, 'msg' => 'Status change was unsuccessful');
+        }
+    }
+
+    public function vehiclePostCount()
+    {
+        return Post::where('post_type', 'VEHICLE')->count();
+    }
+
+    public function sparePartsCount()
+    {
+        return Post::where('post_type', 'SPARE PART')->count();
+    }
+
+    public function wantedPostCount()
+    {
+        return Post::where('post_type', 'WANTED')->count();
+    }
+
+    public function saledPostCount()
+    {
+        return Post::where('status', 1)->count();
+    }
+
+    public function pendingSaleCount()
+    {
+        return Post::where('status', 0)->count();
+    }
+
+    public function getCurrentYearSales()
+    {
+        $thisYear = Carbon::now()->format('Y');
+
+        //vehicle sales
+        $januaryVehiSales = Post::where('post_type', 'VEHICLE')->where('status', 1)->whereYear('created_at', $thisYear)->whereMonth('created_at', '01')->count();
+        $februaryVehiSales = Post::where('post_type', 'VEHICLE')->where('status', 1)->whereYear('created_at', $thisYear)->whereMonth('created_at', '02')->count();
+        $marchVehiSales = Post::where('post_type', 'VEHICLE')->where('status', 1)->whereYear('created_at', $thisYear)->whereMonth('created_at', '03')->count();
+        $aprilVehiSales = Post::where('post_type', 'VEHICLE')->where('status', 1)->whereYear('created_at', $thisYear)->whereMonth('created_at', '04')->count();
+        $mayVehiSales = Post::where('post_type', 'VEHICLE')->where('status', 1)->whereYear('created_at', $thisYear)->whereMonth('created_at', '05')->count();
+        $juneVehiSales = Post::where('post_type', 'VEHICLE')->where('status', 1)->whereYear('created_at', $thisYear)->whereMonth('created_at', '06')->count();
+        $julyVehiSales = Post::where('post_type', 'VEHICLE')->where('status', 1)->whereYear('created_at', $thisYear)->whereMonth('created_at', '07')->count();
+        $auguestVehiSales = Post::where('post_type', 'VEHICLE')->where('status', 1)->whereYear('created_at', $thisYear)->whereMonth('created_at', '08')->count();
+        $septemberVehiSales = Post::where('post_type', 'VEHICLE')->where('status', 1)->whereYear('created_at', $thisYear)->whereMonth('created_at', '09')->count();
+        $octomberVehiSales = Post::where('post_type', 'VEHICLE')->where('status', 1)->whereYear('created_at', $thisYear)->whereMonth('created_at', '10')->count();
+        $novemberVehiSales = Post::where('post_type', 'VEHICLE')->where('status', 1)->whereYear('created_at', $thisYear)->whereMonth('created_at', '11')->count();
+        $decemberVehiSales = Post::where('post_type', 'VEHICLE')->where('status', 1)->whereYear('created_at', $thisYear)->whereMonth('created_at', '12')->count();
+
+        //pending sales
+        $januaryPendingSales = Post::where('post_type', 'VEHICLE')->where('status', 0)->whereYear('created_at', $thisYear)->whereMonth('created_at', '01')->count();
+        $februaryPendingSales = Post::where('post_type', 'VEHICLE')->where('status', 0)->whereYear('created_at', $thisYear)->whereMonth('created_at', '02')->count();
+        $marchPendingSales = Post::where('post_type', 'VEHICLE')->where('status', 0)->whereYear('created_at', $thisYear)->whereMonth('created_at', '03')->count();
+        $aprilPendingSales = Post::where('post_type', 'VEHICLE')->where('status', 0)->whereYear('created_at', $thisYear)->whereMonth('created_at', '04')->count();
+        $mayPendingSales = Post::where('post_type', 'VEHICLE')->where('status', 0)->whereYear('created_at', $thisYear)->whereMonth('created_at', '05')->count();
+        $junePendingSales = Post::where('post_type', 'VEHICLE')->where('status', 0)->whereYear('created_at', $thisYear)->whereMonth('created_at', '06')->count();
+        $julyPendingSales = Post::where('post_type', 'VEHICLE')->where('status', 0)->whereYear('created_at', $thisYear)->whereMonth('created_at', '07')->count();
+        $auguestPendingSales = Post::where('post_type', 'VEHICLE')->where('status', 0)->whereYear('created_at', $thisYear)->whereMonth('created_at', '08')->count();
+        $septemberPendingSales = Post::where('post_type', 'VEHICLE')->where('status', 0)->whereYear('created_at', $thisYear)->whereMonth('created_at', '09')->count();
+        $octomberPendingSales = Post::where('post_type', 'VEHICLE')->where('status', 0)->whereYear('created_at', $thisYear)->whereMonth('created_at', '10')->count();
+        $novemberPendingSales = Post::where('post_type', 'VEHICLE')->where('status', 0)->whereYear('created_at', $thisYear)->whereMonth('created_at', '11')->count();
+        $decemberPendingSales = Post::where('post_type', 'VEHICLE')->where('status', 0)->whereYear('created_at', $thisYear)->whereMonth('created_at', '12')->count();
+
+        $vehicleSaleArray = [$januaryVehiSales, $februaryVehiSales, $marchVehiSales, $aprilVehiSales, $mayVehiSales, $juneVehiSales, $julyVehiSales, $auguestVehiSales, $septemberVehiSales, $octomberVehiSales, $novemberVehiSales, $decemberVehiSales];
+        $pendingSaleArray = [$januaryPendingSales, $februaryPendingSales, $marchPendingSales, $aprilPendingSales, $mayPendingSales, $junePendingSales, $julyPendingSales, $auguestPendingSales, $septemberPendingSales, $octomberPendingSales, $novemberPendingSales, $decemberPendingSales];
+
+        return ['vehicle_sales' => $vehicleSaleArray, 'pending_sales' => $pendingSaleArray];
+    }
+
+    public function getHeighestSoldVehicles()
+    {
+        $thisYear = Carbon::now()->format('Y');
+        $thisMonth = Carbon::now()->format('m');
+
+        return Post::whereYear('created_at', $thisYear)
+            ->whereMonth('created_at', $thisMonth)
+            ->where('post_type', 'VEHICLE')
+            ->with('Vehicle.VehicleMake', function ($q) {
+                $q->groupBy('id');
+            })->get()->toArray();
     }
 }

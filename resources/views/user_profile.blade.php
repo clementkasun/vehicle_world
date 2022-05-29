@@ -190,6 +190,14 @@
 
                 <hr>
 
+                <strong><i class="fas fa-pencil-alt mr-1"></i> Email </strong>
+
+                <p class="text-muted pl-1">
+                    {{$user_profile_data['email']}}
+                </p>
+
+                <hr>
+
                 <strong><i class="fas fa-pencil-alt mr-1"></i> Mobile No </strong>
 
                 <p class="text-muted pl-1">
@@ -223,6 +231,7 @@
                                 <th>Created Date</th>
                                 <th></th>
                                 <th></th>
+                                <th></th>
                             </thead>
                             <tbody>
                                 @foreach($user_adds as $user_add)
@@ -233,8 +242,9 @@
                                     <td>{{$user_add->price}}</td>
                                     <td>{{$user_add->location}}</td>
                                     <td>{{$user_add->created_at}}</td>
-                                    <td>
-                                        <button class="btn btn-primary del float-left" data-id="{{$user_add->id}}">Delete</buttton>
+                                    <td><button class="btn btn-warning ch-sold float-left" data-id="{{$user_add->id}}">Sold</buttton>
+                                    </td>
+                                    <td><button class="btn btn-danger del float-left" data-id="{{$user_add->id}}">Delete</buttton>
                                     </td>
                                     <td>
                                         <a href="./post_edit/id/{{$user_add->id}}" class="btn btn-primary edit float-left">Edit Data</a>
@@ -357,12 +367,47 @@
         }
 
         $('.del').on('click', function() {
-            let id = $(this).data('id');
-            ajaxRequest("DELETE", "./api/delete_post/id/" + id, null, function(resp) {
-                (resp.status == 1) ? code = 'Success': code = 'Error';
-                swal.fire(code, resp.message);
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Record will be deleted",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes!',
+                showLoaderOnConfirm: true,
+            }).then((result) => {
+                if (result.value) {
+                    let id = $(this).data('id');
+                    ajaxRequest("DELETE", "./api/delete_post/id/" + id, null, function(resp) {
+                        (resp.status == 1) ? code = 'Success': code = 'Error';
+                        swal.fire(code, resp.message);
+                    });
+                    location.reload();
+                }
             });
-            location.reload();
+        });
+
+        $('.ch-sold').on('click', function() {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Record will be changed as sold item",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes!',
+                showLoaderOnConfirm: true,
+            }).then((result) => {
+                // console.log(result.isConfirmed);
+                if (result.value) {
+                    let id = $(this).data('id');
+                    ajaxRequest("PUT", "./api/sold_post_as_sold/id/" + id, null, function(resp) {
+                        (resp.status == 1) ? code = 'Success': code = 'Error';
+                        swal.fire(code, resp.message);
+                    });
+                }
+            });
         });
 
         $(".file-upload").on('change', function() {

@@ -7,10 +7,11 @@ use App\Repositories\post\PostRepository;
 
 class PostController extends Controller
 {
-    
+
     private $postRepository;
 
-    function __construct(PostRepository $postRepository){
+    function __construct(PostRepository $postRepository)
+    {
         $this->postRepository = $postRepository;
     }
 
@@ -55,7 +56,8 @@ class PostController extends Controller
     }
 
 
-    public function filtered_posts(Request $request){
+    public function filtered_posts(Request $request)
+    {
         return $this->postRepository->filteredPosts($request);
     }
 
@@ -79,11 +81,11 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $remove_post = $this->postRepository->removePost($id);
-        if($remove_post == true){
-            return array('status' => 1, 'message' => 'Successfully deleted the post');
-        }else{
-            return array('status' => 0, 'message' => 'Post deletion was unsuccessful');
-        }
+       return $this->postRepository->removePost($id);
+    }
+
+    public function soldPost($id)
+    {
+       return $this->postRepository->changePostAsSold($id);
     }
 }

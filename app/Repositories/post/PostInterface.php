@@ -11,6 +11,14 @@ interface PostInterface {
     public function removePost($id);
     public function postUpdate($request, $id);
     public function removeExpiredPost();
+    public function changePostAsSold($id);
+    public function vehiclePostCount();
+    public function sparePartsCount();
+    public function wantedPostCount();
+    public function saledPostCount();
+    public function pendingSaleCount();
+    public function getCurrentYearSales();
+    public function getHeighestSoldVehicles();
 }
 
 ?>
