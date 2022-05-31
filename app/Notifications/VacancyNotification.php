@@ -41,11 +41,7 @@ class VacancyNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-            ->subject('We have a new vacancy you may interest!')
-            ->line('This is a Graduate Management System Kurunegala, You have new vacancies on HRDA Kurunegala.Plase contact us to get more details.')
-            ->action('View vacancy', url('https://hrdasite.qa.ceytechsystemsolutions.com'))
-            ->line('Thank you for using our application!');
+
     }
 
     /**

@@ -3,153 +3,6 @@
 @extends('layouts.scripts')
 @extends('layouts.navbar')
 @extends('layouts.footer')
-@section('pageStyles')
-<style>
-    .has-error {
-        color: red;
-    }
-
-    .switch {
-        position: relative;
-        display: inline-block;
-        width: 60px;
-        height: 34px;
-    }
-
-    .switch input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-    }
-
-    .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #ccc;
-        -webkit-transition: .4s;
-        transition: .4s;
-    }
-
-    .slider:before {
-        position: absolute;
-        content: "";
-        height: 26px;
-        width: 26px;
-        left: 4px;
-        bottom: 4px;
-        background-color: white;
-        -webkit-transition: .4s;
-        transition: .4s;
-    }
-
-    input:checked+.slider {
-        background-color: #2196F3;
-    }
-
-    input:focus+.slider {
-        box-shadow: 0 0 1px #2196F3;
-    }
-
-    input:checked+.slider:before {
-        -webkit-transform: translateX(26px);
-        -ms-transform: translateX(26px);
-        transform: translateX(26px);
-    }
-
-    /* Rounded sliders */
-    .slider.round {
-        border-radius: 34px;
-    }
-
-    .slider.round:before {
-        border-radius: 50%;
-    }
-
-    .typeahead,
-    .tt-query,
-    .tt-hint {
-        height: 30px;
-        padding: 8px 12px;
-        font-size: 24px;
-        line-height: 30px;
-        border: 2px solid #ccc;
-        -webkit-border-radius: 8px;
-        -moz-border-radius: 8px;
-        border-radius: 8px;
-        outline: none;
-    }
-
-    .typeahead {
-        background-color: #fff;
-    }
-
-    .typeahead:focus {
-        border: 2px solid #0097cf;
-    }
-
-    .tt-query {
-        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-        -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    }
-
-    .tt-hint {
-        color: #999
-    }
-
-    .tt-dropdown-menu {
-        width: 422px;
-        margin-top: 3px;
-        padding: 8px 0;
-        background-color: #fff;
-        border: 1px solid #ccc;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        -webkit-border-radius: 8px;
-        -moz-border-radius: 8px;
-        border-radius: 8px;
-        -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
-        -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
-        box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
-    }
-
-    .tt-suggestion {
-        padding: 3px 20px;
-        font-size: 18px;
-        line-height: 24px;
-        color: black;
-        background-color: white;
-    }
-
-    .tt-suggestion.tt-cursor {
-        color: #fff;
-        background-color: #0097cf;
-    }
-
-    .tt-suggestion p {
-        margin: 0;
-        font-size: 18px;
-        text-align: left;
-    }
-
-    .twitter-typeahead {
-        width: 100%;
-    }
-
-    footer {
-        position: relative;
-        padding: 10px 10px 0px 10px;
-        bottom: 0;
-        width: 100%;
-        /* Height of the footer*/
-        height: 20em;
-        background: grey;
-    }
-</style>
-@endsection
 @section('content')
 <!-- ======= Hero Section ======= -->
 <section id="hero">
@@ -163,8 +16,8 @@
                 <div class="carousel-container">
                     <div class="container">
                         <h2 class="animate__animated animate__fadeInDown">WELCOME <span> VEHIAUTO</span></h2>
-                        <p class="animate__animated animate__fadeInUp">VEHIAUTO is marketplace for sell vehicles online in sri lanka.</p>
-                        <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+                        <p class="animate__animated animate__fadeInUp">vehiauto.com is marketplace for buy and sell vehicles online in sri lanka.</p>
+                        <a href="/home" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
                     </div>
                 </div>
             </div>
@@ -174,8 +27,8 @@
                 <div class="carousel-container">
                     <div class="container">
                         <h2 class="animate__animated animate__fadeInDown">Sell Vehicles Online</span></h2>
-                        <p class="animate__animated animate__fadeInUp">VEHIAUTO is marketplace for sell vehicles online in sri lanka.</p>
-                        <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+                        <p class="animate__animated animate__fadeInUp">You can sell and promote vehicles online.</p>
+                        <a href="/post_registration" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
                     </div>
                 </div>
             </div>
@@ -185,8 +38,8 @@
                 <div class="carousel-container">
                     <div class="container">
                         <h2 class="animate__animated animate__fadeInDown">Buy and contact sellers</span></h2>
-                        <p class="animate__animated animate__fadeInUp">VEHIAUTO is marketplace for sell vehicles online in sri lanka.</p>
-                        <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+                        <p class="animate__animated animate__fadeInUp">Contact huge number of sellers to analyse and buy your future vehicle.</p>
+                        <a href="/contacts" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
                     </div>
                 </div>
             </div>
@@ -467,21 +320,27 @@
 <span class="mt-5 d-flex justify-content-center"><b>Visits: </b><img src="https://hitwebcounter.com/counter/counter.php?page=7985375&style=0006&nbdigits=5&type=page&initCount=0" title="Free Counter" Alt="web counter" border="0" height="25px" width="100px" /></a></span>
 <!-- ======= Portfolio Section ======= -->
 <section id="portfolio" class="portfolio bg-white">
-
-    <div class="container">
-        <!-- <div class="section-title">
-                        <h2>PROMOTING ADDS</h2>
-                    </div> -->
-        <div id="promoted_adds">
-            <div class="container">
-                <div class="row">
-                    <div class='col-12'>
-                        <table class="table" id="ad_tbl">
-                            <tbody></tbody>
-                        </table>
+    <div id="promoted_adds">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="card-light">
+                    <div class="card-body w-100" style="height: 100%;">
+                  
                     </div>
                 </div>
             </div>
+            <div class="col-md-8">
+                <table class="table" id="ad_tbl"></table>
+            </div>
+            <div class="col-md-2">
+                <div class="card-light w-100" style="height: 100%;">
+                    <div class="card-body">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section><!-- End Portfolio Section -->
 @endsection
 @section('pageScripts')
@@ -553,7 +412,7 @@
                 "render": function(data, type, row, meta) {
                     let html = '';
                     html += '<div class="row">';
-                    html += '<div class="card card-success m-2 col-md-12">';
+                    html += '<div class="card card-success w-100">';
                     html += '<a href="/public/api/get_post_profile/id/' + row.id + '">';
                     html += '<div class="card-body bg-light">';
                     html += '<div class="row">';
@@ -567,6 +426,11 @@
                     html += '<span><b>Price:</b>' + row.price + ' </span><br>';
                     html += '<span><b>Location:</b>' + row.location + ' </span><br>';
                     html += '<span><b>Condition:</b>' + row.condition + ' </span>';
+                    html += '<div class="ribbon-wrapper ribbon-lg">';
+                    html += '<div class="ribbon bg-success text-lg">';
+                    html += 'NEW';
+                    html += '</div>';
+                    html += '</div>';
                     html += '</div>';
                     html += '</div>';
                     html += '</div>';

@@ -69,3 +69,4 @@ Route::put('/update_basic_data/id/{user_id}', [CustomerController::class, 'updat
 Route::put('/change_password/id/{user_id}', [CustomerController::class, 'changePassword']);
 Route::put('/sold_post_as_sold/id/{post_id}', [PostController::class, 'soldPost']);
 Route::get('/get_current_sales', [DashboardController::class, 'getCurrentYearSales']);
+Route::post('/login', [UserController::class, 'loginUser']);

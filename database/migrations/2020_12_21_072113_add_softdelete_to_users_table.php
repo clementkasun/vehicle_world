@@ -16,6 +16,7 @@ class AddSoftdeleteToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->softDeletes();
             $table->string('last_name',255)->nullable();
+            $table->string('user_name',255)->nullable();
             $table->string('address',255)->nullable();
             $table->string('contact_no',12)->nullable();
             $table->string('nic',12)->nullable();
@@ -35,6 +36,7 @@ class AddSoftdeleteToUsersTable extends Migration
           $table->dropColumn('contact_no');
           $table->dropColumn('address');
           $table->dropColumn('last_name');
+          $table->dropColumn('user_name');
         });
     }
 }

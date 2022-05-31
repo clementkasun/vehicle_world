@@ -8,16 +8,6 @@
     .has-error {
         color: red;
     }
-
-    footer {
-        position: relative;
-        padding: 10px 10px 0px 10px;
-        bottom: 0;
-        width: 100%;
-        /* Height of the footer*/
-        height: 20em;
-        background: grey;
-    }
 </style>
 @endsection
 

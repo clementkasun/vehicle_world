@@ -8,16 +8,6 @@
     .has-error {
         color: red;
     }
-
-    footer {
-        position: relative;
-        padding: 10px 10px 0px 10px;
-        bottom: 0;
-        width: 100%;
-        /* Height of the footer*/
-        height: 20em;
-        background: grey;
-    }
 </style>
 @endsection
 
@@ -486,6 +476,7 @@
     }
 
     $("#save_post").click(function() {
+        $(this).prop('disabled', true);
         var is_valid = jQuery("#post_registration").valid();
         if (is_valid) {
             let object = {
@@ -526,6 +517,7 @@
                 // ajaxRequest("POST", url, data, function (result) {
                 if (result.status == 1) {
                     // $("#post_registration")[0].reset;
+                    $("#save_post").prop('disabled', false);
                     Swal.fire(
                         'Post Registration',
                         'Successfully Posted!',
@@ -534,6 +526,7 @@
                     window.location.href = "/public/user_profile";
                     //            location.reload();
                 } else {
+                    $("#save_post").prop('disabled', false);
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
@@ -546,6 +539,8 @@
                     callBack(result);
                 }
             });
+        }else{
+            $("#save_post").prop('disabled', false);
         }
     });
 

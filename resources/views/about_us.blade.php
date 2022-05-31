@@ -120,15 +120,6 @@
         text-align: center;
         width: 70px;
     }
-
-    footer {
-        position: fixed;
-        padding: 10px 10px 0px 10px;
-        bottom: 0;
-        width: 100%;
-        height: 20em;
-        background: grey;
-    }
 </style>
 
 @endsection

@@ -34,4 +34,6 @@
 <!-- daterange picker -->
 <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/fixedheader/3.2.3/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+<!-- uPlot -->
+<link rel="stylesheet" href="{{ asset('/plugins/uplot/uPlot.min.css') }}">
 @endsection

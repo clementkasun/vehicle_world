@@ -278,7 +278,7 @@ class PostRepository implements PostInterface
 
         $post_by_vehi_type = Post::join('vehicles', 'posts.vehicle_id', 'vehicles.id')
             ->where('vehicles.vehicle_type', $vehi_type)
-            ->paginate(5);
+            ->paginate(4);
 
         return ['post_data' => $post_data, 'related_posts' => $post_by_vehi_type];
     }
@@ -601,9 +601,9 @@ class PostRepository implements PostInterface
             Storage::delete($img_path_five);
             $post->delete();
 
-            return array('status' => 'Post Deleted Successfully!');
+            return array('status' => 1);
         } catch (\Exception $e) {
-            return array('status' => 'Post Deleting is Unsuccessfull!');
+            return array('status' => 0);
         }
     }
 
@@ -626,9 +626,9 @@ class PostRepository implements PostInterface
             Storage::delete($img_four_path);
             Storage::delete($img_path_five);
             $get_expired_post->delete();
-            return array('status' => 'Successfully removed the expired post!');
+            return array('status' => 1);
         } catch (\Exception $ex) {
-            return array('status' => 'expired post data removal unsuccessfull!');
+            return array('status' => 0);
         }
     }
 
@@ -713,11 +713,16 @@ class PostRepository implements PostInterface
         $thisYear = Carbon::now()->format('Y');
         $thisMonth = Carbon::now()->format('m');
 
-        return Post::whereYear('created_at', $thisYear)
-            ->whereMonth('created_at', $thisMonth)
-            ->where('post_type', 'VEHICLE')
-            ->with('Vehicle.VehicleMake', function ($q) {
-                $q->groupBy('id');
-            })->get()->toArray();
+        return Post::whereYear('posts.created_at', $thisYear)
+            ->whereMonth('posts.created_at', $thisMonth)
+            ->where('posts.post_type', 'VEHICLE')
+            ->join('vehicles', 'posts.vehicle_id', 'vehicles.id')
+            ->join('vehicle_makes', 'vehicles.make_id', 'vehicle_makes.id')
+            ->select('vehicles.make_id', 'vehicle_makes.make_name', 'posts.created_at')
+            ->groupBy('vehicles.make_id')
+            ->orderByRaw('COUNT(*) DESC')
+            ->limit(10)
+            ->get()
+            ->toArray();
     }
 }

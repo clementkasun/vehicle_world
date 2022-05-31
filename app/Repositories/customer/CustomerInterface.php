@@ -10,7 +10,7 @@ interface CustomerInterface{
     public function removeCustomer();
     public function isEmailNicExist($request);
     public function myProfile(); 
-    public function logout(); 
+    public function logout();  
 }
 
 ?>

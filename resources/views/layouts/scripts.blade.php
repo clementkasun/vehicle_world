@@ -40,4 +40,6 @@
 <script src="https://cdn.datatables.net/fixedheader/3.2.3/js/dataTables.fixedHeader.min.js"></script>
 <!-- ChartJS -->
 <script src="{{ asset('/plugins/chart.js/Chart.min.js') }}"></script>
+<!-- uPlot -->
+<script src="{{ asset('/plugins/uplot/uPlot.iife.min.js') }}"></script>
 @endsection

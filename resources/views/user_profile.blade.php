@@ -9,144 +9,8 @@
         color: red;
     }
 
-    .switch {
-        position: relative;
-        display: inline-block;
-        width: 60px;
-        height: 34px;
-    }
-
-    .switch input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-    }
-
-    .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #ccc;
-        -webkit-transition: .4s;
-        transition: .4s;
-    }
-
-    .slider:before {
-        position: absolute;
-        content: "";
-        height: 26px;
-        width: 26px;
-        left: 4px;
-        bottom: 4px;
-        background-color: white;
-        -webkit-transition: .4s;
-        transition: .4s;
-    }
-
-    input:checked+.slider {
-        background-color: #2196F3;
-    }
-
-    input:focus+.slider {
-        box-shadow: 0 0 1px #2196F3;
-    }
-
-    input:checked+.slider:before {
-        -webkit-transform: translateX(26px);
-        -ms-transform: translateX(26px);
-        transform: translateX(26px);
-    }
-
-    /* Rounded sliders */
-    .slider.round {
-        border-radius: 34px;
-    }
-
-    .slider.round:before {
-        border-radius: 50%;
-    }
-
-    .typeahead,
-    .tt-query,
-    .tt-hint {
-        height: 30px;
-        padding: 8px 12px;
-        font-size: 24px;
-        line-height: 30px;
-        border: 2px solid #ccc;
-        -webkit-border-radius: 8px;
-        -moz-border-radius: 8px;
-        border-radius: 8px;
-        outline: none;
-    }
-
-    .typeahead {
-        background-color: #fff;
-    }
-
-    .typeahead:focus {
-        border: 2px solid #0097cf;
-    }
-
-    .tt-query {
-        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-        -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    }
-
-    .tt-hint {
-        color: #999
-    }
-
-    .tt-dropdown-menu {
-        width: 422px;
-        margin-top: 3px;
-        padding: 8px 0;
-        background-color: #fff;
-        border: 1px solid #ccc;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        -webkit-border-radius: 8px;
-        -moz-border-radius: 8px;
-        border-radius: 8px;
-        -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
-        -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
-        box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
-    }
-
-    .tt-suggestion {
-        padding: 3px 20px;
-        font-size: 18px;
-        line-height: 24px;
-        color: black;
-        background-color: white;
-    }
-
-    .tt-suggestion.tt-cursor {
-        color: #fff;
-        background-color: #0097cf;
-    }
-
-    .tt-suggestion p {
-        margin: 0;
-        font-size: 18px;
-        text-align: left;
-    }
-
-    .twitter-typeahead {
-        width: 100%;
-    }
-
-    footer {
-        position: relative;
-        padding: 10px 10px 0px 10px;
-        bottom: 0;
-        width: 100%;
-        /* Height of the footer*/
-        height: 20em;
-        background: grey;
+    .error {
+        color: red;
     }
 </style>
 @endsection
@@ -242,7 +106,12 @@
                                     <td>{{$user_add->price}}</td>
                                     <td>{{$user_add->location}}</td>
                                     <td>{{$user_add->created_at}}</td>
-                                    <td><button class="btn btn-warning ch-sold float-left" data-id="{{$user_add->id}}">Sold</buttton>
+                                    <td>
+                                        @if($user_add->status != '1')
+                                        <button class="btn btn-warning ch-sold float-left" data-id="{{$user_add->id}}">Sold</buttton>
+                                            @else
+                                            <button class="btn btn-warning ch-sold float-left" disabled>Sold</buttton>
+                                                @endif
                                     </td>
                                     <td><button class="btn btn-danger del float-left" data-id="{{$user_add->id}}">Delete</buttton>
                                     </td>
@@ -257,77 +126,81 @@
                     <!-- /.tab-pane -->
 
                     <div class="tab-pane" id="settings" data-user-id="{{$user_profile_data['id']}}">
-                        <div class="card card-light">
-                            <div class="card-body">
-                                <form class="form-horizontal" id="user_update_frm">
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <label for="firstName" class="col-form-label">First Name</label>
-                                            <div>
-                                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
+                        <div class="row">
+                            <div class="card card-light">
+                                <div class="card-body">
+                                    <form class="form-horizontal" id="user_update_frm">
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="firstName" class="col-form-label">First Name</label>
+                                                <div>
+                                                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="lastName" class="col-form-label">Last Name</label>
+                                                <div>
+                                                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="lastName" class="col-form-label">Last Name</label>
-                                            <div>
-                                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="email" class="col-form-label">Email</label>
+                                                <div>
+                                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="contactNo" class="col-form-label">Contact No</label>
+                                                <div>
+                                                    <input type="tel" class="form-control" id="contactNo" name="contactNo" placeholder="Contact No" required>
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="nic" class="col-form-label">NIC</label>
+                                                <div>
+                                                    <input type="nic" class="form-control" id="nic" name="nic" placeholder="NIC" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="address" class="col-form-label">Address</label>
+                                                <div>
+                                                    <textarea class="form-control" id="address" name="address" placeholder="Address" required></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-warning" id="update_user_data">Update User Data</button>
                                     </div>
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <label for="email" class="col-form-label">Email</label>
-                                            <div>
-                                                <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="contactNo" class="col-form-label">Contact No</label>
-                                            <div>
-                                                <input type="tel" class="form-control" id="contactNo" name="contactNo" placeholder="Contact No" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <label for="nic" class="col-form-label">NIC</label>
-                                            <div>
-                                                <input type="nic" class="form-control" id="nic" name="nic" placeholder="NIC" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="address" class="col-form-label">Address</label>
-                                            <div>
-                                                <textarea class="form-control" id="address" name="address" placeholder="Address" required></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="card-footer">
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-warning" id="update_user_data">Update User Data</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="card card-light">
-                            <div class="card-body">
-                                <form class="form-horizontal" id="pass_change_frm">
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <label for="user_pass" class="col-form-label">New Password</label>
-                                            <div><input type="password" class="form-control" id="user_pass" placeholder="Enter New Password" required></div>
+                        <div class="row">
+                            <div class="card card-light">
+                                <div class="card-body">
+                                    <form class="form-horizontal" id="pass_change_frm">
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="user_pass" class="col-form-label">New Password</label>
+                                                <div><input type="password" class="form-control" id="user_pass" name="user_pass" placeholder="Enter New Password" required autocomplete="off"></div>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="pass_retype" class="col-form-label">Re-enter Password</label>
+                                                <div><input type="password" class="form-control" id="pass_retype" name="pass_retype" placeholder="Re-Enter Your New Password" required autocomplete="off"></div>
+                                            </div>
                                         </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="pass_retype" class="col-form-label">Re-enter Password</label>
-                                            <div><input type="password" class="form-control" id="pass_retype" placeholder="Re-Enter Your New Password" required></div>
-                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-warning" id="change_pass">Change Password</button>
                                     </div>
-                                </form>
-                            </div>
-                            <div class="card-footer">
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-warning" id="change_pass">Change Password</button>
                                 </div>
                             </div>
                         </div>
@@ -341,8 +214,8 @@
     <!-- /.col -->
 </div>
 <!-- /.row -->
-
 @endsection
+
 @section('pageScripts')
 <script>
     $(document).ready(function() {
@@ -380,10 +253,13 @@
                 if (result.value) {
                     let id = $(this).data('id');
                     ajaxRequest("DELETE", "./api/delete_post/id/" + id, null, function(resp) {
-                        (resp.status == 1) ? code = 'Success': code = 'Error';
-                        swal.fire(code, resp.message);
+                        if (resp.status == 1) {
+                            swal.fire('Post Deletion', 'Successfully deleted the post', 'success');
+                            location.reload();
+                        } else {
+                            swal.fire('Post Deletion', 'Post deletion was unsuccessful', 'error');
+                        }
                     });
-                    location.reload();
                 }
             });
         });
@@ -403,8 +279,12 @@
                 if (result.value) {
                     let id = $(this).data('id');
                     ajaxRequest("PUT", "./api/sold_post_as_sold/id/" + id, null, function(resp) {
-                        (resp.status == 1) ? code = 'Success': code = 'Error';
-                        swal.fire(code, resp.message);
+                        if (resp.status == 1) {
+                            swal.fire('Post status change', 'Successfully changed the post status', 'success');
+                            location.reload();
+                        } else {
+                            swal.fire('Post status change', 'Post status changing was unsuccessful', 'error');
+                        }
                     });
                 }
             });
@@ -414,8 +294,8 @@
             readURL(this);
         });
 
-        var user_profile;
-        user_profile = $("#user_update_frm").validate({
+        var form_validation;
+        form_validation = $(".form-horizontal").validate({
             errorClass: "invalid",
             rules: {
                 contactNo: {
@@ -472,6 +352,7 @@
     });
 
     $("#update_user_data").click(function() {
+        $(this).prop('disabled', true);
         let is_valid = jQuery("#user_update_frm").valid();
         if (is_valid) {
 
@@ -486,17 +367,21 @@
             };
             ajaxRequest("POST", url_email_nic, validation_data, function(resp) {
                 if (resp == 1) {
+                    $("#update_user_data").prop('disabled', false);
                     $('#nic').addClass('has-error');
                     Swal.fire("Failed!", "NIC already exist!", "warning");
                 } else if (resp == 2) {
+                    $("#update_user_data").prop('disabled', false);
                     $('#email').addClass('has-error');
                     Swal.fire("Failed!", "Email already exist!", "warning");
                 } else {
+                    $("#update_user_data").prop('disabled', false);
                     $('#email').removeClass('has-error');
                     $('#nic').removeClass('has-error');
                     ajaxRequest("PUT", url, data, function(result) {
                         if (result.status == 1) {
-                            $("#user_update_frm")[0].reset;
+                            $("#user_update_frm").trigger("reset");
+                            $("#update_user_data").prop('disabled', false);
                             Swal.fire(
                                 'Basic user data updation',
                                 'Successfully Updated!',
@@ -516,10 +401,13 @@
                     });
                 }
             });
+        } else {
+            $("#update_user_data").prop('disabled', false);
         }
     });
 
     $('#change_pass').click(function() {
+        $(this).prop('disabled', true);
         let is_valid = jQuery("#pass_change_frm").valid();
         if (is_valid) {
 
@@ -527,46 +415,58 @@
                 password: $('#user_pass').val()
             };
             let user_id = $('#settings').data('user-id');
+            if ($('#user_pass').val() === $('#pass_retype').val()) {
+                let url = "./api/change_password/id/" + user_id;
 
-            if ($('#user_pass').val() != '' && $('#pass_retype').val() != '') {
-                if ($('#user_pass').val() === $('#pass_retype').val() && $('#user_pass').val().length > 5 && $('#pass_retype').val().length > 5) {
-                    let url = "./api/change_password/id/" + user_id;
-
-                    ajaxRequest("PUT", url, data, function(result) {
-                        if (result.status == 1) {
-                            $("#pass_change_frm")[0].reset;
-                            Swal.fire(
-                                'Password change',
-                                'Successfully changed!',
-                                'success'
-                            );
-                        } else {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: result.msg
-                            })
-                        }
-                        if (typeof callBack !== 'undefined' && callBack != null && typeof callBack ===
-                            "function") {
-                            callBack(result);
-                        }
-                    });
-                } else {
-                    Swal.fire(
-                        'Password confirmation',
-                        'Password confirmation failed!',
-                        'error'
-                    );
-                }
+                ajaxRequest("PUT", url, data, function(result) {
+                    if (result.status == 1) {
+                        $("#pass_change_frm").trigger("reset");
+                        $('#change_pass').prop('disabled', false);
+                        Swal.fire(
+                            'Password change',
+                            'Successfully changed!',
+                            'success'
+                        );
+                        window.location.href = "/public/logout";
+                    } else if (result.status == 2) {
+                        $('#change_pass').prop('disabled', false);
+                        $('#user_pass').addClass('has-error');
+                        $('#pass_retype').addClass('has-error');
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Password change',
+                            text: 'Password already exists!'
+                        })
+                    } else if (result.status == 0) {
+                        $('#change_pass').prop('disabled', false);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Password change',
+                            text: 'Password change was unsuccessful!'
+                        })
+                    } else {
+                        $('#change_pass').prop('disabled', false);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Password change',
+                            text: 'Unexpected error!'
+                        })
+                    }
+                    if (typeof callBack !== 'undefined' && callBack != null && typeof callBack ===
+                        "function") {
+                        callBack(result);
+                    }
+                });
             } else {
                 Swal.fire(
-                    'Form Validation',
-                    'Password and confirmation must completed!',
+                    'Password confirmation',
+                    'Please retype the same password you have entered!',
                     'error'
                 );
             }
 
+        } else {
+            $('#change_pass').prop('disabled', false);
         }
     });
 
@@ -596,8 +496,8 @@
         }
     });
     jQuery.validator.addMethod("valide_code", function(value, element) {
-        return this.optional(element) || /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/.test(value);
-    }, "Please enter a valid Code");
+        return this.optional(element) || /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,9}$/.test(value);
+    }, "Please enter a valid password");
     jQuery.validator.addMethod("valid_name", function(value, element) {
         return this.optional(element) || /^[a-zA-Z\s\.\&\-()]*$/.test(value);
     }, "Please enter a valid name");

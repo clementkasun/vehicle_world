@@ -8,7 +8,7 @@
             </div>
             <div class="social-links d-none d-md-block">
                 <a href="https://twitter.com/VehiautoC" target="_blank" class="twitter"><i class="bi bi-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.facebook.com/kasunclement/" class="facebook"><i class="bi bi-facebook"></i></a>
                 <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
                 <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
             </div>
@@ -22,6 +22,7 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto active" href="{{ asset('home') }}">Home</a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('analysis') }}">Market Analysis</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('about_us') }}">About</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('services') }}">Services</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('post_registration') }}"><span class="btn btn-warning">post your add</span></a></li>
