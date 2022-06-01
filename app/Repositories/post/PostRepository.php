@@ -45,7 +45,8 @@ class PostRepository implements PostInterface
                 'spare_parts.part_used_in',
                 'spare_parts.part_category',
                 'posts.additional_info',
-                'posts.created_at'
+                'posts.created_at',
+                'posts.status'
             )->paginate(50);
 
         return $post_all;
@@ -84,7 +85,8 @@ class PostRepository implements PostInterface
                 'spare_parts.part_used_in',
                 'spare_parts.part_category',
                 'posts.additional_info',
-                'posts.created_at'
+                'posts.created_at',
+                'posts.status'
             )->get();
 
         return $post_all;
@@ -397,7 +399,8 @@ class PostRepository implements PostInterface
                     'posts.additional_info',
                     'posts.location',
                     'posts.address',
-                    'posts.created_at'
+                    'posts.created_at',
+                    'posts.status'
                 );
             });
             $filtered_post_data = $post->get();

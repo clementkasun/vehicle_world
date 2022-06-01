@@ -428,7 +428,8 @@
                     html += '<span><b>Condition:</b>' + row.condition + ' </span>';
                     html += '<div class="ribbon-wrapper ribbon-lg">';
                     html += '<div class="ribbon bg-success text-lg">';
-                    html += 'NEW';
+                    let status = (row.status == 0) ? 'NEW': 'SOLD';
+                    html += status;
                     html += '</div>';
                     html += '</div>';
                     html += '</div>';
