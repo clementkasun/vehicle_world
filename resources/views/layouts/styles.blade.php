@@ -36,4 +36,5 @@
 <link href="https://cdn.datatables.net/fixedheader/3.2.3/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
 <!-- uPlot -->
 <link rel="stylesheet" href="{{ asset('/plugins/uplot/uPlot.min.css') }}">
+<script src="https://kit.fontawesome.com/b13ab8c5a9.js" crossorigin="anonymous"></script>
 @endsection

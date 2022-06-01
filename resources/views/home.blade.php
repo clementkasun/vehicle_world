@@ -12,7 +12,7 @@
         <div class="carousel-inner" role="listbox">
 
             <!-- Slide 1 -->
-            <div class="carousel-item active" style="background-image: url({{asset('assets/img/slide/slide-1.jpg')}})">
+            <div class="carousel-item active" style="background-image: url({{asset('assets/img/home_images/home-one.jpg')}})">
                 <div class="carousel-container">
                     <div class="container">
                         <h2 class="animate__animated animate__fadeInDown">WELCOME <span> VEHIAUTO</span></h2>
@@ -23,7 +23,7 @@
             </div>
 
             <!-- Slide 2 -->
-            <div class="carousel-item" style="background-image: url({{asset('assets/img/slide/slide-2.jpg')}})">
+            <div class="carousel-item" style="background-image: url({{asset('assets/img/home_images/home-two.jpg')}})">
                 <div class="carousel-container">
                     <div class="container">
                         <h2 class="animate__animated animate__fadeInDown">Sell Vehicles Online</span></h2>
@@ -34,7 +34,7 @@
             </div>
 
             <!-- Slide 3 -->
-            <div class="carousel-item" style="background-image: url({{asset('assets/img/slide/slide-3.jpg')}})">
+            <div class="carousel-item" style="background-image: url({{asset('assets/img/home_images/home-three.jpg')}})">
                 <div class="carousel-container">
                     <div class="container">
                         <h2 class="animate__animated animate__fadeInDown">Buy and contact sellers</span></h2>

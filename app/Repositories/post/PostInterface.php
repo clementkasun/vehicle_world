@@ -17,8 +17,12 @@ interface PostInterface {
     public function wantedPostCount();
     public function saledPostCount();
     public function pendingSaleCount();
-    public function getCurrentYearSales();
+    public function getMonthlySales();
     public function getHeighestSoldVehicles();
+    public function getHeighestSellers();
+    public function getYearlySales();
+    public function vehicleTypeWiseSales();
+    public function getPercentages();
 }
 
 ?>

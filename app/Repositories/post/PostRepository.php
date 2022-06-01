@@ -673,7 +673,7 @@ class PostRepository implements PostInterface
         return Post::where('status', 0)->count();
     }
 
-    public function getCurrentYearSales()
+    public function getMonthlySales()
     {
         $thisYear = Carbon::now()->format('Y');
 
@@ -716,13 +716,91 @@ class PostRepository implements PostInterface
         $thisYear = Carbon::now()->format('Y');
         $thisMonth = Carbon::now()->format('m');
 
-        return Post::whereYear('posts.created_at', $thisYear)
+        return Post::where('status', 1)
+            ->whereYear('posts.created_at', $thisYear)
             ->whereMonth('posts.created_at', $thisMonth)
             ->where('posts.post_type', 'VEHICLE')
             ->join('vehicles', 'posts.vehicle_id', 'vehicles.id')
             ->join('vehicle_makes', 'vehicles.make_id', 'vehicle_makes.id')
             ->select('vehicles.make_id', 'vehicle_makes.make_name', 'posts.created_at')
             ->groupBy('vehicles.make_id')
+            ->orderByRaw('COUNT(*) DESC')
+            ->limit(10)
+            ->get()
+            ->toArray();
+    }
+
+    public function getYearlySales()
+    {
+        $posts = Post::where('status', 1)
+            ->select(
+                DB::raw("(COUNT(*)) as count"),
+                DB::raw("YEAR(created_at) as year")
+            )
+            ->orderBy('created_at', 'DESC')
+            ->groupBy('year')
+            ->get()->toArray();
+
+        $year_array = [0];
+        $count_array = [0];
+
+        foreach ($posts as $post) {
+            $year_array[] = $post['year'];
+            $count_array[] = $post['count'];
+        }
+
+        return ['years' => $year_array, 'counts' => $count_array];
+    }
+
+    public function vehicleTypeWiseSales()
+    {
+        $posts = Post::join('vehicles', 'posts.vehicle_id', 'vehicles.id')
+            ->where('posts.status', 1)
+            ->select(
+                DB::raw("(COUNT(*)) as count"),
+                DB::raw("vehicles.model as label")
+            )
+            ->groupBy('vehicles.model')
+            ->get()
+            ->toArray();
+
+        $lables = [];
+        $count_array = [];
+
+        foreach ($posts as $post) {
+            $lables[] = $post['label'];
+            $count_array[] = $post['count'];
+        }
+
+        return ['labels' => $lables, 'counts' => $count_array];
+    }
+
+    public function getPercentages()
+    {
+        $saled_vehicle_count = Post::where('post_type', 'VEHICLE')->where('status', 1)->count();
+        $pending_vehicle_count = Post::where('post_type', 'VEHICLE')->where('status', 0)->count();
+        $all_vehicle_count = Post::where('post_type', 'VEHICLE')->count();
+
+        $saled_vehicle_per = $saled_vehicle_count /  $all_vehicle_count * 100;
+        $pending_vehicle_per = $pending_vehicle_count /  $all_vehicle_count * 100;
+
+        return array('saled_vehi_per' => $saled_vehicle_per, 'pending_vehi_per' => $pending_vehicle_per);
+    }
+
+    public function getHeighestSellers()
+    {
+        $thisYear = Carbon::now()->format('Y');
+        $thisMonth = Carbon::now()->format('m');
+
+        return Post::where('status', 1)
+            ->whereYear('posts.created_at', $thisYear)
+            ->whereMonth('posts.created_at', $thisMonth)
+            ->where('posts.post_type', 'VEHICLE')
+            ->join('users', 'posts.user_id', 'users.id')
+            ->join('vehicles', 'posts.vehicle_id', 'vehicles.id')
+            ->join('vehicle_makes', 'vehicles.make_id', 'vehicle_makes.id')
+            ->select('users.user_name as seller_name','vehicles.make_id', 'vehicle_makes.make_name', 'posts.created_at')
+            ->groupBy('users.user_name')
             ->orderByRaw('COUNT(*) DESC')
             ->limit(10)
             ->get()

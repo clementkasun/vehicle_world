@@ -10,6 +10,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TestJsonController;
 use App\Http\Controllers\JsonResultsController;
+use App\Http\Controllers\SupportMailController;
 
 /*
   |--------------------------------------------------------------------------
@@ -68,5 +69,9 @@ Route::post('/filtered_posts', [PostController::class, 'filtered_posts']);
 Route::put('/update_basic_data/id/{user_id}', [CustomerController::class, 'updateBasicData']);
 Route::put('/change_password/id/{user_id}', [CustomerController::class, 'changePassword']);
 Route::put('/sold_post_as_sold/id/{post_id}', [PostController::class, 'soldPost']);
-Route::get('/get_current_sales', [DashboardController::class, 'getCurrentYearSales']);
-Route::post('/login', [UserController::class, 'loginUser']);
+Route::get('/get_monthly_sales', [DashboardController::class, 'getMonthlySales']);
+Route::get('/get_yearly_sales', [DashboardController::class, 'getYearlySales']);
+Route::get('/get_sales_vehicle_wise', [DashboardController::class, 'vehicleTypeWiseSales']);
+Route::get('/get_percentages', [DashboardController::class, 'getPercentages']);
+
+Route::post('/send_mail', [SupportMailController:: class, 'sendMail']);

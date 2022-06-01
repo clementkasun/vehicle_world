@@ -35,12 +35,14 @@ Route::get('/post_filtered', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/post_registration', function () {
     return view('/registration/post_registration');
 })->name('post_registration');
-Route::get('/about_us', function(){
+Route::get('/about_us', function () {
     return view('about_us');
 });
-Route::get('/services', function(){
+Route::get('/services', function () {
     return view('services');
 });
-Route::get('/contacts', function(){
+Route::get('/contacts', function () {
     return view('contacts');
 });
+
+

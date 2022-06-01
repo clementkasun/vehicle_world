@@ -20,14 +20,37 @@ class DashboardController extends Controller
         $saledPostCount = $this->postRepository->saledPostCount();
         $pending_post_count = $this->postRepository->pendingSaleCount();
         $heighest_sold_vehicles = $this->postRepository->getHeighestSoldVehicles();
+        $heighest_sellers = $this->postRepository->getHeighestSellers();
 
-        $data = ['vehicle_count' => $vehicle_count, 'spare_part_count' => $spare_part_count, 'saledPostCount' => $saledPostCount, 'pending_post_count' => $pending_post_count, 'heighest_sold_vehicles' => $heighest_sold_vehicles];
+        $data = [
+            'vehicle_count' => $vehicle_count,
+            'spare_part_count' => $spare_part_count,
+            'saledPostCount' => $saledPostCount,
+            'pending_post_count' => $pending_post_count,
+            'heighest_sold_vehicles' => $heighest_sold_vehicles,
+            'heighest_sellers' => $heighest_sellers
+        ];
 
         return view('analysis', ['analysis' => $data]);
     }
 
-    public function getCurrentYearSales()
+    public function getMonthlySales()
     {
-        return $this->postRepository->getCurrentYearSales();
+        return $this->postRepository->getMonthlySales();
+    }
+
+    public function getYearlySales()
+    {
+        return $this->postRepository->getYearlySales();
+    }
+
+    public function vehicleTypeWiseSales()
+    {
+        return $this->postRepository->vehicleTypeWiseSales();
+    }
+
+    public function getPercentages()
+    {
+        return $this->postRepository->getPercentages();
     }
 }

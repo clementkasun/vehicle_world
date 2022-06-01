@@ -2,7 +2,7 @@
     <x-jet-authentication-card>
         <x-slot name="logo">
             <!-- <img style="width: 240px; height: 85px;" src="./dist/img/vehicle_logos.png"> -->
-            <h2><b>VEHIAUTO.COM</b></h2>
+            <h2 class="logo me-auto" style="font-size: 30px;margin: 0;padding: 0;line-height: 1;font-weight: 700;letter-spacing: 1px;text-transform: uppercase;">VEHIAUTO.COM</h2>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />

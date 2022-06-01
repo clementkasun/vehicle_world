@@ -20,7 +20,7 @@
     <!-- /.card-header -->
     <!-- form start -->
     <div class="card-body">
-        <form id="cust_reg_frm">
+        <form id="cust_reg_frm" class="mb-5">
             <div class="row">
                 <div class="col-md-6">
                     <div class="row">
