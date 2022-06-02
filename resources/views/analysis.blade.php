@@ -267,7 +267,7 @@
     ajaxRequest("GET", url, null, function(result) {
       sold_vehicle_array = result['vehicle_sales'];
       pending_sales = result['pending_sales'];
-
+console.log(pending_sales);
       var areaChartData = {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'Auguest', 'September', 'November', 'December'],
         datasets: [{
