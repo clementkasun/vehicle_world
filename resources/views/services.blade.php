@@ -18,7 +18,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-4">
+        <div class="col-md-4">
             <div class="card card-light" style="height: 25em">
                 <div class="card-body text-center">
                     <h5 class="mt-5 text-success">You can find vehicles</h5>
@@ -29,7 +29,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-md-4">
             <div class="card card-light" style="height: 25em">
                 <div class="card-body text-center">
                     <h5 class="mt-5 text-success">You can sell and promote vehicles to the market</h5>
@@ -40,7 +40,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-md-4">
             <div class="card card-light" style="height: 25em">
                 <div class="card-body text-center">
                     <h5 class="mt-5 text-success">Can analyze the market</h5>

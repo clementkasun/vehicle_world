@@ -94,8 +94,8 @@ class PostRepository implements PostInterface
 
     public function createPost($request)
     {
-        try {
-            DB::beginTransaction();
+        // try {
+        //     DB::beginTransaction();
             $post_type = $request->post_type;
 
             $user_id = $request->user_id;
@@ -173,12 +173,23 @@ class PostRepository implements PostInterface
             $post_update = Post::find($id);
             $random_name = uniqid($id);
             if ($request->main_image != "null" && $request->image_one != "null" && $request->image_two != "null" && $request->image_three != "null" && $request->image_four != "null" && $request->image_five != "null") {
-                $main_ext = $request->main_image->extension();
-                $path_main = $request->file('main_image')->storeAs(
-                    '/public/post_images' . '/' . $id,
-                    'main_img' . '.' . $random_name . '.' . $main_ext
-                );
-                $post_update->main_image = str_replace("public/", "/", $path_main);
+                // $main_ext = $request->main_image->extension();
+                // $path_main = $request->file('main_image')->storeAs(
+                //     '/public/post_images' . '/' . $id,
+                //     'main_img' . '.' . $random_name . '.' . $main_ext
+                // );
+                // $post_update->main_image = str_replace("public/", "/", $path_main);
+
+                if($request->hasFile('main_image')) {
+
+                    $image       = $request->file('main_image');
+                    $filename    = $image->getClientOriginalName();
+                
+                    $image_resize = \Image::make($image->getRealPath());              
+                    $image_resize->resize(300, 300);
+                    $image_resize->save(public_path('images/ServiceImages/' .$filename));
+                
+                }
 
                 $img_one_ext = $request->image_one->extension();
                 $path_one = $request->file('image_one')->storeAs(
@@ -216,12 +227,12 @@ class PostRepository implements PostInterface
                 $post_update->image_5 = str_replace("public/", "/", $path_five);
                 $post_update->save();
             }
-            DB::commit();
-            return array('status' => 1, 'msg' => 'Post created successfully!');
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return array('status' => 0, 'msg' => 'Post creation is Unsuccessfully!');
-        }
+        //     DB::commit();
+        //     return array('status' => 1, 'msg' => 'Post created successfully!');
+        // } catch (\Exception $e) {
+        //     DB::rollBack();
+        //     return array('status' => 0, 'msg' => 'Post creation is Unsuccessfully!');
+        // }
     }
 
     public function showPostProfile($post_id)

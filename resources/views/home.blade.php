@@ -426,8 +426,8 @@
                     html += '<span><b>Price:</b>' + row.price + ' </span><br>';
                     html += '<span><b>Location:</b>' + row.location + ' </span><br>';
                     html += '<span><b>Condition:</b>' + row.condition + ' </span>';
-                    html += '<div class="ribbon-wrapper ribbon-lg">';
-                    html += '<div class="ribbon bg-success text-lg">';
+                    html += '<div class="ribbon-wrapper ribbon-sm">';
+                    html += '<div class="ribbon bg-success text-sm">';
                     let status = (row.status == 0) ? 'NEW': 'SOLD';
                     html += status;
                     html += '</div>';

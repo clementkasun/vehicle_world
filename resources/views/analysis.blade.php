@@ -238,6 +238,7 @@
       responsive: true,
       searching: false,
       "pageLength": 10,
+      "bLengthChange": false,
     });
 
     $('#highest_sallers').DataTable({
@@ -247,6 +248,7 @@
       responsive: true,
       searching: false,
       "pageLength": 10,
+      "bLengthChange": false,
     });
 
     let per_url = "./api/get_percentages";

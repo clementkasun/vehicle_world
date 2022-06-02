@@ -5,6 +5,7 @@
 @extends('layouts.footer')
 @section('pageStyles')
 <style>
+    
     .has-error {
         color: red;
     }
@@ -109,15 +110,12 @@
                                     <td>
                                         @if($user_add->status != '1')
                                         <button class="btn btn-warning ch-sold float-left" data-id="{{$user_add->id}}">Sold</buttton>
-                                            @else
-                                            <button class="btn btn-warning ch-sold float-left" disabled>Sold</buttton>
-                                                @endif
+                                        @else
+                                        <button class="btn btn-warning ch-sold float-left" disabled>Sold</buttton>
+                                        @endif
                                     </td>
-                                    <td><button class="btn btn-danger del float-left" data-id="{{$user_add->id}}">Delete</buttton>
-                                    </td>
-                                    <td>
-                                        <a href="./post_edit/id/{{$user_add->id}}" class="btn btn-primary edit float-left">Edit Data</a>
-                                    </td>
+                                    <td><a href="./post_edit/id/{{$user_add->id}}" class="btn btn-primary edit float-left">Edit Data</a></td>
+                                    <td><button class="btn btn-danger del float-left" data-id="{{$user_add->id}}">Delete</buttton></td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -223,7 +221,7 @@
             responsive: true,
             searching: false,
             paging: false,
-            info: false
+            info: false,
         });
 
         new $.fn.dataTable.FixedHeader(table);
