@@ -187,7 +187,7 @@ class PostRepository implements PostInterface
                 
                     $image_resize = \Image::make($image->getRealPath());              
                     $image_resize->resize(300, 300);
-                    $image_resize->save('/public/post_images/' .$filename);
+                    $image_resize->save(public_path('/post_images/' .$filename));
                 
                 }
 
