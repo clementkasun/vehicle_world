@@ -414,7 +414,7 @@
                     html += '<div class="row">';
                     html += '<div class="card card-success bg-secondary w-100">';
                     html += '<a href="/public/api/get_post_profile/id/' + row.id + '">';
-                    html += '<div class="card-body bg-light">';
+                    html += '<div class="card-body bg-secondary">';
                     html += '<div class="row">';
                     html += '<div class="col-3">';
                     html += '<div class="portfolio-wrap text-center">';
