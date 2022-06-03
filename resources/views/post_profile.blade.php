@@ -355,7 +355,7 @@
                                                         <div class="row">
                                                             <div class="col-5">
                                                                 <div class="portfolio-wrap text-center">
-                                                                    <img src="{{asset($post->main_image)}}" class='img-fluid cover m-2' style='height: 7em; width: 90%' alt='main_img' />
+                                                                    <img src="{{asset('/storage/'.$post->main_image)}}" class='img-fluid cover m-2' style='height: 7em; width: 90%' alt='main_img' />
                                                                 </div>
                                                             </div>
                                                             <div class="col-7">
