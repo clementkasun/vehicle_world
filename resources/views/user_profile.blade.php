@@ -221,8 +221,9 @@
         var table = $('#user_posts').DataTable({
             responsive: true,
             searching: false,
-            paging: false,
+            paging: true,
             info: false,
+            pageLength: 10,
         });
 
         new $.fn.dataTable.FixedHeader(table);

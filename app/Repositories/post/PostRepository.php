@@ -9,6 +9,7 @@ use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use File;
 
 class PostRepository implements PostInterface
 {
@@ -171,62 +172,113 @@ class PostRepository implements PostInterface
             // ]);
             //get the post to update
             $post_update = Post::find($id);
-            $random_name = uniqid($id);
-            if ($request->main_image != "null" && $request->image_one != "null" && $request->image_two != "null" && $request->image_three != "null" && $request->image_four != "null" && $request->image_five != "null") {
-                $main_ext = $request->main_image->extension();
-                $path_main = $request->file('main_image')->storeAs(
-                    '/public/post_images' . '/' . $id,
-                    'main_img' . '.' . $random_name . '.' . $main_ext
-                );
-                $post_update->main_image = str_replace("public/", "/", $path_main);
 
-                // if($request->hasFile('main_image')) {
+            $path = public_path('/storage/post_images/' . $id . '/');
+            if ($request->hasFile('main_image')) {
 
-                //     $image       = $request->file('main_image');
-                //     $filename    = $image->getClientOriginalName();
-                
-                //     $image_resize = \Image::make($image->getRealPath());              
-                //     $image_resize->resize(300, 300);
-                //     $image_resize->save(public_path('/post_images/' .$filename));
-                
-                // }
+                $image_main       = $request->file('main_image');
+                $file_ext_main    = $image_main->extension();
 
-                $img_one_ext = $request->image_one->extension();
-                $path_one = $request->file('image_one')->storeAs(
-                    '/public/post_images' . '/' . $id,
-                    'img_one' . '.' . $random_name . '.' . $img_one_ext
-                );
-                $post_update->image_1 = str_replace("public/", "/", $path_one);
+                $image_resize_main = \Image::make($image_main->getRealPath());
+                $image_resize_main->resize(250, 150);
 
-                $img_two_ext = $request->image_two->extension();
-                $path_two = $request->file('image_two')->storeAs(
-                    '/public/post_images' . '/' . $id,
-                    'img_two' . '.' . $random_name . '.' . $img_two_ext
-                );
-                $post_update->image_2 = str_replace("public/", "/", $path_two);
-
-                $img_three_ext = $request->image_three->extension();
-                $path_three = $request->file('image_three')->storeAs(
-                    '/public/post_images' . '/' . $id,
-                    'img_three' . '.' . $random_name . '.' . $img_three_ext
-                );
-                $post_update->image_3 = str_replace("public/", "/", $path_three);
-
-                $img_four_ext = $request->image_four->extension();
-                $path_four = $request->file('image_four')->storeAs(
-                    '/public/post_images' . '/' . $id,
-                    'img_four' . '.' . $random_name . '.' . $img_four_ext
-                );
-                $post_update->image_4 = str_replace("public/", "/", $path_main);
-
-                $img_five_ext = $request->image_five->extension();
-                $path_five = $request->file('image_five')->storeAs(
-                    '/public/post_images' . '/' . $id,
-                    'img_five' . '.' . $random_name . '.' . $img_five_ext
-                );
-                $post_update->image_5 = str_replace("public/", "/", $path_five);
-                $post_update->save();
+                // I am saying to create the dir if it's not there.
+                \File::exists($path) or File::makeDirectory($path);
+                $random_name_main = uniqid($id);
+                $image_resize_main->text('vehiauto.com', 155, 80, function ($font) {
+                    $font->size(40);
+                    $font->color('#ffffff');
+                    $font->align('center');
+                    $font->valign('bottom');
+                    $font->angle(90);
+                })->save($path . $random_name_main . '.' . $file_ext_main);
+                $post_update->main_image = '/storage/post_images/' . $id . '/' . $random_name_main . '.' . $file_ext_main;
             }
+
+            if ($request->hasFile('image_one')) {
+
+                $image_one     = $request->file('image_one');
+                $file_ext_one    = $image_one->extension();
+
+                $image_resize_one = \Image::make($image_one->getRealPath());
+                $image_resize_one->resize(250, 150);
+
+                // I am saying to create the dir if it's not there.
+                \File::exists($path) or File::makeDirectory($path);
+                $random_name_one = uniqid($id);
+                $image_resize_one->text('vehiauto.com', 155, 80, function ($font) {
+                    $font->size(40);
+                    $font->color('#ffffff');
+                    $font->align('center');
+                    $font->valign('bottom');
+                    $font->angle(90);
+                })->save($path . $random_name_one . '.' . $file_ext_one);
+                $post_update->image_1 = '/storage/post_images/' . $id . '/' . $random_name_one . '.' . $file_ext_one;
+            }
+
+            if ($request->hasFile('image_two')) {
+
+                $image_two       = $request->file('image_two');
+                $file_ext_two    = $image_two->extension();
+
+                $image_resize_two = \Image::make($image_two->getRealPath());
+                $image_resize_two->resize(250, 150);
+
+                // I am saying to create the dir if it's not there.
+                \File::exists($path) or File::makeDirectory($path);
+                $random_name_two = uniqid($id);
+                $image_resize_two->text('vehiauto.com', 155, 80, function ($font) {
+                    $font->size(40);
+                    $font->color('#ffffff');
+                    $font->align('center');
+                    $font->valign('bottom');
+                    $font->angle(90);
+                })->save($path . $random_name_two . '.' . $file_ext_two);
+                $post_update->image_2 = '/storage/post_images/' . $id . '/' . $random_name_two . '.' . $file_ext_two;
+            }
+
+            if ($request->hasFile('image_three')) {
+
+                $image_three       = $request->file('image_three');
+                $file_ext_three    = $image_three->extension();
+
+                $image_resize_three = \Image::make($image_three->getRealPath());
+                $image_resize_three->resize(250, 150);
+
+                // I am saying to create the dir if it's not there.
+                \File::exists($path) or File::makeDirectory($path);
+                $random_name_three = uniqid($id);
+                $image_resize_three->text('vehiauto.com', 155, 80, function ($font) {
+                    $font->size(40);
+                    $font->color('#ffffff');
+                    $font->align('center');
+                    $font->valign('bottom');
+                    $font->angle(90);
+                })->save($path . $random_name_three . '.' . $file_ext_three);
+                $post_update->image_3 = '/storage/post_images/' . $id . '/' . $random_name_three . '.' . $file_ext_three;
+            }
+
+            if ($request->hasFile('image_four')) {
+
+                $image_four       = $request->file('image_four');
+                $file_ext_four   = $image_four->extension();
+
+                $image_resize_four = \Image::make($image_four->getRealPath());
+                $image_resize_four->resize(250, 150);
+
+                // I am saying to create the dir if it's not there.
+                \File::exists($path) or File::makeDirectory($path);
+                $random_name_four = uniqid($id);
+                $image_resize_four->text('vehiauto.com', 155, 80, function ($font) {
+                    $font->size(40);
+                    $font->color('#ffffff');
+                    $font->align('center');
+                    $font->valign('bottom');
+                    $font->angle(90);
+                })->save($path . $random_name_four . '.' . $file_ext_four);
+                $post_update->image_4 = '/storage/post_images/' . $id . '/' . $random_name_four . '.' . $file_ext_four;
+            }
+            $post_update->save();
             DB::commit();
             return array('status' => 1, 'msg' => 'Post created successfully!');
         } catch (\Exception $e) {
@@ -539,51 +591,112 @@ class PostRepository implements PostInterface
             //     'image_five' => 'nullable|sometimes|image|mimes:jpeg,bmp,png,jpg,svg|max:2000', // Only allow .jpg, .bmp and .png file types.
             // ]);
 
-            $random_name = uniqid($id);
-            if ($request->main_image != "null" && $request->image_one != "null" && $request->image_two != "null" && $request->image_three != "null" && $request->image_four != "null" && $request->image_five != "null") {
-                $main_ext = $request->main_image->extension();
-                $path_main = $request->file('main_image')->storeAs(
-                    '/public/post_images' . '/' . $id,
-                    'main_img' . '.' . $random_name . '.' . $main_ext
-                );
-                $post_update->main_image = str_replace("public/", "/", $path_main);
+            $path = public_path('/storage/post_images/' . $id . '/');
+            if ($request->hasFile('main_image')) {
 
-                $img_one_ext = $request->image_one->extension();
-                $path_one = $request->file('image_one')->storeAs(
-                    '/public/post_images' . '/' . $id,
-                    'img_one' . '.' . $random_name . '.' . $img_one_ext
-                );
-                $post_update->image_1 = str_replace("public/", "/", $path_one);
+                $image_main       = $request->file('main_image');
+                $file_ext_main    = $image_main->extension();
 
-                $img_two_ext = $request->image_two->extension();
-                $path_two = $request->file('image_two')->storeAs(
-                    '/public/post_images' . '/' . $id,
-                    'img_two' . '.' . $random_name . '.' . $img_two_ext
-                );
-                $post_update->image_2 = str_replace("public/", "/", $path_two);
+                $image_resize_main = \Image::make($image_main->getRealPath());
+                $image_resize_main->resize(250, 150);
 
-                $img_three_ext = $request->image_three->extension();
-                $path_three = $request->file('image_three')->storeAs(
-                    '/public/post_images' . '/' . $id,
-                    'img_three' . '.' . $random_name . '.' . $img_three_ext
-                );
-                $post_update->image_3 = str_replace("public/", "/", $path_three);
-
-                $img_four_ext = $request->image_four->extension();
-                $path_four = $request->file('image_four')->storeAs(
-                    '/public/post_images' . '/' . $id,
-                    'img_four' . '.' . $random_name . '.' . $img_four_ext
-                );
-                $post_update->image_4 = str_replace("public/", "/", $path_main);
-
-                $img_five_ext = $request->image_five->extension();
-                $path_five = $request->file('image_five')->storeAs(
-                    '/public/post_images' . '/' . $id,
-                    'img_five' . '.' . $random_name . '.' . $img_five_ext
-                );
-                $post_update->image_5 = str_replace("public/", "/", $path_five);
-                $post_update->save();
+                // I am saying to create the dir if it's not there.
+                \File::exists($path) or File::makeDirectory($path);
+                $random_name_main = uniqid($id);
+                $image_resize_main->text('vehiauto.com', 155, 80, function ($font) {
+                    $font->size(40);
+                    $font->color('#ffffff');
+                    $font->align('center');
+                    $font->valign('bottom');
+                    $font->angle(90);
+                })->save($path . $random_name_main . '.' . $file_ext_main);
+                $post_update->main_image = '/storage/post_images/' . $id . '/' . $random_name_main . '.' . $file_ext_main;
             }
+
+            if ($request->hasFile('image_one')) {
+
+                $image_one     = $request->file('image_one');
+                $file_ext_one    = $image_one->extension();
+
+                $image_resize_one = \Image::make($image_one->getRealPath());
+                $image_resize_one->resize(250, 150);
+
+                // I am saying to create the dir if it's not there.
+                \File::exists($path) or File::makeDirectory($path);
+                $random_name_one = uniqid($id);
+                $image_resize_one->text('vehiauto.com', 155, 80, function ($font) {
+                    $font->size(40);
+                    $font->color('#ffffff');
+                    $font->align('center');
+                    $font->valign('bottom');
+                    $font->angle(90);
+                })->save($path . $random_name_one . '.' . $file_ext_one);
+                $post_update->image_1 = '/storage/post_images/' . $id . '/' . $random_name_one . '.' . $file_ext_one;
+            }
+
+            if ($request->hasFile('image_two')) {
+
+                $image_two       = $request->file('image_two');
+                $file_ext_two    = $image_two->extension();
+
+                $image_resize_two = \Image::make($image_two->getRealPath());
+                $image_resize_two->resize(250, 150);
+
+                // I am saying to create the dir if it's not there.
+                \File::exists($path) or File::makeDirectory($path);
+                $random_name_two = uniqid($id);
+                $image_resize_two->text('vehiauto.com', 155, 80, function ($font) {
+                    $font->size(40);
+                    $font->color('#ffffff');
+                    $font->align('center');
+                    $font->valign('bottom');
+                    $font->angle(90);
+                })->save($path . $random_name_two . '.' . $file_ext_two);
+                $post_update->image_2 = '/storage/post_images/' . $id . '/' . $random_name_two . '.' . $file_ext_two;
+            }
+
+            if ($request->hasFile('image_three')) {
+
+                $image_three       = $request->file('image_three');
+                $file_ext_three    = $image_three->extension();
+
+                $image_resize_three = \Image::make($image_three->getRealPath());
+                $image_resize_three->resize(250, 150);
+
+                // I am saying to create the dir if it's not there.
+                \File::exists($path) or File::makeDirectory($path);
+                $random_name_three = uniqid($id);
+                $image_resize_three->text('vehiauto.com', 155, 80, function ($font) {
+                    $font->size(40);
+                    $font->color('#ffffff');
+                    $font->align('center');
+                    $font->valign('bottom');
+                    $font->angle(90);
+                })->save($path . $random_name_three . '.' . $file_ext_three);
+                $post_update->image_3 = '/storage/post_images/' . $id . '/' . $random_name_three . '.' . $file_ext_three;
+            }
+
+            if ($request->hasFile('image_four')) {
+
+                $image_four       = $request->file('image_four');
+                $file_ext_four   = $image_four->extension();
+
+                $image_resize_four = \Image::make($image_four->getRealPath());
+                $image_resize_four->resize(250, 150);
+
+                // I am saying to create the dir if it's not there.
+                \File::exists($path) or File::makeDirectory($path);
+                $random_name_four = uniqid($id);
+                $image_resize_four->text('vehiauto.com', 155, 80, function ($font) {
+                    $font->size(40);
+                    $font->color('#ffffff');
+                    $font->align('center');
+                    $font->valign('bottom');
+                    $font->angle(90);
+                })->save($path . $random_name_four . '.' . $file_ext_four);
+                $post_update->image_4 = '/storage/post_images/' . $id . '/' . $random_name_four . '.' . $file_ext_four;
+            }
+            $post_update->save();
 
 
             DB::commit();
@@ -810,7 +923,7 @@ class PostRepository implements PostInterface
             ->join('users', 'posts.user_id', 'users.id')
             ->join('vehicles', 'posts.vehicle_id', 'vehicles.id')
             ->join('vehicle_makes', 'vehicles.make_id', 'vehicle_makes.id')
-            ->select('users.user_name as seller_name','vehicles.make_id', 'vehicle_makes.make_name', 'posts.created_at')
+            ->select('users.user_name as seller_name', 'vehicles.make_id', 'vehicle_makes.make_name', 'posts.created_at')
             ->groupBy('users.user_name')
             ->orderByRaw('COUNT(*) DESC')
             ->limit(10)

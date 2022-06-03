@@ -15,7 +15,7 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-12 col-md-8">
+                        <div class="col-12 col-md-7">
                             <div class="card card-light">
                                 <div class="card-body">
                                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -42,32 +42,32 @@
                                         <div class="carousel-inner">
                                             @if($post_data->main_image != null)
                                             <div class="carousel-item active">
-                                                <img class="d-block w-100 img-responsive" src="{{asset("/storage/".$post_data->main_image)}}" style="height: 100%;" alt="First slide">
+                                                <img class="d-block w-100 img-responsive" src="{{asset("".$post_data->main_image)}}" style="height: 100%;" alt="First slide">
                                             </div>
                                             @endif
                                             @if($post_data->image_1 != null)
                                             <div class="carousel-item">
-                                                <img class="d-block w-100 img-responsive" src="{{asset("/storage/".$post_data->image_1)}}" style="height: 100%;" alt="Second slide">
+                                                <img class="d-block w-100 img-responsive" src="{{asset("".$post_data->image_1)}}" style="height: 100%;" alt="Second slide">
                                             </div>
                                             @endif
                                             @if($post_data->image_2 != null)
                                             <div class="carousel-item">
-                                                <img class="d-block w-100 img-responsive" src="{{asset("/storage/".$post_data->image_2)}}" style="height: 100%;" alt="Third slide">
+                                                <img class="d-block w-100 img-responsive" src="{{asset("".$post_data->image_2)}}" style="height: 100%;" alt="Third slide">
                                             </div>
                                             @endif
                                             @if($post_data->image_3 != null)
                                             <div class="carousel-item">
-                                                <img class="d-block w-100 img-responsive" src="{{asset("/storage/".$post_data->image_3)}}" style="height: 100%;" alt="Fourth slide">
+                                                <img class="d-block w-100 img-responsive" src="{{asset("".$post_data->image_3)}}" style="height: 100%;" alt="Fourth slide">
                                             </div>
                                             @endif
                                             @if($post_data->image_4 != null)
                                             <div class="carousel-item">
-                                                <img class="d-block w-100 img-responsive" src="{{asset("/storage/".$post_data->image_4)}}" style="height: 100%;" alt="Fifth slide">
+                                                <img class="d-block w-100 img-responsive" src="{{asset("".$post_data->image_4)}}" style="height: 100%;" alt="Fifth slide">
                                             </div>
                                             @endif
                                             @if($post_data->image_5 != null)
                                             <div class="carousel-item">
-                                                <img class="d-block w-100 img-responsive" src="{{asset("/storage/".$post_data->image_5)}}" style="height: 100%;" alt="Sixth slide">
+                                                <img class="d-block w-100 img-responsive" src="{{asset("".$post_data->image_5)}}" style="height: 100%;" alt="Sixth slide">
                                             </div>
                                             @endif
                                         </div>
@@ -83,7 +83,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-4">
+                        <div class="col-12 col-md-5">
                             <div class="card card-success pb-4 w-100">
                                 <div class="card-header">
                                     <b>Seller Contact Details</b>
@@ -118,7 +118,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 col-md-8">
+                        <div class="col-12 col-md-7">
                             <div class="card card-success pb-4 w-100">
                                 <div class="card-header">
                                     <b>Vehicle Details</b>
@@ -355,7 +355,7 @@
                                                         <div class="row">
                                                             <div class="col-5">
                                                                 <div class="portfolio-wrap text-center">
-                                                                    <img src="{{asset('storage/'.$post->main_image)}}" class='img-fluid cover m-2' style='height: 7em; width: 90%' alt='main_img' />
+                                                                    <img src="{{asset($post->main_image)}}" class='img-fluid cover m-2' style='height: 7em; width: 90%' alt='main_img' />
                                                                 </div>
                                                             </div>
                                                             <div class="col-7">
