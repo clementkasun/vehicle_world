@@ -42,32 +42,32 @@
                                         <div class="carousel-inner">
                                             @if($post_data->main_image != null)
                                             <div class="carousel-item active">
-                                                <img class="d-block w-100 img-responsive" src="{{asset("".$post_data->main_image)}}" style="height: 100%;" alt="First slide">
+                                                <img class="d-block w-100 img-responsive" src="{{asset("/storage/".$post_data->main_image)}}" style="height: 100%;" alt="First slide">
                                             </div>
                                             @endif
                                             @if($post_data->image_1 != null)
                                             <div class="carousel-item">
-                                                <img class="d-block w-100 img-responsive" src="{{asset("".$post_data->image_1)}}" style="height: 100%;" alt="Second slide">
+                                                <img class="d-block w-100 img-responsive" src="{{asset("/storage/".$post_data->image_1)}}" style="height: 100%;" alt="Second slide">
                                             </div>
                                             @endif
                                             @if($post_data->image_2 != null)
                                             <div class="carousel-item">
-                                                <img class="d-block w-100 img-responsive" src="{{asset("".$post_data->image_2)}}" style="height: 100%;" alt="Third slide">
+                                                <img class="d-block w-100 img-responsive" src="{{asset("/storage/".$post_data->image_2)}}" style="height: 100%;" alt="Third slide">
                                             </div>
                                             @endif
                                             @if($post_data->image_3 != null)
                                             <div class="carousel-item">
-                                                <img class="d-block w-100 img-responsive" src="{{asset("".$post_data->image_3)}}" style="height: 100%;" alt="Fourth slide">
+                                                <img class="d-block w-100 img-responsive" src="{{asset("/storage/".$post_data->image_3)}}" style="height: 100%;" alt="Fourth slide">
                                             </div>
                                             @endif
                                             @if($post_data->image_4 != null)
                                             <div class="carousel-item">
-                                                <img class="d-block w-100 img-responsive" src="{{asset("".$post_data->image_4)}}" style="height: 100%;" alt="Fifth slide">
+                                                <img class="d-block w-100 img-responsive" src="{{asset("/storage/".$post_data->image_4)}}" style="height: 100%;" alt="Fifth slide">
                                             </div>
                                             @endif
                                             @if($post_data->image_5 != null)
                                             <div class="carousel-item">
-                                                <img class="d-block w-100 img-responsive" src="{{asset("".$post_data->image_5)}}" style="height: 100%;" alt="Sixth slide">
+                                                <img class="d-block w-100 img-responsive" src="{{asset("/storage/".$post_data->image_5)}}" style="height: 100%;" alt="Sixth slide">
                                             </div>
                                             @endif
                                         </div>
