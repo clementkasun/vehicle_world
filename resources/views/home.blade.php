@@ -416,9 +416,9 @@
                     html += '<a href="/public/api/get_post_profile/id/' + row.id + '">';
                     html += '<div class="card-body bg-light">';
                     html += '<div class="row">';
-                    html += '<div class="col-5">';
+                    html += '<div class="col-4">';
                     html += '<div class="portfolio-wrap text-center">';
-                    html += "<img src='/public/storage/" + row.main_image + "' style='height: 10em; width: 80%' alt='main_img' />";
+                    html += "<img src='/public/storage/" + row.main_image + "' style='height: 10em; width: 100%' alt='main_img' />";
                     html += '</div>';
                     html += '</div>';
                     html += '<div class="col-7 text-dark">';
