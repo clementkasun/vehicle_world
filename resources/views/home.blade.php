@@ -423,9 +423,9 @@
                     html += '</div>';
                     html += '<div class="col-9 text-dark">';
                     html += '<b style="font-size: 18px" class="text-success">' + row.post_title + '</b><br>';
-                    html += '<span><b>Price:</b>' + row.price + ' </span><br>';
-                    html += '<span><b>Location:</b>' + row.location + ' </span><br>';
-                    html += '<span><b>Condition:</b>' + row.condition + ' </span>';
+                    html += '<span class="text-light"><b>Price:</b>' + row.price + ' </span><br>';
+                    html += '<span class="text-light"><b>Location:</b>' + row.location + ' </span><br>';
+                    html += '<span class="text-light"><b>Condition:</b>' + row.condition + ' </span>';
                     html += '<div class="ribbon-wrapper ribbon-sm">';
                     html += '<div class="ribbon bg-success text-sm">';
                     let status = (row.status == 0) ? 'NEW': 'SOLD';
