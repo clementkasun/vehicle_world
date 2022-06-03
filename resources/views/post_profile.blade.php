@@ -15,7 +15,7 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-5">
                             <div class="card card-light">
                                 <div class="card-body">
                                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -83,7 +83,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-7">
                             <div class="card card-success pb-4 w-100">
                                 <div class="card-header">
                                     <b>Seller Contact Details</b>
@@ -118,7 +118,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-5">
                             <div class="card card-success pb-4 w-100">
                                 <div class="card-header">
                                     <b>Vehicle Details</b>
