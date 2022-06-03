@@ -416,12 +416,12 @@
                     html += '<a href="/public/api/get_post_profile/id/' + row.id + '">';
                     html += '<div class="card-body bg-dark">';
                     html += '<div class="row">';
-                    html += '<div class="col-4 col-md-3">';
+                    html += '<div class="col-5 col-md-3">';
                     html += '<div class="portfolio-wrap text-center">';
                     html += "<img src='/public/storage/" + row.main_image + "' style='height: 10em; width: 100%;' alt='main_img'/>";
                     html += '</div>';
                     html += '</div>';
-                    html += '<div class="col-8 col-md-9 text-dark">';
+                    html += '<div class="col-7 col-md-9 text-dark">';
                     html += '<b style="font-size: 18px" class="text-success">' + row.post_title + '</b><br>';
                     html += '<span class="text-light"><b>Price: </b>' + row.price + ' </span><br>';
                     html += '<span class="text-light"><b>Location: </b>' + row.location + ' </span><br>';
