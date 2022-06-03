@@ -422,7 +422,7 @@
                     html += '</div>';
                     html += '</div>';
                     html += '<div class="col-9 text-dark">';
-                    html += '<b style="font-size: 18px" class="text-success">' + row.post_title + '</b><br>';
+                    html += '<b style="font-size: 14px" class="text-success">' + row.post_title + '</b><br>';
                     html += '<span class="text-light"><b>Price: </b>' + row.price + ' </span><br>';
                     html += '<span class="text-light"><b>Location: </b>' + row.location + ' </span><br>';
                     html += '<span class="text-light"><b>Condition: </b>' + row.condition + ' </span>';
