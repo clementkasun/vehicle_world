@@ -185,7 +185,7 @@ class PostRepository implements PostInterface
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_main = uniqid($id);
-                $image_resize_main->text('vehiauto.com', 155, 80, function ($font) {
+                $image_resize_main->text('vehiauto.com', 300, 150, function ($font) {
                     $font->size(40);
                     $font->color('#ffffff');
                     $font->align('center');
@@ -206,7 +206,7 @@ class PostRepository implements PostInterface
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_one = uniqid($id);
-                $image_resize_one->text('vehiauto.com', 155, 80, function ($font) {
+                $image_resize_one->text('vehiauto.com', 300, 150, function ($font) {
                     $font->size(40);
                     $font->color('#ffffff');
                     $font->align('center');
@@ -227,7 +227,7 @@ class PostRepository implements PostInterface
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_two = uniqid($id);
-                $image_resize_two->text('vehiauto.com', 155, 80, function ($font) {
+                $image_resize_two->text('vehiauto.com', 300, 150, function ($font) {
                     $font->size(40);
                     $font->color('#ffffff');
                     $font->align('center');
@@ -248,7 +248,7 @@ class PostRepository implements PostInterface
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_three = uniqid($id);
-                $image_resize_three->text('vehiauto.com', 155, 80, function ($font) {
+                $image_resize_three->text('vehiauto.com', 300, 150, function ($font) {
                     $font->size(40);
                     $font->color('#ffffff');
                     $font->align('center');
@@ -269,7 +269,7 @@ class PostRepository implements PostInterface
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_four = uniqid($id);
-                $image_resize_four->text('vehiauto.com', 155, 80, function ($font) {
+                $image_resize_four->text('vehiauto.com', 300, 150, function ($font) {
                     $font->size(40);
                     $font->color('#ffffff');
                     $font->align('center');
@@ -603,7 +603,7 @@ class PostRepository implements PostInterface
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_main = uniqid($id);
-                $image_resize_main->text('vehiauto.com', 155, 80, function ($font) {
+                $image_resize_main->text('vehiauto.com', 300, 150, function ($font) {
                     $font->size(40);
                     $font->color('#ffffff');
                     $font->align('center');
@@ -624,7 +624,7 @@ class PostRepository implements PostInterface
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_one = uniqid($id);
-                $image_resize_one->text('vehiauto.com', 155, 80, function ($font) {
+                $image_resize_one->text('vehiauto.com', 300, 150, function ($font) {
                     $font->size(40);
                     $font->color('#ffffff');
                     $font->align('center');
@@ -645,7 +645,7 @@ class PostRepository implements PostInterface
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_two = uniqid($id);
-                $image_resize_two->text('vehiauto.com', 155, 80, function ($font) {
+                $image_resize_two->text('vehiauto.com', 300, 150, function ($font) {
                     $font->size(40);
                     $font->color('#ffffff');
                     $font->align('center');
@@ -666,7 +666,7 @@ class PostRepository implements PostInterface
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_three = uniqid($id);
-                $image_resize_three->text('vehiauto.com', 155, 80, function ($font) {
+                $image_resize_three->text('vehiauto.com', 300, 150, function ($font) {
                     $font->size(40);
                     $font->color('#ffffff');
                     $font->align('center');
@@ -687,7 +687,7 @@ class PostRepository implements PostInterface
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_four = uniqid($id);
-                $image_resize_four->text('vehiauto.com', 155, 80, function ($font) {
+                $image_resize_four->text('vehiauto.com', 300, 150, function ($font) {
                     $font->size(40);
                     $font->color('#ffffff');
                     $font->align('center');
