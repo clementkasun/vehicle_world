@@ -592,6 +592,7 @@ class PostRepository implements PostInterface
             // ]);
 
             $path = public_path('/storage/post_images/' . $id . '/');
+            File::deleteDirectory($path);
             if ($request->hasFile('main_image')) {
 
                 $image_main       = $request->file('main_image');
