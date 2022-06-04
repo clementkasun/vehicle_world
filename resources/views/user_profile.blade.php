@@ -88,8 +88,7 @@
                         <table class="table table-striped" id="user_posts">
                             <thead>
                                 <th></th>
-                                <th></th>
-                                <th></th>
+                               
                                 <th>#</th>
                                 <th>Title</th>
                                 <th>Type</th>
@@ -106,10 +105,10 @@
                                             @else
                                             <button class="btn btn-warning ch-sold" disabled>Sold</buttton>
                                                 @endif
+                                                <a href="./post_edit/id/{{$user_add->id}}" class="btn btn-primary edit">Edit Data</a>
+                                                <button class="btn btn-danger del" data-id="{{$user_add->id}}">Delete</buttton>
                                     </td>
-                                    <td><a href="./post_edit/id/{{$user_add->id}}" class="btn btn-primary edit">Edit Data</a></td>
-                                    <td><button class="btn btn-danger del" data-id="{{$user_add->id}}">Delete</buttton>
-                                    </td>
+                                 
                                     <td>{{$loop->index+1}}</td>
                                     <td>{{$user_add->post_title}}</td>
                                     <td>{{$user_add->post_type}}</td>
