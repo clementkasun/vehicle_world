@@ -88,22 +88,17 @@
                         <table class="table table-striped" id="user_posts">
                             <thead>
                                 <th>#</th>
+                                <th>Action</th>
                                 <th>Title</th>
                                 <th>Type</th>
                                 <th>Price</th>
                                 <th>Location</th>
                                 <th>Created Date</th>
-                                <th>Action</th>
                             </thead>
                             <tbody>
                                 @foreach($user_adds as $user_add)
                                 <tr>
                                     <td>{{$loop->index+1}}</td>
-                                    <td>{{$user_add->post_title}}</td>
-                                    <td>{{$user_add->post_type}}</td>
-                                    <td>{{$user_add->price}}</td>
-                                    <td>{{$user_add->location}}</td>
-                                    <td>{{$user_add->created_at}}</td>
                                     <td>
                                         @if($user_add->status != '1')
                                         <button class="btn btn-warning ch-sold" data-id="{{$user_add->id}}">Sold</button>
@@ -113,6 +108,11 @@
                                         <a href="./post_edit/id/{{$user_add->id}}" class="btn btn-primary edit">Edit Data</a>
                                         <button class="btn btn-danger del" data-id="{{$user_add->id}}">Delete</button>
                                     </td>
+                                    <td>{{$user_add->post_title}}</td>
+                                    <td>{{$user_add->post_type}}</td>
+                                    <td>{{$user_add->price}}</td>
+                                    <td>{{$user_add->location}}</td>
+                                    <td>{{$user_add->created_at}}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
