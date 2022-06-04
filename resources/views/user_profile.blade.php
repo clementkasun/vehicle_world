@@ -5,7 +5,6 @@
 @extends('layouts.footer')
 @section('pageStyles')
 <style>
-    
     .has-error {
         color: red;
     }
@@ -13,7 +12,6 @@
     .error {
         color: red;
     }
-
 </style>
 @endsection
 @section('content')
@@ -89,33 +87,34 @@
                     <div class="tab-pane active" id="post">
                         <table class="table table-striped" id="user_posts">
                             <thead>
+                                <th></th>
+                                <th></th>
+                                <th></th>
                                 <th>#</th>
                                 <th>Title</th>
                                 <th>Type</th>
                                 <th>Price</th>
                                 <th>Location</th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
                                 <th>Created Date</th>
                             </thead>
                             <tbody>
                                 @foreach($user_adds as $user_add)
                                 <tr>
+                                    <td>
+                                        @if($user_add->status != '1')
+                                        <button class="btn btn-warning ch-sold float-left" data-id="{{$user_add->id}}">Sold</buttton>
+                                            @else
+                                            <button class="btn btn-warning ch-sold float-left" disabled>Sold</buttton>
+                                                @endif
+                                    </td>
+                                    <td><a href="./post_edit/id/{{$user_add->id}}" class="btn btn-primary edit float-left">Edit Data</a></td>
+                                    <td><button class="btn btn-danger del float-left" data-id="{{$user_add->id}}">Delete</buttton>
+                                    </td>
                                     <td>{{$loop->index+1}}</td>
                                     <td>{{$user_add->post_title}}</td>
                                     <td>{{$user_add->post_type}}</td>
                                     <td>{{$user_add->price}}</td>
                                     <td>{{$user_add->location}}</td>
-                                    <td>
-                                        @if($user_add->status != '1')
-                                        <button class="btn btn-warning ch-sold float-left" data-id="{{$user_add->id}}">Sold</buttton>
-                                        @else
-                                        <button class="btn btn-warning ch-sold float-left" disabled>Sold</buttton>
-                                        @endif
-                                    </td>
-                                    <td><a href="./post_edit/id/{{$user_add->id}}" class="btn btn-primary edit float-left">Edit Data</a></td>
-                                    <td><button class="btn btn-danger del float-left" data-id="{{$user_add->id}}">Delete</buttton></td>
                                     <td>{{$user_add->created_at}}</td>
                                 </tr>
                                 @endforeach
