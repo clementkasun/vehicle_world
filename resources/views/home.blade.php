@@ -418,7 +418,7 @@
                     html += '<div class="row">';
                     html += '<div class="col-5 col-md-4">';
                     html += '<div class="portfolio-wrap text-center">';
-                    html += "<img src='/public/" + row.main_image + "' style='height: 10em; width: 100%;' alt='main_img'/>";
+                    html += "<img src='/public/" + row.main_image + "' style='height: 10em; width: 25%;' alt='main_img'/>";
                     html += '</div>';
                     html += '</div>';
                     html += '<div class="col-7 col-md-8 text-dark">';
