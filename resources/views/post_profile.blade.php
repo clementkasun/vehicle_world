@@ -351,7 +351,7 @@
                                         <div class='col-12 col-md-3'>
                                             <div class="card card-success mt-2" style="height: 10em;">
                                                 <a href="/public/api/get_post_profile/id/{{$post->id}}">
-                                                    <div class="card-body text-dark bg-light">
+                                                    <div class="card-body text-light bg-dark">
                                                         <div class="row">
                                                             <div class="col-5">
                                                                 <div class="portfolio-wrap text-center">
