@@ -74,8 +74,8 @@
           <thead>
             <tr>
               <th style="width: 5em">#</th>
-              <th style="width: 10em">Vehicle Brand</th>
-              <th style="width: 10em">Created Date</th>
+              <th>Vehicle Brand</th>
+              <th>Created Date</th>
               <!-- <th style="width: 5em">Label</th> -->
             </tr>
           </thead>
@@ -106,9 +106,9 @@
           <thead>
             <tr>
               <th style="width: 5em">#</th>
-              <th style="width: 10em">Seller Name</th>
-              <th style="width: 10em">Brand</th>
-              <th style="width: 10em">Created Date</th>
+              <th>Seller Name</th>
+              <th>Brand</th>
+              <th>Created Date</th>
             </tr>
           </thead>
           <tbody>
