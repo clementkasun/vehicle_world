@@ -102,13 +102,13 @@
                                 <tr>
                                     <td>
                                         @if($user_add->status != '1')
-                                        <button class="btn btn-warning ch-sold float-left" data-id="{{$user_add->id}}">Sold</buttton>
+                                        <button class="btn btn-warning ch-sold" data-id="{{$user_add->id}}">Sold</buttton>
                                             @else
-                                            <button class="btn btn-warning ch-sold float-left" disabled>Sold</buttton>
+                                            <button class="btn btn-warning ch-sold" disabled>Sold</buttton>
                                                 @endif
                                     </td>
-                                    <td><a href="./post_edit/id/{{$user_add->id}}" class="btn btn-primary edit float-left">Edit Data</a></td>
-                                    <td><button class="btn btn-danger del float-left" data-id="{{$user_add->id}}">Delete</buttton>
+                                    <td><a href="./post_edit/id/{{$user_add->id}}" class="btn btn-primary edit">Edit Data</a></td>
+                                    <td><button class="btn btn-danger del" data-id="{{$user_add->id}}">Delete</buttton>
                                     </td>
                                     <td>{{$loop->index+1}}</td>
                                     <td>{{$user_add->post_title}}</td>
