@@ -88,7 +88,7 @@
                         <table class="table table-striped" id="user_posts">
                             <thead>
                                 <th></th>
-                               
+
                                 <th>#</th>
                                 <th>Title</th>
                                 <th>Type</th>
@@ -101,14 +101,14 @@
                                 <tr>
                                     <td>
                                         @if($user_add->status != '1')
-                                        <button class="btn btn-warning ch-sold" data-id="{{$user_add->id}}">Sold</buttton>
-                                            @else
-                                            <button class="btn btn-warning ch-sold" disabled>Sold</buttton>
-                                                @endif
-                                                <a href="'./post_edit/id/{{$user_add->id}}'" class="btn btn-primary edit">Edit Data</a>
-                                                <button class="btn btn-danger del" data-id="{{$user_add->id}}">Delete</buttton>
+                                        <button class="btn btn-warning ch-sold" data-id="{{$user_add->id}}">Sold</button>
+                                        @else
+                                        <button class="btn btn-warning ch-sold" disabled>Sold</button>
+                                        @endif
+                                        <a href="./post_edit/id/{{$user_add->id}}" class="btn btn-primary edit">Edit Data</a>
+                                        <button class="btn btn-danger del" data-id="{{$user_add->id}}">Delete</button>
                                     </td>
-                                 
+
                                     <td>{{$loop->index+1}}</td>
                                     <td>{{$user_add->post_title}}</td>
                                     <td>{{$user_add->post_type}}</td>
