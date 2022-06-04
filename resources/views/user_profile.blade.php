@@ -94,10 +94,10 @@
                                 <th>Type</th>
                                 <th>Price</th>
                                 <th>Location</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
                                 <th>Created Date</th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
                             </thead>
                             <tbody>
                                 @foreach($user_adds as $user_add)
@@ -107,7 +107,6 @@
                                     <td>{{$user_add->post_type}}</td>
                                     <td>{{$user_add->price}}</td>
                                     <td>{{$user_add->location}}</td>
-                                    <td>{{$user_add->created_at}}</td>
                                     <td>
                                         @if($user_add->status != '1')
                                         <button class="btn btn-warning ch-sold float-left" data-id="{{$user_add->id}}">Sold</buttton>
@@ -117,6 +116,7 @@
                                     </td>
                                     <td><a href="./post_edit/id/{{$user_add->id}}" class="btn btn-primary edit float-left">Edit Data</a></td>
                                     <td><button class="btn btn-danger del float-left" data-id="{{$user_add->id}}">Delete</buttton></td>
+                                    <td>{{$user_add->created_at}}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
