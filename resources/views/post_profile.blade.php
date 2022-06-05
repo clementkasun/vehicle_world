@@ -6,8 +6,7 @@
 
 @section('content')
 <main id="main">
-    <section class="content">
-        <div class="container-fluid">
+    <section>
             <!-- Profile Image -->
             <div class="card card-success">
                 <div class="card-header">
@@ -106,8 +105,7 @@
                                 </div>
                             </div>
                             <div class="card card-success">
-                                <div class="card-header"><b>Advertiesment Area</b></div>
-                                <div class="card-body" id="google_ad_area">
+                                <div class="card-body">
                                     <amp-auto-ads type="adsense" data-ad-client="ca-pub-2365603589658807">
                                     </amp-auto-ads>
                                 </div>
@@ -375,7 +373,6 @@
         </div>
         <!-- /.card -->
         </div>
-        <!-- /.container-fluid -->
     </section>
 </main>
 @endsection
