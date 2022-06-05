@@ -322,23 +322,23 @@
 <section id="portfolio" class="portfolio bg-white">
     <div id="promoted_adds">
         <div class="row">
-            <!-- <div class="col-md-2">
+            <div class="col-md-2">
                 <div class="card-light">
                     <div class="card-body w-100" style="height: 100%;">
                   
                     </div>
                 </div>
-            </div> -->
-            <div class="col-md-12">
+            </div>
+            <div class="col-md-8">
                 <table class="table" id="ad_tbl"></table>
             </div>
-            <!-- <div class="col-md-2">
+            <div class="col-md-2">
                 <div class="card-light w-100" style="height: 100%;">
                     <div class="card-body">
 
                     </div>
                 </div>
-            </div> -->
+            </div>
         </div>
     </div>
 </section><!-- End Portfolio Section -->
