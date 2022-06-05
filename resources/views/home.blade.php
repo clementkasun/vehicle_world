@@ -421,7 +421,7 @@
                     html += "<img src='/public/" + row.main_image + "' style='height: 6em; width: 100%;' alt='main_img'/>";
                     html += '</div>';
                     html += '</div>';
-                    html += '<div class="col-7 col-md-9 text-dark">';
+                    html += '<div class="col-7 col-md-10 text-dark">';
                     html += '<b style="font-size: 18px" class="text-success">' + row.post_title + '</b><br>';
                     html += '<span class="text-light"><b>Price: </b>' + row.price + ' </span><br>';
                     html += '<span class="text-light"><b>Location: </b>' + row.location + ' </span><br>';
