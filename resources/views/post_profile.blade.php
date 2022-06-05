@@ -350,9 +350,18 @@
                                 </div>
                             </div>
                             @endforeach
-                            <div class="mt-5">{{ $related_posts->links() }}</div>
-                            @endif
                         </div>
+                    </div>
+                    <div class="card-footer">
+                        @if(isset($request))
+                        <div class="text-center mt-1">{{ $related_posts->appends($request)->links('pagination::bootstrap-4') }}</div>
+                        @endif
+
+                        @if(!isset($request))
+                        <div class="text-center mt-1">{{ $related_posts->links('pagination::bootstrap-4') }}</div>
+                        @endif
+
+                        @endif
                     </div>
                 </div>
             </div>
