@@ -311,7 +311,7 @@
             </div>
         </div>
         <div class="row d-flex justify-content-center">
-            <button type="button" id="filter_btn" class="btn btn-md btn-success d-none">SEARCH</button>
+            <div class="col-12"><button type="button" id="filter_btn" class="btn btn-md btn-success d-none w-100">SEARCH</button></div>
         </div>
         </div>
     </form>
