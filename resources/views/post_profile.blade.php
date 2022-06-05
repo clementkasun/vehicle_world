@@ -305,7 +305,7 @@
                                         <div class="form-group col-md-3">
                                             <label for="soldStatus">Sold Status: </label><br>
                                             @if($post_data->status != 0)
-                                            <label class="bg-success" style="border-radius: 5px; padding-left: 5px;  padding-right: 5px">Sold</label><br>
+                                            <label class="bg-success" style="border-radius: 5px; padding-left: 5px; padding-right: 5px">Sold</label><br>
                                             @endif
                                             @if($post_data->status == 0)
                                             <label class="bg-primary" style="border-radius: 5px; padding-left: 5px; padding-right: 5px">Not Yet</label><br>
@@ -344,7 +344,7 @@
                                                         <div class="row">
                                                             <div class="col-5">
                                                                 <div class="portfolio-wrap text-center">
-                                                                    <img src="{{asset(''.$post->main_image)}}" class='img-fluid cover m-2' style='height: 7em; width: 90%' alt='main_img' />
+                                                                    <img src="{{asset(''.$post->main_image)}}"  style="height: 6em; width: 100%" alt='main_img' />
                                                                 </div>
                                                             </div>
                                                             <div class="col-7">
