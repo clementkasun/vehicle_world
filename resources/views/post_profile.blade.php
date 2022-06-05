@@ -339,21 +339,19 @@
                                         @foreach($related_posts as $post)
                                         <div class='col-12 col-md-3'>
                                             <div class="card card-success mt-2" style="height: 10em;">
-                                                <a href="/public/api/get_post_profile/id/{{$post->id}}">
-                                                    <div class="card-body text-light bg-dark">
-                                                        <div class="row">
-                                                            <div class="col-5 col-md-3">
-                                                                <img src="{{asset(''.$post->main_image)}}" style="height: 6em; width: 100%" alt='main_img' />
-                                                            </div>
-                                                            <div class="col-7 col-md-9">
-                                                                <b style="font-size: 18px" class="text-success">{{$post->post_title}}</b></br>
-                                                                <span><b>Price:</b> {{$post->price}} </span><br>
-                                                                <span><b>Location:</b> {{$post->location}} </span><br>
-                                                                <span><b>Condition:</b> {{$post->condition}} </span>
-                                                            </div>
+                                                <div class="card-body text-light bg-dark">
+                                                    <div class="row">
+                                                        <div class="col-5 col-md-3">
+                                                            <img src="{{asset(''.$post->main_image)}}" style="height: 6em; width: 100%" alt='main_img' />
+                                                        </div>
+                                                        <div class="col-7 col-md-9">
+                                                            <a href="/public/api/get_post_profile/id/{{$post->id}}"><b style="font-size: 18px" class="text-success">{{$post->post_title}}</b></br></a>
+                                                            <span><b>Price:</b> {{$post->price}} </span><br>
+                                                            <span><b>Location:</b> {{$post->location}} </span><br>
+                                                            <span><b>Condition:</b> {{$post->condition}} </span>
                                                         </div>
                                                     </div>
-                                                </a>
+                                                </div>
                                             </div>
                                         </div>
                                         @endforeach
