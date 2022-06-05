@@ -97,6 +97,7 @@
                             </thead>
                             <tbody>
                                 @foreach($user_adds as $user_add)
+                                {{dd($user_add)}}
                                 <tr>
                                     <td>{{$loop->index+1}}</td>
                                     <td>
