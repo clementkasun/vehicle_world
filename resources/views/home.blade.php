@@ -388,7 +388,7 @@
         ajaxRequest(method, url, data, function(resp) {
             let html = '';
             $.each(resp, function(index, row) {
-                console.log(row);
+                console.log(row.id);
                 html += '<div class="row">';
                 html += '<div class="card card-success bg-dark w-100">';
                 html += '<a href="/public/api/get_post_profile/id/' + row.id + '">';
