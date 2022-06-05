@@ -305,10 +305,10 @@
                                         <div class="form-group col-md-3">
                                             <label for="soldStatus">Sold Status: </label><br>
                                             @if($post_data->status != 0)
-                                            <label class="bg-success" style="border-radius: 5px;">Sold</label><br>
+                                            <label class="bg-success" style="border-radius: 5px; padding: 2px">Sold</label><br>
                                             @endif
                                             @if($post_data->status == 0)
-                                            <label class="bg-primary" style="border-radius: 5px;">Not Yet</label><br>
+                                            <label class="bg-primary" style="border-radius: 5px; padding: 2px">Not Yet</label><br>
                                             @endif
                                         </div>
                                     </div>
