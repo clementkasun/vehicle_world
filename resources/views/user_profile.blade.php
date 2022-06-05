@@ -97,7 +97,6 @@
                             </thead>
                             <tbody>
                                 @foreach($user_adds as $user_add)
-                                {{dd($user_add->vehicle)}}
                                 <tr>
                                     <td>{{$loop->index+1}}</td>
                                     <td>
@@ -110,7 +109,7 @@
                                         <button class="btn btn-danger del" data-id="{{$user_add->id}}">Delete</button>
                                     </td>
                                     <td>{{$user_add->post_title}}</td>
-                                    <td>{{$user_add->vehicle_type}}</td>
+                                    <td>{{$user_add->vehicle->vehicle_type}}</td>
                                     <td>{{$user_add->price}}</td>
                                     <td>{{$user_add->location}}</td>
                                     <td>{{$user_add->created_at}}</td>
