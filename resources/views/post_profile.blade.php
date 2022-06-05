@@ -112,7 +112,8 @@
                             <div class="card card-success">
                                 <div class="card-header"><b>Advertiesment Area</b></div>
                                 <div class="card-body" id="google_ad_area">
-                                    
+                                    <amp-auto-ads type="adsense" data-ad-client="ca-pub-2365603589658807">
+                                    </amp-auto-ads>
                                 </div>
                             </div>
                         </div>
