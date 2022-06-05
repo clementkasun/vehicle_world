@@ -105,8 +105,8 @@
                                         @else
                                         <button class="btn btn-warning ch-sold" disabled>Sold</button>
                                         @endif
-                                        <a href="./post_edit/id/{{$user_add->id}}" class="btn btn-primary edit">Edit</a>
-                                        <button class="btn btn-danger del" data-id="{{$user_add->id}}">Delete</button>
+                                        <a href="./post_edit/id/{{$user_add->id}}" class="btn btn-primary edit"><i class='fa fa-edit'></i></a>
+                                        <button class="btn btn-danger del" data-id="{{$user_add->id}}"><i class='fa fa-trash'></i></button>
                                     </td>
                                     <td>{{$user_add->post_title}}</td>
                                     <td>{{$user_add->vehicle->vehicle_type}}</td>
