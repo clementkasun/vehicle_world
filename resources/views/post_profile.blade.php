@@ -347,7 +347,6 @@
                                                         <div class="col-7">
                                                             <a href="/public/api/get_post_profile/id/{{$post->id}}"><b style="font-size: 18px" class="text-success">{{$post->post_title}}</b></br></a>
                                                             <span><b>Price:</b> {{$post->price}} </span><br>
-                                                            <span><b>Location:</b> {{$post->location}} </span><br>
                                                             <span><b>Condition:</b> {{$post->condition}} </span>
                                                         </div>
                                                     </div>
