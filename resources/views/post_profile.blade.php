@@ -350,7 +350,7 @@
                                 </div>
                             </div>
                             @endforeach
-                            <div class="text-center mt-5">{{ $related_posts->links() }}</div>
+                            <div class="text-center mt-5 bg-dark">{{ $related_posts->links() }}</div>
                             @endif
                         </div>
                     </div>
