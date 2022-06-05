@@ -323,7 +323,7 @@
     <div class="row">
         <div class="col-md-2">
             <div class="card-success">
-                <div class="card-header">Google Adds</div>
+                <div class="card-header"></div>
                 <div class="card-body w-100" style="height: 100%;">
 
                 </div>
@@ -337,7 +337,7 @@
         </div>
         <div class="col-md-2">
             <div class="card-success w-100" style="height: 100%;">
-                <div class="card-header">Google Adds</div>
+                <div class="card-header"></div>
                 <div class="card-body">
 
                 </div>
