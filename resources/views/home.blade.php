@@ -386,8 +386,8 @@
 
     function loadTable(data, url, method) {
         ajaxRequest(method, url, data, function(resp) {
+            let html = '';
             $.each(resp, function(index, row) {
-                let html = '';
                 html += '<div class="row">';
                 html += '<div class="card card-success bg-dark w-100">';
                 html += '<a href="/public/api/get_post_profile/id/' + row.id + '">';
@@ -415,8 +415,8 @@
                 html += '</a>';
                 html += '</div>';
                 html += '</div>';
-                return html;
             });
+            return html;
 
         });
 
