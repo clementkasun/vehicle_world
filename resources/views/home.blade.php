@@ -426,7 +426,7 @@
                 serverSide: false,
                 responsive: true,
                 searching: false,
-                dom: 'Bfrtip',
+                // dom: 'Bfrtip',
                 "pageLength": 50,
                 language: {
                     searchPlaceholder: "search",
