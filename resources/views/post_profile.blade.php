@@ -202,7 +202,7 @@
                                         <div class="form-group col-md-4">
                                             @if($post_data->location != null)
                                             <label for="location">Vehicle Location: </label>
-                                            <span class="ml-2">{{$post_data->location}}</span>
+                                            <span>{{$post_data->location}}</span>
                                             @endif
                                             <!--                                            @if($post_data->fuel_type == null)
                                                                                                         <span class="text-muted">-------</span>
@@ -253,67 +253,63 @@
                                                                                                         @endif-->
                                         </div>
                                     </div>
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="form-group col-md-3">
-                                                    <label for="ongoing_lease">Ongoing Lease: </label><br>
-                                                    @if($post_data->on_going_lease != null)
-                                                    <label class="bg-warning p-1 m-1" style="border-radius: 5px;"></label><br>
-                                                    @endif
-                                                    @if($post_data->on_going_lease == null)
-                                                    <label class="bg-success p-1 m-1" style="border-radius: 5px;"></label><br>
-                                                    @endif
-                                                </div>
-                                                <div class="form-group col-md-3">
-                                                    <label for="isAc">AC: </label><br>
-                                                    @if($post_data->isAc != null)
-                                                    <label class="bg-warning p-1 m-1" style="border-radius: 5px;"></label><br>
-                                                    @endif
-                                                    @if($post_data->isAc == null)
-                                                    <label class="bg-success p-1 m-1" style="border-radius: 5px;"></label><br>
-                                                    @endif
-                                                </div>
-                                                <div class="form-group col-md-3">
-                                                    <label for="isPowerSteer">Power Steering: </label><br>
-                                                    @if($post_data->isPowerSteer != null)
-                                                    <label class="bg-warning p-1 m-1" style="border-radius: 5px;"></label><br>
-                                                    @endif
-                                                    @if($post_data->isPowerSteer == null)
-                                                    <label class="bg-success p-1 m-1" style="border-radius: 5px;"></label><br>
-                                                    @endif
-                                                </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-3">
+                                            <label for="ongoing_lease">Ongoing Lease: </label><br>
+                                            @if($post_data->on_going_lease != null)
+                                            <label class="bg-warning p-1 m-1" style="border-radius: 5px;"></label><br>
+                                            @endif
+                                            @if($post_data->on_going_lease == null)
+                                            <label class="bg-success p-1 m-1" style="border-radius: 5px;"></label><br>
+                                            @endif
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="isAc">AC: </label><br>
+                                            @if($post_data->isAc != null)
+                                            <label class="bg-warning p-1 m-1" style="border-radius: 5px;"></label><br>
+                                            @endif
+                                            @if($post_data->isAc == null)
+                                            <label class="bg-success p-1 m-1" style="border-radius: 5px;"></label><br>
+                                            @endif
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="isPowerSteer">Power Steering: </label><br>
+                                            @if($post_data->isPowerSteer != null)
+                                            <label class="bg-warning p-1 m-1" style="border-radius: 5px;"></label><br>
+                                            @endif
+                                            @if($post_data->isPowerSteer == null)
+                                            <label class="bg-success p-1 m-1" style="border-radius: 5px;"></label><br>
+                                            @endif
+                                        </div>
 
-                                                <div class="form-group col-md-3">
-                                                    <label for="isPowerMirroring">Power Mirroring: </label><br>
-                                                    @if($post_data->isPowerMirroring != null)
-                                                    <label class="bg-warning p-1 m-1" style="border-radius: 5px;"></label><br>
-                                                    @endif
-                                                    @if($post_data->isPowerMirroring == null)
-                                                    <label class="bg-success p-1 m-1" style="border-radius: 5px;"></label><br>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="form-group col-md-3">
-                                                    <label for="isPowerWindow">Power Window: </label><br>
-                                                    @if($post_data->isPowerWindow != null)
-                                                    <label class="bg-warning p-1 m-1" style="border-radius: 5px;"></label><br>
-                                                    @endif
-                                                    @if($post_data->isPowerWindow == null)
-                                                    <label class="bg-success p-1 m-1" style="border-radius: 5px;"></label><br>
-                                                    @endif
-                                                </div>
-                                                <div class="form-group col-md-3">
-                                                    <label for="soldStatus">Sold Status: </label><br>
-                                                    @if($post_data->status != 0)
-                                                    <label class="bg-success" style="border-radius: 5px;">Sold</label><br>
-                                                    @endif
-                                                    @if($post_data->status == 0)
-                                                    <label class="bg-primary" style="border-radius: 5px;">Not Yet</label><br>
-                                                    @endif
-                                                </div>
-                                            </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="isPowerMirroring">Power Mirroring: </label><br>
+                                            @if($post_data->isPowerMirroring != null)
+                                            <label class="bg-warning p-1 m-1" style="border-radius: 5px;"></label><br>
+                                            @endif
+                                            @if($post_data->isPowerMirroring == null)
+                                            <label class="bg-success p-1 m-1" style="border-radius: 5px;"></label><br>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-3">
+                                            <label for="isPowerWindow">Power Window: </label><br>
+                                            @if($post_data->isPowerWindow != null)
+                                            <label class="bg-warning p-1 m-1" style="border-radius: 5px;"></label><br>
+                                            @endif
+                                            @if($post_data->isPowerWindow == null)
+                                            <label class="bg-success p-1 m-1" style="border-radius: 5px;"></label><br>
+                                            @endif
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="soldStatus">Sold Status: </label><br>
+                                            @if($post_data->status != 0)
+                                            <label class="bg-success" style="border-radius: 5px;">Sold</label><br>
+                                            @endif
+                                            @if($post_data->status == 0)
+                                            <label class="bg-primary" style="border-radius: 5px;">Not Yet</label><br>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
