@@ -330,7 +330,10 @@
             </div>
         </div>
         <div class="col-md-8">
-            <table class="table" id="ad_tbl"></table>
+            <table class="table" id="ad_tbl">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
         </div>
         <div class="col-md-2">
             <div class="card-success w-100" style="height: 100%;">
