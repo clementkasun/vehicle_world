@@ -387,35 +387,35 @@
     function loadTable(data, url, method) {
         ajaxRequest(method, url, data, function(resp) {
             let html = '';
-            $.each(resp, function(index, item) {
-                console.log(item);
-                // html += '<div class="row">';
-                // html += '<div class="card card-success bg-dark w-100">';
-                // html += '<a href="/public/api/get_post_profile/id/' + row.id + '">';
-                // html += '<div class="card-body bg-dark">';
-                // html += '<div class="row">';
-                // html += '<div class="col-5 col-md-3">';
-                // html += '<div class="portfolio-wrap text-center">';
-                // html += "<img src='/public/" + row.main_image + "' style='height: 6em; width: 100%;' alt='main_img'/>";
-                // html += '</div>';
-                // html += '</div>';
-                // html += '<div class="col-7 col-md-9 text-dark">';
-                // html += '<b style="font-size: 18px" class="text-success">' + row.post_title + '</b><br>';
-                // html += '<span class="text-light"><b>Price: </b>' + row.price + ' </span><br>';
-                // html += '<span class="text-light"><b>Location: </b>' + row.location + ' </span><br>';
-                // html += '<span class="text-light"><b>Condition: </b>' + row.condition + ' </span>';
-                // html += '<div class="ribbon-wrapper ribbon-sm">';
-                // html += '<div class="ribbon bg-success text-sm">';
-                // let status = (row.status == 0) ? 'NEW' : 'SOLD';
-                // html += status;
-                // html += '</div>';
-                // html += '</div>';
-                // html += '</div>';
-                // html += '</div>';
-                // html += '</div>';
-                // html += '</a>';
-                // html += '</div>';
-                // html += '</div>';
+            $.each(resp, function(index, row) {
+                console.log(row);
+                html += '<div class="row">';
+                html += '<div class="card card-success bg-dark w-100">';
+                html += '<a href="/public/api/get_post_profile/id/' + row.id + '">';
+                html += '<div class="card-body bg-dark">';
+                html += '<div class="row">';
+                html += '<div class="col-5 col-md-3">';
+                html += '<div class="portfolio-wrap text-center">';
+                html += "<img src='/public/" + row.main_image + "' style='height: 6em; width: 100%;' alt='main_img'/>";
+                html += '</div>';
+                html += '</div>';
+                html += '<div class="col-7 col-md-9 text-dark">';
+                html += '<b style="font-size: 18px" class="text-success">' + row.post_title + '</b><br>';
+                html += '<span class="text-light"><b>Price: </b>' + row.price + ' </span><br>';
+                html += '<span class="text-light"><b>Location: </b>' + row.location + ' </span><br>';
+                html += '<span class="text-light"><b>Condition: </b>' + row.condition + ' </span>';
+                html += '<div class="ribbon-wrapper ribbon-sm">';
+                html += '<div class="ribbon bg-success text-sm">';
+                let status = (row.status == 0) ? 'NEW' : 'SOLD';
+                html += status;
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                html += '</a>';
+                html += '</div>';
+                html += '</div>';
             });
             return html;
 
