@@ -84,7 +84,7 @@
     </div>
 </section>
 <!-- hitwebcounter Code START -->
-<span class="mt-5 d-flex justify-content-center"><b>Visits: </b><img src="https://hitwebcounter.com/counter/counter.php?page=7985375&style=0006&nbdigits=5&type=page&initCount=0" title="Free Counter" Alt="web counter" border="0" height="25px" width="100px" /></a></span>
+<!-- <span class="mt-5 d-flex justify-content-center"><b>Visits: </b><img src="https://hitwebcounter.com/counter/counter.php?page=7985375&style=0006&nbdigits=5&type=page&initCount=0" title="Free Counter" Alt="web counter" border="0" height="25px" width="100px" /></a></span> -->
 <section id="search_container" class="bg-secondary text-light mt-2">
     <form id="search_form">
         @csrf
@@ -385,70 +385,106 @@
     }
 
     function loadTable(data, url, method) {
+        ajaxRequest(method, url, data, function(resp) {
+            $.each(resp, function(index, row) {
+                let html = '';
+                html += '<div class="row">';
+                html += '<div class="card card-success bg-dark w-100">';
+                html += '<a href="/public/api/get_post_profile/id/' + row.id + '">';
+                html += '<div class="card-body bg-dark">';
+                html += '<div class="row">';
+                html += '<div class="col-5 col-md-3">';
+                html += '<div class="portfolio-wrap text-center">';
+                html += "<img src='/public/" + row.main_image + "' style='height: 6em; width: 100%;' alt='main_img'/>";
+                html += '</div>';
+                html += '</div>';
+                html += '<div class="col-7 col-md-9 text-dark">';
+                html += '<b style="font-size: 18px" class="text-success">' + row.post_title + '</b><br>';
+                html += '<span class="text-light"><b>Price: </b>' + row.price + ' </span><br>';
+                html += '<span class="text-light"><b>Location: </b>' + row.location + ' </span><br>';
+                html += '<span class="text-light"><b>Condition: </b>' + row.condition + ' </span>';
+                html += '<div class="ribbon-wrapper ribbon-sm">';
+                html += '<div class="ribbon bg-success text-sm">';
+                let status = (row.status == 0) ? 'NEW' : 'SOLD';
+                html += status;
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+                html += '</a>';
+                html += '</div>';
+                html += '</div>';
+                return html;
+            });
 
-        let ad_tbl = $('#ad_tbl').DataTable({
-            destroy: true,
-            processing: true,
-            serverSide: false,
-            responsive: true,
-            searching: false,
-            dom: 'Bfrtip',
-            "pageLength": 50,
-            language: {
-                searchPlaceholder: "search"
-            },
-            "ajax": {
-                "url": url,
-                "data": data,
-                "type": method,
-                "dataSrc": "",
-                "headers": {
-                    //            "X-XSRF-TOKEN": token,
-                    'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr("content"),
-                    'Accept': "application/json"
-                },
-            },
-            "columns": [{
-                "data": "",
-                "render": function(data, type, row, meta) {
-                    let html = '';
-                    html += '<div class="row">';
-                    html += '<div class="card card-success bg-dark w-100">';
-                    html += '<a href="/public/api/get_post_profile/id/' + row.id + '">';
-                    html += '<div class="card-body bg-dark">';
-                    html += '<div class="row">';
-                    html += '<div class="col-5 col-md-3">';
-                    html += '<div class="portfolio-wrap text-center">';
-                    html += "<img src='/public/" + row.main_image + "' style='height: 6em; width: 100%;' alt='main_img'/>";
-                    html += '</div>';
-                    html += '</div>';
-                    html += '<div class="col-7 col-md-9 text-dark">';
-                    html += '<b style="font-size: 18px" class="text-success">' + row.post_title + '</b><br>';
-                    html += '<span class="text-light"><b>Price: </b>' + row.price + ' </span><br>';
-                    html += '<span class="text-light"><b>Location: </b>' + row.location + ' </span><br>';
-                    html += '<span class="text-light"><b>Condition: </b>' + row.condition + ' </span>';
-                    html += '<div class="ribbon-wrapper ribbon-sm">';
-                    html += '<div class="ribbon bg-success text-sm">';
-                    let status = (row.status == 0) ? 'NEW' : 'SOLD';
-                    html += status;
-                    html += '</div>';
-                    html += '</div>';
-                    html += '</div>';
-                    html += '</div>';
-                    html += '</div>';
-                    html += '</a>';
-                    html += '</div>';
-                    html += '</div>';
-                    return html;
-                }
-            }, ],
         });
 
-        //data table error handling
-        $.fn.dataTable.ext.errMode = 'none';
-        $('#ad_tbl').on('error.dt', function(e, settings, techNote, message) {
-            console.log('DataTables error: ', message);
-        });
+
+        // let ad_tbl = $('#ad_tbl').DataTable({
+        //     destroy: true,
+        //     processing: true,
+        //     serverSide: false,
+        //     responsive: true,
+        //     searching: false,
+        //     dom: 'Bfrtip',
+        //     "pageLength": 50,
+        //     language: {
+        //         searchPlaceholder: "search",
+        //         zeroRecords: " "
+        //     },
+        //     "ajax": {
+        //         "url": url,
+        //         "data": data,
+        //         "type": method,
+        //         "dataSrc": "",
+        //         "headers": {
+        //             //            "X-XSRF-TOKEN": token,
+        //             'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr("content"),
+        //             'Accept': "application/json"
+        //         },
+        //     },
+        //     "columns": [{
+        //         "data": "",
+        //         "render": function(data, type, row, meta) {
+        //             let html = '';
+        //             html += '<div class="row">';
+        //             html += '<div class="card card-success bg-dark w-100">';
+        //             html += '<a href="/public/api/get_post_profile/id/' + row.id + '">';
+        //             html += '<div class="card-body bg-dark">';
+        //             html += '<div class="row">';
+        //             html += '<div class="col-5 col-md-3">';
+        //             html += '<div class="portfolio-wrap text-center">';
+        //             html += "<img src='/public/" + row.main_image + "' style='height: 6em; width: 100%;' alt='main_img'/>";
+        //             html += '</div>';
+        //             html += '</div>';
+        //             html += '<div class="col-7 col-md-9 text-dark">';
+        //             html += '<b style="font-size: 18px" class="text-success">' + row.post_title + '</b><br>';
+        //             html += '<span class="text-light"><b>Price: </b>' + row.price + ' </span><br>';
+        //             html += '<span class="text-light"><b>Location: </b>' + row.location + ' </span><br>';
+        //             html += '<span class="text-light"><b>Condition: </b>' + row.condition + ' </span>';
+        //             html += '<div class="ribbon-wrapper ribbon-sm">';
+        //             html += '<div class="ribbon bg-success text-sm">';
+        //             let status = (row.status == 0) ? 'NEW' : 'SOLD';
+        //             html += status;
+        //             html += '</div>';
+        //             html += '</div>';
+        //             html += '</div>';
+        //             html += '</div>';
+        //             html += '</div>';
+        //             html += '</a>';
+        //             html += '</div>';
+        //             html += '</div>';
+        //             return html;
+        //         }
+        //     }, ],
+        // });
+
+        // //data table error handling
+        // $.fn.dataTable.ext.errMode = 'none';
+        // $('#ad_tbl').on('error.dt', function(e, settings, techNote, message) {
+        //     console.log('DataTables error: ', message);
+        // });
     }
 </script>
 @endsection
