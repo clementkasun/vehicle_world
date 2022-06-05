@@ -352,7 +352,7 @@
                             @endforeach
 
                             @if(isset($request))
-                            <div class="text-center mt-5">{{ $related_posts->appends($request)->links() }}</div>
+                            <div class="text-center mt-5">{{ dd($related_posts->appends($request)->links()) }}</div>
                             @endif
 
                             @if(!isset($request))
