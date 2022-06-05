@@ -342,12 +342,10 @@
                                                 <a href="/public/api/get_post_profile/id/{{$post->id}}">
                                                     <div class="card-body text-light bg-dark">
                                                         <div class="row">
-                                                            <div class="col-5">
-                                                                <div class="portfolio-wrap text-center">
-                                                                    <img src="{{asset(''.$post->main_image)}}"  style="height: 6em; width: 100%" alt='main_img' />
-                                                                </div>
+                                                            <div class="col-5 col-md-3">
+                                                                <img src="{{asset(''.$post->main_image)}}" style="height: 6em; width: 100%" alt='main_img' />
                                                             </div>
-                                                            <div class="col-7">
+                                                            <div class="col-7 col-md-9">
                                                                 <b style="font-size: 18px" class="text-success">{{$post->post_title}}</b></br>
                                                                 <span><b>Price:</b> {{$post->price}} </span><br>
                                                                 <span><b>Location:</b> {{$post->location}} </span><br>
