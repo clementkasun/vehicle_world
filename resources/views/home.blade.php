@@ -83,7 +83,9 @@
 
     </div>
 </section>
-<section id="search_container" class="bg-secondary text-light">
+<!-- hitwebcounter Code START -->
+<span class="mt-5 d-flex justify-content-center"><b>Visits: </b><img src="https://hitwebcounter.com/counter/counter.php?page=7985375&style=0006&nbdigits=5&type=page&initCount=0" title="Free Counter" Alt="web counter" border="0" height="25px" width="100px" /></a></span>
+<section id="search_container" class="bg-secondary text-light mt-2">
     <form id="search_form">
         @csrf
         <div class="row m-2">
@@ -316,27 +318,25 @@
         </div>
     </form>
 </section>
-<!-- hitwebcounter Code START -->
-<span class="mt-5 d-flex justify-content-center"><b>Visits: </b><img src="https://hitwebcounter.com/counter/counter.php?page=7985375&style=0006&nbdigits=5&type=page&initCount=0" title="Free Counter" Alt="web counter" border="0" height="25px" width="100px" /></a></span>
 <!-- ======= Portfolio Section ======= -->
 <section id="portfolio" class="portfolio bg-white">
-    <div id="promoted_adds">
-        <div class="row">
-            <div class="col-md-2">
-                <div class="card-light">
-                    <div class="card-body w-100" style="height: 100%;">
-                  
-                    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="card-success">
+                <div class="card-header">Google Adds</div>
+                <div class="card-body w-100" style="height: 100%;">
+
                 </div>
             </div>
-            <div class="col-md-8">
-                <table class="table" id="ad_tbl"></table>
-            </div>
-            <div class="col-md-2">
-                <div class="card-light w-100" style="height: 100%;">
-                    <div class="card-body">
+        </div>
+        <div class="col-md-8">
+            <table class="table" id="ad_tbl"></table>
+        </div>
+        <div class="col-md-2">
+            <div class="card-success w-100" style="height: 100%;">
+                <div class="card-header">Google Adds</div>
+                <div class="card-body">
 
-                    </div>
                 </div>
             </div>
         </div>
@@ -391,6 +391,7 @@
             processing: true,
             serverSide: false,
             responsive: true,
+            searching: false,
             dom: 'Bfrtip',
             "pageLength": 50,
             language: {
@@ -428,7 +429,7 @@
                     html += '<span class="text-light"><b>Condition: </b>' + row.condition + ' </span>';
                     html += '<div class="ribbon-wrapper ribbon-sm">';
                     html += '<div class="ribbon bg-success text-sm">';
-                    let status = (row.status == 0) ? 'NEW': 'SOLD';
+                    let status = (row.status == 0) ? 'NEW' : 'SOLD';
                     html += status;
                     html += '</div>';
                     html += '</div>';
