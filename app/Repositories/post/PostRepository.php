@@ -343,7 +343,7 @@ class PostRepository implements PostInterface
 
         $post_by_vehi_type = Post::join('vehicles', 'posts.vehicle_id', 'vehicles.id')
             ->where('vehicles.vehicle_type', $vehi_type)
-            ->paginate(4);
+            ->paginate(3);
 
         return ['post_data' => $post_data, 'related_posts' => $post_by_vehi_type];
     }
