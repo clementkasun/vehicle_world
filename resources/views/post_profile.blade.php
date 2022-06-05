@@ -352,11 +352,11 @@
                             @endforeach
 
                             @if(isset($request))
-                            <div class="text-center mt-5">{{ $related_posts->appends($request)->links('pagination::bootstrap-4') }}</div>
+                            <div class="text-center mt-5">{{ $related_posts->appends($request)->links() }}</div>
                             @endif
 
                             @if(!isset($request))
-                            <div class="text-center mt-5">{{ $related_posts->links('pagination::bootstrap-4') }}</div>
+                            <div class="text-center mt-5">{{ $related_posts->links() }}</div>
                             @endif
 
                             @endif
