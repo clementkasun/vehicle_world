@@ -712,7 +712,7 @@ class PostRepository implements PostInterface
     {
         try {
             $path = public_path('/storage/post_images/' . $post_id . '/');
-            \File::exists($path) or File::makeDirectory($path);
+            File::deleteDirectory($path);
             $post = Post::find($post_id);
             $post->delete();
             return array('status' => 1);
@@ -730,7 +730,7 @@ class PostRepository implements PostInterface
             foreach ($get_expired_posts as $get_expired_post) {
                 $post_id = $get_expired_post->id;
                 $path = public_path('/storage/post_images/' . $post_id . '/');
-                \File::exists($path) or File::makeDirectory($path);
+                File::deleteDirectory($path);
                 $get_expired_post->delete();
             }
             return array('status' => 1);
