@@ -338,7 +338,7 @@
                                         @if($related_posts[0] != null)
                                         @foreach($related_posts as $post)
                                         <div class='col-12 col-md-4'>
-                                            <div class="card card-success mt-2">
+                                            <div class="card card-success mt-2 w-100">
                                                 <div class="card-body text-light bg-dark">
                                                     <div class="row">
                                                         <div class="col-5">
