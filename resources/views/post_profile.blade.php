@@ -5,10 +5,9 @@
 @extends('layouts.footer')
 
 @section('content')
-<main id="main">
     <section>
             <!-- Profile Image -->
-            <div class="card card-success">
+            <div class="card card-success" style="padding: 0">
                 <div class="card-header">
                     <h4><b>{{ $post_data->post_title}}</b></h4>
                 </div>
@@ -374,7 +373,6 @@
         <!-- /.card -->
         </div>
     </section>
-</main>
 @endsection
 
 @section('pageScripts')
