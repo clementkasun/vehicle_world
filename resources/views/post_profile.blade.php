@@ -18,7 +18,7 @@
                         <div class="col-12 col-md-7">
                             <div class="card card-light">
                                 <div class="card-body">
-                                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                         <ol class="carousel-indicators">
                                             @if($post_data->main_image != null)
                                             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
