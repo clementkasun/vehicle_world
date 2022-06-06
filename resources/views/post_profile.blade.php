@@ -335,7 +335,7 @@
                             @foreach($related_posts as $post)
                             <div class='col-12 col-md-4'>
                                 <div class="card card-light mt-2 w-100" style="border-width: 2px; border-color: black">
-                                    <div class="card-body text-light bg-dark">
+                                    <div class="card-body">
                                         <div class="row">
                                             <div class="col-5">
                                                 <img src="{{asset(''.$post->main_image)}}" style="height: 8em;" class="w-100" alt='main_img' />
