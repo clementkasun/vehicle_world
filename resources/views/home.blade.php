@@ -430,7 +430,7 @@
                     html += '<b style="font-size: 18px" class="text-success">' + row.post_title + '</b><br>';
                     html += '<span style="font-size: 14px" class="text-dark"><b>Price: </b>' + row.price + ' </span><br>';
                     html += '<span style="font-size: 14px" class="text-dark"><b>Location: </b>' + row.location + ' </span><br>';
-                    html += '<span style="font-size: 14px" class="text-dark"><b>Condition: </b>' + row.condition + ' </span>';
+                    html += '<span style="font-size: 14px" class="text-dark"><b>Condition: </b>' + row.condition + ' </span><br>';
                     html += '<span style="font-size: 14px" class="text-dark"><b>Millage: </b>' + row.millage + ' </span>';
                     html += '</div>';
                     html += '<div class="col-1">';
