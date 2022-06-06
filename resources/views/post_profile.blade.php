@@ -341,11 +341,11 @@
                                                 <img src="{{asset(''.$post->main_image)}}" style="height: 8em;" class="w-100" alt='main_img' />
                                             </div>
                                             <div class="col-7">
-                                                <a href="/public/api/get_post_profile/id/{{$post->id}}"><b style="font-size: 18px" class="text-success">{{$post->post_title}}</b></br></a>
-                                                <span style="font-size: 14px" class="text-dark"><b>Price: </b> {{$post->price}} </span>
-                                                <span style="font-size: 14px" class="text-dark"><b>Location: </b> {{$post->location}} </span>
-                                                <span style="font-size: 14px" class="text-dark"><b>Condition: </b> {{$post->condition}} </span>
-                                                <span style="font-size: 14px" class="text-dark"><b>Millage: </b> {{$post->millage}} </span>
+                                                <a href="/public/api/get_post_profile/id/{{$post->id}}"><b style="font-size: 14px" class="text-success">{{$post->post_title}}</b></br></a>
+                                                <span style="font-size: 12px" class="text-dark"><b>Price: </b> {{$post->price}} </span>
+                                                <span style="font-size: 12px" class="text-dark"><b>Location: </b> {{$post->location}} </span>
+                                                <span style="font-size: 12px" class="text-dark"><b>Condition: </b> {{$post->condition}} </span>
+                                                <span style="font-size: 12px" class="text-dark"><b>Millage: </b> {{$post->millage}} </span>
                                             </div>
                                         </div>
                                     </div>
