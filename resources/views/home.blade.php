@@ -416,9 +416,9 @@
                 "render": function(data, type, row, meta) {
                     let html = '';
                     html += '<div class="row">';
-                    html += '<div class="card card-success bg-dark w-100">';
+                    html += '<div class="card card-light w-100" style="border-width: 2px; border-color: black">';
                     html += '<a href="/public/api/get_post_profile/id/' + row.id + '">';
-                    html += '<div class="card-body bg-dark">';
+                    html += '<div class="card-body">';
                     html += '<div class="row">';
                     html += '<div class="col-4 col-md-3">';
                     html += '<div class="portfolio-wrap text-center">';
