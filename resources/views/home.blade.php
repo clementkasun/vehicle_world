@@ -423,20 +423,20 @@
             });
         });
         $('#ad_tbl tbody').html(html);
-        $('#ad_tbl').DataTable({
-            destroy: true,
-            processing: true,
-            serverSide: false,
-            ordering: false,
-            responsive: true,
-            searching: false,
-            dom: 'Bfrtip',
-            "pageLength": 50,
-            language: {
-                searchPlaceholder: "search",
-                zeroRecords: " "
-            }
-        });
+        // $('#ad_tbl').DataTable({
+        //     destroy: true,
+        //     processing: true,
+        //     serverSide: false,
+        //     ordering: false,
+        //     responsive: true,
+        //     searching: false,
+        //     dom: 'Bfrtip',
+        //     "pageLength": 50,
+        //     language: {
+        //         searchPlaceholder: "search",
+        //         zeroRecords: " "
+        //     }
+        // });
 
         // let ad_tbl = $('#ad_tbl').DataTable({
         //     destroy: true,
