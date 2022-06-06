@@ -425,11 +425,11 @@
                     html += "<img src='/public/" + row.main_image + "' style='height: 8em; width: 100%;' alt='main_img'/>";
                     html += '</div>';
                     html += '</div>';
-                    html += '<div class="col-7 col-md-8 text-dark">';
+                    html += '<div class="col-7 col-md-8">';
                     html += '<b style="font-size: 18px" class="text-success">' + row.post_title + '</b><br>';
-                    html += '<span class="text-light"><b>Price: </b>' + row.price + ' </span><br>';
-                    html += '<span class="text-light"><b>Location: </b>' + row.location + ' </span><br>';
-                    html += '<span class="text-light"><b>Condition: </b>' + row.condition + ' </span>';
+                    html += '<span style="font-size: 12px" class="text-dark"><b>Price: </b>' + row.price + ' </span><br>';
+                    html += '<span style="font-size: 12px" class="text-dark"><b>Location: </b>' + row.location + ' </span><br>';
+                    html += '<span style="font-size: 12px" class="text-dark"><b>Condition: </b>' + row.condition + ' </span>';
                     html += '</div>';
                     html += '<div class="col-1">';
                     html += '<div class="ribbon-wrapper ribbon-sm">';
