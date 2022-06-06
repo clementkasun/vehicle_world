@@ -390,7 +390,7 @@
     function loadTable(data, url, method) {
         let html = '';
         ajaxRequest(method, url, data, function(resp) {
-            $.each(resp, function(index, roe) {
+            $.each(resp, function(index, row) {
                 html += '<div class="row">';
                 html += '<div class="card card-light w-100" style="border-width: 2px; border-color: black">';
                 html += '<a href="/public/api/get_post_profile/id/' + row.id + '">';
