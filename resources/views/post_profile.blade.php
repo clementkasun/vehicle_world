@@ -342,7 +342,7 @@
                                             </div>
                                             <div class="col-7">
                                                 <a href="/public/api/get_post_profile/id/{{$post->id}}"><b style="font-size: 18px" class="text-success">{{$post->post_title}}</b></br></a>
-                                                <b style="font-size: 18px" class="text-success">' + row.post_title + '</b><br>';
+                                                <b style="font-size: 18px" class="text-success">' + row.post_title + '</b>
                                                 <span style="font-size: 14px" class="text-dark"><b>Price: </b>' + row.price + ' </span>
                                                 <span style="font-size: 14px" class="text-dark"><b>Location: </b>' + row.location + ' </span>
                                                 <span style="font-size: 14px" class="text-dark"><b>Condition: </b>' + row.condition + ' </span>
