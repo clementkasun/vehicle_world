@@ -427,6 +427,7 @@
             destroy: true,
             processing: true,
             serverSide: false,
+            ordering: false,
             responsive: true,
             searching: false,
             dom: 'Bfrtip',
