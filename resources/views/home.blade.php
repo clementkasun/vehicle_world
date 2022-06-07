@@ -324,7 +324,7 @@
         <div class="col-md-2">
             <div class="card-success">
                 <div class="card-body w-100" style="height: 100%;">
-                    <amp-ad width="100vw" height="320" type="adsense" data-ad-client="ca-pub-2365603589658807" data-ad-slot="6961409222" data-auto-format="rspv" data-full-width="">
+                    <amp-ad width="100vw" height="320" type="adsense" data-ad-client="ca-pub-2365603589658807" data-ad-slot="6169457338" data-auto-format="rspv" data-full-width="">
                         <div overflow=""></div>
                     </amp-ad>
                 </div>
@@ -339,7 +339,7 @@
         <div class="col-md-2">
             <div class="card-success w-100" style="height: 100%;">
                 <div class="card-body">
-                    <amp-ad width="100vw" height="320" type="adsense" data-ad-client="ca-pub-2365603589658807" data-ad-slot="6961409222" data-auto-format="rspv" data-full-width="">
+                    <amp-ad width="100vw" height="320" type="adsense" data-ad-client="ca-pub-2365603589658807" data-ad-slot="6169457338" data-auto-format="rspv" data-full-width="">
                         <div overflow=""></div>
                     </amp-ad>
                 </div>
