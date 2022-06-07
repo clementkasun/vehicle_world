@@ -324,6 +324,8 @@
         <div class="col-md-2">
             <div class="card-success">
                 <div class="card-body w-100" style="height: 100%;">
+                    <!-- Ad1 -->
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2365603589658807" data-ad-slot="6961409222" data-ad-format="auto" data-full-width-responsive="true"></ins>
                     <amp-ad width="100vw" height="320" type="adsense" data-ad-client="ca-pub-2365603589658807" data-ad-slot="6961409222" data-auto-format="rspv" data-full-width="">
                         <div overflow=""></div>
                     </amp-ad>
@@ -351,6 +353,7 @@
 @section('pageScripts')
 <script>
     $(document).ready(function() {
+        (adsbygoogle = window.adsbygoogle || []).push({});
 
         $('#cmb_make').select2();
         $('#cmb_city').select2();
