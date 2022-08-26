@@ -101,9 +101,9 @@
                                     <td>{{$loop->index+1}}</td>
                                     <td>
                                         @if($user_add->status != '1')
-                                        <button class="btn btn-warning ch-sold" data-id="{{$user_add->id}}"><i class="icon-usd" alt="sell"></i></button>
+                                        <button class="btn btn-warning ch-sold" data-id="{{$user_add->id}}"><i class="fa fa-icon-usd" alt="sell"></i></button>
                                         @else
-                                        <button class="btn btn-warning ch-sold" disabled><i class="icon-usd" alt="sold"></i></button>
+                                        <button class="btn btn-warning ch-sold" disabled><i class="fa fa-icon-usd" alt="sold"></i></button>
                                         @endif
                                         <a href="./post_edit/id/{{$user_add->id}}" class="btn btn-primary edit"><i class='fa fa-edit'></i></a>
                                         <button class="btn btn-danger del" data-id="{{$user_add->id}}"><i class='fa fa-trash'></i></button>
