@@ -29,7 +29,7 @@
                     <img src="{{ $user_path}}" class="avatar img-circle" alt="avatar" width="100em" height="100em">
                 </div>
 
-                <h3 class="profile-username text-center">{{$user_profile_data['name']}} {{$user_profile_data['name']}}</h3>
+                <h3 class="profile-username text-center">{{$user_profile_data['name']}} {{$user_profile_data['last_name']}}</h3>
             </div>
             <!-- /.card-body -->
         </div>
@@ -44,7 +44,7 @@
             <div class="card-body">
                 <strong><i class="fas fa-user mr-1"></i> Full Name</strong>
 
-                <p class="text-muted pl-1"> {{$user_profile_data['name']}} {{$user_profile_data['name']}}</p>
+                <p class="text-muted pl-1"> {{$user_profile_data['name']}} {{$user_profile_data['last_name']}}</p>
 
                 <hr>
 

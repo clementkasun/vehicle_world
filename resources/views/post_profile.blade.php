@@ -84,34 +84,28 @@
                     <div class="card-body">
                         @if($post_data->phone_number != null)
                         <div class="row">
-                            <div class="col-md-4">Tel No:</div>
+                            <div class="col-md-4"><b>Tel No:</b></div>
                             <div class="col-md-8">{{$post_data->phone_number}}</div>
                         </div>
                         @endif
                         @if($post_data->email != null)
                         <div class="row">
-                            <div class="col-md-4">Email:</div>
+                            <div class="col-md-4"><b>Email:</b></div>
                             <div class="col-md-8">{{$post_data->email}}</div>
                         </div>
                         @endif
                         @if($post_data->seller_location != null)
                         <div class="row">
-                            <div class="col-md-4">Address:</div>
+                            <div class="col-md-4"><b>Address:</b></div>
                             <div class="col-md-8">{{$post_data->seller_location}}</div>
                         </div>
                         @endif
                     </div>
                 </div>
-                <div class="card card-success">
-                    <div class="card-body">
-                        <amp-auto-ads type="adsense" data-ad-client="ca-pub-2365603589658807">
-                        </amp-auto-ads>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-12 col-md-7">
+            <div class="col-12">
                 <div class="card card-success pb-4 w-100">
                     <div class="card-header">
                         <b>Vehicle Details</b>
