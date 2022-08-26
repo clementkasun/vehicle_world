@@ -180,7 +180,7 @@ class PostRepository implements PostInterface
                 $file_ext_main    = $image_main->extension();
 
                 $image_resize_main = \Image::make($image_main->getRealPath());
-                $image_resize_main->resize(200, 200);
+                $image_resize_main->resize(250, 200);
 
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
@@ -201,7 +201,7 @@ class PostRepository implements PostInterface
                 $file_ext_one    = $image_one->extension();
 
                 $image_resize_one = \Image::make($image_one->getRealPath());
-                $image_resize_one->resize(200, 200);
+                $image_resize_one->resize(250, 200);
 
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
@@ -222,7 +222,7 @@ class PostRepository implements PostInterface
                 $file_ext_two    = $image_two->extension();
 
                 $image_resize_two = \Image::make($image_two->getRealPath());
-                $image_resize_two->resize(200, 200);
+                $image_resize_two->resize(250, 200);
 
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
@@ -243,7 +243,7 @@ class PostRepository implements PostInterface
                 $file_ext_three    = $image_three->extension();
 
                 $image_resize_three = \Image::make($image_three->getRealPath());
-                $image_resize_three->resize(200, 200);
+                $image_resize_three->resize(250, 200);
 
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
@@ -264,7 +264,7 @@ class PostRepository implements PostInterface
                 $file_ext_four   = $image_four->extension();
 
                 $image_resize_four = \Image::make($image_four->getRealPath());
-                $image_resize_four->resize(200, 200);
+                $image_resize_four->resize(250, 200);
 
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
@@ -599,7 +599,7 @@ class PostRepository implements PostInterface
                 $file_ext_main    = $image_main->extension();
 
                 $image_resize_main = \Image::make($image_main->getRealPath());
-                $image_resize_main->resize(200, 200);
+                $image_resize_main->resize(250, 200);
 
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
@@ -620,7 +620,7 @@ class PostRepository implements PostInterface
                 $file_ext_one    = $image_one->extension();
 
                 $image_resize_one = \Image::make($image_one->getRealPath());
-                $image_resize_one->resize(200, 200);
+                $image_resize_one->resize(250, 200);
 
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
@@ -641,7 +641,7 @@ class PostRepository implements PostInterface
                 $file_ext_two    = $image_two->extension();
 
                 $image_resize_two = \Image::make($image_two->getRealPath());
-                $image_resize_two->resize(200, 200);
+                $image_resize_two->resize(250, 200);
 
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
@@ -662,7 +662,7 @@ class PostRepository implements PostInterface
                 $file_ext_three    = $image_three->extension();
 
                 $image_resize_three = \Image::make($image_three->getRealPath());
-                $image_resize_three->resize(200, 200);
+                $image_resize_three->resize(250, 200);
 
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
@@ -683,7 +683,7 @@ class PostRepository implements PostInterface
                 $file_ext_four   = $image_four->extension();
 
                 $image_resize_four = \Image::make($image_four->getRealPath());
-                $image_resize_four->resize(200, 200);
+                $image_resize_four->resize(250, 200);
 
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
