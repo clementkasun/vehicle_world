@@ -186,7 +186,6 @@ class PostRepository implements PostInterface
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_main = uniqid($id);
                 $image_resize_main->text('vehiauto.com', 0, 0, function ($font) {
-                    $font->file('foo/bar.ttf');
                     $font->size(24);
                     $font->color([255, 255, 255, 0.5]);
                     $font->align('center');
@@ -208,7 +207,6 @@ class PostRepository implements PostInterface
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_one = uniqid($id);
                 $image_resize_one->text('vehiauto.com', 0, 0, function ($font) {
-                    $font->file('foo/bar.ttf');
                     $font->size(24);
                     $font->color([255, 255, 255, 0.5]);
                     $font->align('center');
@@ -230,7 +228,6 @@ class PostRepository implements PostInterface
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_two = uniqid($id);
                 $image_resize_two->text('vehiauto.com', 0, 0, function ($font) {
-                    $font->file('foo/bar.ttf');
                     $font->size(24);
                     $font->color([255, 255, 255, 0.5]);
                     $font->align('center');
@@ -252,7 +249,6 @@ class PostRepository implements PostInterface
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_three = uniqid($id);
                 $image_resize_three->text('vehiauto.com', 0, 0, function ($font) {
-                    $font->file('foo/bar.ttf');
                     $font->size(24);
                     $font->color([255, 255, 255, 0.5]);
                     $font->align('center');
@@ -274,7 +270,6 @@ class PostRepository implements PostInterface
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_four = uniqid($id);
                 $image_resize_four->text('vehiauto.com', 0, 0, function ($font) {
-                    $font->file('foo/bar.ttf');
                     $font->size(24);
                     $font->color([255, 255, 255, 0.5]);
                     $font->align('center');
@@ -610,7 +605,6 @@ class PostRepository implements PostInterface
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_main = uniqid($id);
                 $image_resize_main->text('vehiauto.com', 0, 0, function ($font) {
-                    $font->file('foo/bar.ttf');
                     $font->size(24);
                     $font->color([255, 255, 255, 0.5]);
                     $font->align('center');
@@ -632,7 +626,6 @@ class PostRepository implements PostInterface
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_one = uniqid($id);
                 $image_resize_one->text('vehiauto.com', 0, 0, function ($font) {
-                    $font->file('foo/bar.ttf');
                     $font->size(24);
                     $font->color([255, 255, 255, 0.5]);
                     $font->align('center');
@@ -654,7 +647,6 @@ class PostRepository implements PostInterface
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_two = uniqid($id);
                 $image_resize_two->text('vehiauto.com', 0, 0, function ($font) {
-                    $font->file('foo/bar.ttf');
                     $font->size(24);
                     $font->color([255, 255, 255, 0.5]);
                     $font->align('center');
@@ -676,7 +668,6 @@ class PostRepository implements PostInterface
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_three = uniqid($id);
                 $image_resize_three->text('vehiauto.com', 0, 0, function ($font) {
-                    $font->file('foo/bar.ttf');
                     $font->size(24);
                     $font->color([255, 255, 255, 0.5]);
                     $font->align('center');
@@ -698,7 +689,6 @@ class PostRepository implements PostInterface
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_four = uniqid($id);
                 $image_resize_four->text('vehiauto.com', 0, 0, function ($font) {
-                    $font->file('foo/bar.ttf');
                     $font->size(24);
                     $font->color([255, 255, 255, 0.5]);
                     $font->align('center');
