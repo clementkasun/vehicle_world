@@ -24,7 +24,7 @@
                 <div class="text-center">
                     <?php
                     $user_path = '';
-                    (isset($user_profile_data['profile_photo_path'])) ? $user_path = './storage/public/' . $user_profile_data['profile_photo_path'] : $user_path = '/public/dist/img/avtr_emp.jpg';
+                    (isset($user_profile_data['profile_photo_path'])) ? $user_path = './storage/' . $user_profile_data['profile_photo_path'] : $user_path = '/public/dist/img/avtr_emp.jpg';
                     ?>
                     <img src="{{ $user_path}}" class="avatar img-circle" alt="avatar" width="100em" height="100em">
                 </div>
