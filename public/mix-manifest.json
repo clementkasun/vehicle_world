@@ -1,5 +1,5 @@
 {
-    "/js/app.js": "/js/app.js?id=7effa5def4a32aefae693591ed6dee96",
+    "/js/app.js": "/js/app.js?id=dfe4c0c857e859591612488198ab041c",
     "/assets/css/style.css": "/assets/css/style.css?id=dca23ea026b2eee334d56212bb936bb4",
     "/assets/img/about.jpg": "/assets/img/about.jpg?id=3eb80dc7c4a896e37f5ca3f17a6a678e",
     "/assets/img/apple-touch-icon.png": "/assets/img/apple-touch-icon.png?id=49ae81bd17b0bfab8060ca1e137b2c6c",
@@ -292,8 +292,10 @@
     "/images/logo.svg": "/images/logo.svg?id=06e733283fa43d1dd57738cfc409adbd",
     "/index.html": "/index.html?id=ef8a02db437c74f2ecb0d88becc4b9d4",
     "/index.php": "/index.php?id=b4f5edc8c1c450247b8f34292c2fa102",
+    "/js/app.js.LICENSE.txt": "/js/app.js.LICENSE.txt?id=b114cc85da504a772f040e3f40f8e46a",
     "/js/categoryJS/category_elements.js": "/js/categoryJS/category_elements.js?id=b1c55387c4bf3dff5c01f7ffdf3f0506",
     "/js/categoryJS/category_list.js": "/js/categoryJS/category_list.js?id=568acd9502788deb24a25f18e7e8ffec",
+    "/js/chunks/131.js": "/js/chunks/131.js?id=c1d863a4de89598d51bbca4da0ed382f",
     "/js/chunks/node_modules_web-vitals_dist_web-vitals_js.js": "/js/chunks/node_modules_web-vitals_dist_web-vitals_js.js?id=179aa87cec5771dd61ccd925db490996",
     "/js/combo.js": "/js/combo.js?id=ec920d21db8e662d0794a0a5e5673968",
     "/js/commenFunctions/file_upload.js": "/js/commenFunctions/file_upload.js?id=f3e097d44c57bb20134a14e501c99ca9",
