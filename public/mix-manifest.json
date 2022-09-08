@@ -1,5 +1,5 @@
 {
-    "/js/app.js": "/js/app.js?id=7effa5def4a32aefae693591ed6dee96",
+    "/js/app.js": "/js/app.js?id=d4b6113e51feb138b6121f619c93009e",
     "/assets/css/style.css": "/assets/css/style.css?id=dca23ea026b2eee334d56212bb936bb4",
     "/assets/img/about.jpg": "/assets/img/about.jpg?id=3eb80dc7c4a896e37f5ca3f17a6a678e",
     "/assets/img/apple-touch-icon.png": "/assets/img/apple-touch-icon.png?id=49ae81bd17b0bfab8060ca1e137b2c6c",
@@ -283,6 +283,10 @@
     "/frontend/css/bootstrap.min.css": "/frontend/css/bootstrap.min.css?id=e289fafecd173b394e78916da4e7e04d",
     "/frontend/script.js": "/frontend/script.js?id=846ffce745fb5ca49efdf7992b47c344",
     "/frontend/style.css": "/frontend/style.css?id=6917258423d1b569d29f46c069c39ab4",
+    "/home/images/logo.svg": "/home/images/logo.svg?id=06e733283fa43d1dd57738cfc409adbd",
+    "/home/js/chunks/node_modules_web-vitals_dist_web-vitals_js.js": "/home/js/chunks/node_modules_web-vitals_dist_web-vitals_js.js?id=179aa87cec5771dd61ccd925db490996",
+    "/home/mix-manifest.json": "/home/mix-manifest.json?id=333b63f7e9dda445d639508d26901ca9",
+    "/home/public/js/app.js": "/home/public/js/app.js?id=b07c9654e60fb22d706c10e0c755ece4",
     "/images/1652272587.jpeg": "/images/1652272587.jpeg?id=fd3922e039165e988153b72645779516",
     "/images/1652272633.jpeg": "/images/1652272633.jpeg?id=fd3922e039165e988153b72645779516",
     "/images/logo.svg": "/images/logo.svg?id=06e733283fa43d1dd57738cfc409adbd",
