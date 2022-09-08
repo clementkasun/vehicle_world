@@ -16,7 +16,7 @@
     </section>
 
     <!-- ======= Header ======= -->
-    <header id="header" class="d-flex align-items-center">
+    <header id="header" class="d-flex align-items-center header">
         <div class="container d-flex align-items-center">
             <h2 class="logo me-auto">VEHIAUTO.COM</h2><i class="bi bi-list mobile-nav-toggle"></i>
             <nav id="navbar" class="navbar">

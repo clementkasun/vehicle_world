@@ -3,6 +3,28 @@
 @extends('layouts.scripts')
 @extends('layouts.navbar')
 @extends('layouts.footer')
+@section('pageStyles')
+<style>
+    @media (min-width: 700px) {
+        #mobile-nav {
+            display: none;
+        }
+    }
+
+    @media (max-width: 700px) {
+        #featured-services {
+            display: none;
+        }
+        #hero{
+            display: none;
+        }
+        #header{
+            display: none;
+        }
+    }
+
+</style>
+@endsection
 @section('content')
 <!-- ======= Hero Section ======= -->
 <section id="hero">
@@ -321,7 +343,7 @@
 <!-- ======= Portfolio Section ======= -->
 <section id="portfolio" class="portfolio bg-white">
     <div class="row">
-        <div class="col-md-2">
+        <!-- <div class="col-md-2">
             <div class="card-success">
                 <div class="card-body w-100" style="height: 100%;">
                     <amp-ad width="100vw" height="320" type="adsense" data-ad-client="ca-pub-2365603589658807" data-ad-slot="6169457338" data-auto-format="rspv" data-full-width="">
@@ -329,14 +351,14 @@
                     </amp-ad>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="col-md-8">
             <table class="table" id="ad_tbl">
                 <thead></thead>
                 <tbody></tbody>
             </table>
         </div>
-        <div class="col-md-2">
+        <!-- <div class="col-md-2">
             <div class="card-success w-100" style="height: 100%;">
                 <div class="card-body">
                     <amp-ad width="100vw" height="320" type="adsense" data-ad-client="ca-pub-2365603589658807" data-ad-slot="6169457338" data-auto-format="rspv" data-full-width="">
@@ -344,9 +366,23 @@
                     </amp-ad>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </section><!-- End Portfolio Section -->
+<ul id="mobile-nav" class="nav nav-pills nav-fill bg-light" style="position: sticky;   left: 0px; bottem: 0px; z-index: 1;">
+    <li class="nav-item m-1">
+        <a class="nav-link active rounded" aria-current="page" href="/home"><i class="fa fa-home" aria-hidden="true"></i></a>
+    </li>
+    <li class="nav-item m-1">
+        <a class="nav-link active rounded bg-warning" href="/post_registration"><i class="fa fa-plus" aria-hidden="true"></i></a>
+    </li>
+    <li class="nav-item m-1">
+        <a class="nav-link active rounded" href="/about_us"><i class="fa-solid fa-info"></i></a>
+    </li>
+    <li class="nav-item m-1">
+        <a class="nav-link active rounded" href="/contact_us" tabindex="-1" aria-disabled="true"><i class="fa fa-address-book" aria-hidden="true"></i></a>
+    </li>
+</ul>
 @endsection
 @section('pageScripts')
 <script>
