@@ -17,7 +17,7 @@ const mix = require('laravel-mix');
   ],
 });
 
-mix.setPublicPath('public');
+mix.setPublicPath('public/home');
 
 mix.webpackConfig({
   resolve: {
