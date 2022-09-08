@@ -27,9 +27,6 @@
 @endsection
 @section('content')
 <!-- ======= Hero Section ======= -->
-<div id="root">
-
-</div>
 <section id="hero">
     <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
@@ -388,7 +385,6 @@
 </ul>
 @endsection
 @section('pageScripts')
-<script src="{{mix('js/app.js')}}"></script>
 <script>
     $(document).ready(function() {
         (adsbygoogle = window.adsbygoogle || []).push({});
