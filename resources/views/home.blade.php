@@ -343,7 +343,7 @@
 <!-- ======= Portfolio Section ======= -->
 <section id="portfolio" class="portfolio bg-white">
     <div class="row">
-        <!-- <div class="col-md-2">
+        <div class="col-md-2">
             <div class="card-success">
                 <div class="card-body w-100" style="height: 100%;">
                     <amp-ad width="100vw" height="320" type="adsense" data-ad-client="ca-pub-2365603589658807" data-ad-slot="6169457338" data-auto-format="rspv" data-full-width="">
@@ -351,14 +351,14 @@
                     </amp-ad>
                 </div>
             </div>
-        </div> -->
+        </div>
         <div class="col-md-8">
             <table class="table" id="ad_tbl">
                 <thead></thead>
                 <tbody></tbody>
             </table>
         </div>
-        <!-- <div class="col-md-2">
+        <div class="col-md-2">
             <div class="card-success w-100" style="height: 100%;">
                 <div class="card-body">
                     <amp-ad width="100vw" height="320" type="adsense" data-ad-client="ca-pub-2365603589658807" data-ad-slot="6169457338" data-auto-format="rspv" data-full-width="">
@@ -366,7 +366,7 @@
                     </amp-ad>
                 </div>
             </div>
-        </div> -->
+        </div>
     </div>
 </section><!-- End Portfolio Section -->
 <ul id="mobile-nav" class="nav nav-pills nav-fill bg-light" style="position: sticky;   left: 0px; bottem: 0px; z-index: 1;">
