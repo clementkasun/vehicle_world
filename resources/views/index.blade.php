@@ -175,9 +175,11 @@
                             <img class="img-fluid" width="96" height="96" src="assets2/images/user/user-profile.png" alt="image">
                         </div>
                         <div class="content">
+                             @if($user_profile_data != null)
                             <h2 class="name">{{$user_profile_data['name'] . ' ' .$user_profile_data['last_name']}}</h2>
                             <span class="email">{{ $user_profile_data['email']}}</span>
                             <span class="id-num">ID NO: EXMPL 4566</span>
+                            @endif
                         </div>
                         <div class="profile-shape profile-shape-1"><img class="img-fluid" width="61" height="50" src="assets2/images/profile-shape-1.svg" alt="image"></div>
                         <div class="profile-shape profile-shape-2"><img class="img-fluid" width="48" height="59" src="assets2/images/profile-shape-2.svg" alt="image"></div>
