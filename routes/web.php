@@ -32,9 +32,9 @@ Route::get('/login_cust', function () {
 Route::get('/post_filtered', function () {
     return view('post_filtered');
 });
-Route::middleware(['auth:sanctum', 'verified'])->get('/post_registration', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/create-post', function () {
     return view('/registration/post_registration');
-})->name('post_registration');
+})->name('create-post');
 Route::get('/about_us', function () {
     return view('about_us');
 });
