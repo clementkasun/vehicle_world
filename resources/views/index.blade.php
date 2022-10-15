@@ -391,7 +391,7 @@
                             <div class="swiper-slide">
                                 <div class="hero-singel-slide ">
                                     <div class="hero-bg">
-                                        <img width="388" height="160" class="img-full" src="assets2/images/hero/bg/hero-bg-1.jpg" alt="image">
+                                        <img width="388" height="160" class="img-full" src="assets2/images/hero/bg/bg-1.jpg" alt="image">
                                     </div>
                                     <div class="inner-wrapper">
                                         <div class="content">
