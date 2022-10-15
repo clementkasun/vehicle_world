@@ -18,7 +18,7 @@ class PostController extends Controller
     public function index()
     {
         $index_data = $this->postRepository->indexData();
-        return view('home', ['posts' => $index_data]);
+        return view('index', ['posts' => $index_data]);
     }
 
     public function get_post_profile($post_id)
