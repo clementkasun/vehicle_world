@@ -58,7 +58,10 @@
                                     </svg>
                                 </a></li>
                             <li class="list-item">
-                                <h2 class="title text-center">Vehiauto.com</h2>
+                                <!-- <img class="img-fluid" width="147" height="26" src="assets2/images/logo.png" alt="image"> -->
+                                <a href="/">
+                                    <h1>vehiauto.com</h1>
+                                </a>
                             </li>
                             <li class="list-item">
                                 <ul class="list-child">
@@ -91,7 +94,9 @@
             <div class="offcanvas-header flex-end">
 
                 <div class="logo">
-                    <a href="index.html"><img class="img-fluid" width="147" height="26" src="assets2/images/logo.png" alt="image"></a>
+                    <a href="/">
+                        <h1>vehiauto.com</h1>
+                    </a>
                 </div>
 
                 <button class="offcanvas-close" aria-label="offcanvas svg icon">
@@ -110,7 +115,7 @@
                     <div class="offcanvas-menu">
                         <ul>
                             <li>
-                                <a href="index.html"><span>Home</span></a>
+                                <a href="/"><span>Home</span></a>
                             </li>
                             <li>
                                 <a href="#"><span>Shop</span></a>
@@ -139,9 +144,9 @@
                 <!-- Start Mobile contact Info -->
                 <div class="mobile-contact-info">
                     <address class="address">
-                        <span>Address: 4710-4890 Breckinridge St, Fayettevill</span>
-                        <span>Call Us: (+800) 345 678, (+800) 123 456</span>
-                        <span>Email: yourmail@mail.com</span>
+                        <span>Address: Kurunegala,sri lanka</span>
+                        <span>Call Us: 0763993288</span>
+                        <span>Email: ksaunclement12345@mail.com</span>
                     </address>
                 </div>
                 <!-- End Mobile contact Info -->
@@ -170,8 +175,8 @@
                             <img class="img-fluid" width="96" height="96" src="assets2/images/user/user-profile.png" alt="image">
                         </div>
                         <div class="content">
-                            <h2 class="name">Kajavasta Moon</h2>
-                            <span class="email">moon@example.com</span>
+                            <h2 class="name">{{$user_profile_data['name'] . ' ' .$user_profile_data['last_name']}}</h2>
+                            <span class="email">{{ $user_profile_data['email']}}</span>
                             <span class="id-num">ID NO: EXMPL 4566</span>
                         </div>
                         <div class="profile-shape profile-shape-1"><img class="img-fluid" width="61" height="50" src="assets2/images/profile-shape-1.svg" alt="image"></div>
@@ -621,9 +626,9 @@
                             <div class="swiper-slide">
                                 <div class="hero-singel-slide ">
                                     <div class="hero-bg">
-                                        <img width="388" height="160" class="img-full" src="assets2/images/hero/bg/bg-1.jpg" alt="image">
+                                        <img width="605" height="312" class="img-full" src="assets2/images/hero/bg/bg-2.jpg" alt="image">
                                     </div>
-                                    <div class="inner-wrapper">
+                                    <!-- <div class="inner-wrapper">
                                         <div class="content">
                                             <p class="title-tag">Summer</p>
                                             <h1 class="title">Fashion</h1>
@@ -631,18 +636,18 @@
                                             <h3 class="sub-title">UP to <span>70% </span> off</h3>
                                         </div>
                                         <div class="product-img">
-                                            <img width="149" height="127" class="img-fluid" class="img-fluid" src="assets2/images/hero/product/product-1.png" alt="image">
+                                            <img width="149" height="127" class="img-fluid" class="img-fluid" src="assets2/images/hero/product/product-4.jpg" alt="image">
                                             <div class="shape shape-1"><img width="83" height="83" class="img-fluid" src="assets2/images/hero/shape/shape-dotted.png" alt="image"></div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="hero-singel-slide">
                                     <div class="hero-bg">
-                                        <img width="388" height="160" class="img-full" src="assets2/images/hero/bg/hero-bg-1.jpg" alt="image">
+                                        <img width="388" height="160" class="img-full" src="assets2/images/hero/bg/bg-1.jpg" alt="image">
                                     </div>
-                                    <div class="inner-wrapper">
+                                    <!-- <div class="inner-wrapper">
                                         <div class="content">
                                             <p class="title-tag">Summer</p>
                                             <h1 class="title">Fashion</h1>
@@ -653,15 +658,15 @@
                                             <img width="127" height="98" class="img-fluid" class="img-fluid" src="assets2/images/hero/product/product-2.png" alt="image">
                                             <div class="shape shape-1"><img width="83" height="83" class="img-fluid" src="assets2/images/hero/shape/shape-dotted.png" alt="image"></div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="hero-singel-slide">
                                     <div class="hero-bg">
-                                        <img width="388" height="160" class="img-full" src="assets2/images/hero/bg/hero-bg-1.jpg" alt="image">
+                                        <img width="388" height="160" class="img-full" src="assets2/images/hero/bg/bg-2.jpg" alt="image">
                                     </div>
-                                    <div class="inner-wrapper">
+                                    <!-- <div class="inner-wrapper">
                                         <div class="content">
                                             <p class="title-tag">Summer</p>
                                             <h1 class="title">Fashion</h1>
@@ -672,7 +677,7 @@
                                             <img width="126" height="98" class="img-fluid" class="img-fluid" src="assets2/images/hero/product/product-3.png" alt="image">
                                             <div class="shape shape-1"><img width="83" height="83" class="img-fluid" src="assets2/images/hero/shape/shape-dotted.png" alt="image"></div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -696,16 +701,16 @@
                             <div class="swiper-wrapper">
                                 <!-- Slides -->
                                 <div class="swiper-slide">
-                                    <a href="shop.html" class="btn"><span class="icon"><img width="33" height="33" src="assets2/images/catagories/sneakers.png" alt="image"></span> Sneakers</a>
+                                    <a href="./moter-bikes" class="btn"><span class="icon"><i class="fa fa-motorcycle" aria-hidden="true"></i></span> Motercycles</a>
                                 </div>
                                 <div class="swiper-slide">
-                                    <a href="shop.html" class="btn"><span class="icon"><img width="33" height="33" src="assets2/images/catagories/watch.png" alt="image"></span>Watch</a>
+                                    <a href="./cars" class="btn"><span class="icon"><i class="fa fa-car" aria-hidden="true"></i></span> Cars</a>
                                 </div>
                                 <div class="swiper-slide">
-                                    <a href="shop.html" class="btn"><span class="icon"><img width="33" height="33" src="assets2/images/catagories/headphones.png" alt="image"></span>Gadget</a>
+                                    <a href="./suv" class="btn"><i class="fa fa-taxi" aria-hidden="true"></i></span>SUV's</a>
                                 </div>
                                 <div class="swiper-slide">
-                                    <a href="shop.html" class="btn"><span class="icon"><img width="33" height="33" src="assets2/images/catagories/bagpack.png" alt="image"></span>Bagpack</a>
+                                    <a href="./heavy-vehicles" class="btn"><span class="icon"><i class="fa fa-bus" aria-hidden="true"></i></span>Heavy vehicles</a>
                                 </div>
                             </div>
                         </div>
@@ -725,511 +730,30 @@
                     </div>
                 </div>
 
-                <div class="title-content">
-                    <h2 class="title">Best Seller</h2>
-                    <a href="shop.html" class="view-all">View All</a>
-                </div>
-                <div class="catagories-wrapper">
-                    <div class="catagories-wrapper-content">
-                        <!-- Start Product Single Item -->
-                        <div class="single-product-item product-item--style-1 product-item--bg-lime-green">
-                            <a href="single-product.html" class="image">
-                                <img width="127" height="98" class="img-fluid" src="assets2/images/product/normal/product-img-1.png" alt="image">
-                            </a>
-                            <div class="content">
-                                <div class="content--left">
-                                    <ul class="review-star">
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                    </ul>
-                                    <a href="single-product.html" class="title">Dmin Shoes</a>
-                                    <span class="price">$500.00</span>
-                                </div>
-                                <div class="content--right">
-                                    <a href="wishlist.html" aria-label="Wishlist" class="btn btn--size-33-33 btn--center btn--round btn--color-pink-swan btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ENd Product Single Item -->
-                        <!-- Start Product Single Item -->
-                        <div class="single-product-item product-item--style-1 product-item--bg-maya-blue">
-                            <a href="single-product.html" class="image">
-                                <img width="126" height="98" class="img-fluid" src="assets2/images/product/normal/product-img-2.png" alt="image">
-                            </a>
-                            <div class="content">
-                                <div class="content--left">
-                                    <ul class="review-star">
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                    </ul>
-                                    <a href="single-product.html" class="title">Cat sports</a>
-                                    <span class="price">$4000.00</span>
-                                </div>
-                                <div class="content--right">
-                                    <a href="wishlist.html" aria-label="Wishlist" class="btn btn--size-33-33 btn--center btn--round btn--color-pink-swan btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ENd Product Single Item -->
-                        <!-- Start Product Single Item -->
-                        <div class="single-product-item product-item--style-1 product-item--bg-gold">
-                            <a href="single-product.html" class="image">
-                                <img width="146" height="111" class="img-fluid" src="assets2/images/product/normal/product-img-3.png" alt="image">
-                            </a>
-                            <div class="content">
-                                <div class="content--left">
-                                    <ul class="review-star">
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                    </ul>
-                                    <a href="single-product.html" class="title">Casual Style</a>
-                                    <span class="price">$550.00</span>
-                                </div>
-                                <div class="content--right">
-                                    <a href="wishlist.html" aria-label="Wishlist" class="btn btn--size-33-33 btn--center btn--round btn--color-radical-red btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ENd Product Single Item -->
-                        <!-- Start Product Single Item -->
-                        <div class="single-product-item product-item--style-1 product-item--bg-lime-green">
-                            <a href="single-product.html" class="image">
-                                <img width="127" height="98" class="img-fluid" src="assets2/images/product/normal/product-img-1.png" alt="image">
-                            </a>
-                            <div class="content">
-                                <div class="content--left">
-                                    <ul class="review-star">
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                    </ul>
-                                    <a href="single-product.html" class="title">Dmin Shoes</a>
-                                    <span class="price">$500.00</span>
-                                </div>
-                                <div class="content--right">
-                                    <a href="wishlist.html" aria-label="Wishlist" class="btn btn--size-33-33 btn--center btn--round btn--color-pink-swan btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ENd Product Single Item -->
-                        <!-- Start Product Single Item -->
-                        <div class="single-product-item product-item--style-1 product-item--bg-red-orange">
-                            <a href="single-product.html" class="image">
-                                <img width="134" height="112" class="img-fluid" src="assets2/images/product/normal/product-img-4.png" alt="image">
-                            </a>
-                            <div class="content">
-                                <div class="content--left">
-                                    <ul class="review-star">
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                    </ul>
-                                    <a href="single-product.html" class="title">Red Shoes</a>
-                                    <span class="price">$700.00</span>
-                                </div>
-                                <div class="content--right">
-                                    <a href="wishlist.html" aria-label="Wishlist" class="btn btn--size-33-33 btn--center btn--round btn--color-radical-red btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ENd Product Single Item -->
-                        <!-- Start Product Single Item -->
-                        <div class="single-product-item product-item--style-1 product-item--bg-lime-green">
-                            <a href="single-product.html" class="image">
-                                <img width="127" height="98" class="img-fluid" src="assets2/images/product/normal/product-img-1.png" alt="image">
-                            </a>
-                            <div class="content">
-                                <div class="content--left">
-                                    <ul class="review-star">
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                    </ul>
-                                    <a href="single-product.html" class="title">Dmin Shoes</a>
-                                    <span class="price">$500.00</span>
-                                </div>
-                                <div class="content--right">
-                                    <a href="wishlist.html" aria-label="Wishlist" class="btn btn--size-33-33 btn--center btn--round btn--color-pink-swan btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ENd Product Single Item -->
-                        <!-- Start Product Single Item -->
-                        <div class="single-product-item product-item--style-1 product-item--bg-gold">
-                            <a href="single-product.html" class="image">
-                                <img width="146" height="111" class="img-fluid" src="assets2/images/product/normal/product-img-3.png" alt="image">
-                            </a>
-                            <div class="content">
-                                <div class="content--left">
-                                    <ul class="review-star">
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                    </ul>
-                                    <a href="single-product.html" class="title">Casual Style</a>
-                                    <span class="price">$550.00</span>
-                                </div>
-                                <div class="content--right">
-                                    <a href="wishlist.html" aria-label="Wishlist" class="btn btn--size-33-33 btn--center btn--round btn--color-radical-red btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ENd Product Single Item -->
-                        <!-- Start Product Single Item -->
-                        <div class="single-product-item product-item--style-1 product-item--bg-red-orange">
-                            <a href="single-product.html" class="image">
-                                <img width="134" height="112" class="img-fluid" src="assets2/images/product/normal/product-img-4.png" alt="image">
-                            </a>
-                            <div class="content">
-                                <div class="content--left">
-                                    <ul class="review-star">
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                    </ul>
-                                    <a href="single-product.html" class="title">Red Shoes</a>
-                                    <span class="price">$700.00</span>
-                                </div>
-                                <div class="content--right">
-                                    <a href="wishlist.html" aria-label="Wishlist" class="btn btn--size-33-33 btn--center btn--round btn--color-pink-swan btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ENd Product Single Item -->
-                        <!-- Start Product Single Item -->
-                        <div class="single-product-item product-item--style-1 product-item--bg-maya-blue">
-                            <a href="single-product.html" class="image">
-                                <img width="126" height="98" class="img-fluid" src="assets2/images/product/normal/product-img-2.png" alt="image">
-                            </a>
-                            <div class="content">
-                                <div class="content--left">
-                                    <ul class="review-star">
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                    </ul>
-                                    <a href="single-product.html" class="title">Cat sports</a>
-                                    <span class="price">$4000.00</span>
-                                </div>
-                                <div class="content--right">
-                                    <a href="wishlist.html" aria-label="Wishlist" class="btn btn--size-33-33 btn--center btn--round btn--color-radical-red btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ENd Product Single Item -->
-                        <!-- Start Product Single Item -->
-                        <div class="single-product-item product-item--style-1 product-item--bg-red-orange">
-                            <a href="single-product.html" class="image">
-                                <img width="134" height="112" class="img-fluid" src="assets2/images/product/normal/product-img-4.png" alt="image">
-                            </a>
-                            <div class="content">
-                                <div class="content--left">
-                                    <ul class="review-star">
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                    </ul>
-                                    <a href="single-product.html" class="title">Red Shoes</a>
-                                    <span class="price">$700.00</span>
-                                </div>
-                                <div class="content--right">
-                                    <a href="wishlist.html" aria-label="Wishlist" class="btn btn--size-33-33 btn--center btn--round btn--color-pink-swan btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ENd Product Single Item -->
-                    </div>
-                </div>
+                <!-- ...:::Start User Event Section:::... -->
+                <div class="user-event-section">
+                    <!-- Start User Event Area -->
+                    <div class="col pos-relative">
 
-                <div class="title-content">
-                    <h2 class="title">New Arrival</h2>
-                    <a href="shop.html" class="view-all">View All</a>
-                </div>
-                <div class="catagories-wrapper">
-                    <div class="catagories-wrapper-content">
-                        <!-- Start Product Single Item -->
-                        <div class="single-product-item product-item--style-1 product-item--bg-lime-green">
-                            <a href="single-product.html" class="image">
-                                <img width="127" height="98" class="img-fluid" src="assets2/images/product/normal/product-img-1.png" alt="image">
-                            </a>
-                            <div class="content">
-                                <div class="content--left">
-                                    <ul class="review-star">
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                    </ul>
-                                    <a href="single-product.html" class="title">Dmin Shoes</a>
-                                    <span class="price">$500.00</span>
-                                </div>
-                                <div class="content--right">
-                                    <a href="wishlist.html" aria-label="Wishlist" class="btn btn--size-33-33 btn--center btn--round btn--color-pink-swan btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart"></i></a>
-                                </div>
+                        <div class="user-event-area">
+                            <div class="user-event user-event--left">
+                                <a area-label="event link icon" href="./home" class="event-btn-link"><i class="icon icon-carce-home" title="home"></i></a>
+                                <a area-label="wishlist icon" href="./favourite-items" class="event-btn-link"><i class="icon icon-carce-heart" title="favourite items"></i></a>
+                            </div>
+                            <div class="user-event user-event--center" title="create post">
+                                <a area-label="cart icon" href="./create-post" class="event-btn-link"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                            </div>
+                            <div class="user-event user-event--right">
+                                <a area-label="order icon" href="./notifications" class="event-btn-link"><i class="fa fa-bell" aria-hidden="true" title="notifications"></i></a>
+                                <a area-label="chat icon" href="./messages" class="event-btn-link"><i class="icon icon-carce-bubbles2" title="messages"></i></a>
                             </div>
                         </div>
-                        <!-- ENd Product Single Item -->
-                        <!-- Start Product Single Item -->
-                        <div class="single-product-item product-item--style-1 product-item--bg-maya-blue">
-                            <a href="single-product.html" class="image">
-                                <img width="126" height="98" class="img-fluid" src="assets2/images/product/normal/product-img-2.png" alt="image">
-                            </a>
-                            <div class="content">
-                                <div class="content--left">
-                                    <ul class="review-star">
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                    </ul>
-                                    <a href="single-product.html" class="title">Cat sports</a>
-                                    <span class="price">$4000.00</span>
-                                </div>
-                                <div class="content--right">
-                                    <a href="wishlist.html" aria-label="Wishlist" class="btn btn--size-33-33 btn--center btn--round btn--color-pink-swan btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ENd Product Single Item -->
-                        <!-- Start Product Single Item -->
-                        <div class="single-product-item product-item--style-1 product-item--bg-gold">
-                            <a href="single-product.html" class="image">
-                                <img width="146" height="111" class="img-fluid" src="assets2/images/product/normal/product-img-3.png" alt="image">
-                            </a>
-                            <div class="content">
-                                <div class="content--left">
-                                    <ul class="review-star">
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                    </ul>
-                                    <a href="single-product.html" class="title">Casual Style</a>
-                                    <span class="price">$550.00</span>
-                                </div>
-                                <div class="content--right">
-                                    <a href="wishlist.html" aria-label="Wishlist" class="btn btn--size-33-33 btn--center btn--round btn--color-radical-red btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ENd Product Single Item -->
-                        <!-- Start Product Single Item -->
-                        <div class="single-product-item product-item--style-1 product-item--bg-lime-green">
-                            <a href="single-product.html" class="image">
-                                <img width="127" height="98" class="img-fluid" src="assets2/images/product/normal/product-img-1.png" alt="image">
-                            </a>
-                            <div class="content">
-                                <div class="content--left">
-                                    <ul class="review-star">
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                    </ul>
-                                    <a href="single-product.html" class="title">Dmin Shoes</a>
-                                    <span class="price">$500.00</span>
-                                </div>
-                                <div class="content--right">
-                                    <a href="wishlist.html" aria-label="Wishlist" class="btn btn--size-33-33 btn--center btn--round btn--color-pink-swan btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ENd Product Single Item -->
-                        <!-- Start Product Single Item -->
-                        <div class="single-product-item product-item--style-1 product-item--bg-red-orange">
-                            <a href="single-product.html" class="image">
-                                <img width="127" height="98" class="img-fluid" src="assets2/images/product/normal/product-img-4.png" alt="image">
-                            </a>
-                            <div class="content">
-                                <div class="content--left">
-                                    <ul class="review-star">
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                    </ul>
-                                    <a href="single-product.html" class="title">Red Shoes</a>
-                                    <span class="price">$700.00</span>
-                                </div>
-                                <div class="content--right">
-                                    <a href="wishlist.html" aria-label="Wishlist" class="btn btn--size-33-33 btn--center btn--round btn--color-radical-red btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ENd Product Single Item -->
-                        <!-- Start Product Single Item -->
-                        <div class="single-product-item product-item--style-1 product-item--bg-lime-green">
-                            <a href="single-product.html" class="image">
-                                <img width="127" height="98" class="img-fluid" src="assets2/images/product/normal/product-img-1.png" alt="image">
-                            </a>
-                            <div class="content">
-                                <div class="content--left">
-                                    <ul class="review-star">
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                    </ul>
-                                    <a href="single-product.html" class="title">Dmin Shoes</a>
-                                    <span class="price">$500.00</span>
-                                </div>
-                                <div class="content--right">
-                                    <a href="wishlist.html" aria-label="Wishlist" class="btn btn--size-33-33 btn--center btn--round btn--color-pink-swan btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ENd Product Single Item -->
-                        <!-- Start Product Single Item -->
-                        <div class="single-product-item product-item--style-1 product-item--bg-gold">
-                            <a href="single-product.html" class="image">
-                                <img width="127" height="98" class="img-fluid" src="assets2/images/product/normal/product-img-3.png" alt="image">
-                            </a>
-                            <div class="content">
-                                <div class="content--left">
-                                    <ul class="review-star">
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                    </ul>
-                                    <a href="single-product.html" class="title">Casual Style</a>
-                                    <span class="price">$550.00</span>
-                                </div>
-                                <div class="content--right">
-                                    <a href="wishlist.html" aria-label="Wishlist" class="btn btn--size-33-33 btn--center btn--round btn--color-radical-red btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ENd Product Single Item -->
-                        <!-- Start Product Single Item -->
-                        <div class="single-product-item product-item--style-1 product-item--bg-red-orange">
-                            <a href="single-product.html" class="image">
-                                <img width="127" height="98" class="img-fluid" src="assets2/images/product/normal/product-img-4.png" alt="image">
-                            </a>
-                            <div class="content">
-                                <div class="content--left">
-                                    <ul class="review-star">
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                    </ul>
-                                    <a href="single-product.html" class="title">Red Shoes</a>
-                                    <span class="price">$700.00</span>
-                                </div>
-                                <div class="content--right">
-                                    <a href="wishlist.html" aria-label="Wishlist" class="btn btn--size-33-33 btn--center btn--round btn--color-pink-swan btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ENd Product Single Item -->
-                        <!-- Start Product Single Item -->
-                        <div class="single-product-item product-item--style-1 product-item--bg-maya-blue">
-                            <a href="single-product.html" class="image">
-                                <img width="127" height="98" class="img-fluid" src="assets2/images/product/normal/product-img-2.png" alt="image">
-                            </a>
-                            <div class="content">
-                                <div class="content--left">
-                                    <ul class="review-star">
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                    </ul>
-                                    <a href="single-product.html" class="title">Cat sports</a>
-                                    <span class="price">$4000.00</span>
-                                </div>
-                                <div class="content--right">
-                                    <a href="wishlist.html" aria-label="Wishlist" class="btn btn--size-33-33 btn--center btn--round btn--color-radical-red btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ENd Product Single Item -->
-                        <!-- Start Product Single Item -->
-                        <div class="single-product-item product-item--style-1 product-item--bg-red-orange">
-                            <a href="single-product.html" class="image">
-                                <img width="127" height="98" class="img-fluid" src="assets2/images/product/normal/product-img-4.png" alt="image">
-                            </a>
-                            <div class="content">
-                                <div class="content--left">
-                                    <ul class="review-star">
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                    </ul>
-                                    <a href="single-product.html" class="title">Red Shoes</a>
-                                    <span class="price">$700.00</span>
-                                </div>
-                                <div class="content--right">
-                                    <a href="wishlist.html" aria-label="Wishlist" class="btn btn--size-33-33 btn--center btn--round btn--color-pink-swan btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ENd Product Single Item -->
                     </div>
+                    <!-- End User Event Area -->
                 </div>
-
+                <!-- ...:::End User Event Section:::... -->
             </div>
         </div>
-        <!-- ...:::Start Catagories - 1 Section:::... -->
-
-        <!-- ...:::Start User Event Section:::... -->
-        <div class="user-event-section">
-            <!-- Start User Event Area -->
-            <div class="col pos-relative">
-
-                <div class="user-event-area">
-                    <div class="user-event user-event--left">
-                        <a area-label="event link icon" href="index.html" class="event-btn-link"><i class="icon icon-carce-home"></i></a>
-                        <a area-label="wishlist icon" href="wishlist.html" class="event-btn-link"><i class="icon icon-carce-heart"></i></a>
-                    </div>
-                    <div class="user-event user-event--center">
-                        <a area-label="cart icon" href="cart.html" class="event-btn-link"><i class="icon icon-carce-cart"></i></a>
-                    </div>
-                    <div class="user-event user-event--right">
-                        <a area-label="order icon" href="order.html" class="event-btn-link"><i class="icon icon-carce-compare"></i></a>
-                        <a area-label="chat icon" href="chat.html" class="event-btn-link"><i class="icon icon-carce-bubbles2"></i></a>
-                    </div>
-                </div>
-            </div>
-            <!-- End User Event Area -->
-        </div>
-        <!-- ...:::End User Event Section:::... -->
-
         <footer class="footer-section"></footer>
     </main>
 
@@ -1337,7 +861,6 @@
         }
 
         function loadTable(data, url, method) {
-
             let ad_tbl = $('#ad_tbl').DataTable({
                 destroy: true,
                 processing: true,
@@ -1366,25 +889,25 @@
                     "render": function(data, type, row, meta) {
                         let html = '';
                         html += '<div class="single-product-item product-item--style-1 product-item--bg-lime-green">';
-                        html += '    <a href="/public/api/get_post_profile/id/' + row.id + '" class="image">';
-                        html += '     <img width="127" height="98" class="img-fluid" src="' + row.main_image + '" alt="image">';
-                        html += '    </a>';
-                        html += '    <div class="content">';
-                        html += '        <div class="content--left">';
-                        html += '            <ul class="review-star">';
-                        html += '                <li class="items fill"><i class="icon icon-carce-star-full"></i></li>';
-                        html += '                <li class="items fill"><i class="icon icon-carce-star-full"></i></li>';
-                        html += '                <li class="items fill"><i class="icon icon-carce-star-full"></i></li>';
-                        html += '                <li class="items fill"><i class="icon icon-carce-star-full"></i></li>';
-                        html += '                <li class="items fill"><i class="icon icon-carce-star-full"></i></li>';
-                        html += '            </ul>';
-                        html += '            <a href="/public/api/get_post_profile/id/' + row.id + '" class="title">' + row.post_title + '</a>';
-                        html += '            <span class="price"> රු ' + row.price + '</span>';
-                        html += '        </div>';
-                        html += '        <div class="content--right">';
-                        html += '            <a href="wishlist.html" aria-label="Wishlist" class="btn btn--size-33-33 btn--center btn--round btn--color-pink-swan btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart"></i></a>';
-                        html += '        </div>';
-                        html += '    </div>';
+                        html += '<a href="/public/api/get_post_profile/id/' + row.id + '" class="image">';
+                        html += '<img width="127" height="98" class="img-fluid" src="' + row.main_image + '" alt="image">';
+                        html += '</a>';
+                        html += '<div class="content">';
+                        html += '<div class="content--left">';
+                        html += '<ul class="review-star">';
+                        html += '<li class="items fill"><i class="icon icon-carce-star-full"></i></li>';
+                        html += '<li class="items fill"><i class="icon icon-carce-star-full"></i></li>';
+                        html += '<li class="items fill"><i class="icon icon-carce-star-full"></i></li>';
+                        html += '<li class="items fill"><i class="icon icon-carce-star-full"></i></li>';
+                        html += '<li class="items fill"><i class="icon icon-carce-star-full"></i></li>';
+                        html += '</ul>';
+                        html += '<a href="/public/api/get_post_profile/id/' + row.id + '" class="title">' + row.post_title + '</a>';
+                        html += '<span class="price"> රු ' + row.price + '</span>';
+                        html += '</div>';
+                        html += '<div class="content--right">';
+                        html += '<a href="wishlist.html" aria-label="Wishlist" class="btn btn--size-33-33 btn--center btn--round btn--color-pink-swan btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart"></i></a>';
+                        html += '</div>';
+                        html += '</div>';
                         html += '</div>';
                         return html;
                     }
@@ -1396,6 +919,8 @@
             $('#ad_tbl').on('error.dt', function(e, settings, techNote, message) {
                 console.log('DataTables error: ', message);
             });
+
+
         }
 
 
