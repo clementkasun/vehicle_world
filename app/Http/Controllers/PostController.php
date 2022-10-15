@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Repositories\post\PostRepository;
 
@@ -18,7 +19,8 @@ class PostController extends Controller
     public function index()
     {
         $index_data = $this->postRepository->indexData();
-        return view('index', ['posts' => $index_data]);
+        $user = Auth::user();
+        return view('index', ['posts' => $index_data, 'user_profile_data' => $user]);
     }
 
     public function get_post_profile($post_id)
