@@ -18,9 +18,8 @@ class PostController extends Controller
 
     public function index()
     {
-        $index_data = $this->postRepository->indexData();
         $user = Auth::user();
-        return view('index', ['posts' => $index_data, 'user_profile_data' => $user]);
+        return view('home', ['user_profile_data' => $user]);
     }
 
     public function get_post_profile($post_id)

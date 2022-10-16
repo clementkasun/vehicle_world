@@ -8,6 +8,12 @@
     .has-error {
         color: red;
     }
+    #save_customer{
+        background: blue;
+        margin: 5px;
+        padding: 1px;
+    }
+    
 </style>
 @endsection
 
@@ -77,7 +83,7 @@
                             </div>
                         </div>
                     </div>
-                    <button id="save_customer" type="button" class=" btn btn-primary"><b>Register</b></button>
+                    <button id="save_customer" type="button" class=" btn btn-dark"><b>Register</b></button>
                 </div>
                 <div class="col-md-6 d-flex justify-content-center">
                     <img class="mt-2" src="./dist/img/reg.png" width="75%" height="auto" />
@@ -174,7 +180,7 @@
                     $('#nic').removeClass('has-error');
                     if ($('#password_origin').val() == $('#password_confirm').val()) {
                         save_cus_details(object, function() {
-                            // window.location = "./public/login_cust";
+                            window.location = "./public/login_cust";
                         });
                     } else {
                         Swal.fire({

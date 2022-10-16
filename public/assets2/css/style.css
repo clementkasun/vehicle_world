@@ -239,12 +239,12 @@ ol {
   text-align: end;
 }
 
-@media (min-width: 576px) {
+/* @media (min-width: 576px) {
   .container,
   .container-sm {
     max-width: 540px;
   }
-}
+} */
 
 .main-wrapper {
   position: relative;
@@ -1713,7 +1713,7 @@ span.ripple {
 
 @media (min-width: 576px) {
   .user-event-area {
-    max-width: 540px;
+    display: none;
   }
 }
 

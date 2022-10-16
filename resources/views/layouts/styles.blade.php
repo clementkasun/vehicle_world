@@ -37,4 +37,48 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.dataTables.min.css">
 <!-- uPlot -->
 <link rel="stylesheet" href="{{ asset('/plugins/uplot/uPlot.min.css') }}">
+<style>
+    @media (min-width: 700px) {
+        #mobile-nav {
+            display: none;
+        }
+
+        .header-area {
+            display: none;
+        }
+
+    }
+
+    @media (max-width: 700px) {
+        #featured-services {
+            display: none;
+        }
+
+        #hero {
+            display: none;
+        }
+
+        .lg-nav {
+            display: none;
+        }
+
+    }
+</style>
+<!-- ::::::::::::::Favicon icon::::::::::::::-->
+<link rel="shortcut icon" href="assets2/images/favicon.ico" type="image/png">
+
+<!-- ::::::::::::::All Google Fonts::::::::::::::-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+<!-- ::::::::::::::All CSS Files here :::::::::::::: -->
+<!-- Vendor CSS -->
+<link rel="stylesheet" href="assets2/css/vendor/icomoon.css" />
+
+<!-- Plugin CSS -->
+<link rel="stylesheet" href="assets2/css/plugins/swiper-bundle.min.css">
+<link rel="stylesheet" href="assets2/css/plugins/ion.rangeSlider.min.css">
+<!-- Style CSS -->
+<link rel="stylesheet" href="assets2/css/style.css">
 @endsection
