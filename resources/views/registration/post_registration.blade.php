@@ -8,6 +8,10 @@
     .has-error {
         color: red;
     }
+
+    #save_post {
+        background: blue;
+    }
 </style>
 @endsection
 

@@ -65,7 +65,7 @@
     }
 </style>
 <!-- ::::::::::::::Favicon icon::::::::::::::-->
-<link rel="shortcut icon" href="assets2/images/favicon.ico" type="image/png">
+<link rel="shortcut icon" href="{{ asset('assets2/images/favicon.ico')}}" type="image/png">
 
 <!-- ::::::::::::::All Google Fonts::::::::::::::-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -74,11 +74,11 @@
 
 <!-- ::::::::::::::All CSS Files here :::::::::::::: -->
 <!-- Vendor CSS -->
-<link rel="stylesheet" href="assets2/css/vendor/icomoon.css" />
+<link rel="stylesheet" href="{{ asset('assets2/css/vendor/icomoon.css')}}" />
 
 <!-- Plugin CSS -->
-<link rel="stylesheet" href="assets2/css/plugins/swiper-bundle.min.css">
-<link rel="stylesheet" href="assets2/css/plugins/ion.rangeSlider.min.css">
+<link rel="stylesheet" href="{{ asset('assets2/css/plugins/swiper-bundle.min.css')}}">
+<link rel="stylesheet" href="{{ asset('assets2/css/plugins/ion.rangeSlider.min.css')}}">
 <!-- Style CSS -->
-<link rel="stylesheet" href="assets2/css/style.css">
+<link rel="stylesheet" href="{{ asset('assets2/css/style.css')}}">
 @endsection
