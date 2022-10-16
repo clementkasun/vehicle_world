@@ -239,30 +239,33 @@
 
 <div class="card card-success" style="padding: 0">
   <div class="card-header">
-    <h4><b>{{ $post_data->post_title}}</b></h4>
+
   </div>
   <div class="card-body">
     <div class="wrapper row">
       <div class="preview col-md-6">
 
         <div class="preview-pic tab-content">
-          <div class="tab-pane active" id="pic-1"><img src="http://placekitten.com/400/252" /></div>
-          <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
-          <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
-          <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
-          <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
+          <div class="tab-pane active" id="pic-1"><img src='{{asset("".$post_data->main_image)}}' /></div>
+          <div class="tab-pane" id="pic-2"><img src='{{asset("".$post_data->image_1)}}' /></div>
+          <div class="tab-pane" id="pic-3"><img src='{{asset("".$post_data->image_2)}}' /></div>
+          <div class="tab-pane" id="pic-4"><img src='{{asset("".$post_data->image_3)}}' /></div>
+          <div class="tab-pane" id="pic-5"><img src='{{asset("".$post_data->image_4)}}' /></div>
+          <div class="tab-pane" id="pic-6"><img src='{{asset("".$post_data->image_5)}}' /></div>
         </div>
         <ul class="preview-thumbnail nav nav-tabs">
-          <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-          <li><a data-target="#pic-2" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-          <li><a data-target="#pic-3" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-          <li><a data-target="#pic-4" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-          <li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+          <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src='{{asset("".$post_data->main_image)}}' /></a></li>
+          <li><a data-target="#pic-2" data-toggle="tab"><img src='{{asset("".$post_data->image_1)}}' /></a></li>
+          <li><a data-target="#pic-3" data-toggle="tab"><img src='{{asset("".$post_data->image_2)}}' /></a></li>
+          <li><a data-target="#pic-4" data-toggle="tab"><img src='{{asset("".$post_data->image_3)}}' /></a></li>
+          <li><a data-target="#pic-5" data-toggle="tab"><img src='{{asset("".$post_data->image_4)}}' /></a></li>
         </ul>
 
       </div>
       <div class="details col-md-6">
-        <h3 class="product-title">men's shoes fashion</h3>
+        <h3 class="product-title">
+          <h4>{{ $post_data->post_title}}</h4>
+        </h3>
         <div class="rating">
           <div class="stars">
             <span class="fa fa-star checked"></span>
@@ -273,9 +276,134 @@
           </div>
           <span class="review-no">41 reviews</span>
         </div>
-        <p class="product-description">Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.</p>
-        <h4 class="price">current price: <span>$180</span></h4>
-        <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
+        <div class="product-info p-2">
+          <div class="row">
+            <div class="col-6">
+              @if($post_data->price != null)
+              <label for="price">Price: </label>
+              <span>{{$post_data->price}}</span>
+              @endif
+            </div>
+            <div class="col-6">
+              @if($post_data->model != null)
+              <label for="model">Model: </label>
+              <span>{{$post_data->model}}</span>
+              @endif
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              @if($post_data->condition != null)
+              <label for="condition">Condition : </label>
+              <span>{{$post_data->condition}}</span>
+              @endif
+            </div>
+            <div class="col-6">
+              @if($post_data->engine_capacity != null)
+              <label for="engine_capacity">Engine Capacity: </label>
+              <span>{{$post_data->engine_capacity}}</span>
+              @endif
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              @if($post_data->manufactured_year != null)
+              <label for="manufactured_year">Manufactured Year: </label>
+              <span>{{$post_data->manufactured_year}}</span>
+              @endif
+            </div>
+            <div class="col-6">
+              @if($post_data->millage != null)
+              <label for="millage">Millage: </label>
+              <span>{{$post_data->millage}}</span>
+              @endif
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              @if($post_data->fuel_type != null)
+              <label for="fuel_type">Fuel Type: </label>
+              <span class="ml-2">{{$post_data->fuel_type}}</span>
+              @endif
+            </div>
+            <div class="col-6">
+              @if($post_data->transmission != null)
+              <label for="transmission">Transmission: </label>
+              <span class="ml-2">{{$post_data->transmission}}</span>
+              @endif
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              @if($post_data->manufactured_year != null)
+              <label for="manufactured_year">Manufactured Year: </label>
+              <span>{{$post_data->manufactured_year}}</span>
+              @endif
+            </div>
+            <div class="col-6">
+              @if($post_data->millage != null)
+              <label for="millage">Millage: </label>
+              <span>{{$post_data->millage}}</span>
+              @endif
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <label for="isAc">AC: </label><br>
+              @if($post_data->isAc != null)
+              <p class="bg-warning p-1 m-1" style="border-radius: 5px;"></p>
+              @endif
+              @if($post_data->isAc == null)
+              <p class="bg-success p-1 m-1" style="border-radius: 5px;"></p>
+              @endif
+            </div>
+            <div class="col-6">
+              <label for="ongoing_lease">Ongoing Lease: </label>
+              @if($post_data->on_going_lease != null)
+              <p class="bg-warning p-1 m-1" style="border-radius: 5px;"></p>
+              @endif
+              @if($post_data->on_going_lease == null)
+              <p class="bg-success p-1 m-1" style="border-radius: 5px;"></p>
+              @endif
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <label for="isPowerSteer">Power Steering: </label>
+              @if($post_data->isPowerSteer != null)
+              <p class="bg-warning p-1 m-1" style="border-radius: 5px;"></p>
+              @endif
+              @if($post_data->isPowerSteer == null)
+              <p class="bg-success p-1 m-1" style="border-radius: 5px;"></p>
+              @endif
+            </div>
+            <div class="col-6">
+              <label for="isPowerWindow">Power Window: </label><br>
+              @if($post_data->isPowerWindow != null)
+              <p class="bg-warning p-1 m-1" style="border-radius: 5px;"></p>
+              @endif
+              @if($post_data->isPowerWindow == null)
+              <p class="bg-success p-1 m-1" style="border-radius: 5px;"></p>
+              @endif
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <label for="soldStatus">Sold Status: </label><br>
+              @if($post_data->status != 0)
+              <p class="bg-success" style="border-radius: 5px; padding-left: 5px; padding-right: 5px">Sold</p>
+              @endif
+              @if($post_data->status == 0)
+              <p class="bg-primary" style="border-radius: 5px; padding-left: 5px; padding-right: 5px">Not Yet</p>
+              @endif
+            </div>
+            <div class="col-6"></div>
+          </div>
+          <div class="row mt-2">
+            <p class="product-description col-12 w-100 p-1 m-1">{{$post_data->additional_info}}</p>
+          </div>
+        </div>
+        <!-- <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
         <h5 class="sizes">sizes:
           <span class="size" data-toggle="tooltip" title="small">s</span>
           <span class="size" data-toggle="tooltip" title="medium">m</span>
@@ -286,9 +414,9 @@
           <span class="color orange not-available" data-toggle="tooltip" title="Not In store"></span>
           <span class="color green"></span>
           <span class="color blue"></span>
-        </h5>
+        </h5> -->
         <div class="action">
-          <button class="add-to-cart btn btn-default" type="button">add to cart</button>
+          <!-- <button class="add-to-cart btn btn-default" type="button">add to cart</button> -->
           <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
         </div>
       </div>
