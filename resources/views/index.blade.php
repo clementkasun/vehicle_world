@@ -163,7 +163,7 @@
                         <path id="Icon_ionic-ios-arrow-back" data-name="Icon ionic-ios-arrow-back" d="M13.051,11.417,17,7.466a.747.747,0,0,0-1.058-1.054l-4.479,4.476a.745.745,0,0,0-.022,1.03l4.5,4.507A.747.747,0,1,0,17,15.37Z" transform="translate(-11.251 -6.194)" />
                     </svg>
                 </button>
-                <span>Home</span>
+                <span>User Profile</span>
 
             </div> <!-- End Offcanvas Header -->
             <!-- Start Offcanvas Mobile Menu Wrapper -->
@@ -172,13 +172,17 @@
                 <div class="profile-card-section section-gap-top-25">
                     <div class="profile-card-wrapper">
                         <div class="image">
-                            <img class="img-fluid" width="96" height="96" src="assets2/images/user/user-profile.png" alt="image">
+                            <?php
+                            $user_path = '';
+                            (isset($user_profile_data['profile_photo_path'])) ? $user_path = './storage/' . $user_profile_data['profile_photo_path'] : $user_path = './dist/img/avatar5.png';
+                            ?>
+                            <img class="img-fluid" width="10" height="10" src="{{ $user_path }}" alt="image">
                         </div>
                         <div class="content">
-                             @if($user_profile_data != null)
+                            @if($user_profile_data != null)
                             <h2 class="name">{{$user_profile_data['name'] . ' ' .$user_profile_data['last_name']}}</h2>
                             <span class="email">{{ $user_profile_data['email']}}</span>
-                            <span class="id-num">ID NO: EXMPL 4566</span>
+                            <span class="id-num"></span>
                             @endif
                         </div>
                         <div class="profile-shape profile-shape-1"><img class="img-fluid" width="61" height="50" src="assets2/images/profile-shape-1.svg" alt="image"></div>
@@ -191,10 +195,10 @@
                 <div class="profile-details-section section-gap-top-30">
                     <div class="profile-details-wrapper">
                         <div class="profile-details-top">
-                            <div class="left">
+                            <!-- <div class="left">
                                 <span class="text">Total Buy</span>
                                 <span class="price">$2000.00</span>
-                            </div>
+                            </div> -->
                             <div class="right">
                                 <button aria-label="Wishlist" class="btn btn--size-58-58 btn--font-size-22 btn--center btn--round btn--color-radical-red btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart"></i></button>
                             </div>
@@ -207,7 +211,7 @@
                                             <span class="title">Setting</span>
                                         </li>
                                         <li class="list-item">
-                                            <a href="profile-settings.html" class="profile-link"><span class="icon"><i class="icon icon-carce-user"></i></span>Account Setting</a>
+                                            <a href="/user_profile" class="profile-link"><span class="icon"><i class="icon icon-carce-user"></i></span>Account Setting</a>
                                         </li>
                                         <li class="list-item">
                                             <a href="checkout.html" class="profile-link"><span class="icon"><i class="icon icon-carce-briefcase"></i></span>Billing & Payment</a>
@@ -862,7 +866,10 @@
             });
         }
 
+
         function loadTable(data, url, method) {
+            let html = '';
+
             let ad_tbl = $('#ad_tbl').DataTable({
                 destroy: true,
                 processing: true,
@@ -889,29 +896,38 @@
                 "columns": [{
                     "data": "",
                     "render": function(data, type, row, meta) {
-                        let html = '';
-                        html += '<div class="single-product-item product-item--style-1 product-item--bg-lime-green">';
-                        html += '<a href="/public/api/get_post_profile/id/' + row.id + '" class="image">';
-                        html += '<img width="127" height="98" class="img-fluid" src="' + row.main_image + '" alt="image">';
-                        html += '</a>';
-                        html += '<div class="content">';
-                        html += '<div class="content--left">';
-                        html += '<ul class="review-star">';
-                        html += '<li class="items fill"><i class="icon icon-carce-star-full"></i></li>';
-                        html += '<li class="items fill"><i class="icon icon-carce-star-full"></i></li>';
-                        html += '<li class="items fill"><i class="icon icon-carce-star-full"></i></li>';
-                        html += '<li class="items fill"><i class="icon icon-carce-star-full"></i></li>';
-                        html += '<li class="items fill"><i class="icon icon-carce-star-full"></i></li>';
-                        html += '</ul>';
-                        html += '<a href="/public/api/get_post_profile/id/' + row.id + '" class="title">' + row.post_title + '</a>';
-                        html += '<span class="price"> රු ' + row.price + '</span>';
-                        html += '</div>';
-                        html += '<div class="content--right">';
-                        html += '<a href="wishlist.html" aria-label="Wishlist" class="btn btn--size-33-33 btn--center btn--round btn--color-pink-swan btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart"></i></a>';
-                        html += '</div>';
-                        html += '</div>';
-                        html += '</div>';
-                        return html;
+                       let html = '';
+                    html += '<div class="row">';
+                    html += '<div class="card card-light w-100" style="border-width: 2px; border-color: black">';
+                    html += '<a href="/public/api/get_post_profile/id/' + row.id + '">';
+                    html += '<div class="card-body">';
+                    html += '<div class="row">';
+                    html += '<div class="col-4 col-md-3">';
+                    html += '<div class="portfolio-wrap text-center">';
+                    html += "<img src='/public/" + row.main_image + "' style='height: 8em; width: 100%;' alt='main_img'/>";
+                    html += '</div>';
+                    html += '</div>';
+                    html += '<div class="col-7 col-md-8">';
+                    html += '<b style="font-size: 18px" class="text-success">' + row.post_title + '</b><br>';
+                    html += '<span style="font-size: 14px" class="text-dark"><b>Price: </b>' + row.price + ' </span><br>';
+                    html += '<span style="font-size: 14px" class="text-dark"><b>Location: </b>' + row.location + ' </span><br>';
+                    html += '<span style="font-size: 14px" class="text-dark"><b>Condition: </b>' + row.condition + ' </span><br>';
+                    html += '<span style="font-size: 14px" class="text-dark"><b>Millage: </b>' + row.millage + ' </span>';
+                    html += '</div>';
+                    html += '<div class="col-1">';
+                    html += '<div class="ribbon-wrapper ribbon-sm">';
+                    html += '<div class="ribbon bg-success text-sm">';
+                    let status = (row.status == 0) ? 'NEW' : 'SOLD';
+                    html += status;
+                    html += '</div>';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '</a>';
+                    html += '</div>';
+                    html += '</div>';
+                    return html;
                     }
                 }, ],
             });
