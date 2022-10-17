@@ -16,7 +16,7 @@
 @endsection
 
 @section('content')
-<div class="card card-primary">
+<div class="card card-primary mt-2">
     <div class="card-header bg-success text-light">
         <h3 class="card-title text-center">Advertiesment Registration form</h3>
     </div>
