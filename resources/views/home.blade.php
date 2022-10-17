@@ -45,6 +45,82 @@
         </div>
         <!-- End Search & Filter Area -->
 
+        <div id="mob-hero" class="hero-section section-gap-top-25">
+            <div class="container">
+                <!-- Start Hero Area -->
+                <div class="hero-area hero-area--style-1 hero-slider-active">
+                    <!-- Slider main container -->
+                    <div class="swiper">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            <div class="swiper-slide">
+                                <div class="hero-singel-slide ">
+                                    <div class="hero-bg">
+                                        <img width="605" height="312" class="img-full" src="assets2/images/hero/bg/bg-2.jpg" alt="image">
+                                    </div>
+                                    <div class="inner-wrapper">
+                                        <div class="content">
+                                            <p class="title-tag">Summer</p>
+                                            <h1 class="title">Fashion</h1>
+                                            <h2 class="sub-title">SALE</h2>
+                                            <h3 class="sub-title">UP to <span>70% </span> off</h3>
+                                        </div>
+                                        <div class="product-img">
+                                            <img width="149" height="127" class="img-fluid" class="img-fluid" src="assets2/images/hero/product/product-4.jpg" alt="image">
+                                            <div class="shape shape-1"><img width="83" height="83" class="img-fluid" src="assets2/images/hero/shape/shape-dotted.png" alt="image"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="hero-singel-slide">
+                                    <div class="hero-bg">
+                                        <img width="388" height="160" class="img-full" src="assets2/images/hero/bg/bg-1.jpg" alt="image">
+                                    </div>
+                                    <div class="inner-wrapper">
+                                        <div class="content">
+                                            <p class="title-tag">Summer</p>
+                                            <h1 class="title">Fashion</h1>
+                                            <h2 class="sub-title">SALE</h2>
+                                            <h3 class="sub-title">UP to <span>70% </span> off</h3>
+                                        </div>
+                                        <div class="product-img">
+                                            <img width="127" height="98" class="img-fluid" class="img-fluid" src="assets2/images/hero/product/product-2.png" alt="image">
+                                            <div class="shape shape-1"><img width="83" height="83" class="img-fluid" src="assets2/images/hero/shape/shape-dotted.png" alt="image"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="hero-singel-slide">
+                                    <div class="hero-bg">
+                                        <img width="388" height="160" class="img-full" src="assets2/images/hero/bg/bg-2.jpg" alt="image">
+                                    </div>
+                                    <div class="inner-wrapper">
+                                        <div class="content">
+                                            <p class="title-tag">Summer</p>
+                                            <h1 class="title">Fashion</h1>
+                                            <h2 class="sub-title">SALE</h2>
+                                            <h3 class="sub-title">UP to <span>70% </span> off</h3>
+                                        </div>
+                                        <div class="product-img">
+                                            <img width="126" height="98" class="img-fluid" class="img-fluid" src="assets2/images/hero/product/product-3.png" alt="image">
+                                            <div class="shape shape-1"><img width="83" height="83" class="img-fluid" src="assets2/images/hero/shape/shape-dotted.png" alt="image"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+                <!-- End Hero Area -->
+            </div>
+        </div>
+        <!-- ...:::End Hero Slider Section:::... -->
+
         <div class="shop-filter" id="shop-filter-menu">
             <div class="container">
                 <div class="row">
@@ -552,13 +628,13 @@
                                     <span class="title">Setting</span>
                                 </li>
                                 <li class="list-item">
-                                    <a href="/user_profile" class="profile-link"><span class="icon"><i class="icon icon-carce-user"></i></span>Account Setting</a>
+                                    <a href="./user_profile" class="profile-link"><span class="icon"><i class="icon icon-carce-user"></i></span>Account Setting</a>
                                 </li>
+                                <!-- <li class="list-item">
+                                    <a href="/" class="profile-link"><span class="icon"><i class="icon icon-carce-briefcase"></i></span>Billing & Payment</a>
+                                </li> -->
                                 <li class="list-item">
-                                    <a href="checkout.html" class="profile-link"><span class="icon"><i class="icon icon-carce-briefcase"></i></span>Billing & Payment</a>
-                                </li>
-                                <li class="list-item">
-                                    <a href="notification.html" class="profile-link"><span class="icon"><i class="icon icon-carce-bell"></i></span>Notification</a>
+                                    <a href="./notifications" class="profile-link"><span class="icon"><i class="icon icon-carce-bell"></i></span>Notification</a>
                                 </li>
                             </ul>
                         </li>
@@ -566,7 +642,7 @@
                         <li class="profile-list-item">
                             <ul class="profile-single-list">
                                 <li class="list-item">
-                                    <a href="login.html" class="profile-link"><span class="icon"><i class="icon icon-carce-login"></i></span>Log Out</a>
+                                    <a href="./logout" class="profile-link"><span class="icon"><i class="icon icon-carce-login"></i></span>Log Out</a>
                                 </li>
                             </ul>
                         </li>
@@ -622,7 +698,7 @@
                 <tbody></tbody>
             </table>
         </div>
-             
+
     </div>
 </section><!-- End Portfolio Section -->
 @endsection
@@ -737,6 +813,7 @@
         $('#ad_tbl').on('error.dt', function(e, settings, techNote, message) {
             console.log('DataTables error: ', message);
         });
+
     }
 
     function filterFunction(that, event) {
@@ -848,5 +925,13 @@
             "display": "none"
         })
     })
+
+    $('#prof_btn').click(function(){
+        $('#profile-menu-offcanvas').addClass('offcanvas-open');
+    });
+
+    $('#profile-menu-offcanvas').click(function(){
+        $('#profile-menu-offcanvas').addClass('offcanvas-open');
+    });
 </script>
 @endsection

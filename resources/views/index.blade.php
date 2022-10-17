@@ -33,7 +33,6 @@
     <!-- <link rel="stylesheet" href="assets2/css/vendor/vendor.min.css">
 <link rel="stylesheet" href="assets2/css/plugins/plugins.min.css">
 <link rel="stylesheet" href="assets2/css/style.min.css"> -->
-
 </head>
 
 <body>
@@ -827,6 +826,7 @@
     <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
     <script>
         $(document).ready(function() {
+
             (adsbygoogle = window.adsbygoogle || []).push({});
 
             // $('#cmb_make').select2();
@@ -1052,6 +1052,7 @@
                 "display": "none"
             })
         })
+        $('#mobile-menu-offcanvas').addClass('offcanvas-open');
     </script>
 
 </body>
