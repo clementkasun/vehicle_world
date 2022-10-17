@@ -8,6 +8,10 @@
     .has-error {
         color: red;
     }
+
+    #update_post {
+        background: blue;
+    }
 </style>
 @endsection
 
@@ -427,6 +431,8 @@
 <!-- /.row -->
 @endsection
 @section('pageScripts')
+<!-- validation -->
+<script src="{{ asset('/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
 <script>
     $(document).ready(function() {
         let vehicle_type = '{{$post_data["vehicle_type"]}}';
