@@ -753,7 +753,7 @@
             responsive: true,
             searching: false,
             dom: 'Bfrtip',
-            "pageLength": 50,
+            "pageLength": 10,
             language: {
                 searchPlaceholder: "search",
                 zeroRecords: " "

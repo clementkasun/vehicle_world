@@ -232,6 +232,7 @@
   }
 
   /*# sourceMappingURL=style.css.map */
+
 </style>
 @endsection
 @section('content')
@@ -420,290 +421,23 @@
           <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
         </div>
       </div>
-    </div>
 
-    <!-- <div class="row">
-      <div class="col-12 col-md-7">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            @if($post_data->main_image != null)
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            @endif
-            @if($post_data->image_1 != null)
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            @endif
-            @if($post_data->image_2 != null)
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            @endif
-            @if($post_data->image_3 != null)
-            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-            @endif
-            @if($post_data->image_4 != null)
-            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-            @endif
-            @if($post_data->image_5 != null)
-            <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
-            @endif
-          </ol>
-          <div class="carousel-inner">
-            @if($post_data->main_image != null)
-            <div class="carousel-item active">
-              <img class="d-block w-100 img-responsive" src="{{asset("".$post_data->main_image)}}" style="height: 100%;" alt="First slide">
-            </div>
-            @endif
-            @if($post_data->image_1 != null)
-            <div class="carousel-item">
-              <img class="d-block w-100 img-responsive" src="{{asset("".$post_data->image_1)}}" style="height: 100%;" alt="Second slide">
-            </div>
-            @endif
-            @if($post_data->image_2 != null)
-            <div class="carousel-item">
-              <img class="d-block w-100 img-responsive" src="{{asset("".$post_data->image_2)}}" style="height: 100%;" alt="Third slide">
-            </div>
-            @endif
-            @if($post_data->image_3 != null)
-            <div class="carousel-item">
-              <img class="d-block w-100 img-responsive" src="{{asset("".$post_data->image_3)}}" style="height: 100%;" alt="Fourth slide">
-            </div>
-            @endif
-            @if($post_data->image_4 != null)
-            <div class="carousel-item">
-              <img class="d-block w-100 img-responsive" src="{{asset("".$post_data->image_4)}}" style="height: 100%;" alt="Fifth slide">
-            </div>
-            @endif
-            @if($post_data->image_5 != null)
-            <div class="carousel-item">
-              <img class="d-block w-100 img-responsive" src="{{asset("".$post_data->image_5)}}" style="height: 100%;" alt="Sixth slide">
-            </div>
-            @endif
-          </div>
-          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-      </div>
-      <div class="col-12 col-md-5">
-        <div class="card card-success pb-4 w-100">
-          <div class="card-header">
-            <b>Seller Contact Details</b>
-          </div>
-          <div class="card-body">
-            @if($post_data->phone_number != null)
-            <div class="row">
-              <div class="col-md-4"><b>Tel No:</b></div>
-              <div class="col-md-8">{{$post_data->phone_number}}</div>
-            </div>
-            @endif
-            @if($post_data->email != null)
-            <div class="row">
-              <div class="col-md-4"><b>Email:</b></div>
-              <div class="col-md-8">{{$post_data->email}}</div>
-            </div>
-            @endif
-            @if($post_data->seller_location != null)
-            <div class="row">
-              <div class="col-md-4"><b>Address:</b></div>
-              <div class="col-md-8">{{$post_data->seller_location}}</div>
-            </div>
-            @endif
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <!-- <div class="row">
-      <div class="col-12">
-        <div class="card card-success pb-4 w-100">
-          <div class="card-header">
-            <b>Vehicle Details</b>
-          </div>
-          <div class="card-body">
-            <div class="row">
-              <div class="form-group col-md-4">
-                @if($post_data->model != null)
-                <label for="model">Model: </label>
-                <span>{{$post_data->model}}</span>
-                @endif
-
-              </div>
-              <div class="form-group col-md-4">
-                @if($post_data->price != null)
-                <label for="price">Price: </label>
-                <span>{{$post_data->price}}</span>
-                @endif
-
-              </div>
-              <div class="form-group col-md-4">
-                @if($post_data->manufactured_year != null)
-                <label for="manufactured_year">Manufactured Year: </label>
-                <span>{{$post_data->manufactured_year}}</span>
-                @endif
-   
-              </div>
-            </div>
-            <div class="row">
-              <div class="form-group col-md-4">
-                @if($post_data->condition != null)
-                <label for="condition">Condition : </label>
-                <span>{{$post_data->condition}}</span>
-                @endif
-             
-              </div>
-              <div class="form-group col-md-4">
-                @if($post_data->engine_capacity != null)
-                <label for="engine_capacity">Engine Capacity: </label>
-                <span>{{$post_data->engine_capacity}}</span>
-                @endif
-              
-              </div>
-              <div class="form-group col-md-4">
-                @if($post_data->millage != null)
-                <label for="millage">Millage: </label>
-                <span>{{$post_data->millage}}</span>
-                @endif
-    
-              </div>
-            </div>
-            <div class="row">
-              <div class="form-group col-md-4">
-                @if($post_data->fuel_type != null)
-                <label for="fuel_type">Fuel Type: </label>
-                <span class="ml-2">{{$post_data->fuel_type}}</span>
-                @endif
-               
-              </div>
-
-              <div class="form-group col-md-4">
-                @if($post_data->transmission != null)
-                <label for="transmission">Transmission: </label>
-                <span class="ml-2">{{$post_data->transmission}}</span>
-                @endif
+      <div class="user-ratings p-4">
         
-              </div>
-              <div class="form-group col-md-4">
-                @if($post_data->location != null)
-                <label for="location">Vehicle Location: </label>
-                <span>{{$post_data->location}}</span>
-                @endif
-              
-              </div>
-              <div class="form-group col-md-4">
-                @if($post_data->address != null)
-                <label for="address">Address: </label>
-                <span class="ml-2">{{$post_data->address}}</span>
-                @endif
-              
-              </div>
-              <div class="form-group col-md-8">
-                @if($post_data->additional_info != null)
-                <label for="additional_info">Additional Info: </label>
-                <span id="additional_info">{{$post_data->additional_info}}</span>
-                @endif
-              </div>
-            </div>
-            <div class="row">
-              <div class="form-group col-md-4">
-                @if($post_data->part_used_in != null)
-                <label for="part_used_in">Parts Used Brand: </label>
-                <span class="ml-2">{{$data->part_used_in}}</span>
-                @endif
-               
-              </div>
-              <div class="form-group col-md-4">
-                @if($post_data->part_category != null)
-                <label for="part_category">Part Category: </label>
-                <span class="ml-2">{{$post_data->part_category}}</span>
-                @endif
-  
-              </div>
-              <div class="form-group col-md-4">
-                @if($post_data->start_type != null)
-                <label for="start_type">Start Type: </label>
-                <span class="ml-2">{{$post_data->start_type}}</span>
-                @endif
-           
-              </div>
-            </div>
-            <div class="row">
-              <div class="form-group col-md-3">
-                <label for="ongoing_lease">Ongoing Lease: </label><br>
-                @if($post_data->on_going_lease != null)
-                <label class="bg-warning p-1 m-1" style="border-radius: 5px;"></label><br>
-                @endif
-                @if($post_data->on_going_lease == null)
-                <label class="bg-success p-1 m-1" style="border-radius: 5px;"></label><br>
-                @endif
-              </div>
-              <div class="form-group col-md-3">
-                <label for="isAc">AC: </label><br>
-                @if($post_data->isAc != null)
-                <label class="bg-warning p-1 m-1" style="border-radius: 5px;"></label><br>
-                @endif
-                @if($post_data->isAc == null)
-                <label class="bg-success p-1 m-1" style="border-radius: 5px;"></label><br>
-                @endif
-              </div>
-              <div class="form-group col-md-3">
-                <label for="isPowerSteer">Power Steering: </label><br>
-                @if($post_data->isPowerSteer != null)
-                <label class="bg-warning p-1 m-1" style="border-radius: 5px;"></label><br>
-                @endif
-                @if($post_data->isPowerSteer == null)
-                <label class="bg-success p-1 m-1" style="border-radius: 5px;"></label><br>
-                @endif
-              </div>
 
-              <div class="form-group col-md-3">
-                <label for="isPowerMirroring">Power Mirroring: </label><br>
-                @if($post_data->isPowerMirroring != null)
-                <label class="bg-warning p-1 m-1" style="border-radius: 5px;"></label><br>
-                @endif
-                @if($post_data->isPowerMirroring == null)
-                <label class="bg-success p-1 m-1" style="border-radius: 5px;"></label><br>
-                @endif
-              </div>
-            </div>
-            <div class="row">
-              <div class="form-group col-md-3">
-                <label for="isPowerWindow">Power Window: </label><br>
-                @if($post_data->isPowerWindow != null)
-                <label class="bg-warning p-1 m-1" style="border-radius: 5px;"></label><br>
-                @endif
-                @if($post_data->isPowerWindow == null)
-                <label class="bg-success p-1 m-1" style="border-radius: 5px;"></label><br>
-                @endif
-              </div>
-              <div class="form-group col-md-3">
-                <label for="soldStatus">Sold Status: </label><br>
-                @if($post_data->status != 0)
-                <label class="bg-success" style="border-radius: 5px; padding-left: 5px; padding-right: 5px">Sold</label><br>
-                @endif
-                @if($post_data->status == 0)
-                <label class="bg-primary" style="border-radius: 5px; padding-left: 5px; padding-right: 5px">Not Yet</label><br>
-                @endif
-              </div>
-            </div>
-
-          </div>
-          <div class="card-footer">
-            <div class="card">
-              <div class="card-body">Do not make any payments to advertiser before inspecting the vehicle. wehicleworld.com shall not be held responsible for any transaction or agreement reached between the advertiser and you.</div>
-            </div>
-            <div class="card">
-              <div class="card-body">වාහනය පරික්ෂා කර බැලීමෙන් තොරව වාහන අයිතිකරුවන්ට මුදල් ගෙවීමෙන් වලකින්න. එසේ කරනු ලබන කිසිදු ගෙවීමක් සදහා wehicleworld.com වෙබ් අඩවිය වගකීමක් නොදරන බව දන්වා සිටිමු.</div>
-            </div>
-            <div class="card">
-              <div class="card-body">சொத்தை அல்லது உடமையை ஆய்வு செய்வதற்கு முன்பு விளம்பரதாரருக்கு பணம் செலுத்த வேண்டாம். wehicleworld.com வளையதளமானது உங்களுடைய எந்த ஒரு வாகனக்கட்டணத்துக்கும்பொறுப்பு கூற மாட்டாது.</div>
-            </div>
-          </div>
-        </div>
       </div>
-    </div> -->
 
+
+      <div class="card">
+        <div class="card-body">Do not make any payments to advertiser before inspecting the vehicle. <b>vehiauto.com</b> shall not be held responsible for any transaction or agreement reached between the advertiser and you.</div>
+      </div>
+      <div class="card">
+        <div class="card-body">වාහනය පරික්ෂා කර බැලීමෙන් තොරව වාහන අයිතිකරුවන්ට මුදල් ගෙවීමෙන් වලකින්න. එසේ කරනු ලබන කිසිදු ගෙවීමක් සදහා <b>vehiauto.com</b> වෙබ් අඩවිය වගකීමක් නොදරන බව දන්වා සිටිමු.</div>
+      </div>
+      <div class="card">
+        <div class="card-body">சொத்தை அல்லது உடமையை ஆய்வு செய்வதற்கு முன்பு விளம்பரதாரருக்கு பணம் செலுத்த வேண்டாம். <b>vehiauto.com</b> வளையதளமானது உங்களுடைய எந்த ஒரு வாகனக்கட்டணத்துக்கும்பொறுப்பு கூற மாட்டாது.</div>
+      </div>
+    </div>
 
   </div>
   <div class="card-footer">
