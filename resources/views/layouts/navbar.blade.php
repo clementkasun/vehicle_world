@@ -63,16 +63,16 @@
                             <!-- </li> -->
                             <li class="list-item">
                                 <ul class="list-child">
-                                    <li class="list-item">
+                                    <!-- <li class="list-item">
                                         <span class="notch-bg notch-bg--sunset-orange"></span>
                                         <a href="cart.html" area-label="Cart" class="btn btn--size-33-33 btn--center btn--round btn--color-radical-red btn--bg-white btn--box-shadow"><i class="icon icon-carce-cart"></i></a>
-                                    </li>
+                                    </li> -->
                                     <li class="list-item">
                                         <span class="notch-bg notch-bg--emerald"></span>
                                         <a href="#profile-menu-offcanvas" area-label="User" class="btn btn--size-33-33 btn--center btn--round offcanvas-toggle offside-menu">
                                             <?php
                                             $user_path = '';
-                                            (isset($user_profile_data['profile_photo_path'])) ? $user_path = './storage/' . $user_profile_data['profile_photo_path'] : $user_path = '/dist/img/avatar5.png';
+                                            (isset($user_profile_data['profile_photo_path'])) ? $user_path = './storage/' . $user_profile_data['profile_photo_path'] : $user_path = './dist/img/avatar5.png';
                                             ?>
                                             <img class="img-fluid" height="33" width="33" src="{{ $user_path }}" alt="user image"></a>
                                     </li>
