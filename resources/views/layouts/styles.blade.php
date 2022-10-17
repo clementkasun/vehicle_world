@@ -47,6 +47,13 @@
             display: none;
         }
 
+        #mob-hero{
+            display: none;
+        }
+        
+        #ad_tbl {
+            max-width: 1000px;
+        }
     }
 
     @media (max-width: 700px) {
@@ -60,6 +67,10 @@
 
         .lg-nav {
             display: none;
+        }
+
+        #ad_tbl {
+            max-width: 300px;
         }
 
     }
@@ -81,4 +92,5 @@
 <link rel="stylesheet" href="{{ asset('assets2/css/plugins/ion.rangeSlider.min.css')}}">
 <!-- Style CSS -->
 <link rel="stylesheet" href="{{ asset('assets2/css/style.css')}}">
+
 @endsection

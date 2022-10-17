@@ -237,9 +237,9 @@
 @section('content')
 <!-- Profile Image -->
 
-<div class="card card-success" style="padding: 0">
+<div class="card card-success mt-2" style="padding: 0">
   <div class="card-header">
-
+    <h1>Add Profile</h1>
   </div>
   <div class="card-body">
     <div class="wrapper row">
@@ -263,9 +263,9 @@
 
       </div>
       <div class="details col-md-6">
-        <h3 class="product-title">
-          <h4>{{ $post_data->post_title}}</h4>
-        </h3>
+        <span class="product-title text-lg">
+          {{ $post_data->post_title}}
+        </span>
         <div class="rating">
           <div class="stars">
             <span class="fa fa-star checked"></span>
@@ -728,8 +728,6 @@
                         <a href="/public/api/get_post_profile/id/{{$post->id}}"><b style="font-size: 14px" class="text-success">{{$post->post_title}}</b></br></a>
                         <span style="font-size: 12px" class="text-dark"><b>Price: </b> {{$post->price}} </span>
                         <span style="font-size: 12px" class="text-dark"><b>Location: </b> {{$post->location}} </span>
-                        <span style="font-size: 12px" class="text-dark"><b>Condition: </b> {{$post->condition}} </span>
-                        <span style="font-size: 12px" class="text-dark"><b>Millage: </b> {{$post->millage}} </span>
                       </div>
                     </div>
                   </div>
