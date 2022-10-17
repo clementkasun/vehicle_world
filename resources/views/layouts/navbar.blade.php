@@ -72,9 +72,9 @@
                                         <a href="#profile-menu-offcanvas" area-label="User" class="btn btn--size-33-33 btn--center btn--round offcanvas-toggle offside-menu">
                                             <?php
                                             $user_path = '';
-                                            (isset($user_profile_data['profile_photo_path'])) ? $user_path = './storage/' . $user_profile_data['profile_photo_path'] : $user_path = './dist/img/avatar5.png';
+                                            (isset($user_profile_data['profile_photo_path'])) ? $user_path = '/storage/' . $user_profile_data['profile_photo_path'] : $user_path = '/dist/img/avatar5.png';
                                             ?>
-                                            <img class="img-fluid" height="33" width="33" src="{{ $user_path }}" alt="user image"></a>
+                                            <img class="img-fluid" height="33" width="33" src="{{ asset($user_path) }}" alt="user image"></a>
                                     </li>
                                 </ul>
                             </li>
