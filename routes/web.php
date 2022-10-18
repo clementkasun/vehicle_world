@@ -16,7 +16,7 @@ use App\Http\Controllers\DashboardController;
   |
  */
 
-Route::get('/register_customer', [CustomerController::class, 'index']);
+Route::get('/register_customer', [CustomerController::class, 'index'])->name('register_customer');
 Route::get('/', [PostController::class, 'index']);
 Route::get('/dashboard', [PostController::class, 'index']);
 Route::get('/home', [PostController::class, 'index']);

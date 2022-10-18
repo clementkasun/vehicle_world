@@ -11,6 +11,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TestJsonController;
 use App\Http\Controllers\JsonResultsController;
 use App\Http\Controllers\SupportMailController;
+use App\Http\Controllers\UserReviewController;
 
 /*
   |--------------------------------------------------------------------------
@@ -59,19 +60,26 @@ Route::get('/get_selected_post/id/{post_id}', [PostController::class, 'get_selec
 //Route::any('/filtered_posts', [PostController::class, 'filtered_adds']);
 Route::post('/update_post/id/{post_id}', [PostController::class, 'update']);
 Route::delete('/delete_post/id/{post_id}', [PostController::class, 'destroy']);
+Route::post('/filtered_posts', [PostController::class, 'filtered_posts']);
 
+//basic api's
 Route::get('get_makes', [VehicleMakeController::class, 'get_vehicle_makes']);
-
 Route::post('/save_customer', [CustomerController::class, 'store']);
 Route::post('/is_email_nic_exist', [CustomerController::class, 'email_nic_exist']);
-
-Route::post('/filtered_posts', [PostController::class, 'filtered_posts']);
 Route::put('/update_basic_data/id/{user_id}', [CustomerController::class, 'updateBasicData']);
 Route::put('/change_password/id/{user_id}', [CustomerController::class, 'changePassword']);
 Route::put('/sold_post_as_sold/id/{post_id}', [PostController::class, 'soldPost']);
+Route::post('/send_mail', [SupportMailController::class, 'sendMail']);
+
+//Analytic api's
 Route::get('/get_monthly_sales', [DashboardController::class, 'getMonthlySales']);
 Route::get('/get_yearly_sales', [DashboardController::class, 'getYearlySales']);
 Route::get('/get_sales_vehicle_wise', [DashboardController::class, 'vehicleTypeWiseSales']);
 Route::get('/get_percentages', [DashboardController::class, 'getPercentages']);
 
-Route::post('/send_mail', [SupportMailController:: class, 'sendMail']);
+//user post review api's
+Route::post('/create-post-review', [UserReviewController::class, 'create_post_review']);
+Route::put('/update-post-review', [UserReviewController::class, 'update_post_review']);
+Route::delete('/delete-post-review', [UserReviewController::class, 'delete_post_review']);
+Route::get('/get-post-review-item', [UserReviewController::class, 'get_post_review_item']);
+Route::get('/get-post-reviews', [UserReviewController::class, 'get_post_reviews']);

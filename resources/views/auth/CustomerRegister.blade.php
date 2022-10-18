@@ -9,9 +9,8 @@
         color: red;
     }
     #save_customer{
-        background: blue;
-        margin: 5px;
-        padding: 1px;
+        background: #0a58ca;
+        padding: 5px;
     }
     
 </style>
@@ -19,7 +18,7 @@
 
 @section('content')
 <!-- general form elements -->
-<div class="card card-light">
+<div class="card card-light p-2">
     <div class="card-header text-center">
         <h2> <b>Customer Registration</b> </h2>
     </div>

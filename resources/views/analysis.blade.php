@@ -8,6 +8,10 @@
   .has-error {
     color: red;
   }
+
+  .container-fluid {
+    max-width: 1500px;
+  }
 </style>
 @endsection
 
