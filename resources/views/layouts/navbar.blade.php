@@ -26,7 +26,7 @@
                     <li><a class="nav-link scrollto" href="{{ asset('analysis') }}">Market Analysis</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('about_us') }}">About</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('services') }}">Services</a></li>
-                    <li><a class="nav-link scrollto" href="{{ asset('create-post') }}"><span class="btn btn-warning">post add</span></a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('create-post') }}"><span class="btn btn-warning">Create post</span></a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('user_profile') }}">Account</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('contacts') }}">Contact</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('login_cust') }}">Login</a></li>
