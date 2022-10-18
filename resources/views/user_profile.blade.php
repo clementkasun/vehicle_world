@@ -13,6 +13,8 @@
         color: red;
     }
 </style>
+<link href="https://cdn.datatables.net/fixedheader/3.2.3/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.dataTables.min.css">
 @endsection
 @section('content')
 <div class="row card-body box-profile">
