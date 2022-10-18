@@ -780,7 +780,7 @@
                     html += '<div class="row">';
                     html += '<div class="col-3 col-md-2">';
                     html += '<div class="portfolio-wrap text-center">';
-                    html += "<img src='/public/" + row.main_image + "' style='height: 8em; width: 55%;' alt='main_img'/>";
+                    html += "<img src='/public/" + row.main_image + "' style='height: 8em; width: 70%;' alt='main_img'/>";
                     html += '</div>';
                     html += '</div>';
                     html += '<div class="col-8 col-md-9">';
