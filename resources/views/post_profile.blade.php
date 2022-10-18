@@ -490,7 +490,8 @@
 @endsection
 
 @section('pageScripts')
-
+<script src="https://cdn.datatables.net/fixedheader/3.2.3/js/dataTables.fixedHeader.min.js"></script>
+  <script src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
 <script>
   var slideIndex = 1;
   showDivs(slideIndex);

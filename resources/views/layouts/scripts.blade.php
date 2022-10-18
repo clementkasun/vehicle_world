@@ -35,8 +35,7 @@
 <!-- validation -->
 <script src="{{ asset('/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://cdn.datatables.net/fixedheader/3.2.3/js/dataTables.fixedHeader.min.js"></script>
-  <script src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
+
 
 <!-- ChartJS -->
 <script src="{{ asset('/plugins/chart.js/Chart.min.js') }}"></script>
