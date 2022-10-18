@@ -69,7 +69,7 @@
         }
 
         #ad_tbl {
-            max-width: 320px;
+            max-width: 350px;
         }
 
     }
