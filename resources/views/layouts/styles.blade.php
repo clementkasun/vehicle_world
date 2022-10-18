@@ -52,7 +52,7 @@
         }
         
         #ad_tbl {
-            max-width: 1000px;
+            max-width: 700px;
         }
     }
 
@@ -70,7 +70,7 @@
         }
 
         #ad_tbl {
-            max-width: 300px;
+            max-width: 320px;
         }
 
     }
