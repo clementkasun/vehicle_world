@@ -778,12 +778,12 @@
                     html += '<a href="/public/api/get_post_profile/id/' + row.id + '">';
                     html += '<div class="card-body">';
                     html += '<div class="row">';
-                    html += '<div class="col-4 col-md-3">';
+                    html += '<div class="col-3 col-md-2">';
                     html += '<div class="portfolio-wrap text-center">';
-                    html += "<img src='/public/" + row.main_image + "' style='height: 8em; width: 100%;' alt='main_img'/>";
+                    html += "<img src='/public/" + row.main_image + "' style='height: 8em; width: 55%;' alt='main_img'/>";
                     html += '</div>';
                     html += '</div>';
-                    html += '<div class="col-7 col-md-8">';
+                    html += '<div class="col-8 col-md-9">';
                     html += '<b style="font-size: 18px" class="text-success">' + row.post_title + '</b><br>';
                     html += '<span style="font-size: 14px" class="text-dark"><b>Price: </b>' + row.price + ' </span><br>';
                     html += '<span style="font-size: 14px" class="text-dark"><b>Location: </b>' + row.location + ' </span><br>';
