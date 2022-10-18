@@ -231,13 +231,121 @@
     }
   }
 
+  .container-fluid {
+    max-width: 1400px;
+  }
+
   /*# sourceMappingURL=style.css.map */
 
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Arial;
+    margin: 0 auto;
+    /* Center website */
+    max-width: 800px;
+    /* Max width */
+    padding: 20px;
+  }
+
+  .heading {
+    font-size: 25px;
+    margin-right: 25px;
+  }
+
+  .fa {
+    font-size: 25px;
+  }
+
+  .checked {
+    color: orange;
+  }
+
+  /* Three column layout */
+  .side {
+    float: left;
+    width: 15%;
+    margin-top: 10px;
+  }
+
+  .middle {
+    margin-top: 10px;
+    float: left;
+    width: 70%;
+  }
+
+  /* Place text to the right */
+  .right {
+    text-align: right;
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /* The bar container */
+  .bar-container {
+    width: 100%;
+    background-color: #f1f1f1;
+    text-align: center;
+    color: white;
+  }
+
+  /* Individual bars */
+  .bar-5 {
+    width: 60%;
+    height: 18px;
+    background-color: #04AA6D;
+  }
+
+  .bar-4 {
+    width: 30%;
+    height: 18px;
+    background-color: #2196F3;
+  }
+
+  .bar-3 {
+    width: 10%;
+    height: 18px;
+    background-color: #00bcd4;
+  }
+
+  .bar-2 {
+    width: 4%;
+    height: 18px;
+    background-color: #ff9800;
+  }
+
+  .bar-1 {
+    width: 15%;
+    height: 18px;
+    background-color: #f44336;
+  }
+
+  /* Responsive layout - make the columns stack on top of each other instead of next to each other */
+  @media (max-width: 400px) {
+
+    .side,
+    .middle {
+      width: 100%;
+    }
+
+    .right {
+      display: none;
+    }
+  }
 </style>
 @endsection
 @section('content')
-<!-- Profile Image -->
 
+<input type="text" id="post_id" name="post_id" data-post-id="{{ $post_data->id }}" hidden>
+<input type="text" id="user_id" name="user_id" data-user-id="" hidden>
+<!-- Profile Image -->
 <div class="card card-success mt-2" style="padding: 0">
   <div class="card-header">
     <h1>Add Profile</h1>
@@ -423,7 +531,7 @@
       </div>
 
       <div class="user-ratings p-4">
-        
+
 
       </div>
 
@@ -439,80 +547,289 @@
       </div>
     </div>
 
-  </div>
-  <div class="card-footer">
+    <span class="heading">User Ratings</span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star"></span>
+    <p>4.1 average based on 254 reviews.</p>
+    <hr style="border:3px solid #f1f1f1">
+
     <div class="row">
-      <div class="col-12">
-        <div class="card card-success">
-          <div class="card-header d-flex justify-content-center">
-            Related Results for your search
+      <div class="side">
+        <div>5 star</div>
+      </div>
+      <div class="middle">
+        <div class="bar-container">
+          <div class="bar-5"></div>
+        </div>
+      </div>
+      <div class="side right">
+        <div>150</div>
+      </div>
+      <div class="side">
+        <div>4 star</div>
+      </div>
+      <div class="middle">
+        <div class="bar-container">
+          <div class="bar-4"></div>
+        </div>
+      </div>
+      <div class="side right">
+        <div>63</div>
+      </div>
+      <div class="side">
+        <div>3 star</div>
+      </div>
+      <div class="middle">
+        <div class="bar-container">
+          <div class="bar-3"></div>
+        </div>
+      </div>
+      <div class="side right">
+        <div>15</div>
+      </div>
+      <div class="side">
+        <div>2 star</div>
+      </div>
+      <div class="middle">
+        <div class="bar-container">
+          <div class="bar-2"></div>
+        </div>
+      </div>
+      <div class="side right">
+        <div>6</div>
+      </div>
+      <div class="side">
+        <div>1 star</div>
+      </div>
+      <div class="middle">
+        <div class="bar-container">
+          <div class="bar-1"></div>
+        </div>
+      </div>
+      <div class="side right">
+        <div>20</div>
+      </div>
+    </div>
+
+    <div class="card card-light mt-2">
+      <div class="card-header">
+        Review this post
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <label>Stars</label>
+        </div>
+        <div class="row mt-2">
+          <div id="star_component" class="col-1">
+            <input type="checkbox" name="chk_one" id="chk_one" />
           </div>
-          <div class="card-body">
-            <div class="row">
-              @if($related_posts[0] != null)
-              @foreach($related_posts as $post)
-              <div class='col-12 col-md-4'>
-                <div class="card card-light mt-2 w-100" style="border-width: 2px; border-color: black;">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-5">
-                        <img src="{{asset(''.$post->main_image)}}" style="height: 8em;" class="w-100" alt='main_img' />
-                      </div>
-                      <div class="col-7">
-                        <a href="/public/api/get_post_profile/id/{{$post->id}}"><b style="font-size: 14px" class="text-success">{{$post->post_title}}</b></br></a>
-                        <span style="font-size: 12px" class="text-dark"><b>Price: </b> {{$post->price}} </span>
-                        <span style="font-size: 12px" class="text-dark"><b>Location: </b> {{$post->location}} </span>
+          <div class="col-1">
+            <input type="checkbox" name="chk_two" id="chk_two" />
+          </div>
+          <div class="col-1">
+            <input type="checkbox" name="chk_three" id="chk_three" />
+          </div>
+          <div class="col-1">
+            <input type="checkbox" name="chk_four" id="chk_four" />
+          </div>
+          <div class="col-1">
+            <input type="checkbox" name="chk_five" id="chk_five" />
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-8">
+            <textarea id="user_review_input" class="form-control" style="height: 100px"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-">
+            <button id="save_review" name="save_review" class="btn bg-primary pl-2 pr-2 pt-1 pb-1 mt-2">Save Review</button>
+          </div>
+        </div>
+
+        <div class="row mt-2">
+          <div class="col-12">
+            <div class="card card-light">
+              <div class="card-header">
+                <h3><b>Reviews</b></h3>
+              </div>
+              <div class="card-body" id="reviews">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="card-footer">
+      <div class="row">
+        <div class="col-12">
+          <div class="card card-success">
+            <div class="card-header d-flex justify-content-center">
+              Related Results for your search
+            </div>
+            <div class="card-body">
+              <div class="row">
+                @if($related_posts[0] != null)
+                @foreach($related_posts as $post)
+                <div class='col-12 col-md-4'>
+                  <div class="card card-light mt-2 w-100" style="border-width: 2px; border-color: black;">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-5">
+                          <img src="{{asset(''.$post->main_image)}}" style="height: 8em;" class="w-100" alt='main_img' />
+                        </div>
+                        <div class="col-7">
+                          <a href="/public/api/get_post_profile/id/{{$post->id}}"><b style="font-size: 14px" class="text-success">{{$post->post_title}}</b></br></a>
+                          <span style="font-size: 12px" class="text-dark"><b>Price: </b> {{$post->price}} </span>
+                          <span style="font-size: 12px" class="text-dark"><b>Location: </b> {{$post->location}} </span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
+                @endforeach
               </div>
-              @endforeach
             </div>
-          </div>
-          <div class="card-footer">
-            @if(isset($request))
-            <div class="text-center mt-1">{{ $related_posts->appends($request)->links('pagination::bootstrap-4') }}</div>
-            @endif
+            <div class="card-footer">
+              @if(isset($request))
+              <div class="text-center mt-1">{{ $related_posts->appends($request)->links('pagination::bootstrap-4') }}</div>
+              @endif
 
-            @if(!isset($request))
-            <div class="text-center mt-1">{{ $related_posts->links('pagination::bootstrap-4') }}</div>
-            @endif
+              @if(!isset($request))
+              <div class="text-center mt-1">{{ $related_posts->links('pagination::bootstrap-4') }}</div>
+              @endif
 
-            @endif
+              @endif
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-@endsection
+  @endsection
 
-@section('pageScripts')
-<script src="https://cdn.datatables.net/fixedheader/3.2.3/js/dataTables.fixedHeader.min.js"></script>
+  @section('pageScripts')
+  <script src="https://cdn.datatables.net/fixedheader/3.2.3/js/dataTables.fixedHeader.min.js"></script>
   <script src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
-<script>
-  var slideIndex = 1;
-  showDivs(slideIndex);
+  <script>
+    var slideIndex = 1;
+    showDivs(slideIndex);
+    loadReviews();
 
-  function plusDivs(n) {
-    showDivs(slideIndex += n);
-  }
+    function plusDivs(n) {
+      showDivs(slideIndex += n);
+    }
 
-  function showDivs(n) {
-    var i;
-    var x = document.getElementsByClassName("mySlides");
-    if (n > x.length) {
-      slideIndex = 1
+    function showDivs(n) {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      if (n > x.length) {
+        slideIndex = 1
+      }
+      if (n < 1) {
+        slideIndex = x.length
+      }
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      // x[slideIndex - 1].setAttribute(style.display) = "block";
     }
-    if (n < 1) {
-      slideIndex = x.length
+
+    $('#save_review').click(function() {
+      let stars = calculateStars();
+
+      let data = {
+        'post_id': $('#post_id').data('id'),
+        'user_review': $('#user_review_input').val(),
+        'user_star': stars
+      };
+
+      let url = "../../../api/create-post-review";
+      let Method = "post";
+
+      ajaxRequest(Method, url, data, function(result) {
+        if (result.status == 1) {
+          Swal.fire(
+            'Post Review',
+            'Successfully Review saved!',
+            'success'
+          );
+          loadReviews();
+          $('input:checkbox').removeAttr('checked');
+          $('#user_review_input').val("");
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: result.msg
+          })
+        }
+        //        $('#degree_registration').trigger("reset");
+        if (typeof callBack !== 'undefined' && callBack != null && typeof callBack ===
+          "function") {
+          callBack(result);
+        }
+      });
+    });
+
+    function loadReviews() {
+      let stars;
+      let url = "../../../api/get-post-reviews";
+      let Method = "get";
+      ajaxRequest(Method, url, null, function(result) {
+        let html = '';
+        $.each(result, (index, item) => {
+          stars = generateStars(item.user_star);
+          html += '<div class="card card-light">';
+          html += '<div class="card-header"><b>User : ' + item.user.name + ' ' + stars +'</b></div>';
+          html += '<div class="card-body">' + item.review_desc + '</div>';
+          html += '</div>';
+        });
+        $('#reviews').html(html);
+      });
     }
-    for (i = 0; i < x.length; i++) {
-      x[i].style.display = "none";
+
+    function generateStars(star_count) {
+      let stars = '';
+      switch (star_count) {
+        case 1:
+          stars += '<span class="fa fa-star checked"></span>';
+          break;
+        case 2:
+          stars += '<span class="fa fa-star checked"></span><span class="fa fa-star checked"></span>';
+          break;
+        case 3:
+          stars += '<span class="fa fa-star checked"></span><span class="fa fa-star checked"></span></span><span class="fa fa-star checked"></span>';
+          break;
+        case 4:
+          stars += '<span class="fa fa-star checked"></span><span class="fa fa-star checked"></span></span><span class="fa fa-star checked"></span></span><span class="fa fa-star checked"></span>';
+          break;
+        case 5:
+          stars += '<span class="fa fa-star checked"></span><span class="fa fa-star checked"></span></span><span class="fa fa-star checked"></span></span><span class="fa fa-star checked"></span></span><span class="fa fa-star checked"></span>';
+          break;
+        default:
+      }
+
+      return stars;
     }
-    // x[slideIndex - 1].setAttribute(style.display) = "block";
-  }
-</script>
-@endsection
+
+    function calculateStars() {
+      var count = 0;
+      const checkboxes = ["chk_one", "chk_two", "chk_three", "chk_four", "chk_five"];
+
+      $.each(checkboxes, (index, item) => {
+        if ($('#' + item).prop('checked') == true) {
+          count += 1;
+        }
+      });
+
+      return count;
+    }
+  </script>
+  @endsection
