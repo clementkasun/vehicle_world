@@ -248,7 +248,7 @@
             }).then((result) => {
                 if (result.value) {
                     let id = $(this).data('id');
-                    ajaxRequest("DELETE", "./api/delete_post/id/" + id, null, function(resp) {
+                    ajaxRequest("DELETE", "/public/api/delete_post/id/" + id, null, function(resp) {
                         if (resp.status == 1) {
                             swal.fire('Post Deletion', 'Successfully deleted the post', 'success');
                             location.reload();
@@ -274,7 +274,7 @@
                 // console.log(result.isConfirmed);
                 if (result.value) {
                     let id = $(this).data('id');
-                    ajaxRequest("PUT", "./api/sold_post_as_sold/id/" + id, null, function(resp) {
+                    ajaxRequest("PUT", "/public/api/sold_post_as_sold/id/" + id, null, function(resp) {
                         if (resp.status == 1) {
                             swal.fire('Post status change', 'Successfully changed the post status', 'success');
                             location.reload();
@@ -354,7 +354,7 @@
 
             let data = $('#user_update_frm').serializeArray();
             let user_id = $('#settings').data('user-id');
-            let url = "./api/update_basic_data/id/" + user_id;
+            let url = "/public/api/update_basic_data/id/" + user_id;
 
             let url_email_nic = "./api/is_email_nic_exist";
             let validation_data = {
@@ -412,7 +412,7 @@
             };
             let user_id = $('#settings').data('user-id');
             if ($('#user_pass').val() === $('#pass_retype').val()) {
-                let url = "./api/change_password/id/" + user_id;
+                let url = "/public/api/change_password/id/" + user_id;
 
                 ajaxRequest("PUT", url, data, function(result) {
                     if (result.status == 1) {
