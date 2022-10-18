@@ -12,7 +12,7 @@
     @yield('pageStyles')
 </head>
 
-<body class="container">
+<body class="container-fluid">
     <nav>
         @yield('navbar')
     </nav>
