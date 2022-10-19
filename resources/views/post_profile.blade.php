@@ -806,7 +806,6 @@
 
   function generateStars(star_count) {
     let stars = '';
-    console.log(star_count);
     switch (star_count) {
       case 1:
         stars += '<span class="fa fa-star checked"></span>';
@@ -825,6 +824,7 @@
         break;
       default:
     }
+    console.log(stars);
     return stars;
   }
 
