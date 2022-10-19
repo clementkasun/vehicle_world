@@ -11,7 +11,7 @@
         <div class="search-n-filter-area home-one">
             <div class="search-box">
 
-                <div class="searchable select">
+                <!-- <div class="searchable select">
                     <input type="text" placeholder="Search..." onkeyup="filterFunction(this,event)">
                     <ul>
                         <li>mexico city</li>
@@ -38,94 +38,18 @@
                         </svg>
                     </button>
 
-                </div>
+                </div> -->
 
                 <button id="filter-trigger" aria-label="Filter Icon" class="filter_btn btn--radius btn--radical-red btn--color-white btn--box-shadow btn--size-40-40 btn--center btn--font-size-22"><i class="icon icon-carce-filter"></i></button>
             </div>
         </div>
         <!-- End Search & Filter Area -->
 
-        <div id="mob-hero" class="hero-section section-gap-top-25">
-            <div class="container">
-                <!-- Start Hero Area -->
-                <div class="hero-area hero-area--style-1 hero-slider-active">
-                    <!-- Slider main container -->
-                    <div class="swiper">
-                        <!-- Additional required wrapper -->
-                        <div class="swiper-wrapper">
-                            <!-- Slides -->
-                            <div class="swiper-slide">
-                                <div class="hero-singel-slide ">
-                                    <div class="hero-bg">
-                                        <img width="605" height="312" class="img-full" src="assets2/images/hero/bg/bg-2.jpg" alt="image">
-                                    </div>
-                                    <div class="inner-wrapper">
-                                        <div class="content">
-                                            <p class="title-tag">Summer</p>
-                                            <h1 class="title">Fashion</h1>
-                                            <h2 class="sub-title">SALE</h2>
-                                            <h3 class="sub-title">UP to <span>70% </span> off</h3>
-                                        </div>
-                                        <div class="product-img">
-                                            <img width="149" height="127" class="img-fluid" class="img-fluid" src="assets2/images/hero/product/product-4.jpg" alt="image">
-                                            <div class="shape shape-1"><img width="83" height="83" class="img-fluid" src="assets2/images/hero/shape/shape-dotted.png" alt="image"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="hero-singel-slide">
-                                    <div class="hero-bg">
-                                        <img width="388" height="160" class="img-full" src="assets2/images/hero/bg/bg-1.jpg" alt="image">
-                                    </div>
-                                    <div class="inner-wrapper">
-                                        <div class="content">
-                                            <p class="title-tag">Summer</p>
-                                            <h1 class="title">Fashion</h1>
-                                            <h2 class="sub-title">SALE</h2>
-                                            <h3 class="sub-title">UP to <span>70% </span> off</h3>
-                                        </div>
-                                        <div class="product-img">
-                                            <img width="127" height="98" class="img-fluid" class="img-fluid" src="assets2/images/hero/product/product-2.png" alt="image">
-                                            <div class="shape shape-1"><img width="83" height="83" class="img-fluid" src="assets2/images/hero/shape/shape-dotted.png" alt="image"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="hero-singel-slide">
-                                    <div class="hero-bg">
-                                        <img width="388" height="160" class="img-full" src="assets2/images/hero/bg/bg-2.jpg" alt="image">
-                                    </div>
-                                    <div class="inner-wrapper">
-                                        <div class="content">
-                                            <p class="title-tag">Summer</p>
-                                            <h1 class="title">Fashion</h1>
-                                            <h2 class="sub-title">SALE</h2>
-                                            <h3 class="sub-title">UP to <span>70% </span> off</h3>
-                                        </div>
-                                        <div class="product-img">
-                                            <img width="126" height="98" class="img-fluid" class="img-fluid" src="assets2/images/hero/product/product-3.png" alt="image">
-                                            <div class="shape shape-1"><img width="83" height="83" class="img-fluid" src="assets2/images/hero/shape/shape-dotted.png" alt="image"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- If we need pagination -->
-                    <div class="swiper-pagination"></div>
-                </div>
-                <!-- End Hero Area -->
-            </div>
-        </div>
-        <!-- ...:::End Hero Slider Section:::... -->
-
         <div class="shop-filter" id="shop-filter-menu">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <div class="shop-filter-block mt-0">
+                        <!-- <div class="shop-filter-block mt-0">
                             <h4 class="shop-filter-block__title">Price</h4>
                             <div class="shop-filter-block__content">
                                 <div class="widget-price-range">
@@ -214,8 +138,8 @@
                                     <li><button>Codecarnival</button></li>
                                 </ul>
                             </div>
-                        </div>
-                        <section id="search_container" class="bg-light text-light mt-2">
+                        </div> -->
+                        <section id="search_container" class="mt-2">
                             <form id="search_form">
                                 @csrf
                                 <div class="row m-2">
@@ -452,6 +376,82 @@
                 </div>
             </div>
         </div>
+
+        <div id="mob-hero" class="hero-section section-gap-top-25">
+            <div class="container">
+                <!-- Start Hero Area -->
+                <div class="hero-area hero-area--style-1 hero-slider-active">
+                    <!-- Slider main container -->
+                    <div class="swiper">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            <div class="swiper-slide">
+                                <div class="hero-singel-slide ">
+                                    <div class="hero-bg">
+                                        <img width="605" height="312" class="img-full" src="assets2/images/hero/bg/bg-2.jpg" alt="image">
+                                    </div>
+                                    <div class="inner-wrapper">
+                                        <div class="content">
+                                            <p class="title-tag">Sell</p>
+                                            <h1 class="title">Your</h1>
+                                            <h2 class="title">Vehicle</h2>
+                                            <h3 class="title">Free</h3>
+                                        </div>
+                                        <div class="product-img">
+                                            <img width="149" height="127" class="img-fluid" class="img-fluid" src="assets2/images/hero/product/product-4.jpg" alt="image">
+                                            <div class="shape shape-1"><img width="83" height="83" class="img-fluid" src="assets2/images/hero/shape/shape-dotted.png" alt="image"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="hero-singel-slide">
+                                    <div class="hero-bg">
+                                        <img width="388" height="160" class="img-full" src="assets2/images/hero/bg/bg-1.jpg" alt="image">
+                                    </div>
+                                    <div class="inner-wrapper">
+                                        <div class="content">
+                                            <p class="title-tag">Sell</p>
+                                            <h1 class="title">Your</h1>
+                                            <h2 class="title">Vehicle</h2>
+                                            <h3 class="title">Free</h3>
+                                        </div>
+                                        <div class="product-img">
+                                            <img width="127" height="98" class="img-fluid" class="img-fluid" src="assets2/images/hero/product/product-2.png" alt="image">
+                                            <div class="shape shape-1"><img width="83" height="83" class="img-fluid" src="assets2/images/hero/shape/shape-dotted.png" alt="image"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="hero-singel-slide">
+                                    <div class="hero-bg">
+                                        <img width="388" height="160" class="img-full" src="assets2/images/hero/bg/bg-2.jpg" alt="image">
+                                    </div>
+                                    <div class="inner-wrapper">
+                                        <div class="content">
+                                            <p class="title-tag">Sell</p>
+                                            <h1 class="title">Your</h1>
+                                            <h2 class="title">Vehicle</h2>
+                                            <h3 class="title">Free</h3>
+                                        </div>
+                                        <div class="product-img">
+                                            <img width="126" height="98" class="img-fluid" class="img-fluid" src="assets2/images/hero/product/product-3.png" alt="image">
+                                            <div class="shape shape-1"><img width="83" height="83" class="img-fluid" src="assets2/images/hero/shape/shape-dotted.png" alt="image"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+                <!-- End Hero Area -->
+            </div>
+        </div>
+        <!-- ...:::End Hero Slider Section:::... -->
     </div>
 </div>
 <!-- ======= Hero Section ======= -->
@@ -502,160 +502,6 @@
         </a>
     </div>
 </section><!-- End Hero -->
-
-
-
-<!--  Start Offcanvas Mobile Menu Section -->
-<div id="mobile-menu-offcanvas" class="offcanvas offcanvas-leftside offcanvas-mobile-menu-section">
-    <!-- Start Offcanvas Header -->
-    <div class="offcanvas-header flex-end">
-
-        <div class="logo">
-            <a href="/">
-                <h1>vehiauto.com</h1>
-            </a>
-        </div>
-
-        <button class="offcanvas-close" aria-label="offcanvas svg icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="5.973" height="10.449" viewBox="0 0 5.973 10.449">
-                <path id="Icon_ionic-ios-arrow-back" data-name="Icon ionic-ios-arrow-back" d="M13.051,11.417,17,7.466a.747.747,0,0,0-1.058-1.054l-4.479,4.476a.745.745,0,0,0-.022,1.03l4.5,4.507A.747.747,0,1,0,17,15.37Z" transform="translate(-11.251 -6.194)" />
-            </svg>
-        </button>
-    </div>
-    <!-- End Offcanvas Header -->
-
-    <!-- Start Offcanvas Mobile Menu Wrapper -->
-    <div class="offcanvas-mobile-menu-wrapper">
-        <!-- Start Mobile Menu  -->
-        <div class="mobile-menu-bottom">
-            <!-- Start Mobile Menu Nav -->
-            <div class="offcanvas-menu">
-                <ul>
-                    <li>
-                        <a href="/"><span>Home</span></a>
-                    </li>
-                    <li>
-                        <a href="#"><span>Shop</span></a>
-                        <ul class="mobile-sub-menu">
-                            <li><a href="shop.html">Shop</a></li>
-                            <li><a href="single-product.html">Product</a></li>
-                            <li><a href="shop-category.html">Shop Category</a></li>
-                        </ul>
-
-                    </li>
-                    <li>
-                        <a href="#"><span>Pages</span></a>
-                        <ul class="mobile-sub-menu">
-                            <li><a href="chat.html">Chat</a></li>
-                            <li><a href="cart.html">Cart</a></li>
-                            <li><a href="wishlist.html">Wishlist</a></li>
-                            <li><a href="order.html">Order</a></li>
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="register.html">Register</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div> <!-- End Mobile Menu Nav -->
-        </div> <!-- End Mobile Menu -->
-
-        <!-- Start Mobile contact Info -->
-        <div class="mobile-contact-info">
-            <address class="address">
-                <span>Address: Kurunegala,sri lanka</span>
-                <span>Call Us: 0763993288</span>
-                <span>Email: ksaunclement12345@mail.com</span>
-            </address>
-        </div>
-        <!-- End Mobile contact Info -->
-
-    </div> <!-- End Offcanvas Mobile Menu Wrapper -->
-</div> <!-- ...:::: End Offcanvas Mobile Menu Section:::... -->
-
-<!--  Start Offcanvas Profile Menu Section -->
-<div id="profile-menu-offcanvas" class="offcanvas offcanvas-rightside">
-    <!-- Start Offcanvas Header -->
-    <div class="offcanvas-header flex-start offcanvas-modify">
-        <button class="offcanvas-close" aria-label="offcanvas svg icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="5.973" height="10.449" viewBox="0 0 5.973 10.449">
-                <path id="Icon_ionic-ios-arrow-back" data-name="Icon ionic-ios-arrow-back" d="M13.051,11.417,17,7.466a.747.747,0,0,0-1.058-1.054l-4.479,4.476a.745.745,0,0,0-.022,1.03l4.5,4.507A.747.747,0,1,0,17,15.37Z" transform="translate(-11.251 -6.194)" />
-            </svg>
-        </button>
-        <span>User Profile</span>
-
-    </div> <!-- End Offcanvas Header -->
-    <!-- Start Offcanvas Mobile Menu Wrapper -->
-    <div class="offcanvas-profile-menu-wrapper">
-        <!-- ...:::Start Profile Card Section:::... -->
-        <div class="profile-card-section section-gap-top-25">
-            <div class="profile-card-wrapper">
-                <div class="image">
-                    <?php
-                    $user_path = '';
-                    (isset($user_profile_data['profile_photo_path'])) ? $user_path = './storage/' . $user_profile_data['profile_photo_path'] : $user_path = './dist/img/avatar5.png';
-                    ?>
-                    <img class="img-fluid" width="10" height="10" src="{{ $user_path }}" alt="image">
-                </div>
-                <div class="content">
-                    @if($user_profile_data != null)
-                    <h2 class="name">{{$user_profile_data['name'] . ' ' .$user_profile_data['last_name']}}</h2>
-                    <span class="email">{{ $user_profile_data['email']}}</span>
-                    <span class="id-num"></span>
-                    @endif
-                </div>
-                <div class="profile-shape profile-shape-1"><img class="img-fluid" width="61" height="50" src="assets2/images/profile-shape-1.svg" alt="image"></div>
-                <div class="profile-shape profile-shape-2"><img class="img-fluid" width="48" height="59" src="assets2/images/profile-shape-2.svg" alt="image"></div>
-            </div>
-        </div>
-        <!-- ...:::End Profile Card Section:::... -->
-
-        <!-- ...:::Start Profile Details Section:::... -->
-        <div class="profile-details-section section-gap-top-30">
-            <div class="profile-details-wrapper">
-                <div class="profile-details-top">
-                    <!-- <div class="left">
-                                <span class="text">Total Buy</span>
-                                <span class="price">$2000.00</span>
-                            </div> -->
-                    <div class="right">
-                        <button aria-label="Wishlist" class="btn btn--size-58-58 btn--font-size-22 btn--center btn--round btn--color-radical-red btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart"></i></button>
-                    </div>
-                </div>
-                <div class="profile-details-bottom">
-                    <ul class="profile-user-list">
-                        <li class="profile-list-item">
-                            <ul class="profile-single-list">
-                                <li class="list-item">
-                                    <span class="title">Setting</span>
-                                </li>
-                                <li class="list-item">
-                                    <a href="./user_profile" class="profile-link"><span class="icon"><i class="icon icon-carce-user"></i></span>Account Setting</a>
-                                </li>
-                                <!-- <li class="list-item">
-                                    <a href="/" class="profile-link"><span class="icon"><i class="icon icon-carce-briefcase"></i></span>Billing & Payment</a>
-                                </li> -->
-                                <li class="list-item">
-                                    <a href="./notifications" class="profile-link"><span class="icon"><i class="icon icon-carce-bell"></i></span>Notification</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="profile-list-item">
-                            <ul class="profile-single-list">
-                                <li class="list-item">
-                                    <a href="./logout" class="profile-link"><span class="icon"><i class="icon icon-carce-login"></i></span>Log Out</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- ...:::End Profile Details Section:::... -->
-    </div> <!-- End Offcanvas Mobile Menu Wrapper -->
-</div> <!-- ...:::: End Offcanvas Profile Menu Section:::... -->
-
-<div class="offcanvas-overlay"></div>
-
 
 <!-- ======= Featured Services Section ======= -->
 <section id="featured-services" class="featured-services section-bg">
@@ -818,122 +664,5 @@
 
     }
 
-    function filterFunction(that, event) {
-        let container, input, filter, li, input_val;
-        container = $(that).closest(".searchable");
-        input_val = container.find("input").val().toUpperCase();
-        if (["ArrowDown", "ArrowUp", "Enter"].indexOf(event.key) != -1) {
-            keyControl(event, container);
-        } else {
-            li = container.find("ul li");
-            li.each(function(i, obj) {
-                if ($(this).text().toUpperCase().indexOf(input_val) > -1) {
-                    $(this).show();
-                } else {
-                    $(this).hide();
-                }
-            });
-            container.find("ul li").removeClass("selected");
-            setTimeout(function() {
-                container.find("ul li:visible").first().addClass("selected");
-            }, 100);
-        }
-    }
-
-    function keyControl(e, container) {
-        if (e.key == "ArrowDown") {
-            if (container.find("ul li").hasClass("selected")) {
-                if (
-                    container
-                    .find("ul li:visible")
-                    .index(container.find("ul li.selected")) +
-                    1 <
-                    container.find("ul li:visible").length
-                ) {
-                    container
-                        .find("ul li.selected")
-                        .removeClass("selected")
-                        .nextAll()
-                        .not('[style*="display: none"]')
-                        .first()
-                        .addClass("selected");
-                }
-            } else {
-                container.find("ul li:first-child").addClass("selected");
-            }
-        } else if (e.key == "ArrowUp") {
-            if (
-                container.find("ul li:visible").index(container.find("ul li.selected")) >
-                0
-            ) {
-                container
-                    .find("ul li.selected")
-                    .removeClass("selected")
-                    .prevAll()
-                    .not('[style*="display: none"]')
-                    .first()
-                    .addClass("selected");
-            }
-        } else if (e.key == "Enter") {
-            container.find("input").val(container.find("ul li.selected").text()).blur();
-            onSelect(container.find("ul li.selected").text());
-        }
-    }
-
-    function onSelect(val) {}
-    $(".searchable input").focus(function() {
-        $(this).closest(".searchable").find("ul").show();
-        $(this).closest(".searchable").find("ul li").show();
-        $('.submit__btn').css({
-            "display": "block"
-        })
-        $('.close__btn').css({
-            "display": "block"
-        })
-        $('.search__btn').css({
-            'display': "none"
-        })
-    });
-    $(".searchable input").blur(function() {
-        let that = this;
-        setTimeout(function() {
-            $(that).closest(".searchable").find("ul").hide();
-            $('.search__btn').css({
-                'display': "block"
-            })
-            $('.submit__btn').css({
-                "display": "none"
-            })
-            $('.close__btn').css({
-                "display": "none"
-            })
-        }, 300);
-    });
-    $('.search__btn').on("click", function() {
-        $(this).closest(".searchable").find("input").val($(this).text()).blur();
-        onSelect($(this).text());
-    });
-    $(document).on("click", ".searchable ul li", function() {
-        $(this).closest(".searchable").find("input").val($(this).text()).blur();
-        onSelect($(this).text());
-    });
-    $(".searchable ul li").hover(function() {
-        $(this).closest(".searchable").find("ul li.selected").removeClass("selected");
-        $(this).addClass("selected");
-    });
-    $('.close__btn').on('click', function() {
-        $('.searchable').find("input").val($(this).text()).blur()
-        $(this).css({
-            "display": "none"
-        })
-    })
-
-    $('#prof_btn').click(function(){
-        $('#profile-menu-offcanvas').addClass('offcanvas-open');
-    });
-
-    $('#profile-menu-offcanvas').click(function(){
-        $('#profile-menu-offcanvas').addClass('offcanvas-open');
-    });
 </script>
 @endsection
