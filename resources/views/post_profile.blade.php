@@ -795,6 +795,7 @@
       let html = '';
       $.each(result, (index, item) => {
         stars = generateStars(item.user_star);
+        console.log(stars);
         html += '<div class="card card-light">';
         html += '<div class="card-header"><b>User : ' + item.user.name + ' ' + stars + '</b></div>';
         html += '<div class="card-body">' + item.review_desc + '</div>';
@@ -824,7 +825,6 @@
         break;
       default:
     }
-    console.log(stars);
     return stars;
   }
 
