@@ -340,6 +340,7 @@
     }
   }
 </style>
+
 @endsection
 @section('content')
 
@@ -547,13 +548,9 @@
       </div>
     </div>
 
-    <span class="heading">User Ratings</span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-    <p>4.1 average based on 254 reviews.</p>
+    <span class="heading">User Ratings</span><br>
+    <span id="avg_stars"></span>
+    <p> Average <span id="avg_star"></span> based on <span id="review_count"></span> reviews.</p>
     <hr style="border:3px solid #f1f1f1">
 
     <div class="row">
@@ -561,56 +558,56 @@
         <div>5 star</div>
       </div>
       <div class="middle">
-        <div class="bar-container">
-          <div class="bar-5"></div>
+        <div class="progress">
+          <div class="progress--striped bg-success" id="five_star_progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
       </div>
       <div class="side right">
-        <div>150</div>
+        <div id="five_star_amount"></div>
       </div>
       <div class="side">
         <div>4 star</div>
       </div>
       <div class="middle">
-        <div class="bar-container">
-          <div class="bar-4"></div>
+        <div class="progress">
+          <div class="progress-bar-striped bg-info" id="four_star_progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
       </div>
       <div class="side right">
-        <div>63</div>
+        <div id="four_star_amount"></div>
       </div>
       <div class="side">
         <div>3 star</div>
       </div>
       <div class="middle">
-        <div class="bar-container">
-          <div class="bar-3"></div>
+        <div class="progress">
+          <div class="progress-bar-striped bg-primary" id="three_star_progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
       </div>
       <div class="side right">
-        <div>15</div>
+        <div id="three_star_amount"></div>
       </div>
       <div class="side">
         <div>2 star</div>
       </div>
       <div class="middle">
-        <div class="bar-container">
-          <div class="bar-2"></div>
+        <div class="progress">
+          <div class="progress-bar-striped bg-warning" id="two_star_progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
       </div>
       <div class="side right">
-        <div>6</div>
+        <div id="two_star_amount"></div>
       </div>
       <div class="side">
         <div>1 star</div>
       </div>
       <div class="middle">
-        <div class="bar-container">
-          <div class="bar-1"></div>
+        <div class="progress">
+          <div class="progress-bar-striped bg-danger" id="one_star_progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
       </div>
       <div class="side right">
-        <div>20</div>
+        <div id="one_star_amount"></div>
       </div>
     </div>
 
@@ -619,11 +616,9 @@
         Review this post
       </div>
       <div class="card-body">
-        <div class="row">
-          <label>Stars</label>
-        </div>
-        <div class="row mt-2">
-          <div id="star_component" class="col-1">
+        <div class="row mt-2 pl-2">
+          <label class="pl-0 ml-2">Rate:</label>
+          <div class="col-1">
             <input type="checkbox" name="chk_one" id="chk_one" />
           </div>
           <div class="col-1">
@@ -639,9 +634,10 @@
             <input type="checkbox" name="chk_five" id="chk_five" />
           </div>
         </div>
-        <div class="row mt-2">
-          <div class="col-8">
-            <textarea id="user_review_input" class="form-control" style="height: 100px" placeholder="Type your review for this post"></textarea>
+        <div class="row">
+          <div class="col-12 col-md-8">
+            <label>Comment:</label>
+            <textarea id="user_review_input" class="form-control" style="height: 100px;" placeholder="Type your review for this post"></textarea>
           </div>
         </div>
         <div class="row">
@@ -720,7 +716,11 @@
 <script>
   var slideIndex = 1;
   showDivs(slideIndex);
-  loadReviews();
+
+  var post_id = $('#post_id').data('post-id');
+
+  loadReviews(post_id);
+  getPostReviewAnalytics(post_id);
 
   function plusDivs(n) {
     showDivs(slideIndex += n);
@@ -744,9 +744,9 @@
   $('#save_review').click(function() {
     let stars = calculateStars();
 
-    if (stars > 0 && $('#user_review_input').val() != null) {
+    if (stars > 0 && $('#user_review_input').val() != '') {
       let data = {
-        'post_id': $('#post_id').data('id'),
+        'post_id': post_id,
         'user_review': $('#user_review_input').val(),
         'user_star': stars
       };
@@ -761,7 +761,9 @@
             'Successfully Review saved!',
             'success'
           );
-          loadReviews();
+          loadReviews(post_id);
+          getPostReviewAnalytics(post_id);
+
           $('input:checkbox').removeAttr('checked');
           $('#user_review_input').val("");
         } else {
@@ -787,15 +789,14 @@
     }
   });
 
-  function loadReviews() {
+  function loadReviews(post_id) {
     let stars;
-    let url = "../../../api/get-post-reviews";
+    let url = "../../../api/get-post-reviews/id/" + post_id;
     let Method = "get";
     ajaxRequest(Method, url, null, function(result) {
       let html = '';
       $.each(result, (index, item) => {
         stars = generateStars(item.user_star);
-        console.log(stars);
         html += '<div class="card card-light">';
         html += '<div class="card-header"><b>User : ' + item.user.name + ' ' + stars + '</b></div>';
         html += '<div class="card-body">' + item.review_desc + '</div>';
@@ -807,9 +808,13 @@
 
   function generateStars(star_count) {
     let stars = '';
-    
-    for(let i = 0; i < star_count; i++) {
+
+    for (let i = 0; i < 5; i++) {
+      if (i < star_count) {
         stars += '<span class="fa fa-star checked"></span>';
+      } else {
+        stars += '<span class="fa fa-star"></span>';
+      }
     }
 
     return stars;
@@ -826,6 +831,39 @@
     });
 
     return count;
+  }
+
+  function getPostReviewAnalytics(post_id) {
+    let url = "../../../api/get-post-review-analytics/id/" + post_id;
+    let Method = "get";
+    ajaxRequest(Method, url, null, function(result) {
+      $('#five_star_amount').html('<b>' + result.five_stars + '</b>');
+      $('#four_star_amount').html('<b>' + result.four_stars + '</b>');
+      $('#three_star_amount').html('<b>' + result.three_stars + '</b>');
+      $('#two_star_amount').html('<b>' + result.two_stars + '</b>');
+      $('#one_star_amount').html('<b>' + result.one_stars + '</b>');
+
+      $('#five_star_progress').css("width", result.five_stars_perc + '%');
+      $('#five_star_progress').html('<b>' + result.five_stars_perc + '%' + '</b>');
+
+      $('#four_star_progress').css("width", result.four_stars_perc + '%');
+      $('#four_star_progress').html('<b>' + result.four_stars_perc + '%' + '</b>');
+
+      $('#three_star_progress').css("width", result.three_stars_perc + '%');
+      $('#three_star_progress').html('<b>' + result.three_stars_perc + '%' + '</b>');
+
+      $('#two_star_progress').css("width", result.two_stars_perc + '%');
+      $('#two_star_progress').html('<b>' + result.two_stars_perc + '%' + '</b>');
+
+      $('#one_star_progress').css("width", result.one_stars_perc + '%');
+      $('#one_star_progress').html('<b>' + result.one_stars_perc + '%' + '</b>');
+
+      $('#avg_star').html(result.avg_star);
+      $('#review_count').html(result.review_count);
+
+      let avg_stars = generateStars(result.avg_star);
+      $('#avg_stars').html(avg_stars);
+    });
   }
 </script>
 @endsection
