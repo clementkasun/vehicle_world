@@ -232,7 +232,7 @@
   }
 
   .container-fluid {
-    max-width: 1400px;
+    max-width: 1500px;
   }
 
   /*# sourceMappingURL=style.css.map */
