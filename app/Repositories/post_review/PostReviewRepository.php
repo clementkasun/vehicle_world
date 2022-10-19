@@ -14,7 +14,7 @@ class PostReviewRepository implements PostReviewInterface
 
     public function createPostReview($request)
     {
-        $user_id = 2;
+        $user_id = $request->user_id;
         $post_review = UserReview::create([
             'user_id' => $user_id,
             'post_id' => $request->post_id,
@@ -32,7 +32,7 @@ class PostReviewRepository implements PostReviewInterface
 
     public function updatePostReview($request)
     {
-        $user_id = 1;
+        $user_id = $request->user_id;
         $post_review = UserReview::find($request->post_id);
         $post_review->user_id = $user_id;
         $post_review->review_desc = $request->user_review;

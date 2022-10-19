@@ -87,4 +87,157 @@
         </div>
     </div>
 </main>
+
+<!--  Start Offcanvas Mobile Menu Section -->
+<div id="mobile-menu-offcanvas" class="offcanvas offcanvas-leftside offcanvas-mobile-menu-section">
+    <!-- Start Offcanvas Header -->
+    <div class="offcanvas-header flex-end">
+
+        <div class="logo">
+            <a href="/">
+                <h1>vehiauto.com</h1>
+            </a>
+        </div>
+
+        <button class="offcanvas-close" aria-label="offcanvas svg icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="5.973" height="10.449" viewBox="0 0 5.973 10.449">
+                <path id="Icon_ionic-ios-arrow-back" data-name="Icon ionic-ios-arrow-back" d="M13.051,11.417,17,7.466a.747.747,0,0,0-1.058-1.054l-4.479,4.476a.745.745,0,0,0-.022,1.03l4.5,4.507A.747.747,0,1,0,17,15.37Z" transform="translate(-11.251 -6.194)" />
+            </svg>
+        </button>
+    </div>
+    <!-- End Offcanvas Header -->
+
+    <!-- Start Offcanvas Mobile Menu Wrapper -->
+    <div class="offcanvas-mobile-menu-wrapper">
+        <!-- Start Mobile Menu  -->
+        <div class="mobile-menu-bottom">
+            <!-- Start Mobile Menu Nav -->
+            <div class="offcanvas-menu">
+                <ul>
+                    <li>
+                        <a href="/"><span>Home</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><span>Pages</span></a>
+                        <ul class="mobile-sub-menu">
+                            <li><a href="/analysis">Analyse</a></li>
+                            <li><a href="/create-post">Create post</a></li>
+                            <li><a href="/user_profile">User Profile</a></li>
+                            <li><a href="/logout">Logout</a></li>
+                            <li><a href="/login_cust">Login</a></li>
+                            <li><a href="/register_customer">Register</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><span>More Details</span></a>
+                        <ul class="mobile-sub-menu">
+                            <li><a href="/contacts">Contacts</a></li>
+                            <li><a href="/about_us">About us</a></li>
+                            <li><a href="/help">Help</a></li>
+                        </ul>
+
+                    </li>
+                </ul>
+            </div> <!-- End Mobile Menu Nav -->
+        </div> <!-- End Mobile Menu -->
+
+        <!-- Start Mobile contact Info -->
+        <div class="mobile-contact-info">
+            <address class="address">
+                <span>Address: Kurunegala,sri lanka</span>
+                <span>Call Us: 0763993288</span>
+                <span>Email: ksaunclement12345@mail.com</span>
+            </address>
+        </div>
+        <!-- End Mobile contact Info -->
+
+    </div> <!-- End Offcanvas Mobile Menu Wrapper -->
+</div> <!-- ...:::: End Offcanvas Mobile Menu Section:::... -->
+
+<!--  Start Offcanvas Profile Menu Section -->
+<div id="profile-menu-offcanvas" class="offcanvas offcanvas-rightside">
+    <!-- Start Offcanvas Header -->
+    <div class="offcanvas-header flex-start offcanvas-modify">
+        <button class="offcanvas-close" aria-label="offcanvas svg icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="5.973" height="10.449" viewBox="0 0 5.973 10.449">
+                <path id="Icon_ionic-ios-arrow-back" data-name="Icon ionic-ios-arrow-back" d="M13.051,11.417,17,7.466a.747.747,0,0,0-1.058-1.054l-4.479,4.476a.745.745,0,0,0-.022,1.03l4.5,4.507A.747.747,0,1,0,17,15.37Z" transform="translate(-11.251 -6.194)" />
+            </svg>
+        </button>
+        <span>User Profile</span>
+
+    </div> <!-- End Offcanvas Header -->
+    <!-- Start Offcanvas Mobile Menu Wrapper -->
+    <div class="offcanvas-profile-menu-wrapper">
+        <!-- ...:::Start Profile Card Section:::... -->
+        <div class="profile-card-section section-gap-top-25">
+            <div class="profile-card-wrapper">
+                <div class="image">
+                    <?php
+
+                    $user = auth()->user();
+                    $user_path = '';
+                    (isset($user->profile_photo_path)) ? $user_path = '/storage/' . $user->profile_photo_path : $user_path = './dist/img/avatar5.png';
+                    ?>
+                    <img class="img-fluid" width="10" height="10" src="{{ asset($user_path) }}" alt="image">
+                </div>
+                <div class="content">
+                    @if($user != null)
+                    <h2 class="name">{{ $user->name . ' ' .$user->last_name }}</h2>
+                    <span class="email">{{ $user->email }}</span>
+                    <span class="user_name">{{ $user->user_name }}</span>
+                    @endif
+                </div>
+                <div class="profile-shape profile-shape-1"><img class="img-fluid" width="61" height="50" src="assets2/images/profile-shape-1.svg" alt="image"></div>
+                <div class="profile-shape profile-shape-2"><img class="img-fluid" width="48" height="59" src="assets2/images/profile-shape-2.svg" alt="image"></div>
+            </div>
+        </div>
+        <!-- ...:::End Profile Card Section:::... -->
+
+        <!-- ...:::Start Profile Details Section:::... -->
+        <div class="profile-details-section section-gap-top-30">
+            <div class="profile-details-wrapper">
+                <div class="profile-details-top">
+                    <!-- <div class="left">
+                                <span class="text">Total Buy</span>
+                                <span class="price">$2000.00</span>
+                            </div> -->
+                    <div class="right">
+                        <button aria-label="Wishlist" class="btn btn--size-58-58 btn--font-size-22 btn--center btn--round btn--color-radical-red btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart"></i></button>
+                    </div>
+                </div>
+                <div class="profile-details-bottom">
+                    <ul class="profile-user-list">
+                        <li class="profile-list-item">
+                            <ul class="profile-single-list">
+                                <li class="list-item">
+                                    <span class="title">Setting</span>
+                                </li>
+                                <li class="list-item">
+                                    <a href="./user_profile" class="profile-link"><span class="icon"><i class="icon icon-carce-user"></i></span>Account Setting</a>
+                                </li>
+                                <!-- <li class="list-item">
+                                    <a href="/" class="profile-link"><span class="icon"><i class="icon icon-carce-briefcase"></i></span>Billing & Payment</a>
+                                </li> -->
+                                <li class="list-item">
+                                    <a href="./notifications" class="profile-link"><span class="icon"><i class="icon icon-carce-bell"></i></span>Notification</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="profile-list-item">
+                            <ul class="profile-single-list">
+                                <li class="list-item">
+                                    <a href="./logout" class="profile-link"><span class="icon"><i class="icon icon-carce-login"></i></span>Log Out</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- ...:::End Profile Details Section:::... -->
+    </div> <!-- End Offcanvas Mobile Menu Wrapper -->
+</div> <!-- ...:::: End Offcanvas Profile Menu Section:::... -->
+
+<div class="offcanvas-overlay"></div>
 @endsection

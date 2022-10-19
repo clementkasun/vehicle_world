@@ -343,9 +343,15 @@
 
 @endsection
 @section('content')
-
+<?php
+if (auth()->check() == true) {
+  $user_id = auth()->user()->id;
+} else {
+  $user_id = null;
+}
+?>
 <input type="text" id="post_id" name="post_id" data-post-id="{{ $post_data->id }}" hidden>
-<input type="text" id="user_id" name="user_id" data-user-id="" hidden>
+<input type="text" id="user_id" name="user_id" data-user-id="{{ $user_id }}" hidden>
 <!-- Profile Image -->
 <div class="card card-success mt-2" style="padding: 0">
   <div class="card-header">
@@ -610,8 +616,8 @@
         <div id="one_star_amount"></div>
       </div>
     </div>
-
-    <div class="card card-light mt-2">
+@if($user_id != null)
+    <div id="user_review" class="card card-light mt-2">
       <div class="card-header">
         Review this post
       </div>
@@ -647,7 +653,18 @@
         </div>
       </div>
     </div>
+    @else
+    <div class="row">
+      <div id="review_warn" class="card card-light">
+        <div class="card-header">
 
+        </div>
+        <div class="card-body">
+          <h2>Please! log in to the system for review this post. <span><a class="text-primary" href="{{ asset('/login') }}">login</a></span></h2>
+        </div>
+      </div>
+    </div>
+    @endif
     <div class="row mt-2">
       <div class="col-12">
         <div class="card card-light">
@@ -746,6 +763,7 @@
 
     if (stars > 0 && $('#user_review_input').val() != '') {
       let data = {
+        'user_id': $('#user_id').data('user-id'),
         'post_id': post_id,
         'user_review': $('#user_review_input').val(),
         'user_star': stars
