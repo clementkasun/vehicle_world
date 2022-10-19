@@ -641,7 +641,7 @@
         </div>
         <div class="row mt-2">
           <div class="col-8">
-            <textarea id="user_review_input" class="form-control" style="height: 100px"></textarea>
+            <textarea id="user_review_input" class="form-control" style="height: 100px" placeholder="Type your review for this post"></textarea>
           </div>
         </div>
         <div class="row">
@@ -649,101 +649,102 @@
             <button id="save_review" name="save_review" class="btn bg-primary pl-2 pr-2 pt-1 pb-1 mt-2">Save Review</button>
           </div>
         </div>
+      </div>
+    </div>
 
-        <div class="row mt-2">
-          <div class="col-12">
-            <div class="card card-light">
-              <div class="card-header">
-                <h3><b>Reviews</b></h3>
-              </div>
-              <div class="card-body" id="reviews">
+    <div class="row mt-2">
+      <div class="col-12">
+        <div class="card card-light">
+          <div class="card-header">
+            <h3><b>Reviews</b></h3>
+          </div>
+          <div class="card-body" id="reviews">
 
-              </div>
-            </div>
           </div>
         </div>
       </div>
-
     </div>
-    <div class="card-footer">
-      <div class="row">
-        <div class="col-12">
-          <div class="card card-success">
-            <div class="card-header d-flex justify-content-center">
-              Related Results for your search
-            </div>
-            <div class="card-body">
-              <div class="row">
-                @if($related_posts[0] != null)
-                @foreach($related_posts as $post)
-                <div class='col-12 col-md-4'>
-                  <div class="card card-light mt-2 w-100" style="border-width: 2px; border-color: black;">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-5">
-                          <img src="{{asset(''.$post->main_image)}}" style="height: 8em;" class="w-100" alt='main_img' />
-                        </div>
-                        <div class="col-7">
-                          <a href="/public/api/get_post_profile/id/{{$post->id}}"><b style="font-size: 14px" class="text-success">{{$post->post_title}}</b></br></a>
-                          <span style="font-size: 12px" class="text-dark"><b>Price: </b> {{$post->price}} </span>
-                          <span style="font-size: 12px" class="text-dark"><b>Location: </b> {{$post->location}} </span>
-                        </div>
+
+  </div>
+  <div class="card-footer">
+    <div class="row">
+      <div class="col-12">
+        <div class="card card-success">
+          <div class="card-header d-flex justify-content-center">
+            Related Results for your search
+          </div>
+          <div class="card-body">
+            <div class="row">
+              @if($related_posts[0] != null)
+              @foreach($related_posts as $post)
+              <div class='col-12 col-md-4'>
+                <div class="card card-light mt-2 w-100" style="border-width: 2px; border-color: black;">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-5">
+                        <img src="{{asset(''.$post->main_image)}}" style="height: 8em;" class="w-100" alt='main_img' />
+                      </div>
+                      <div class="col-7">
+                        <a href="/public/api/get_post_profile/id/{{$post->id}}"><b style="font-size: 14px" class="text-success">{{$post->post_title}}</b></br></a>
+                        <span style="font-size: 12px" class="text-dark"><b>Price: </b> {{$post->price}} </span>
+                        <span style="font-size: 12px" class="text-dark"><b>Location: </b> {{$post->location}} </span>
                       </div>
                     </div>
                   </div>
                 </div>
-                @endforeach
               </div>
+              @endforeach
             </div>
-            <div class="card-footer">
-              @if(isset($request))
-              <div class="text-center mt-1">{{ $related_posts->appends($request)->links('pagination::bootstrap-4') }}</div>
-              @endif
+          </div>
+          <div class="card-footer">
+            @if(isset($request))
+            <div class="text-center mt-1">{{ $related_posts->appends($request)->links('pagination::bootstrap-4') }}</div>
+            @endif
 
-              @if(!isset($request))
-              <div class="text-center mt-1">{{ $related_posts->links('pagination::bootstrap-4') }}</div>
-              @endif
+            @if(!isset($request))
+            <div class="text-center mt-1">{{ $related_posts->links('pagination::bootstrap-4') }}</div>
+            @endif
 
-              @endif
-            </div>
+            @endif
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+@endsection
 
-  @endsection
+@section('pageScripts')
+<script src="https://cdn.datatables.net/fixedheader/3.2.3/js/dataTables.fixedHeader.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
+<script>
+  var slideIndex = 1;
+  showDivs(slideIndex);
+  loadReviews();
 
-  @section('pageScripts')
-  <script src="https://cdn.datatables.net/fixedheader/3.2.3/js/dataTables.fixedHeader.min.js"></script>
-  <script src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
-  <script>
-    var slideIndex = 1;
-    showDivs(slideIndex);
-    loadReviews();
+  function plusDivs(n) {
+    showDivs(slideIndex += n);
+  }
 
-    function plusDivs(n) {
-      showDivs(slideIndex += n);
+  function showDivs(n) {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    if (n > x.length) {
+      slideIndex = 1
     }
-
-    function showDivs(n) {
-      var i;
-      var x = document.getElementsByClassName("mySlides");
-      if (n > x.length) {
-        slideIndex = 1
-      }
-      if (n < 1) {
-        slideIndex = x.length
-      }
-      for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
-      }
-      // x[slideIndex - 1].setAttribute(style.display) = "block";
+    if (n < 1) {
+      slideIndex = x.length
     }
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    // x[slideIndex - 1].setAttribute(style.display) = "block";
+  }
 
-    $('#save_review').click(function() {
-      let stars = calculateStars();
+  $('#save_review').click(function() {
+    let stars = calculateStars();
 
+    if (stars > 0 && $('#user_review_input').val() != null) {
       let data = {
         'post_id': $('#post_id').data('id'),
         'user_review': $('#user_review_input').val(),
@@ -766,7 +767,7 @@
         } else {
           Swal.fire({
             icon: 'error',
-            title: 'Oops...',
+            title: 'System Error',
             text: result.msg
           })
         }
@@ -776,60 +777,68 @@
           callBack(result);
         }
       });
+
+    } else {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Missing Inputs',
+        text: 'You must select one or more stars and type description field to save as a review'
+      })
+    }
+  });
+
+  function loadReviews() {
+    let stars;
+    let url = "../../../api/get-post-reviews";
+    let Method = "get";
+    ajaxRequest(Method, url, null, function(result) {
+      let html = '';
+      $.each(result, (index, item) => {
+        stars = generateStars(item.user_star);
+        html += '<div class="card card-light">';
+        html += '<div class="card-header"><b>User : ' + item.user.name + ' ' + stars + '</b></div>';
+        html += '<div class="card-body">' + item.review_desc + '</div>';
+        html += '</div>';
+      });
+      $('#reviews').html(html);
+    });
+  }
+
+  function generateStars(star_count) {
+    let stars = '';
+    switch (star_count) {
+      case 1:
+        stars += '<span class="fa fa-star checked"></span>';
+        break;
+      case 2:
+        stars += '<span class="fa fa-star checked"></span><span class="fa fa-star checked"></span>';
+        break;
+      case 3:
+        stars += '<span class="fa fa-star checked"></span><span class="fa fa-star checked"></span></span><span class="fa fa-star checked"></span>';
+        break;
+      case 4:
+        stars += '<span class="fa fa-star checked"></span><span class="fa fa-star checked"></span></span><span class="fa fa-star checked"></span></span><span class="fa fa-star checked"></span>';
+        break;
+      case 5:
+        stars += '<span class="fa fa-star checked"></span><span class="fa fa-star checked"></span></span><span class="fa fa-star checked"></span></span><span class="fa fa-star checked"></span></span><span class="fa fa-star checked"></span>';
+        break;
+      default:
+    }
+    console.log(stars);
+    return stars;
+  }
+
+  function calculateStars() {
+    var count = 0;
+    const checkboxes = ["chk_one", "chk_two", "chk_three", "chk_four", "chk_five"];
+
+    $.each(checkboxes, (index, item) => {
+      if ($('#' + item).prop('checked') == true) {
+        count += 1;
+      }
     });
 
-    function loadReviews() {
-      let stars;
-      let url = "../../../api/get-post-reviews";
-      let Method = "get";
-      ajaxRequest(Method, url, null, function(result) {
-        let html = '';
-        $.each(result, (index, item) => {
-          stars = generateStars(item.user_star);
-          html += '<div class="card card-light">';
-          html += '<div class="card-header"><b>User : ' + item.user.name + ' ' + stars +'</b></div>';
-          html += '<div class="card-body">' + item.review_desc + '</div>';
-          html += '</div>';
-        });
-        $('#reviews').html(html);
-      });
-    }
-
-    function generateStars(star_count) {
-      let stars = '';
-      switch (star_count) {
-        case 1:
-          stars += '<span class="fa fa-star checked"></span>';
-          break;
-        case 2:
-          stars += '<span class="fa fa-star checked"></span><span class="fa fa-star checked"></span>';
-          break;
-        case 3:
-          stars += '<span class="fa fa-star checked"></span><span class="fa fa-star checked"></span></span><span class="fa fa-star checked"></span>';
-          break;
-        case 4:
-          stars += '<span class="fa fa-star checked"></span><span class="fa fa-star checked"></span></span><span class="fa fa-star checked"></span></span><span class="fa fa-star checked"></span>';
-          break;
-        case 5:
-          stars += '<span class="fa fa-star checked"></span><span class="fa fa-star checked"></span></span><span class="fa fa-star checked"></span></span><span class="fa fa-star checked"></span></span><span class="fa fa-star checked"></span>';
-          break;
-        default:
-      }
-
-      return stars;
-    }
-
-    function calculateStars() {
-      var count = 0;
-      const checkboxes = ["chk_one", "chk_two", "chk_three", "chk_four", "chk_five"];
-
-      $.each(checkboxes, (index, item) => {
-        if ($('#' + item).prop('checked') == true) {
-          count += 1;
-        }
-      });
-
-      return count;
-    }
-  </script>
-  @endsection
+    return count;
+  }
+</script>
+@endsection
