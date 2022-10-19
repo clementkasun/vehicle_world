@@ -807,24 +807,11 @@
 
   function generateStars(star_count) {
     let stars = '';
-    switch (star_count) {
-      case 1:
+    
+    for(let i = 0; i < star_count; i++) {
         stars += '<span class="fa fa-star checked"></span>';
-        break;
-      case 2:
-        stars += '<span class="fa fa-star checked"></span><span class="fa fa-star checked"></span>';
-        break;
-      case 3:
-        stars += '<span class="fa fa-star checked"></span><span class="fa fa-star checked"></span></span><span class="fa fa-star checked"></span>';
-        break;
-      case 4:
-        stars += '<span class="fa fa-star checked"></span><span class="fa fa-star checked"></span></span><span class="fa fa-star checked"></span></span><span class="fa fa-star checked"></span>';
-        break;
-      case 5:
-        stars += '<span class="fa fa-star checked"></span><span class="fa fa-star checked"></span></span><span class="fa fa-star checked"></span></span><span class="fa fa-star checked"></span></span><span class="fa fa-star checked"></span>';
-        break;
-      default:
     }
+
     return stars;
   }
 
