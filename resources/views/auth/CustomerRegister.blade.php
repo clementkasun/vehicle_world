@@ -95,6 +95,8 @@
 @endsection
 
 @section('pageScripts')
+<!-- validation -->
+<script src="{{ asset('/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
 <script>
     var cust_reg_frm;
 

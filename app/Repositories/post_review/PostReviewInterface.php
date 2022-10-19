@@ -8,7 +8,8 @@ interface PostReviewInterface {
     public function updatePostReview($request);
     public function deletePostReview($id);
     public function getPostReviewItem($id);
-    public function getPostReviews();
+    public function getPostReviews($id);
+    public function calPostReviewAnalytics($id);
 }
 
 ?>

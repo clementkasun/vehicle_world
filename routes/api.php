@@ -82,4 +82,5 @@ Route::post('/create-post-review', [UserReviewController::class, 'create_post_re
 Route::put('/update-post-review', [UserReviewController::class, 'update_post_review']);
 Route::delete('/delete-post-review', [UserReviewController::class, 'delete_post_review']);
 Route::get('/get-post-review-item', [UserReviewController::class, 'get_post_review_item']);
-Route::get('/get-post-reviews', [UserReviewController::class, 'get_post_reviews']);
+Route::get('/get-post-reviews/id/{post_id}', [UserReviewController::class, 'get_post_reviews']);
+Route::get('/get-post-review-analytics/id/{post_id}', [UserReviewController::class, 'get_review_analytics']);

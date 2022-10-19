@@ -34,8 +34,13 @@ class UserReviewController extends Controller
         return $this->postReviewRepository->getPostReviewItem($id);
     }
 
-    public function get_post_reviews()
+    public function get_post_reviews($id)
     {
-        return $this->postReviewRepository->getPostReviews();
+        return $this->postReviewRepository->getPostReviews($id);
+    }
+
+    public function get_review_analytics($id)
+    {
+        return $this->postReviewRepository->calPostReviewAnalytics($id);
     }
 }
