@@ -161,7 +161,7 @@
   .add-to-cart,
   .like {
     background: #ff9f1a;
-    padding: 1.2em 1.5em;
+    padding: 0.5em 0.5em;
     border: none;
     text-transform: UPPERCASE;
     font-weight: bold;
@@ -533,7 +533,7 @@ if (auth()->check() == true) {
         </h5> -->
         <div class="action">
           <!-- <button class="add-to-cart btn btn-default" type="button">add to cart</button> -->
-          <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+          <button class="like btn btn-default" type="button" id="btn-favourite"><span class="fa fa-heart"></span></button>
         </div>
       </div>
 
@@ -616,7 +616,7 @@ if (auth()->check() == true) {
         <div id="one_star_amount"></div>
       </div>
     </div>
-@if($user_id != null)
+    @if($user_id != null)
     <div id="user_review" class="card card-light mt-2">
       <div class="card-header">
         Review this post
@@ -882,6 +882,45 @@ if (auth()->check() == true) {
       let avg_stars = generateStars(result.avg_star);
       $('#avg_stars').html(avg_stars);
     });
+  }
+
+  $('#btn-favourite').click(function() {
+    save_favourite();
+  });
+
+  function save_favourite() {
+    console.log($('#user_id').data('user-id'));
+    let url = "../../../api/create-user-favourite";
+    let Method = "post";
+    let data = {
+      'user_id': $('#user_id').data('user-id'),
+      'post_id': post_id
+    };
+
+    if ($('#user_id').data('user-id') != '') {
+      ajaxRequest(Method, url, data, function(result) {
+        if (result.status == 1) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Successfully saved',
+            text: 'You must select one or more stars and type description field to save as a review'
+          })
+        } else {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Failed the operation',
+            text: "Couldn't save your favourite itemr"
+          })
+        }
+      });
+
+    } else {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Not loged in to system',
+        text: "You must loged in to the system to add favourites"
+      })
+    }
   }
 </script>
 @endsection

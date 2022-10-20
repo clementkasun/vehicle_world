@@ -10,13 +10,17 @@ class UserFavourite extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'profile_photo_path',
-        'address',
-        'contact_no'
+        'user_id',
+        'post_id',
+        'created_at',
+        'updated_at',
     ];
 
-    
+    public function User() {
+        return $this->belongsTo(User::class);
+    }
+
+    public function Post() {
+        return $this->belongsTo(Post::class);
+    }
 }

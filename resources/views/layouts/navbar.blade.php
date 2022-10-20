@@ -187,8 +187,8 @@
                     <span class="user_name">{{ $user->user_name }}</span>
                     @endif
                 </div>
-                <div class="profile-shape profile-shape-1"><img class="img-fluid" width="61" height="50" src="assets2/images/profile-shape-1.svg" alt="image"></div>
-                <div class="profile-shape profile-shape-2"><img class="img-fluid" width="48" height="59" src="assets2/images/profile-shape-2.svg" alt="image"></div>
+                <div class="profile-shape profile-shape-1"><img class="img-fluid" width="61" height="50" src="{{ asset('assets2/images/profile-shape-1.svg')}}" alt="image"></div>
+                <div class="profile-shape profile-shape-2"><img class="img-fluid" width="48" height="59" src="{{ asset('assets2/images/profile-shape-2.svg')}}" alt="image"></div>
             </div>
         </div>
         <!-- ...:::End Profile Card Section:::... -->

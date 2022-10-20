@@ -4,6 +4,7 @@ use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserFavouriteController;
 
 /*
   |--------------------------------------------------------------------------
@@ -44,7 +45,8 @@ Route::get('/services', function () {
 Route::get('/contacts', function () {
     return view('contacts');
 });
-
+Route::get('/get_post_profile/id/{post_id}', [PostController::class, 'get_post_profile']);
+Route::get('/user-favourite-page/id/{user_id}', [UserFavouriteController::class, 'index_data']);
 
 
 // Auth::routes();

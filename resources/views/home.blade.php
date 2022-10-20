@@ -11,34 +11,27 @@
         <div class="search-n-filter-area home-one">
             <div class="search-box">
 
-                <!-- <div class="searchable select">
-                    <input type="text" placeholder="Search..." onkeyup="filterFunction(this,event)">
-                    <ul>
-                        <li>mexico city</li>
-                        <li>Bulgaria</li>
-                        <li>san francisco</li>
-                        <li>Egypt</li>
-                        <li>texas</li>
-                    </ul>
+                <div class="searchable select">
+                    <input type="text" placeholder="Search..." id="main_search_input">
                     <button class="btn search__btn" aria-label="Search Icon" type="submit">
                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12.003" viewBox="0 0 12 12.003">
                             <path id="Icon_ionic-ios-search" data-name="Icon ionic-ios-search" d="M13.859,13.131,10.522,9.762a4.756,4.756,0,1,0-.722.731l3.316,3.347a.514.514,0,0,0,.725.019A.517.517,0,0,0,13.859,13.131Zm-7.075-2.6a3.756,3.756,0,1,1,2.656-1.1A3.732,3.732,0,0,1,6.784,10.534Z" transform="translate(-2 -1.997)" fill="#171717" />
                         </svg>
                     </button>
 
-                    <button class="btn submit__btn" aria-label="Search Icon" type="submit">
+                    <button class="btn submit__btn" aria-label="Search Icon" type="submit" id="main_search_btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="12" viewBox="0 0 18 12">
                             <path id="Icon_ionic-ios-arrow-round-forward" data-name="Icon ionic-ios-arrow-round-forward" d="M19.354,11.481a.816.816,0,0,0-.006,1.15l3.8,3.806H8.682a.812.812,0,0,0,0,1.625H23.143l-3.8,3.806a.822.822,0,0,0,.006,1.15.81.81,0,0,0,1.144-.006l5.152-5.187h0a.912.912,0,0,0,.169-.256.775.775,0,0,0,.063-.312.814.814,0,0,0-.231-.569L20.492,11.5A.8.8,0,0,0,19.354,11.481Z" transform="translate(-7.875 -11.252)" fill="#aaa" />
                         </svg>
                     </button>
 
-                    <button class="btn close__btn">
+                    <button class="btn close__btn" id="btn_search_cancel">
                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
                             <path id="Icon_metro-cancel" data-name="Icon metro-cancel" d="M6.857.643a6,6,0,1,0,6,6,6,6,0,0,0-6-6Zm0,10.875a4.875,4.875,0,1,1,4.875-4.875A4.875,4.875,0,0,1,6.857,11.518ZM8.732,3.643,6.857,5.518,4.982,3.643,3.857,4.768,5.732,6.643,3.857,8.518,4.982,9.643,6.857,7.768,8.732,9.643,9.857,8.518,7.982,6.643,9.857,4.768Z" transform="translate(-0.857 -0.643)" fill="#aaa" />
                         </svg>
                     </button>
 
-                </div> -->
+                </div>
 
                 <button id="filter-trigger" aria-label="Filter Icon" class="filter_btn btn--radius btn--radical-red btn--color-white btn--box-shadow btn--size-40-40 btn--center btn--font-size-22"><i class="icon icon-carce-filter"></i></button>
             </div>
@@ -55,88 +48,6 @@
                                 <div class="widget-price-range">
                                     <input type="text" id="price-range-slider">
                                 </div>
-                            </div>
-                        </div>
-                        <ul class="product-variable-lists">
-                            <li class="list-item">
-                                <div class="left">Size</div>
-                                <div class="right">
-                                    <ul class="size-chart inner-child-item">
-                                        <li>
-                                            <label for="samll">
-                                                <input type="radio" name="size" id="samll" checked="">
-                                                <span class="size-text">S</span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label for="medium">
-                                                <input type="radio" name="size" id="medium">
-                                                <span class="size-text">M</span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label for="large">
-                                                <input type="radio" name="size" id="large">
-                                                <span class="size-text">L</span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label for="xlarge">
-                                                <input type="radio" name="size" id="xlarge">
-                                                <span class="size-text">XL</span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label for="xxlarge">
-                                                <input type="radio" name="size" id="xxlarge">
-                                                <span class="size-text">XXL</span>
-                                            </label>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="list-item">
-                                <div class="left">Color</div>
-                                <div class="right">
-                                    <ul class="color-chart inner-child-item">
-                                        <li>
-                                            <label for="blue">
-                                                <input type="radio" name="color" id="blue">
-                                                <span class="color-box color-box--blue"></span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label for="orange">
-                                                <input type="radio" name="color" id="orange" checked="">
-                                                <span class="color-box color-box--orange"></span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label for="violet">
-                                                <input type="radio" name="color" id="violet">
-                                                <span class="color-box color-box--violet"></span>
-                                            </label>
-                                        </li>
-                                        <li>
-                                            <label for="pink">
-                                                <input type="radio" name="color" id="pink">
-                                                <span class="color-box color-box--pink"></span>
-                                            </label>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-
-                        </ul>
-                        <div class="shop-filter-block">
-                            <h4 class="shop-filter-block__title">Brand</h4>
-                            <div class="shop-filter-block__content">
-                                <ul class="shop-filter-block__brand">
-                                    <li><button>HasThemes</button></li>
-                                    <li><button class="active">HasTech</button></li>
-                                    <li><button>Bootxperts</button></li>
-                                    <li><button>Codecarnival</button></li>
-                                </ul>
                             </div>
                         </div> -->
                         <section id="search_container" class="mt-2">
@@ -371,7 +282,7 @@
                     </section>
                     <div class="shop-filter-block">
                         <button class="apply-btn" id="filter_btn">APPLY</button>
-                        <button class="cancel-btn">CANCEL</button>
+                        <button class="cancel-btn" id="btn_search_cancel">CANCEL</button>
                     </div>
                 </div>
             </div>
@@ -573,6 +484,24 @@
         loadTable(data, url, 'POST');
     });
 
+    $('#main_search_btn').click(function(){
+        filter_with_main_search();
+    });
+
+    $('#btn_search_cancel').click(function(){
+        // $('#search_form')[0].reset();
+        alert();
+    });
+
+    function filter_with_main_search() {
+        let data = { 
+            'searched_key' : $('#main_search_input').val()
+        };
+        let url = './api/filter_by_main_search';
+
+        loadTable(data, url, 'get');
+    }
+
     function loadMakes(callBack) {
         let option = '';
         ajaxRequest("GET", "{{ asset('/api/get_makes') }}", null, function(resp) {
@@ -623,7 +552,7 @@
                     let html = '';
                     html += '<div class="row">';
                     html += '<div class="card card-light w-100" style="border-width: 2px; border-color: black">';
-                    html += '<a href="/public/api/get_post_profile/id/' + row.id + '">';
+                    html += '<a href="/public/get_post_profile/id/' + row.id + '">';
                     html += '<div class="card-body">';
                     html += '<div class="row">';
                     html += '<div class="col-6 col-md-3">';
@@ -663,6 +592,5 @@
         });
 
     }
-
 </script>
 @endsection

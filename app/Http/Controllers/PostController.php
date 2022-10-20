@@ -62,6 +62,11 @@ class PostController extends Controller
         return $this->postRepository->filteredPosts($request);
     }
 
+    public function filter_by_main_search(Request $request)
+    {
+        return $this->postRepository->searchPosts($request);
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -82,11 +87,11 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-       return $this->postRepository->removePost($id);
+        return $this->postRepository->removePost($id);
     }
 
     public function soldPost($id)
     {
-       return $this->postRepository->changePostAsSold($id);
+        return $this->postRepository->changePostAsSold($id);
     }
 }

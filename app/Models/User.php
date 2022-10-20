@@ -52,4 +52,12 @@ class User extends Authenticatable
     public function UserReview() {
         return $this->hasMany(UserReview::class);
     }
+
+    public function UserFavourite() {
+        return $this->hasMany(UserReview::class);
+    }
+
+    public function post() {
+        return $this->hasMany(Post::class);
+    }
 }

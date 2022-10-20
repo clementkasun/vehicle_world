@@ -11,6 +11,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TestJsonController;
 use App\Http\Controllers\JsonResultsController;
 use App\Http\Controllers\SupportMailController;
+use App\Http\Controllers\UserFavouriteController;
 use App\Http\Controllers\UserReviewController;
 
 /*
@@ -54,13 +55,13 @@ Route::post('/sanctum/token', [UserController::class, 'authToken']);
 //apis for post 
 Route::post('/save_post', [PostController::class, 'store']);
 Route::get('/get_posts', [PostController::class, 'show']);
-Route::get('/get_post_profile/id/{post_id}', [PostController::class, 'get_post_profile']);
 Route::get('/get_posts_type/id/{post_id}', [PostController::class, 'edit']);
 Route::get('/get_selected_post/id/{post_id}', [PostController::class, 'get_selected_post']);
 //Route::any('/filtered_posts', [PostController::class, 'filtered_adds']);
 Route::post('/update_post/id/{post_id}', [PostController::class, 'update']);
 Route::delete('/delete_post/id/{post_id}', [PostController::class, 'destroy']);
 Route::post('/filtered_posts', [PostController::class, 'filtered_posts']);
+Route::get('/filter_by_main_search', [PostController::class, 'filter_by_main_search']);
 
 //basic api's
 Route::get('get_makes', [VehicleMakeController::class, 'get_vehicle_makes']);
@@ -84,3 +85,8 @@ Route::delete('/delete-post-review', [UserReviewController::class, 'delete_post_
 Route::get('/get-post-review-item', [UserReviewController::class, 'get_post_review_item']);
 Route::get('/get-post-reviews/id/{post_id}', [UserReviewController::class, 'get_post_reviews']);
 Route::get('/get-post-review-analytics/id/{post_id}', [UserReviewController::class, 'get_review_analytics']);
+
+//user favourite api's
+Route::post('/create-user-favourite', [UserFavouriteController::class, 'create_favourite_item']);
+Route::get('/get-user-favourites', [UserFavouriteController::class, 'get_all_favourite']);
+Route::get('/remove-user-favourite/id/{post_id}', [UserFavouriteController::class, 'removeFavourite']);

@@ -21,4 +21,11 @@ class Post extends Model {
         return $this->belongsTo(Vehicle::class);
     }
 
+    public function User() {
+        return $this->belongsTo(User::class);
+    }
+
+    public function UserFavourite() {
+        return $this->hasOne(UserFavourite::class);
+    }
 }
