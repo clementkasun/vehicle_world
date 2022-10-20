@@ -58,7 +58,7 @@
 <script src="{{ asset('/plugins/select2/js/select2.full.min.js') }}"></script>
 <script src="{{ asset('/plugins/datatables/jquery.dataTables.js')}}"></script>
 <!--Main JS (Common Activation Codes)-->
-<script src="assets2/js/main.js"></script>
+<script src="{{ asset('assets2/js/main.js')}}"></script>
 
 <script src="https://cdn.datatables.net/fixedheader/3.2.3/js/dataTables.fixedHeader.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>

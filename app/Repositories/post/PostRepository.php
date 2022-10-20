@@ -907,4 +907,10 @@ class PostRepository implements PostInterface
             ->get()
             ->toArray();
     }
+
+    public function searchPosts($request)
+    {
+        $posts = Post::where('post_title', $request->searched_key)->get();
+        return $posts;
+    }
 }
