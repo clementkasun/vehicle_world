@@ -7,6 +7,7 @@ interface FavouriteInterface {
     public function createFavourite($request);
     public function getAllFavourites();
     public function removeFavourite($id);
+    public function mostFavouriteVehicles();
 }
 
 ?>

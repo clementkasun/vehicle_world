@@ -30,4 +30,8 @@ class UserFavouriteController extends Controller
        return $this->userFavouriteRepository->removeFavourite($id);
     }
 
+    function mostFavouriteVehicles(){
+       return $this->userFavouriteRepository->mostFavouriteVehicles();
+    }
+
 }

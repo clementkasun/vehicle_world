@@ -304,13 +304,13 @@
                                     </div>
                                     <div class="inner-wrapper">
                                         <div class="content">
-                                            <p class="title-tag">Sell</p>
-                                            <h1 class="title">Your</h1>
+                                            <p class="title-tag">1st Most</p>
+                                            <h1 class="title">Favourite</h1>
                                             <h2 class="title">Vehicle</h2>
-                                            <h3 class="title">Free</h3>
+                                            <h3 class="title">of the month</h3>
                                         </div>
                                         <div class="product-img">
-                                            <img width="149" height="127" class="img-fluid" class="img-fluid" src="assets2/images/hero/product/product-4.jpg" alt="image">
+                                            <img width="149" height="127" class="img-fluid" id="favour_vehicle_one" src="" alt="image">
                                             <div class="shape shape-1"><img width="83" height="83" class="img-fluid" src="assets2/images/hero/shape/shape-dotted.png" alt="image"></div>
                                         </div>
                                     </div>
@@ -323,13 +323,13 @@
                                     </div>
                                     <div class="inner-wrapper">
                                         <div class="content">
-                                            <p class="title-tag">Sell</p>
-                                            <h1 class="title">Your</h1>
+                                            <p class="title-tag">2nd </p>
+                                            <h1 class="title">Favourite</h1>
                                             <h2 class="title">Vehicle</h2>
-                                            <h3 class="title">Free</h3>
+                                            <h3 class="title">of the month</h3>
                                         </div>
                                         <div class="product-img">
-                                            <img width="127" height="98" class="img-fluid" class="img-fluid" src="assets2/images/hero/product/product-2.png" alt="image">
+                                            <img width="127" height="98" class="img-fluid" id="favour_vehicle_two" src="" alt="image">
                                             <div class="shape shape-1"><img width="83" height="83" class="img-fluid" src="assets2/images/hero/shape/shape-dotted.png" alt="image"></div>
                                         </div>
                                     </div>
@@ -342,13 +342,13 @@
                                     </div>
                                     <div class="inner-wrapper">
                                         <div class="content">
-                                            <p class="title-tag">Sell</p>
-                                            <h1 class="title">Your</h1>
+                                            <p class="title-tag">3rd </p>
+                                            <h1 class="title">Favourite</h1>
                                             <h2 class="title">Vehicle</h2>
-                                            <h3 class="title">Free</h3>
+                                            <h3 class="title">of the month</h3>
                                         </div>
                                         <div class="product-img">
-                                            <img width="126" height="98" class="img-fluid" class="img-fluid" src="assets2/images/hero/product/product-3.png" alt="image">
+                                            <img width="127" height="98" class="img-fluid" id="favour_vehicle_three" src="" alt="image">
                                             <div class="shape shape-1"><img width="83" height="83" class="img-fluid" src="assets2/images/hero/shape/shape-dotted.png" alt="image"></div>
                                         </div>
                                     </div>
@@ -464,7 +464,8 @@
 @section('pageScripts')
 <script>
     $(document).ready(function() {
-        (adsbygoogle = window.adsbygoogle || []).push({});
+        load_most_favourite_vehicles();
+        // (adsbygoogle = window.adsbygoogle || []).push({});
 
         $('#cmb_make').select2();
         $('#cmb_city').select2();
@@ -484,18 +485,18 @@
         loadTable(data, url, 'POST');
     });
 
-    $('#main_search_btn').click(function(){
+    $('#main_search_btn').click(function() {
         filter_with_main_search();
     });
 
-    $('#btn_search_cancel').click(function(){
+    $('#btn_search_cancel').click(function() {
         // $('#search_form')[0].reset();
         alert();
     });
 
     function filter_with_main_search() {
-        let data = { 
-            'searched_key' : $('#main_search_input').val()
+        let data = {
+            'searched_key': $('#main_search_input').val()
         };
         let url = './api/filter_by_main_search';
 
@@ -591,6 +592,18 @@
             console.log('DataTables error: ', message);
         });
 
+    }
+
+    function load_most_favourite_vehicles() {
+
+        let url = "/api/most-favourite-vehicles";
+        let Method = "get";
+
+        ajaxRequest(Method, url, null, function(result) {
+            $('#favour_vehicle_one').attr('src', result[0].post.main_image);
+            $('#favour_vehicle_two').attr('src', result[1].post.main_image);
+            $('#favour_vehicle_three').attr('src', result[2].post.main_image);
+        });
     }
 </script>
 @endsection

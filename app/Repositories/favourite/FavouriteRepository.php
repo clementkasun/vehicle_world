@@ -44,4 +44,14 @@ class FavouriteRepository implements FavouriteInterface
             return array('status' => 0, 'msg' => 'Your favourite item removing was unsuccessful');
         }
     }
+
+    public function mostFavouriteVehicles()
+    {
+        $favourite_post = UserFavourite::select('post_id')->groupBy('post_id')
+        ->orderByRaw('COUNT(*) DESC')
+        ->limit(3)
+        ->with('post')
+        ->get();
+        return $favourite_post;
+    }
 }
