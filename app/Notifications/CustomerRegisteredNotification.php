@@ -2,24 +2,26 @@
 
 namespace App\Notifications;
 
-use App\Models\User;
-use App\Models\Vacancy;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class VacancyNotification extends Notification
+class CustomerRegisteredNotification extends Notification
 {
     use Queueable;
+
+    public $user;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(Vacancy $vacancy)
+    public function __construct($user)
     {
+        $this->user = $user;
+        
     }
 
     /**
@@ -30,7 +32,7 @@ class VacancyNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database'];
     }
 
     /**
@@ -41,7 +43,10 @@ class VacancyNotification extends Notification
      */
     public function toMail($notifiable)
     {
-
+        return (new MailMessage)
+                    ->line('The introduction to the notification.')
+                    ->action('Notification Action', url('/'))
+                    ->line('Thank you for using our application!');
     }
 
     /**
@@ -53,24 +58,8 @@ class VacancyNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'user' => $this->user
         ];
     }
-
-    public function toDatabase($notifiable)
-    {
-        return [
-            // 'notifiable_id' => $notifiable->id,
-            // 'notifiable_type' => $notifiable->type,
-            // 'type' => $notifiable->type,
-            // 'read_at' => $notifiable->read_at,
-            // 'graduate_id' => 1,
-        ];
-    }
-
-    // public function toNexmo($notifiable)
-    // {
-    //     return (new NexmoMessage)
-    //         ->content('Hello World! this is a Graduate system North Western Province');
-    // }
+    
 }

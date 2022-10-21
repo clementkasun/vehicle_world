@@ -431,8 +431,6 @@
 <!-- /.row -->
 @endsection
 @section('pageScripts')
-<!-- validation -->
-<script src="{{ asset('/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
 <script>
     $(document).ready(function() {
         loadMakesCombo();

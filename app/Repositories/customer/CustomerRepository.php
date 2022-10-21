@@ -9,8 +9,10 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Helpers\LogActivity;
+use App\Notifications\CustomerRegisteredNotification;
 use App\Rules\nationalID;
 use App\Rules\contactNo;
+use Illuminate\Support\Facades\Notification;
 
 class CustomerRepository implements CustomerInterface
 {
@@ -44,7 +46,7 @@ class CustomerRepository implements CustomerInterface
             (request('email') != null) ? $user->email = request('email') : '';
             $user->name = $first_name;
             $user->last_name = $last_name;
-            $user->user_name = $first_name.'_'.$last_name;
+            $user->user_name = $first_name . '_' . $last_name;
             $user->address = request('address');
             $user->contact_no = request('contactNo');
             $user->nic = request('nic');
@@ -61,8 +63,8 @@ class CustomerRepository implements CustomerInterface
                 $image_path = str_replace("public/", "/", $path_main);
                 $user->profile_photo_path = $image_path;
             }
-
             $user->save();
+            Notification::send($user, new CustomerRegisteredNotification($user));
             return array('status' => 1, 'Customer Data Saving is successfull!');
         } catch (Throwable $e) {
             return array('status' => 0, 'Customer Data Saving is Unsuccessfull!');
@@ -126,7 +128,7 @@ class CustomerRepository implements CustomerInterface
                 (request('email') != null) ?  $user->email = request('email') : '';
                 $user->name = request('firstName');
                 $user->last_name = request('lastName');
-                $user->user_name = $user->name.'_'.$user->last_name;
+                $user->user_name = $user->name . '_' . $user->last_name;
                 $user->address = request('address');
                 $user->contact_no = request('contactNo');
                 $user->nic = request('nic');

@@ -204,7 +204,7 @@
                                 <span class="price">$2000.00</span>
                             </div> -->
                     <div class="right">
-                        <button aria-label="Wishlist" class="btn btn--size-58-58 btn--font-size-22 btn--center btn--round btn--color-radical-red btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart"></i></button>
+                    <a area-label="wishlist icon" href="{{ ($user != null) ? asset('/user-favourite-page/id/'.$user->id) : '/login'; }}" class="btn btn--size-58-58 btn--font-size-22 btn--center btn--round btn--color-radical-red btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart" title="favourite items"></i></a>
                     </div>
                 </div>
                 <div class="profile-details-bottom">

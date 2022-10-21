@@ -31,7 +31,7 @@ if (auth()->check() == true) {
         <div class="user-event-area sticky">
             <div class="user-event user-event--left">
                 <a area-label="event link icon" href="{{ asset('/') }}" class="event-btn-link"><i class="icon icon-carce-home" title="home"></i></a>
-                <a area-label="wishlist icon" href="{{ asset('/user-favourite-page/id/'.$user_id) }}" class="event-btn-link"><i class="icon icon-carce-heart" title="favourite items"></i></a>
+                <a area-label="wishlist icon" href="{{ ($user_id != null) ? asset('/user-favourite-page/id/'.$user_id) : '/login'; }}" class="event-btn-link"><i class="icon icon-carce-heart" title="favourite items"></i></a>
             </div>
             <div class="user-event user-event--center" title="create post">
                 <a area-label="cart icon" href="{{ asset('/create-post') }}" class="event-btn-link"><i class="fa fa-plus" aria-hidden="true"></i></a>

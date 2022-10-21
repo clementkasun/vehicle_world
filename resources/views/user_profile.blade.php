@@ -12,6 +12,15 @@
     .error {
         color: red;
     }
+
+    .btn.btn-warning {
+       background-color: orange;
+       padding-left: 10px;
+       padding-right: 10px;
+       padding-top: 5px;
+       padding-bottom: 5px;
+       color:cornsilk;
+    }
 </style>
 @endsection
 @section('content')

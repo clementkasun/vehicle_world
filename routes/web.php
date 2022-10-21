@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserFavouriteController;
+use App\Models\Notifications;
 
 /*
   |--------------------------------------------------------------------------
@@ -47,7 +48,10 @@ Route::get('/contacts', function () {
 });
 Route::get('/get_post_profile/id/{post_id}', [PostController::class, 'get_post_profile']);
 Route::get('/user-favourite-page/id/{user_id}', [UserFavouriteController::class, 'index_data']);
-
+Route::get('/user-notifications', function () {
+    $notifications = Notifications::all();
+    return view('notifications', compact('notifications'));
+});
 
 // Auth::routes();
 
