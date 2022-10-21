@@ -769,7 +769,7 @@ if (auth()->check() == true) {
         'user_star': stars
       };
 
-      let url = "../../../api/create-post-review";
+      let url = "../../../public/api/create-post-review";
       let Method = "post";
 
       ajaxRequest(Method, url, data, function(result) {
@@ -809,7 +809,7 @@ if (auth()->check() == true) {
 
   function loadReviews(post_id) {
     let stars;
-    let url = "../../../api/get-post-reviews/id/" + post_id;
+    let url = "../../../public/api/get-post-reviews/id/" + post_id;
     let Method = "get";
     ajaxRequest(Method, url, null, function(result) {
       let html = '';
@@ -852,7 +852,7 @@ if (auth()->check() == true) {
   }
 
   function getPostReviewAnalytics(post_id) {
-    let url = "../../../api/get-post-review-analytics/id/" + post_id;
+    let url = "../../../public/api/get-post-review-analytics/id/" + post_id;
     let Method = "get";
     ajaxRequest(Method, url, null, function(result) {
       $('#five_star_amount').html('<b>' + result.five_stars + '</b>');
@@ -890,7 +890,7 @@ if (auth()->check() == true) {
 
   function save_favourite() {
     console.log($('#user_id').data('user-id'));
-    let url = "../../../api/create-user-favourite";
+    let url = "../../../public/api/create-user-favourite";
     let Method = "post";
     let data = {
       'user_id': $('#user_id').data('user-id'),
