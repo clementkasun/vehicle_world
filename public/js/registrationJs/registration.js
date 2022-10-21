@@ -16,6 +16,7 @@ function save_cus_details(object, callBack) {
             $('#password_origin').addClass('has-error');
             $('#password_confirm').addClass('has-error');
             Swal.fire("Password confirmation", "Password already exist!", "error");
+            return false;
         } else {
             $("#save_customer").prop('disabled', false);
             Swal.fire({
@@ -23,6 +24,7 @@ function save_cus_details(object, callBack) {
                 title: 'Warning!',
                 text: 'Unexpected error has occured!',
             })
+            return false;
         }
         if (typeof callBack !== 'undefined' && callBack != null && typeof callBack === "function") {
             callBack(result);
