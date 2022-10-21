@@ -76,7 +76,7 @@
 
                                         $user = auth()->user();
                                         $user_path = '';
-                                        ($user->profile_photo_path != null) ? $user_path = '/storage/' . $user->profile_photo_path : $user_path = './dist/img/avatar5.png';
+                                        (isset($user->profile_photo_path)) ? $user_path = '/storage/' . $user->profile_photo_path : $user_path = './dist/img/avatar5.png';
                                         ?>
                                         <img class="img-fluid" height="33" width="33" src="{{ asset($user_path) }}" alt="user image"></a>
                                 </li>
@@ -178,7 +178,7 @@
 
                     $user = auth()->user();
                     $user_path = '';
-                    ($user->profile_photo_path != null) ? $user_path = '/storage/' . $user->profile_photo_path : $user_path = './dist/img/avatar5.png';
+                    (isset($user->profile_photo_path)) ? $user_path = '/storage/' . $user->profile_photo_path : $user_path = './dist/img/avatar5.png';
                     ?>
                     <img class="img-fluid" width="10" height="10" src="{{ asset($user_path) }}" alt="image">
                 </div>
