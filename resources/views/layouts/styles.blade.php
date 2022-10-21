@@ -72,6 +72,7 @@
         }
 
     }
+
 </style>
 <!-- ::::::::::::::Favicon icon::::::::::::::-->
 <link rel="shortcut icon" href="{{ asset('assets2/images/favicon.ico')}}" type="image/png">
