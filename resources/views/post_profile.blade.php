@@ -344,6 +344,7 @@
 @endsection
 @section('content')
 <?php
+
 if (auth()->check() == true) {
   $user_id = auth()->user()->id;
 } else {
@@ -889,7 +890,6 @@ if (auth()->check() == true) {
   });
 
   function save_favourite() {
-    console.log($('#user_id').data('user-id'));
     let url = "../../../public/api/create-user-favourite";
     let Method = "post";
     let data = {
@@ -909,7 +909,7 @@ if (auth()->check() == true) {
           Swal.fire({
             icon: 'warning',
             title: 'Failed the operation',
-            text: "Couldn't save your favourite itemr"
+            text: "Couldn't save your favourite post"
           })
         }
       });

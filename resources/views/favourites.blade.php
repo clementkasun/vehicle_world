@@ -11,7 +11,7 @@
       <div class="card card-light">
         <div class="card-header"></div>
         <div class="card-body">
-          You have added post titled as <b>{{ $favourite->Post->post_title }}</b> to the favourites <code> at {{ $favourite->created_at }} </code> 
+          You have added post titled as <b>{{ $favourite->Post->post_title }}</b> to your favourites <code> at {{ $favourite->created_at }} </code> 
         </div>
       </div>
     @endforeach
