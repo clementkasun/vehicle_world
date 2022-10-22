@@ -18,16 +18,12 @@ class UserFavouriteController extends Controller
        return $this->userFavouriteRepository->indexData($id);
     }
 
-    function create_favourite_item(Request $request){
-       return $this->userFavouriteRepository->createFavourite($request);
+    function change_favourite_item(Request $request){
+       return $this->userFavouriteRepository->changeFavourite($request);
     }
 
     function get_all_favourite(){
        return $this->userFavouriteRepository->getAllFavourites();
-    }
-
-    function removeFavourite($id){
-       return $this->userFavouriteRepository->removeFavourite($id);
     }
 
     function mostFavouriteVehicles(){

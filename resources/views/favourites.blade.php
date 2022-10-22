@@ -5,17 +5,26 @@
 @extends('layouts.footer')
 @section('content')
 <div class="card card-success">
-  <div class="card-header">Favourites</div>
-  <div class="card-body">
-    @foreach($user_favourites as $favourite)
-      <div class="card card-light">
-        <div class="card-header"></div>
-        <div class="card-body">
-          You have added post titled as <b>{{ $favourite->Post->post_title }}</b> to your favourites <code> at {{ $favourite->created_at }} </code> 
+    <div class="card-header">Favourites</div>
+    <div class="card-body">
+        @forelse($user_favourites as $favourite)
+        <div class="alert alert-info" role="alert">
+            <div class="row">
+                <div class="col-7">
+                You have added post of <br> <b> {{ $favourite->Post->post_title }} </b> <br> to your favourites <br> <code> {{ $favourite->created_at }} </code>
+                </div>
+                <div class="col-5">
+                    <a href="#" class="float-right" data-id="{{ $favourite->id }}">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                </div>
+            </div>
         </div>
-      </div>
-    @endforeach
-  </div>
+
+        @empty
+        There are no favourite items
+        @endforelse
+    </div>
 </div>
 @endsection
 

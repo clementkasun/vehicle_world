@@ -6,6 +6,7 @@ use App\Repositories\post\PostInterface;
 use App\Models\Vehicle;
 use App\Models\SparePart;
 use App\Models\Post;
+use App\Models\UserReview;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -333,7 +334,7 @@ class PostRepository implements PostInterface
                 'posts.image_5',
                 'vehicles.make_id',
                 'vehicle_makes.make_name',
-                'posts.status'
+                'posts.status',
             )->first();
 
         $vehi_type = $post_data->vehicle_type;

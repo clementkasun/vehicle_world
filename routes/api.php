@@ -87,7 +87,6 @@ Route::get('/get-post-reviews/id/{post_id}', [UserReviewController::class, 'get_
 Route::get('/get-post-review-analytics/id/{post_id}', [UserReviewController::class, 'get_review_analytics']);
 
 //user favourite api's
-Route::post('/create-user-favourite', [UserFavouriteController::class, 'create_favourite_item']);
+Route::post('/change-user-favourite', [UserFavouriteController::class, 'change_favourite_item']);
 Route::get('/get-user-favourites', [UserFavouriteController::class, 'get_all_favourite']);
-Route::get('/remove-user-favourite/id/{post_id}', [UserFavouriteController::class, 'removeFavourite']);
 Route::get('/most-favourite-vehicles', [UserFavouriteController::class, 'mostFavouriteVehicles']);

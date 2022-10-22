@@ -31,13 +31,13 @@ if (auth()->check() == true) {
         <div class="user-event-area sticky">
             <div class="user-event user-event--left">
                 <a area-label="event link icon" href="{{ asset('/') }}" class="event-btn-link"><i class="icon icon-carce-home" title="home"></i></a>
-                <a area-label="wishlist icon" href="{{ ($user_id != null) ? asset('/user-favourite-page/id/'.$user_id) : '/login_cust'; }}" class="event-btn-link"><i class="icon icon-carce-heart" title="favourite items"></i></a>
+                <a area-label="wishlist icon" href="{{ ($user_id != null) ? asset('/user-favourite-page/id/'.$user_id) : asset('/login_cust'); }}" class="event-btn-link"><i class="icon icon-carce-heart" title="favourite items"></i></a>
             </div>
             <div class="user-event user-event--center" title="create post">
                 <a area-label="cart icon" href="{{ asset('/create-post') }}" class="event-btn-link"><i class="fa fa-plus" aria-hidden="true"></i></a>
             </div>
             <div class="user-event user-event--right">
-                <a area-label="order icon" href="{{ asset('/notifications') }}" class="event-btn-link"><i class="fa fa-bell" aria-hidden="true" title="notifications"></i><span class="sr-only">notifications</span></a>
+                <a area-label="order icon" href="{{ asset('/user-notifications') }}" class="event-btn-link"><i class="fa fa-bell" aria-hidden="true" title="notifications"></i><span class="sr-only">notifications</span></a>
                 <a area-label="chat icon" href="{{ asset('/messages') }}" class="event-btn-link"><i class="icon icon-carce-bubbles2" title="messages"></i></a>
             </div>
         </div>

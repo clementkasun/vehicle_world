@@ -300,7 +300,7 @@
                             <div class="swiper-slide">
                                 <div class="hero-singel-slide ">
                                     <div class="hero-bg">
-                                        <img width="605" height="312" class="img-full" src="assets2/images/hero/bg/bg-2.jpg" alt="image">
+                                        <img width="605" height="312" class="img-full" src="{{ asset('assets2/images/hero/bg/bg-2.jpg') }}" alt="image">
                                     </div>
                                     <div class="inner-wrapper">
                                         <div class="content">
@@ -311,7 +311,7 @@
                                         </div>
                                         <div class="product-img">
                                             <img width="149" height="127" class="img-fluid" id="favour_vehicle_one" src="" alt="image">
-                                            <div class="shape shape-1"><img width="83" height="83" class="img-fluid" src="assets2/images/hero/shape/shape-dotted.png" alt="image"></div>
+                                            <div class="shape shape-1"><img width="83" height="83" class="img-fluid" src="{{ asset('assets2/images/hero/shape/shape-dotted.png') }}" alt="image"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -319,7 +319,7 @@
                             <div class="swiper-slide">
                                 <div class="hero-singel-slide">
                                     <div class="hero-bg">
-                                        <img width="388" height="160" class="img-full" src="assets2/images/hero/bg/bg-1.jpg" alt="image">
+                                        <img width="388" height="160" class="img-full" src="{{ asset('assets2/images/hero/bg/bg-1.jpg') }}" alt="image">
                                     </div>
                                     <div class="inner-wrapper">
                                         <div class="content">
@@ -330,7 +330,7 @@
                                         </div>
                                         <div class="product-img">
                                             <img width="127" height="98" class="img-fluid" id="favour_vehicle_two" src="" alt="image">
-                                            <div class="shape shape-1"><img width="83" height="83" class="img-fluid" src="assets2/images/hero/shape/shape-dotted.png" alt="image"></div>
+                                            <div class="shape shape-1"><img width="83" height="83" class="img-fluid" src="{{ asset('assets2/images/hero/shape/shape-dotted.png') }}" alt="image"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -338,7 +338,7 @@
                             <div class="swiper-slide">
                                 <div class="hero-singel-slide">
                                     <div class="hero-bg">
-                                        <img width="388" height="160" class="img-full" src="assets2/images/hero/bg/bg-3.jpg" alt="image">
+                                        <img width="388" height="160" class="img-full" src="{{ asset('assets2/images/hero/bg/bg-3.jpg') }}" alt="image">
                                     </div>
                                     <div class="inner-wrapper">
                                         <div class="content">
@@ -349,7 +349,7 @@
                                         </div>
                                         <div class="product-img">
                                             <img width="127" height="98" class="img-fluid" id="favour_vehicle_three" src="" alt="image">
-                                            <div class="shape shape-1"><img width="83" height="83" class="img-fluid" src="assets2/images/hero/shape/shape-dotted.png" alt="image"></div>
+                                            <div class="shape shape-1"><img width="83" height="83" class="img-fluid" src="{{ asset('assets2/images/hero/shape/shape-dotted.png') }}" alt="image"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -553,12 +553,12 @@
                     let html = '';
                     html += '<div class="row">';
                     html += '<div class="card card-light w-100" style="border-width: 2px; border-color: black">';
-                    html += '<a href="/public/get_post_profile/id/' + row.id + '">';
+                    html += '<a href="{{ asset("/get_post_profile/id/") }}/' + row.id + '">';
                     html += '<div class="card-body">';
                     html += '<div class="row">';
                     html += '<div class="col-6 col-md-3">';
                     html += '<div class="portfolio-wrap text-center">';
-                    html += "<img src='/public/" + row.main_image + "' style='height: 10em; width: 100%;' alt='main_img'/>";
+                    html += "<img src='{{ asset('/') }}"+ row.main_image.substring(1) +"' style='height: 10em; width: 100%;' alt='main_img'/>";
                     html += '</div>';
                     html += '</div>';
                     html += '<div class="col-4 col-md-8">';
