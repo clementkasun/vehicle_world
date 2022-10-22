@@ -16,10 +16,10 @@ class FavouriteRepository implements FavouriteInterface
     public function changeFavourite($request)
     {
 
-        $is_post_favoured = UserFavourite::where('user_id', $request->user_id)->orWhere('post_id', $request->post_id)->exists();
+        $is_post_favoured = UserFavourite::where('user_id', $request->user_id)->where('post_id', $request->post_id)->exists();
         if ($is_post_favoured == true) {
 
-            $favourite_item_remove = UserFavourite::where('user_id', $request->user_id)->orWhere('post_id', $request->post_id)->delete();
+            $favourite_item_remove = UserFavourite::where('user_id', $request->user_id)->where('post_id', $request->post_id)->delete();
             if ($favourite_item_remove == true) {
                 return array('status' => 1, 'msg' => 'Successfully removed your favourite item', 'cheacked' => false);
             } else {
@@ -41,6 +41,11 @@ class FavouriteRepository implements FavouriteInterface
             }
 
         }
+    }
+
+    public function removeFavourite($id){
+        UserFavourite::find($id)->delete();
+        return $this->indexData($id);
     }
 
     public function getAllFavourites()

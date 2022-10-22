@@ -126,7 +126,7 @@
                             <tbody>
                                 @foreach($user_adds as $user_add)
                                 <tr>
-                                    <td>{{$loop->index+1}}</td>
+                                    <td><i class="fa fa-plus text-light bg-success" style="border-radius: 20px; padding: 1px"></i>{{$loop->index+1}}</td>
                                     <td>{{$user_add->post_title}}</td>
                                     <td>{{$user_add->vehicle->vehicle_type}}</td>
                                     <td>{{$user_add->price}}</td>

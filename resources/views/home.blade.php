@@ -304,7 +304,7 @@
                                     </div>
                                     <div class="inner-wrapper">
                                         <div class="content">
-                                            <p class="title-tag">1st Most</p>
+                                            <p class="title-tag">1st most</p>
                                             <h1 class="title">Favourite</h1>
                                             <h2 class="title">Vehicle</h2>
                                             <h3 class="title">of the month</h3>
@@ -323,7 +323,7 @@
                                     </div>
                                     <div class="inner-wrapper">
                                         <div class="content">
-                                            <p class="title-tag">2nd </p>
+                                            <p class="title-tag">2nd most</p>
                                             <h1 class="title">Favourite</h1>
                                             <h2 class="title">Vehicle</h2>
                                             <h3 class="title">of the month</h3>
@@ -342,7 +342,7 @@
                                     </div>
                                     <div class="inner-wrapper">
                                         <div class="content">
-                                            <p class="title-tag">3rd </p>
+                                            <p class="title-tag">3rd most</p>
                                             <h1 class="title">Favourite</h1>
                                             <h2 class="title">Vehicle</h2>
                                             <h3 class="title">of the month</h3>
@@ -474,13 +474,13 @@
             $('#filter_btn').removeClass('d-none');
         });
         //$('.yearpicker').yearpicker();
-        let url = './api/get_posts';
+        let url = '{{asset("/api/get_posts/")}}';
         loadTable(null, url, 'GET');
     });
 
     $('#filter_btn').click(function() {
         let data = $('#search_form').serializeArray();
-        let url = './api/filtered_posts';
+        let url = '{{asset("/api/filtered_posts")}}';
 
         loadTable(data, url, 'POST');
     });
@@ -498,7 +498,7 @@
         let data = {
             'searched_key': $('#main_search_input').val()
         };
-        let url = './api/filter_by_main_search';
+        let url = '{{asset("/api/filter_by_main_search") }}';
 
         loadTable(data, url, 'get');
     }
@@ -596,7 +596,7 @@
 
     function load_most_favourite_vehicles() {
 
-        let url = "/api/most-favourite-vehicles";
+        let url = "{{asset('/api/most-favourite-vehicles')}}";
         let Method = "get";
 
         ajaxRequest(Method, url, null, function(result) {
