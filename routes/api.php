@@ -87,6 +87,7 @@ Route::get('/get-post-reviews/id/{post_id}', [UserReviewController::class, 'get_
 Route::get('/get-post-review-analytics/id/{post_id}', [UserReviewController::class, 'get_review_analytics']);
 
 //user favourite api's
-Route::post('/change-user-favourite', [UserFavouriteController::class, 'change_favourite_item']);
-Route::get('/get-user-favourites', [UserFavouriteController::class, 'get_all_favourite']);
-Route::get('/most-favourite-vehicles', [UserFavouriteController::class, 'mostFavouriteVehicles']);
+Route::post('/change-user-favourite', [UserFavouriteController::class, 'change_favourite_item']);//post delete and remove both
+Route::get('/delete-user-favourite/id/{id}', [UserFavouriteController::class, 'remove_favourite_item']);//only post delete api with parameters
+Route::get('/get-user-favourites', [UserFavouriteController::class, 'get_all_favourite']);//get all the favourite posts for the user
+Route::get('/most-favourite-vehicles', [UserFavouriteController::class, 'mostFavouriteVehicles']);//get the most favourite 3 posts 

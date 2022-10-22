@@ -349,7 +349,7 @@ use App\Models\UserFavourite;
 
 if (auth()->check() == true) {
   $user_id = auth()->user()->id;
-  $is_favoured = UserFavourite::where('user_id', $user_id)->orWhere('post_id', $post_data->id)->exists();
+  $is_favoured = UserFavourite::where('user_id', $user_id)->where('post_id', $post_data->id)->exists();
 } else {
   $is_favoured = false;
   $user_id = null;
@@ -557,7 +557,7 @@ if (auth()->check() == true) {
     <p> Average <span id="avg_star"></span> based on <span class="review_count"></span> reviews.</p>
     <hr style="border:3px solid #f1f1f1">
 
-    <div class="row">
+    <div class="row p-5">
       <div class="side">
         <div>5 star</div>
       </div>
@@ -653,12 +653,14 @@ if (auth()->check() == true) {
     </div>
     @else
     <div class="row">
-      <div id="review_warn" class="card card-light">
-        <div class="card-header">
+      <div class="col-12">
+        <div id="review_warn" class="card card-light">
+          <div class="card-header">
 
-        </div>
-        <div class="card-body">
-          <h2>Please! log in to the system for review this post. <span><a class="text-primary" href="{{ asset('/login') }}">login</a></span></h2>
+          </div>
+          <div class="card-body">
+            <h2>Please! log in to the system for review this post. <span><a class="text-primary" href="{{ asset('/login') }}">login</a></span></h2>
+          </div>
         </div>
       </div>
     </div>
@@ -696,7 +698,7 @@ if (auth()->check() == true) {
                         <img src="{{asset(''.$post->main_image)}}" style="height: 8em;" class="w-100" alt='main_img' />
                       </div>
                       <div class="col-7">
-                        <a href="/public/api/get_post_profile/id/{{$post->id}}"><b style="font-size: 14px" class="text-success">{{$post->post_title}}</b></br></a>
+                        <a href="{{ asset('/get_post_profile/id/'.$post->id) }}"><b style="font-size: 14px" class="text-success">{{$post->post_title}}</b></br></a>
                         <span style="font-size: 12px" class="text-dark"><b>Price: </b> {{$post->price}} </span>
                         <span style="font-size: 12px" class="text-dark"><b>Location: </b> {{$post->location}} </span>
                       </div>
