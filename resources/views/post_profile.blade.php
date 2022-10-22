@@ -351,6 +351,7 @@ if (auth()->check() == true) {
   $user_id = auth()->user()->id;
   $is_favoured = UserFavourite::where('user_id', $user_id)->orWhere('post_id', $post_data->id)->exists();
 } else {
+  $is_favoured = false;
   $user_id = null;
 }
 ?>
