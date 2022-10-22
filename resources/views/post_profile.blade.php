@@ -345,8 +345,11 @@
 @section('content')
 <?php
 
+use App\Models\UserFavourite;
+
 if (auth()->check() == true) {
   $user_id = auth()->user()->id;
+  $is_favoured = UserFavourite::where('user_id', $user_id)->orWhere('post_id', $post_data->id)->exists();
 } else {
   $user_id = null;
 }
@@ -391,7 +394,7 @@ if (auth()->check() == true) {
             <span class="fa fa-star"></span>
             <span class="fa fa-star"></span>
           </div>
-          <span class="review-no">41 reviews</span>
+          <span class="review-no"><span class="review_count"></span> Reviews</span>
         </div>
         <div class="product-info p-2">
           <div class="row">
@@ -534,16 +537,9 @@ if (auth()->check() == true) {
         </h5> -->
         <div class="action">
           <!-- <button class="add-to-cart btn btn-default" type="button">add to cart</button> -->
-          <button class="like btn btn-default" type="button" id="btn-favourite"><span class="fa fa-heart"></span></button>
+          <button class="btn btn-lg" type="button" id="btn-favourite"><span class="fa fa-heart"></span></button>
         </div>
       </div>
-
-      <div class="user-ratings p-4">
-
-
-      </div>
-
-
       <div class="card">
         <div class="card-body">Do not make any payments to advertiser before inspecting the vehicle. <b>vehiauto.com</b> shall not be held responsible for any transaction or agreement reached between the advertiser and you.</div>
       </div>
@@ -557,7 +553,7 @@ if (auth()->check() == true) {
 
     <span class="heading">User Ratings</span><br>
     <span id="avg_stars"></span>
-    <p> Average <span id="avg_star"></span> based on <span id="review_count"></span> reviews.</p>
+    <p> Average <span id="avg_star"></span> based on <span class="review_count"></span> reviews.</p>
     <hr style="border:3px solid #f1f1f1">
 
     <div class="row">
@@ -736,6 +732,12 @@ if (auth()->check() == true) {
   showDivs(slideIndex);
 
   var post_id = $('#post_id').data('post-id');
+  var default_favour_status = '{{ $is_favoured}}';
+  if (default_favour_status == true) {
+    $('#btn-favourite span').addClass('text-danger');
+  } else {
+    $('#btn-favourite span').removeClass('text-danger');
+  }
 
   loadReviews(post_id);
   getPostReviewAnalytics(post_id);
@@ -770,7 +772,7 @@ if (auth()->check() == true) {
         'user_star': stars
       };
 
-      let url = "../../../public/api/create-post-review";
+      let url = "{{ asset('/api/create-post-review') }}";
       let Method = "post";
 
       ajaxRequest(Method, url, data, function(result) {
@@ -810,14 +812,14 @@ if (auth()->check() == true) {
 
   function loadReviews(post_id) {
     let stars;
-    let url = "../../../public/api/get-post-reviews/id/" + post_id;
+    let url = "{{ asset('/api/get-post-reviews/id/') }}/" + post_id;
     let Method = "get";
     ajaxRequest(Method, url, null, function(result) {
       let html = '';
       $.each(result, (index, item) => {
         stars = generateStars(item.user_star);
         html += '<div class="card card-light">';
-        html += '<div class="card-header"><b>User : ' + item.user.name + ' ' + stars + '</b></div>';
+        html += '<div class="card-header"><div class="row"><div class="col-12 col-md-10"><b>User :</b> ' + item.user.name + ' </div><div class="col-12 col-md-2 p-0 m-0">' + stars + '</div></div></div>';
         html += '<div class="card-body">' + item.review_desc + '</div>';
         html += '</div>';
       });
@@ -853,7 +855,7 @@ if (auth()->check() == true) {
   }
 
   function getPostReviewAnalytics(post_id) {
-    let url = "../../../public/api/get-post-review-analytics/id/" + post_id;
+    let url = "{{ asset('/api/get-post-review-analytics/id/') }}/" + post_id;
     let Method = "get";
     ajaxRequest(Method, url, null, function(result) {
       $('#five_star_amount').html('<b>' + result.five_stars + '</b>');
@@ -878,7 +880,7 @@ if (auth()->check() == true) {
       $('#one_star_progress').html('<b>' + result.one_stars_perc + '%' + '</b>');
 
       $('#avg_star').html(result.avg_star);
-      $('#review_count').html(result.review_count);
+      $('.review_count').html(result.review_count);
 
       let avg_stars = generateStars(result.avg_star);
       $('#avg_stars').html(avg_stars);
@@ -886,30 +888,35 @@ if (auth()->check() == true) {
   }
 
   $('#btn-favourite').click(function() {
-    save_favourite();
+    change_favourite();
   });
 
-  function save_favourite() {
-    let url = "../../../public/api/create-user-favourite";
+  function change_favourite() {
+    let url = "{{ asset('/api/change-user-favourite') }}";
     let Method = "post";
     let data = {
       'user_id': $('#user_id').data('user-id'),
-      'post_id': post_id
+      'post_id': post_id,
     };
 
     if ($('#user_id').data('user-id') != '') {
       ajaxRequest(Method, url, data, function(result) {
         if (result.status == 1) {
+          if (result.cheacked) {
+            $('#btn-favourite span').addClass('text-danger');
+          } else {
+            $('#btn-favourite span').removeClass('text-danger');
+          }
           Swal.fire({
             icon: 'success',
-            title: 'Successfully saved',
-            text: 'You must select one or more stars and type description field to save as a review'
+            title: result.msg,
+            text: result.msg
           })
         } else {
           Swal.fire({
             icon: 'warning',
-            title: 'Failed the operation',
-            text: "Couldn't save your favourite post"
+            title: result.msg,
+            text: result.msg
           })
         }
       });
@@ -917,8 +924,8 @@ if (auth()->check() == true) {
     } else {
       Swal.fire({
         icon: 'warning',
-        title: 'Not loged in to system',
-        text: "You must loged in to the system to add favourites"
+        title: 'You are not logged in',
+        text: "Please log in to the system"
       })
     }
   }

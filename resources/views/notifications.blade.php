@@ -18,7 +18,7 @@
                         Mark as read
                     </a>
                 </div>
-            </div>[
+            </div>
         </div>
 
         @if($loop->last)

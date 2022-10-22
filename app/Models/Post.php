@@ -28,4 +28,8 @@ class Post extends Model {
     public function UserFavourite() {
         return $this->hasOne(UserFavourite::class);
     }
+
+    public function UserReview(){
+        return $this->hasMany(UserReview::class);
+    }
 }

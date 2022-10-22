@@ -13,13 +13,31 @@
         color: red;
     }
 
-    .btn.btn-warning {
-       background-color: orange;
-       padding-left: 10px;
-       padding-right: 10px;
-       padding-top: 5px;
-       padding-bottom: 5px;
-       color:cornsilk;
+    .btn-warning {
+        background-color: orange;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        color: cornsilk;
+    }
+
+    .btn-danger {
+        background-color: brown;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        color: white;
+    }
+
+    .btn-primary {
+        background-color: blue;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        color: white;
     }
 </style>
 @endsection
@@ -100,6 +118,7 @@
                                 <th>Title</th>
                                 <th>Type</th>
                                 <th>Price</th>
+                                <th>Reviews</th>
                                 <th>Location</th>
                                 <th>Created Date</th>
                                 <th></th>
@@ -111,6 +130,7 @@
                                     <td>{{$user_add->post_title}}</td>
                                     <td>{{$user_add->vehicle->vehicle_type}}</td>
                                     <td>{{$user_add->price}}</td>
+                                    <td> <b>Rating :</b> {{ print str_repeat('<span class="fa fa-star text-warning checked"></span>', round($user_add->user_ratings))}} / <b>review count:</b> {{ $user_add->review_count }} </td>
                                     <td>{{$user_add->location}}</td>
                                     <td>{{$user_add->created_at}}</td>
                                     <td>
@@ -223,7 +243,9 @@
 @section('pageScripts')
 <script>
     $(document).ready(function() {
+
         var table = $('#user_posts').DataTable({
+            fixedHeader: true,
             responsive: true,
             searching: false,
             paging: true,
@@ -231,7 +253,7 @@
             pageLength: 10,
         });
 
-        new $.fn.dataTable.FixedHeader(table);
+        // new $.fn.dataTable.FixedHeader(table);
         var readURL = function(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();

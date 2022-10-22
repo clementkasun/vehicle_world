@@ -13,18 +13,33 @@ class FavouriteRepository implements FavouriteInterface
         return view('favourites', ['user_favourites' => $user_favourites]);
     }
 
-    public function createFavourite($request)
+    public function changeFavourite($request)
     {
-        $favourite = UserFavourite::create([
-            'user_id' => $request->user_id,
-            'post_id' => $request->post_id,
-            'created_at' => now()
-        ]);
 
-        if ($favourite == true) {
-            return array('status' => 1, 'msg' => 'Successfully saved your favourite item');
+        $is_post_favoured = UserFavourite::where('user_id', $request->user_id)->orWhere('post_id', $request->post_id)->exists();
+        if ($is_post_favoured == true) {
+
+            $favourite_item_remove = UserFavourite::where('user_id', $request->user_id)->orWhere('post_id', $request->post_id)->delete();
+            if ($favourite_item_remove == true) {
+                return array('status' => 1, 'msg' => 'Successfully removed your favourite item', 'cheacked' => false);
+            } else {
+                return array('status' => 0, 'msg' => 'Your favourite item removing was unsuccessful');
+            }
+            
         } else {
-            return array('status' => 0, 'msg' => 'Your favourite item saving was unsuccessful');
+
+            $favourite = UserFavourite::create([
+                'user_id' => $request->user_id,
+                'post_id' => $request->post_id,
+                'created_at' => now()
+            ]);
+
+            if ($favourite == true) {
+                return array('status' => 1, 'msg' => 'Successfully saved your favourite item', 'cheacked' => true);
+            } else {
+                return array('status' => 0, 'msg' => 'Your favourite item saving was unsuccessful');
+            }
+
         }
     }
 
@@ -34,24 +49,13 @@ class FavouriteRepository implements FavouriteInterface
         return $favourite;
     }
 
-    public function removeFavourite($id)
-    {
-        $favourite_item_remove = UserFavourite::find($id)->delete();
-
-        if ($favourite_item_remove == true) {
-            return array('status' => 1, 'msg' => 'Successfully removed your favourite item');
-        } else {
-            return array('status' => 0, 'msg' => 'Your favourite item removing was unsuccessful');
-        }
-    }
-
     public function mostFavouriteVehicles()
     {
         $favourite_post = UserFavourite::select('post_id')->groupBy('post_id')
-        ->orderByRaw('COUNT(*) DESC')
-        ->limit(3)
-        ->with('post')
-        ->get();
+            ->orderByRaw('COUNT(*) DESC')
+            ->limit(3)
+            ->with('post')
+            ->get();
         return $favourite_post;
     }
 }
