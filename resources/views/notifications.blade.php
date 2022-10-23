@@ -4,17 +4,19 @@
 @extends('layouts.navbar')
 @extends('layouts.footer')
 @section('content')
-<div class="card card-success">
-    <div class="card-header">Favourites</div>
+<div class="card card-success" style="height: 45em">
+    <div class="card-header">Notifications</div>
     <div class="card-body">
+
+        <?php $notifications = auth()->user()->unreadNotifications; ?>
         @forelse($notifications as $notification)
         <div class="alert alert-info" role="alert">
             <div class="row">
                 <div class="col-7">
-                    {{ $notification->created_at }}] User {{ $notification->data['user']['user_name'] }} ({{ $notification->data['user']['user_name'] }}) has just registered.
+                    {{ $notification->created_at }} User {{ $notification['data']['user_name'] }} ({{ $notification['data']['email'] }}) {{ $notification['data']['action'] }}.
                 </div>
                 <div class="col-5">
-                    <a href="#" class="float-right mark-as-read" data-id="{{ $notification->id }}">
+                    <a href="{{ $notification->markAsRead() }}" class="float-right mark-as-read" data-id="{{ $notification->id }}">
                         Mark as read
                     </a>
                 </div>
@@ -22,14 +24,13 @@
         </div>
 
         @if($loop->last)
-        <a href="#" id="mark-all" class="btn btn-danger">
+        <a href="{{ $notifications->markAsRead() }}" id="mark-all" class="btn btn-danger">
             Mark all as read
         </a>
         @endif
         @empty
         There are no new notifications
         @endforelse
-
     </div>
 </div>
 @endsection

@@ -4,7 +4,7 @@
 @extends('layouts.navbar')
 @extends('layouts.footer')
 @section('content')
-<div class="card card-success">
+<div class="card card-success" style="height: 45em">
     <div class="card-header">Favourites</div>
     <div class="card-body">
         @forelse($user_favourites as $favourite)

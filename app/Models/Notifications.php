@@ -97,5 +97,4 @@ class Notifications extends Model
         return $query->whereNull('read_at');
     }
 
-    
 }

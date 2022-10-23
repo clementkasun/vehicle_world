@@ -502,7 +502,7 @@
 
     function loadMakesCombo(selected, callBack) {
         let option = '';
-        ajaxRequest("GET", "/public/api/get_makes/", null, function(resp) {
+        ajaxRequest("GET", "{{ asset('/api/get_makes/') }}", null, function(resp) {
             if (resp.length == 0) {
                 option += '<option value="">No Data</option>';
             } else {
@@ -558,7 +558,7 @@
             object.image_four = ($('#image_four')[0].files[0] != undefined) ? $('#image_four')[0].files[0] : null;
             object.image_five = ($('#image_five')[0].files[0] != undefined) ? $('#image_five')[0].files[0] : null;
 
-            let url = "/public/api/update_post/id/" + $('#post_update').data('post-id');
+            let url = "{{ asset('/api/update_post/id/') }}/" + $('#post_update').data('post-id');
             ulploadFileWithData(url, object, function(result) {
                 if (result.status == 1) {
                     Swal.fire(

@@ -164,7 +164,7 @@
                 password: $('#password_origin').val(),
                 file: $('#file_input').prop('files')[0]
             };
-            let url_email_nic = "./api/is_email_nic_exist";
+            let url_email_nic = "{{ asset('/api/is_email_nic_exist') }}";
 
             ajaxRequest("POST", url_email_nic, validation_data, function(resp) {
                 if (resp == 1) {
@@ -180,8 +180,9 @@
                     $('#email').removeClass('has-error');
                     $('#nic').removeClass('has-error');
                     if ($('#password_origin').val() == $('#password_confirm').val()) {
-                        save_cus_details(object, function() {
-                            window.location = "./public/login_cust";
+                        let url = "{{ asset('/api/save_customer') }}";
+                        save_cus_details(url, object, function() {
+                            window.location = "{{ asset('/login_cust') }}";
                         });
                     } else {
                         Swal.fire({

@@ -114,6 +114,7 @@
                     <div class="tab-pane active" id="post">
                         <table class="table table-striped" id="user_posts">
                             <thead>
+                                <th></th>
                                 <th>#</th>
                                 <th>Title</th>
                                 <th>Type</th>
@@ -121,27 +122,28 @@
                                 <th>Reviews</th>
                                 <th>Location</th>
                                 <th>Created Date</th>
-                                <th></th>
                             </thead>
                             <tbody>
                                 @foreach($user_adds as $user_add)
                                 <tr>
-                                    <td><i class="fa fa-plus text-light bg-success" style="border-radius: 20px; padding: 1px"></i>{{$loop->index+1}}</td>
+                                    <td>
+                                        @if($user_add->status != '1')
+                                        <button class="btn btn-warning ch-sold" data-id="{{$user_add->id}}"><i class="fa fa-usd" aria-hidden="true" alt="sell"></i></i></button>
+                                        <a href="{{ asset('/post_edit/id/'.$user_add->id) }}" class="btn btn-primary edit"><i class='fa fa-edit'></i></a>
+                                        @else
+                                        <button class="btn btn-warning ch-sold" disabled><i class="fa fa-usd" aria-hidden="true" alt="sold"></i></button>
+                                        <a href="#" class="btn btn-primary edit"><i class='fa fa-edit' style="pointer-events: none; cursor: default; opacity: .4;"></i></a>
+                                        @endif
+                                        <button class="btn btn-danger del" data-id="{{$user_add->id}}"><i class='fa fa-trash'></i></button>
+                                    </td>
+                                    <td>{{$loop->index+1}}</td>
                                     <td>{{$user_add->post_title}}</td>
                                     <td>{{$user_add->vehicle->vehicle_type}}</td>
                                     <td>{{$user_add->price}}</td>
                                     <td> <b>Rating :</b> {{ print str_repeat('<span class="fa fa-star text-warning checked"></span>', round($user_add->user_ratings))}} / <b>review count:</b> {{ $user_add->review_count }} </td>
                                     <td>{{$user_add->location}}</td>
                                     <td>{{$user_add->created_at}}</td>
-                                    <td>
-                                        @if($user_add->status != '1')
-                                        <button class="btn btn-warning ch-sold" data-id="{{$user_add->id}}"><i class="fa fa-usd" aria-hidden="true" alt="sell"></i></i></button>
-                                        @else
-                                        <button class="btn btn-warning ch-sold" disabled><i class="fa fa-usd" aria-hidden="true" alt="sold"></i></button>
-                                        @endif
-                                        <a href="./post_edit/id/{{$user_add->id}}" class="btn btn-primary edit"><i class='fa fa-edit'></i></a>
-                                        <button class="btn btn-danger del" data-id="{{$user_add->id}}"><i class='fa fa-trash'></i></button>
-                                    </td>
+
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -151,7 +153,7 @@
 
                     <div class="tab-pane" id="settings" data-user-id="{{$user_profile_data['id']}}">
                         <div class="row">
-                            <div class="card card-light">
+                            <div class="card card-light col-12 col-md-8">
                                 <div class="card-body">
                                     <form class="form-horizontal" id="user_update_frm">
                                         <div class="row">
@@ -206,7 +208,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="card card-light">
+                            <div class="card card-light col-12 col-md-8">
                                 <div class="card-body">
                                     <form class="form-horizontal" id="pass_change_frm">
                                         <div class="row">
@@ -279,7 +281,7 @@
             }).then((result) => {
                 if (result.value) {
                     let id = $(this).data('id');
-                    ajaxRequest("DELETE", "/public/api/delete_post/id/" + id, null, function(resp) {
+                    ajaxRequest("DELETE", "{{ asset('/api/delete_post/id/') }}/" + id, null, function(resp) {
                         if (resp.status == 1) {
                             swal.fire('Post Deletion', 'Successfully deleted the post', 'success');
                             location.reload();
@@ -305,7 +307,7 @@
                 // console.log(result.isConfirmed);
                 if (result.value) {
                     let id = $(this).data('id');
-                    ajaxRequest("PUT", "/public/api/sold_post_as_sold/id/" + id, null, function(resp) {
+                    ajaxRequest("PUT", "{{ asset('/api/sold_post_as_sold/id/') }}/" + id + "", null, function(resp) {
                         if (resp.status == 1) {
                             swal.fire('Post status change', 'Successfully changed the post status', 'success');
                             location.reload();
@@ -385,9 +387,9 @@
 
             let data = $('#user_update_frm').serializeArray();
             let user_id = $('#settings').data('user-id');
-            let url = "/public/api/update_basic_data/id/" + user_id;
+            let url = "{{ asset('/api/update_basic_data/id/') }}/" + user_id;
 
-            let url_email_nic = "./api/is_email_nic_exist";
+            let url_email_nic = "{{ asset('/api/is_email_nic_exist') }}";
             let validation_data = {
                 email: $('#email').val(),
                 nic: $('#nic').val()
@@ -443,7 +445,7 @@
             };
             let user_id = $('#settings').data('user-id');
             if ($('#user_pass').val() === $('#pass_retype').val()) {
-                let url = "/public/api/change_password/id/" + user_id;
+                let url = "{{ asset('/api/change_password/id/') }}/" + user_id;
 
                 ajaxRequest("PUT", url, data, function(result) {
                     if (result.status == 1) {
@@ -454,7 +456,7 @@
                             'Successfully changed!',
                             'success'
                         );
-                        window.location.href = "/public/logout";
+                        window.location.href = "{{ asset('/logout') }}";
                     } else if (result.status == 2) {
                         $('#change_pass').prop('disabled', false);
                         $('#user_pass').addClass('has-error');

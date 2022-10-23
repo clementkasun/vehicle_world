@@ -18,6 +18,8 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
+        'id',
+        'user_name',
         'name',
         'email',
         'password',
@@ -60,4 +62,5 @@ class User extends Authenticatable
     public function post() {
         return $this->hasMany(Post::class);
     }
+    
 }

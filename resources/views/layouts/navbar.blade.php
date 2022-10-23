@@ -8,6 +8,7 @@
                 <i class="bi bi-phone-fill phone-icon"></i> +94 763993288
             </div>
             <div class="social-links d-none d-md-block">
+                <a area-label="order icon" href="{{ asset('/user-notifications') }}" class="event-btn-link"><i class="fa fa-bell" aria-hidden="true" title="notifications"></i><span class="sr-only">notifications</span></a>
                 <a href="https://twitter.com/VehiautoC" target="_blank" class="twitter"><i class="bi bi-twitter"></i></a>
                 <a href="https://www.facebook.com/kasunclement/" class="facebook"><i class="bi bi-facebook"></i></a>
                 <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
@@ -204,7 +205,7 @@
                                 <span class="price">$2000.00</span>
                             </div> -->
                     <div class="right">
-                    <a area-label="wishlist icon" href="{{ ($user != null) ? asset('/user-favourite-page/id/'.$user->id) : '/login'; }}" class="btn btn--size-58-58 btn--font-size-22 btn--center btn--round btn--color-radical-red btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart" title="favourite items"></i></a>
+                        <a area-label="wishlist icon" href="{{ ($user != null) ? asset('/user-favourite-page/id/'.$user->id) : '/login'; }}" class="btn btn--size-58-58 btn--font-size-22 btn--center btn--round btn--color-radical-red btn--bg-white btn--box-shadow"><i class="icon icon-carce-heart" title="favourite items"></i></a>
                     </div>
                 </div>
                 <div class="profile-details-bottom">
