@@ -86,7 +86,7 @@ class CustomerRepository implements CustomerInterface
     public function myProfile()
     {
         $user = Auth::user();
-        $user_adds = Post::where('user_id', $user->id)->with('Vehicle')->withAvg('UserReview as user_ratings', 'user_star')->withCount('UserReview as review_count')->get();
+        $user_adds = Post::where('user_id', $user->id)->with('Vehicle')->with('SparePart')->withAvg('UserReview as user_ratings', 'user_star')->withCount('UserReview as review_count')->get();
 
         return view('user_profile', ['user_profile_data' => $user, 'user_adds' => $user_adds]);
     }

@@ -14,7 +14,7 @@
                 You have added post of <br> <b> {{ $favourite->Post->post_title }} </b> <br> to your favourites <br> <code> {{ $favourite->created_at }} </code>
                 </div>
                 <div class="col-5">
-                    <a href="{{ asset('/api/delete-user-favourite/id/'. $favourite->id.'') }}'" class="float-right">
+                    <a href="{{ asset('/api/delete-user-favourite/id/'. $favourite->id.'') }}'"  onclick="return false;" class="float-right">
                         <i class="fa fa-trash"></i>
                     </a>
                 </div>

@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Notification;
 use File;
 use App\Models\User;
+use App\Models\UserFavourite;
 
 class PostRepository implements PostInterface
 {
@@ -350,7 +351,9 @@ class PostRepository implements PostInterface
             ->where('vehicles.vehicle_type', $vehi_type)
             ->paginate(3);
 
-        return ['post_data' => $post_data, 'related_posts' => $post_by_vehi_type];
+        $post_likes = UserFavourite::where('post_id', $post_id)->count();
+
+        return ['post_data' => $post_data, 'related_posts' => $post_by_vehi_type, 'post_likes' => $post_likes];
     }
 
     public function filteredPosts($request)

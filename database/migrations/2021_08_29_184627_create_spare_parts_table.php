@@ -19,6 +19,7 @@ class CreateSparePartsTable extends Migration {
             $table->string('part_category');
             $table->foreign('make_id')->references('id')->on('vehicle_makes')->onDelete('restrict')->onUpdate('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -29,7 +30,6 @@ class CreateSparePartsTable extends Migration {
      */
     public function down() {
         Schema::dropIfExists('spare_parts');
-        $table->dropSoftDeletes();
     }
 
 }

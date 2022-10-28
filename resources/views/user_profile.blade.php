@@ -42,6 +42,22 @@
 </style>
 @endsection
 @section('content')
+<?php
+function gen_star($star_count)
+{
+    $stars = '';
+
+    for ($i = 0; $i < 5; $i++) {
+        if ($i < $star_count) {
+            $stars .= '<span class="fa fa-star checked text-warning"></span>';
+        } else {
+            $stars .= '<span class="fa fa-star"></span>';
+        }
+    }
+
+    return $stars;
+}
+?>
 <div class="row card-body box-profile">
     <div class="col-md-3">
 
@@ -136,11 +152,17 @@
                                         @endif
                                         <button class="btn btn-danger del" data-id="{{$user_add->id}}"><i class='fa fa-trash'></i></button>
                                     </td>
-                                    <td>{{$loop->index+1}}</td>
-                                    <td>{{$user_add->post_title}}</td>
-                                    <td>{{$user_add->vehicle->vehicle_type}}</td>
+                                    <td>{{ $loop->index+1 }}</td>
+                                    <td>{{ $user_add->post_title }}</td>
+                                    @if(isset($user_add->vehicle))
+                                    <td>{{ $user_add->vehicle->vehicle_type }}</td>
+                                    @elseif(isset($user_add->SparePart))
+                                    <td>{{ $user_add->SparePart->part_category }}</td>
+                                    @else
+                                    <td>-</td>
+                                    @endif
                                     <td>{{$user_add->price}}</td>
-                                    <td> <b>Rating :</b> {{ print str_repeat('<span class="fa fa-star text-warning checked"></span>', round($user_add->user_ratings))}} / <b>review count:</b> {{ $user_add->review_count }} </td>
+                                    <td> <b>Rating :</b> <span><?php print gen_star(round($user_add->user_ratings)) ?> </span>/ <b>review count:</b> <span> {{ $user_add->review_count }} </span></td>
                                     <td>{{$user_add->location}}</td>
                                     <td>{{$user_add->created_at}}</td>
 
@@ -211,6 +233,9 @@
                             <div class="card card-light col-12 col-md-8">
                                 <div class="card-body">
                                     <form class="form-horizontal" id="pass_change_frm">
+                                        @csrf
+                                        <!-- Equivalent to... -->
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                         <div class="row">
                                             <div class="form-group col-md-6">
                                                 <label for="user_pass" class="col-form-label">New Password</label>

@@ -4,7 +4,7 @@
 @extends('layouts.navbar')
 @extends('layouts.footer')
 @section('content')
-<div class="card card-success" style="height: 45em">
+<div class="card card-success" style="height: 100em">
     <div class="card-header">Notifications</div>
     <div class="card-body">
 
@@ -16,7 +16,7 @@
                     {{ $notification->created_at }} User {{ $notification['data']['user_name'] }} ({{ $notification['data']['email'] }}) {{ $notification['data']['action'] }}.
                 </div>
                 <div class="col-5">
-                    <a href="{{ $notification->markAsRead() }}" class="float-right mark-as-read" data-id="{{ $notification->id }}">
+                    <a href="{{ $notification->markAsRead() }}" class="float-right mark-as-read btn-mark-as-read">
                         Mark as read
                     </a>
                 </div>
@@ -24,7 +24,7 @@
         </div>
 
         @if($loop->last)
-        <a href="{{ $notifications->markAsRead() }}" id="mark-all" class="btn btn-danger">
+        <a href="{{ $notifications->markAsRead() }}" class="float-right mark-as-read" data-id="{{ $notification->id }}">
             Mark all as read
         </a>
         @endif
@@ -33,8 +33,4 @@
         @endforelse
     </div>
 </div>
-@endsection
-
-@section('pageScripts')
-
 @endsection

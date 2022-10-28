@@ -255,7 +255,7 @@
     margin-right: 25px;
   }
 
-  .fa {
+  .fa-heart {
     font-size: 25px;
   }
 
@@ -388,13 +388,7 @@ if (auth()->check() == true) {
           {{ $post_data->post_title}}
         </span>
         <div class="rating">
-          <div class="stars">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-          </div>
+          <span class="avg_star"></span>
           <span class="review-no"><span class="review_count"></span> Reviews</span>
         </div>
         <div class="product-info p-2">
@@ -521,7 +515,7 @@ if (auth()->check() == true) {
             <div class="col-6"></div>
           </div>
           <div class="row mt-2">
-            <p class="product-description col-12 w-100 p-1 m-1">{{$post_data->additional_info}}</p>
+            <p class="product-description col-12 w-100 p-1 m-1"><b> {{$post_data->additional_info}} </b></p>
           </div>
         </div>
         <!-- <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
@@ -539,6 +533,7 @@ if (auth()->check() == true) {
         <div class="action">
           <!-- <button class="add-to-cart btn btn-default" type="button">add to cart</button> -->
           <button class="btn btn-lg" type="button" id="btn-favourite"><span class="fa fa-heart"></span></button>
+          <br><label class="pl-2"> {{ $post_likes }} </label>
         </div>
       </div>
       <div class="card">
@@ -554,7 +549,7 @@ if (auth()->check() == true) {
 
     <span class="heading">User Ratings</span><br>
     <span id="avg_stars"></span>
-    <p> Average <span id="avg_star"></span> based on <span class="review_count"></span> reviews.</p>
+    <p> Average <span class="avg_star"></span> based on <span class="review_count"></span> reviews.</p>
     <hr style="border:3px solid #f1f1f1">
 
     <div class="row p-5">
@@ -646,7 +641,7 @@ if (auth()->check() == true) {
         </div>
         <div class="row">
           <div class="col-">
-            <button id="save_review" name="save_review" class="btn bg-primary pl-2 pr-2 pt-1 pb-1 mt-2">Save Review</button>
+            <button id="save_review" name="save_review" class="btn bg-primary pl-2 pr-2 pt-1 pb-1 mt-2 ml-3"><b>Save review</b></button>
           </div>
         </div>
       </div>
@@ -886,7 +881,7 @@ if (auth()->check() == true) {
       $('.review_count').html(result.review_count);
 
       let avg_stars = generateStars(result.avg_star);
-      $('#avg_stars').html(avg_stars);
+      $('.avg_star').html(avg_stars);
     });
   }
 
