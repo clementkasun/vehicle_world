@@ -7,11 +7,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class CustomerRegisteredNotification extends Notification
+class CustomerPostUpdatedNotification extends Notification
 {
     use Queueable;
-
-    public $user;
 
     /**
      * Create a new notification instance.
@@ -21,7 +19,6 @@ class CustomerRegisteredNotification extends Notification
     public function __construct($user)
     {
         $this->user = $user;
-        
     }
 
     /**
@@ -44,9 +41,9 @@ class CustomerRegisteredNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Successfully Registered')
-                    ->action('You have successfully registered in to the system.', url('https://vehiauto.com/public/login_cust'))
-                    ->line('Thank you for using our application!');
+        ->line('Successfully updated your post details')
+        ->action('You have successfully updated the post.', url('https://vehiauto.com/public/login_cust'))
+        ->line('Thank you for using our application!');
     }
 
     /**
@@ -61,8 +58,7 @@ class CustomerRegisteredNotification extends Notification
             'user_id' => $this->user->id,
             'user_name' => $this->user->user_name,
             'email' => $this->user->email,
-            'action' => 'You have successfully registered in to the system!'
+            'action' => 'You have successfully updated the post!'
         ];
     }
-    
 }

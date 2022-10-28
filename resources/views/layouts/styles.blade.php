@@ -45,10 +45,10 @@
             display: none;
         }
 
-        #mob-hero{
+        #mob-hero {
             display: none;
         }
-        
+
         #ad_tbl {
             max-width: 700px;
         }
@@ -73,6 +73,11 @@
 
     }
 
+    table.dataTable thead .sorting,
+    table.dataTable thead .sorting_asc,
+    table.dataTable thead .sorting_desc {
+        background: none;
+    }
 </style>
 <!-- ::::::::::::::Favicon icon::::::::::::::-->
 <link rel="shortcut icon" href="{{ asset('assets2/images/favicon.ico')}}" type="image/png">

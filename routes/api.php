@@ -12,6 +12,7 @@ use App\Http\Controllers\TestJsonController;
 use App\Http\Controllers\JsonResultsController;
 use App\Http\Controllers\SupportMailController;
 use App\Http\Controllers\UserFavouriteController;
+use App\Http\Controllers\UserNotificationController;
 use App\Http\Controllers\UserReviewController;
 
 /*
@@ -91,3 +92,6 @@ Route::post('/change-user-favourite', [UserFavouriteController::class, 'change_f
 Route::get('/delete-user-favourite/id/{id}', [UserFavouriteController::class, 'remove_favourite_item']);//only post delete api with parameters
 Route::get('/get-user-favourites', [UserFavouriteController::class, 'get_all_favourite']);//get all the favourite posts for the user
 Route::get('/most-favourite-vehicles', [UserFavouriteController::class, 'mostFavouriteVehicles']);//get the most favourite 3 posts 
+
+//notification api
+Route::put('/mark-as-read/id/{notification_id}', [UserNotificationController::class, 'markAsRead']);//get the most favourite 3 posts 

@@ -459,7 +459,7 @@
 
     function loadMakesCombo(selected, callBack) {
         let option = '';
-        ajaxRequest("GET", "./api/get_makes/", null, function(resp) {
+        ajaxRequest("GET", "{{ asset('/api/get_makes/') }}", null, function(resp) {
             if (resp.length == 0) {
                 option += '<option value="">No Data</option>';
             } else {
@@ -516,7 +516,7 @@
             object.image_four = ($('#image_four')[0].files[0] != undefined) ? $('#image_four')[0].files[0] : null;
             object.image_five = ($('#image_five')[0].files[0] != undefined) ? $('#image_five')[0].files[0] : null;
 
-            let url = "./api/save_post";
+            let url = "{{ asset('/api/save_post') }}";
             ulploadFileWithData(url, object, function(result) {
                 // ajaxRequest("POST", url, data, function (result) {
                 if (result.status == 1) {
@@ -527,7 +527,7 @@
                         'Successfully Posted!',
                         'success'
                     );
-                    window.location.href = "/public/user_profile";
+                    window.location.href = "{{ asset('/user_profile') }}";
                     //            location.reload();
                 } else {
                     $("#save_post").prop('disabled', false);

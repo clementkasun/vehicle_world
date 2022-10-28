@@ -836,13 +836,13 @@
                 $('#filter_btn').removeClass('d-none');
             });
             //$('.yearpicker').yearpicker();
-            let url = 'https://vehiauto.com/public/api/get_posts';
+            let url = '{{ asset("/api/get_posts") }}';
             loadTable(null, url, 'GET');
         });
 
         $('#filter_btn').click(function() {
             let data = $('#search_form').serializeArray();
-            let url = 'https://vehiauto.com/public/api/filtered_posts';
+            let url = '{{ asset("/api/filtered_posts") }}';
 
             loadTable(data, url, 'POST');
         });
@@ -899,12 +899,12 @@
                        let html = '';
                     html += '<div class="row">';
                     html += '<div class="card card-light w-100" style="border-width: 2px; border-color: black">';
-                    html += '<a href="/public/api/get_post_profile/id/' + row.id + '">';
+                    html += '<a href="{{ asset("/api/get_post_profile/id/") }} '+ row.id'">';
                     html += '<div class="card-body">';
                     html += '<div class="row">';
                     html += '<div class="col-4 col-md-3">';
                     html += '<div class="portfolio-wrap text-center">';
-                    html += "<img src='/public/" + row.main_image + "' style='height: 8em; width: 100%;' alt='main_img'/>";
+                    html += "<img src='{{ asset('/') }}"+row.main_image+"' style='height: 8em; width: 100%;' alt='main_img'/>";
                     html += '</div>';
                     html += '</div>';
                     html += '<div class="col-7 col-md-8">';

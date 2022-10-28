@@ -1,6 +1,4 @@
-function save_cus_details(object, callBack) {
-    url = "./api/save_customer";
-
+function save_cus_details(url, object, callBack) {
     ulploadFileWithData(url, object, function (result) {
         // ajaxRequest("POST", url, data, function (result) {
         if (result.status == 1) {

@@ -4,6 +4,10 @@ namespace App\Repositories\favourite;
 
 use App\Repositories\favourite\FavouriteInterface;
 use App\Models\UserFavourite;
+use App\Notifications\CustomerFavouriteItemAddNotification;
+use App\Notifications\CustomerFavouriteItemDeleteNotification;
+use Illuminate\Support\Facades\Notification;
+use App\Models\User;
 
 class FavouriteRepository implements FavouriteInterface
 {
@@ -15,11 +19,12 @@ class FavouriteRepository implements FavouriteInterface
 
     public function changeFavourite($request)
     {
-
+        $user = User::find($request->user_id)->first();
         $is_post_favoured = UserFavourite::where('user_id', $request->user_id)->where('post_id', $request->post_id)->exists();
         if ($is_post_favoured == true) {
 
             $favourite_item_remove = UserFavourite::where('user_id', $request->user_id)->where('post_id', $request->post_id)->delete();
+            Notification::send($user, new CustomerFavouriteItemDeleteNotification($user));
             if ($favourite_item_remove == true) {
                 return array('status' => 1, 'msg' => 'Successfully removed your favourite item', 'cheacked' => false);
             } else {
@@ -33,6 +38,7 @@ class FavouriteRepository implements FavouriteInterface
                 'post_id' => $request->post_id,
                 'created_at' => now()
             ]);
+            Notification::send($user, new CustomerFavouriteItemAddNotification($user));
 
             if ($favourite == true) {
                 return array('status' => 1, 'msg' => 'Successfully saved your favourite item', 'cheacked' => true);

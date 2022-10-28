@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Helpers\LogActivity;
 use App\Notifications\CustomerRegisteredNotification;
-use App\Rules\nationalID;
+use App\Notifications\CustomerPasswordChangedNotification;
+use App\Notifications\CustomerProfileBasicDataChangedNotification;
 use App\Rules\contactNo;
 use Illuminate\Support\Facades\Notification;
 
@@ -85,7 +86,7 @@ class CustomerRepository implements CustomerInterface
     public function myProfile()
     {
         $user = Auth::user();
-        $user_adds = Post::where('user_id', $user->id)->with('Vehicle')->withAvg('UserReview as user_ratings', 'user_star')->withCount('UserReview as review_count')->get();
+        $user_adds = Post::where('user_id', $user->id)->with('Vehicle')->with('SparePart')->withAvg('UserReview as user_ratings', 'user_star')->withCount('UserReview as review_count')->get();
 
         return view('user_profile', ['user_profile_data' => $user, 'user_adds' => $user_adds]);
     }
@@ -105,6 +106,7 @@ class CustomerRepository implements CustomerInterface
         ]);
         $aUser->password = Hash::make(request('password'));
         $msg = $aUser->save();
+        Notification::send($aUser, new CustomerPasswordChangedNotification($aUser));
         if ($msg) {
             return array('status' => 1, 'message' => 'Successfully changed the password');
         } else {
@@ -134,8 +136,8 @@ class CustomerRepository implements CustomerInterface
                 $user->contact_no = request('contactNo');
                 $user->nic = request('nic');
                 $user->save();
+                Notification::send($user, new CustomerProfileBasicDataChangedNotification($user));
             });
-
             return array('status' => 1, 'Successfully Updated the Customer data!');
         } catch (Throwable $e) {
             return array('status' => 0, 'Customer Data Upadation is Unsuccessfull!');
@@ -147,7 +149,6 @@ class CustomerRepository implements CustomerInterface
         $user_id = Auth::user()->id;
         $user = User::findOrFail($user_id);
         $msg = $user->delete();
-
         if ($msg) {
             return array('status' => 1, 'Successfully removed the Customer data!');
         } else {

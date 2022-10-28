@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class CustomerRegisteredNotification extends Notification
+class CustomerProfileBasicDataChangedNotification extends Notification
 {
     use Queueable;
 
@@ -44,8 +44,8 @@ class CustomerRegisteredNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Successfully Registered')
-                    ->action('You have successfully registered in to the system.', url('https://vehiauto.com/public/login_cust'))
+                    ->line('Successfully Changed')
+                    ->action('You have successfully changed the details of your account.', url('https://vehiauto.com/public/login_cust'))
                     ->line('Thank you for using our application!');
     }
 
@@ -61,8 +61,7 @@ class CustomerRegisteredNotification extends Notification
             'user_id' => $this->user->id,
             'user_name' => $this->user->user_name,
             'email' => $this->user->email,
-            'action' => 'You have successfully registered in to the system!'
+            'action' => 'You have successfully changed the details of your account!'
         ];
     }
-    
 }

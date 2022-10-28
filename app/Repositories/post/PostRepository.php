@@ -7,10 +7,17 @@ use App\Models\Vehicle;
 use App\Models\SparePart;
 use App\Models\Post;
 use App\Models\UserReview;
+use App\Notifications\CustomerPostCreatedNotification;
+use App\Notifications\CustomerPostDeleteNotification;
+use App\Notifications\CustomerPostStatusChangedNotification;
+use App\Notifications\CustomerPostUpdatedNotification;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Notification;
 use File;
+use App\Models\User;
+use App\Models\UserFavourite;
 
 class PostRepository implements PostInterface
 {
@@ -101,7 +108,6 @@ class PostRepository implements PostInterface
             $post_type = $request->post_type;
 
             $user_id = $request->user_id;
-            $post_id = '';
 
             $post_save = Post::create([
                 'post_title' => $request->post_title,
@@ -277,6 +283,8 @@ class PostRepository implements PostInterface
                 $post_update->image_4 = '/storage/post_images/' . $id . '/' . $random_name_four . '.' . $file_ext_four;
             }
             $post_update->save();
+            $user = User::find($user_id)->first();
+            Notification::send($user, new CustomerPostCreatedNotification($user));
             DB::commit();
             return array('status' => 1, 'msg' => 'Post created successfully!');
         } catch (\Exception $e) {
@@ -343,7 +351,9 @@ class PostRepository implements PostInterface
             ->where('vehicles.vehicle_type', $vehi_type)
             ->paginate(3);
 
-        return ['post_data' => $post_data, 'related_posts' => $post_by_vehi_type];
+        $post_likes = UserFavourite::where('post_id', $post_id)->count();
+
+        return ['post_data' => $post_data, 'related_posts' => $post_by_vehi_type, 'post_likes' => $post_likes];
     }
 
     public function filteredPosts($request)
@@ -696,7 +706,8 @@ class PostRepository implements PostInterface
                 $post_update->image_4 = '/storage/post_images/' . $id . '/' . $random_name_four . '.' . $file_ext_four;
             }
             $post_update->save();
-
+            $user = User::find($post_update->user_id)->first();
+            Notification::send($user, new CustomerPostUpdatedNotification($user));
 
             DB::commit();
             return array('status' => 1, 'msg' => 'Post has Updated successfully!');
@@ -713,6 +724,8 @@ class PostRepository implements PostInterface
             File::deleteDirectory($path);
             $post = Post::find($post_id);
             $post->delete();
+            $user = User::find($post->user_id);
+            Notification::send($user, new CustomerPostDeleteNotification($user));
             return array('status' => 1);
         } catch (\Exception $e) {
             return array('status' => 0);
@@ -736,13 +749,14 @@ class PostRepository implements PostInterface
             return array('status' => 0);
         }
     }
-
+    
     public function changePostAsSold($id)
     {
         $selected_post = Post::find($id);
         $selected_post->status = 1;
         $selected_post->save();
-
+        $user = User::find($selected_post->user_id);
+        Notification::send($user, new CustomerPostStatusChangedNotification($user));
         if ($selected_post == true) {
             return array('status' => 1, 'msg' => 'Successfully changed the status');
         } else {
