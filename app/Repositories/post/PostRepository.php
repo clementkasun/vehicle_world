@@ -358,31 +358,18 @@ class PostRepository implements PostInterface
 
     public function filteredPosts($request)
     {
-        $request_data = [
-            'make' => $request[1]['value'],
-            'post_type' => $request[3]['value'],
-            'model' => $request[2]['value'],
-            'vehi_type' => $request[4]['value'],
-            'condition' => $request[5]['value'],
-            'price_range' => $request[6]['value'],
-            'location' => $request[7]['value'],
-            'year_min' => $request[8]['value'],
-            'year_max' => $request[9]['value'],
-            'gear_type' => $request[10]['value'],
-            'fuel_type' => $request[11]['value'],
-        ];
-
-        $make = $request[1]['value'];
-        $post_type = $request[3]['value'];
-        $model = $request[2]['value'];
-        $vehi_type = $request[4]['value'];
-        $condition = $request[5]['value'];
-        $price_range = $request[6]['value'];
-        $location = $request[7]['value'];
-        $year_min = $request[8]['value'];
-        $year_max = $request[9]['value'];
-        $gear_type = $request[10]['value'];
-        $fuel_type = $request[11]['value'];
+        
+        $make = $request->cmb_make;
+        $post_type = $request->cmb_post_type;
+        $model = $request->model;
+        $vehi_type = $request->cmb_vehi_type;
+        $condition = $request->cmb_condition;
+        $price_range = $request->cmb_price;
+        $location = $request->city;
+        $year_min = $request->year_min;
+        $year_max = $request->year_max;
+        $gear_type = $request->cmb_gear;
+        $fuel_type = $request->cmb_fuel_type;
 
         if ($post_type == "VEHI") {
 
@@ -512,23 +499,21 @@ class PostRepository implements PostInterface
                 return $p->where('spare_parts.make_id', '=', $make);
             });
 
-            $post = $post->when($post_type == "SPARE", function ($p) {
-                return $p->select(
-                    'posts.id AS id',
-                    'posts.post_type',
-                    'posts.post_title',
-                    'posts.main_image',
-                    'posts.location',
-                    'posts.address',
-                    'posts.condition',
-                    'spare_parts.part_used_in',
-                    'spare_parts.part_category',
-                    'posts.price',
-                    'posts.additional_info',
-                    'posts.created_at'
-                );
-            });
-
+            $post = $post->select(
+                'posts.id AS id',
+                'posts.post_type',
+                'posts.post_title',
+                'posts.main_image',
+                'posts.location',
+                'posts.address',
+                'posts.condition',
+                'spare_parts.part_used_in',
+                'spare_parts.part_category',
+                'posts.price',
+                'posts.additional_info',
+                'posts.created_at'
+            );
+            
             $filtered_post_data = $post->get();
             return $filtered_post_data;
         }
@@ -925,7 +910,7 @@ class PostRepository implements PostInterface
 
     public function searchPosts($request)
     {
-        $posts = Post::where('post_title', $request->searched_key)->get();
+        $posts = Post::where('post_title', 'LIKE', "%{$request->searched_key}%")->get();
         return $posts;
     }
 }

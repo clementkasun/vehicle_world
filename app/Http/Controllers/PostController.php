@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Repositories\post\PostRepository;
+use App\Models\UserFavourite;
 
 class PostController extends Controller
 {
@@ -19,7 +20,12 @@ class PostController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('home', ['user_profile_data' => $user]);
+        $most_favoured_posts = UserFavourite::select('post_id')->groupBy('post_id')
+            ->orderByRaw('COUNT(*) DESC')
+            ->limit(1)
+            ->with('post')
+            ->get();
+        return view('home', ['user_profile_data' => $user, 'most_favoured_posts' => $most_favoured_posts]);
     }
 
     public function get_post_profile($post_id)

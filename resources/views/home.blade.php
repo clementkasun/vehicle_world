@@ -33,260 +33,10 @@
 
                 </div>
 
-                <button id="filter-trigger" aria-label="Filter Icon" class="filter_btn btn--radius btn--radical-red btn--color-white btn--box-shadow btn--size-40-40 btn--center btn--font-size-22"><i class="icon icon-carce-filter"></i></button>
+                <!-- <button id="filter-trigger" aria-label="Filter Icon" class="filter_btn btn--radius btn--radical-red btn--color-white btn--box-shadow btn--size-40-40 btn--center btn--font-size-22"><i class="icon icon-carce-filter"></i></button> -->
             </div>
         </div>
         <!-- End Search & Filter Area -->
-
-        <div class="shop-filter" id="shop-filter-menu">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <!-- <div class="shop-filter-block mt-0">
-                            <h4 class="shop-filter-block__title">Price</h4>
-                            <div class="shop-filter-block__content">
-                                <div class="widget-price-range">
-                                    <input type="text" id="price-range-slider">
-                                </div>
-                            </div>
-                        </div> -->
-                        <section id="search_container" class="mt-2">
-                            <form id="search_form">
-                                @csrf
-                                <div class="row m-2">
-                                    <div class="form-group col-12">
-                                        <label for="cmb_make"><b>MAKE</b></label>
-                                        <div>
-                                            <select id="cmb_make" name="cmb_make" class="form-control select2"></select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-12">
-                                        <label for="model"><b>MODEL</b></label>
-                                        <div>
-                                            <input type="text" id="model" name="model" class="form-control" placeholder="Enter the model of vehicle" max-length="150">
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-12">
-                                        <label for="cmb_post_type"><b>POST TYPE</b></label>
-                                        <div>
-                                            <select id="cmb_post_type" name="cmb_post_type" class="form-control">
-                                                <option value="VEHI">Vehicle</option>
-                                                <option value="SPARE">Spare Parts</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-12">
-                                        <label for="cmb_vehi_type"><b>Vehicle Type</b></label>
-                                        <div>
-                                            <select id="cmb_vehi_type" name="cmb_vehi_type" class="form-control">
-                                                <option value="any"> Any Type </option>
-                                                <option value="car">Car</option>
-                                                <option value="van">Van</option>
-                                                <option value="suv">SUV / Jeep</option>
-                                                <option value="motorcycle">Motorcycle</option>
-                                                <option value="crew-cab">Crew Cab</option>
-                                                <option value="wagon">Wagon</option>
-                                                <option value="pickup">Pickup / Double Cab</option>
-                                                <option value="buse">Bus</option>
-                                                <option value="lorry">Lorry</option>
-                                                <option value="three-wheel">Three Wheel</option>
-                                                <option value="other">Other</option>
-                                                <option value="tractor">Tractor</option>
-                                                <option value="heavy-dutie">Heavy-Duty</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row m-2">
-                                    <div class="form-group col-12">
-                                        <label for="cmb_condition"><b>CONDITION</b></label>
-                                        <div>
-                                            <select id="cmb_condition" name="cmb_condition" class="form-control">
-                                                <option value="any">Select Condition</option>
-                                                <option value="Used">Used</option>
-                                                <option value="New">New</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-12">
-                                        <label for="cmb_price"><b>PRICE RANGE</b></label>
-                                        <div>
-                                            <select id="cmb_price" name="cmb_price" class="form-control">
-                                                <option value="Any"> Any </option>
-                                                <option value="< 100000">&lt; 100,000</option>
-                                                <option value="100000-500000">100,000 - 500,000</option>
-                                                <option value="500000-1000000">500,000 - 1,000,000</option>
-                                                <option value="1000000-1500000">1,000,000 - 1,500,000</option>
-                                                <option value="1500000-2000000">1,500,000 - 2,000,000</option>
-                                                <option value="2000000-3000000">2,000,000 - 3,000,000</option>
-                                                <option value="3000000-4000000">3,000,000 - 4,000,000</option>
-                                                <option value="4000000-5000000">4,000,000 - 5,000,000</option>
-                                                <option value="5000000-6000000">5,000,000 - 6,000,000</option>
-                                                <option value="6000000-7000000">6,000,000 - 7,000,000</option>
-                                                <option value="7000000-8000000">7,000,000 - 8,000,000</option>
-                                                <option value="8000000-10000000">8,000,000 - 10 Million</option>
-                                                <option value="10000000-15000000">10 Million - 15 Million</option>
-                                                <option value="> 15000000">&gt; 15 Million</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-12">
-                                        <label for="cmb_city"><b>LOCATION</b></label>
-                                        <div>
-                                            <select id="cmb_city" name="cmb_city" class="form-control select2">
-                                                <option value="any"> Any City </option>
-                                                <option value="Ambalangoda">Ambalangoda</option>
-                                                <option value="Ampara">Ampara</option>
-                                                <option value="Anuradapura">Anuradapura</option>
-                                                <option value="Avissawella">Avissawella</option>
-                                                <option value="Bandaragama">Bandaragama</option>
-                                                <option value="Badulla">Badulla</option>
-                                                <option value="Balangoda">Balangoda</option>
-                                                <option value="Bandarawela">Bandarawela</option>
-                                                <option value="Battaramulla">Battaramulla</option>
-                                                <option value="Batticaloa">Batticaloa</option>
-                                                <option value="Beruwala">Beruwala</option>
-                                                <option value="Boralesgamuwa">Boralesgamuwa</option>
-                                                <option value="Chavakacheri">Chavakacheri</option>
-                                                <option value="Chilaw">Chilaw</option>
-                                                <option value="Colombo">Colombo</option>
-                                                <option value="Daluguma">Daluguma</option>
-                                                <option value="Dambulla">Dambulla</option>
-                                                <option value="Dehiwala-Mount-Lavinia">Dehiwala-Mount</option>
-                                                <option value="Divulapitiya">Divulapitiya</option>
-                                                <option value="Dompe">Dompe</option>
-                                                <option value="Eheliyagoda">Eheliyagoda</option>
-                                                <option value="Embilipitiya">Embilipitiya</option>
-                                                <option value="Eravur">Eravur</option>
-                                                <option value="Galle">Galle</option>
-                                                <option value="Gampaha">Gampaha</option>
-                                                <option value="Gampola">Gampola</option>
-                                                <option value="Hambantota">Hambantota</option>
-                                                <option value="Hanwella">Hanwella</option>
-                                                <option value="Haputale">Haputale</option>
-                                                <option value="Harispattuwa">Harispattuwa</option>
-                                                <option value="Hatton">Hatton</option>
-                                                <option value="Hendala">Hendala</option>
-                                                <option value="Homagama">Homagama</option>
-                                                <option value="Horana">Horana</option>
-                                                <option value="Ja-Ela">Ja-Ela</option>
-                                                <option value="Jaffna">Jaffna</option>
-                                                <option value="Kurunegala">Kurunegala</option>
-                                                <option value="Kadawatha">Kadawatha</option>
-                                                <option value="Kadugannawa">Kadugannawa</option>
-                                                <option value="Kaduwela">Kaduwela</option>
-                                                <option value="Kalawana">Kalawana</option>
-                                                <option value="Kalmunai">Kalmunai</option>
-                                                <option value="Kalutara">Kalutara</option>
-                                                <option value="Kandana">Kandana</option>
-                                                <option value="Kandy">Kandy</option>
-                                                <option value="Kattankudy">Kattankudy</option>
-                                                <option value="Katunayake">Katunayake</option>
-                                                <option value="Kegalle">Kegalle</option>
-                                                <option value="Kelaniya">Kelaniya</option>
-                                                <option value="Kesbewa">Kesbewa</option>
-                                                <option value="Keselwatta">Keselwatta</option>
-                                                <option value="Kilinochchi">Kilinochchi</option>
-                                                <option value="Kiribathgoda">Kiribathgoda</option>
-                                                <option value="Kolonnawa">Kolonnawa</option>
-                                                <option value="Kotikawatta">Kotikawatta</option>
-                                                <option value="Kotte">Kotte</option>
-                                                <option value="Kottawa">Kottawa</option>
-                                                <option value="Kuliyapitiya">Kuliyapitiya</option>
-                                                <option value="Kurunegala">Kurunegala</option>
-                                                <option value="Maharagama">Maharagama</option>
-                                                <option value="Mahiyanganaya">Mahiyanganaya</option>
-                                                <option value="Malabe">Malabe</option>
-                                                <option value="Mannar">Mannar</option>
-                                                <option value="Matale">Matale</option>
-                                                <option value="Matara">Matara</option>
-                                                <option value="Matugama">Matugama</option>
-                                                <option value="Mawanella">Mawanella</option>
-                                                <option value="Minuwangoda">Minuwangoda</option>
-                                                <option value="Mirigama">Mirigama</option>
-                                                <option value="Moneragala">Moneragala</option>
-                                                <option value="Moratuwa">Moratuwa</option>
-                                                <option value="Mullaitivu">Mullaitivu</option>
-                                                <option value="Mulleriyawa">Mulleriyawa</option>
-                                                <option value="Nawalapitiya">Nawalapitiya</option>
-                                                <option value="Negombo">Negombo</option>
-                                                <option value="Nittambuwa">Nittambuwa</option>
-                                                <option value="Nuwara-Eliya">Nuwara-Eliya</option>
-                                                <option value="Nugegoda">Nugegoda</option>
-                                                <option value="Padukka">Padukka</option>
-                                                <option value="Panadura">Panadura</option>
-                                                <option value="Pannipitiya">Pannipitiya</option>
-                                                <option value="Peliyagoda">Peliyagoda</option>
-                                                <option value="Piliyandala">Piliyandala</option>
-                                                <option value="Polgahawela">Polgahawela</option>
-                                                <option value="Polonnaruwa">Polonnaruwa</option>
-                                                <option value="Puttalam">Puttalam</option>
-                                                <option value="Ragama">Ragama</option>
-                                                <option value="Ratnapura">Ratnapura</option>
-                                                <option value="Seethawakapura">Seethawakapura</option>
-                                                <option value="Sigiriya">Sigiriya</option>
-                                                <option value="Talawakele">Talawakele</option>
-                                                <option value="Tangalle">Tangalle</option>
-                                                <option value="Trincomalee">Trincomalee</option>
-                                                <option value="Valvettithurai">Valvettithurai</option>
-                                                <option value="Vavuniya">Vavuniya</option>
-                                                <option value="Wattala">Wattala</option>
-                                                <option value="Wattegama">Wattegama</option>
-                                                <option value="Warakapola">Warakapola</option>
-                                                <option value="Weligama">Weligama</option>
-                                                <option value="Welimada">Welimada</option>
-                                                <option value="Welisara">Welisara</option>
-                                                <option value="Wennappuwa">Wennappuwa</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row m-2">
-                                    <div class="form-group col-12">
-                                        <label form="year_range"><b>Year Range</b></label><br>
-                                        <div class='input-group' id="year_range">
-                                            <input type="text" id="year_min" name="year_min" class="yearpicker col-6 form-control" placeholder="MIN" autocomplete="off">
-                                            <input type="text" id="year_max" name="year_max" class="yearpicker col-6 form-control" placeholder="MAX" autocomplete="off">
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-12">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <label for="cmb_gear"><b>Gear</b></label>
-                                                <div>
-                                                    <select id="cmb_gear" name="cmb_gear" class="form-control">
-                                                        <option value="any"> Any Gear </option>
-                                                        <option value="Automatic">Auto</option>
-                                                        <option value="Manual">Manual</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <label for="cmb_fuel_type"><b>Fuel</b></label>
-                                                <div>
-                                                    <select id="cmb_fuel_type" name="cmb_fuel_type" class="form-control">
-                                                        <option value="any"> Any Fuel </option>
-                                                        <option value="petrol">Petrol</option>
-                                                        <option value="diesel">Diesel</option>
-                                                        <option value="electric">Electric</option>
-                                                        <option value="hybrid">Hybrid</option>
-                                                        <option value="gas">Gas</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                    </div>
-                    </form>
-                    </section>
-                    <div class="shop-filter-block">
-                        <button class="apply-btn" id="filter_btn">APPLY</button>
-                        <button class="cancel-btn" id="btn_search_cancel">CANCEL</button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div id="mob-hero" class="hero-section section-gap-top-25">
             <div class="container">
@@ -296,6 +46,7 @@
                     <div class="swiper">
                         <!-- Additional required wrapper -->
                         <div class="swiper-wrapper">
+                            @foreach($most_favoured_posts as $key => $favoured_post)
                             <!-- Slides -->
                             <div class="swiper-slide">
                                 <div class="hero-singel-slide ">
@@ -304,56 +55,19 @@
                                     </div>
                                     <div class="inner-wrapper">
                                         <div class="content">
-                                            <p class="title-tag">1st most</p>
-                                            <h1 class="title">Favourite</h1>
-                                            <h2 class="title">Vehicle</h2>
-                                            <h3 class="title">of the month</h3>
+                                            <h1 class="title"><b> {{ $key+1 }} </b></p>
+                                                <h1 class="title">Most</h1>
+                                                <h1 class="title">Favourite</h1>
+                                                <h2 class="title">Vehicle of the month</h2>
                                         </div>
                                         <div class="product-img">
                                             <img width="149" height="127" class="img-fluid" id="favour_vehicle_one" src="" alt="image">
-                                            <div class="shape shape-1"><img width="83" height="83" class="img-fluid" src="{{ asset('assets2/images/hero/shape/shape-dotted.png') }}" alt="image"></div>
+                                            <div class="shape shape-1"><img width="83" height="83" class="img-fluid" src="{{ asset($favoured_post->post->main_image) }}" alt="image"></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="hero-singel-slide">
-                                    <div class="hero-bg">
-                                        <img width="388" height="160" class="img-full" src="{{ asset('assets2/images/hero/bg/bg-1.jpg') }}" alt="image">
-                                    </div>
-                                    <div class="inner-wrapper">
-                                        <div class="content">
-                                            <p class="title-tag">2nd most</p>
-                                            <h1 class="title">Favourite</h1>
-                                            <h2 class="title">Vehicle</h2>
-                                            <h3 class="title">of the month</h3>
-                                        </div>
-                                        <div class="product-img">
-                                            <img width="127" height="98" class="img-fluid" id="favour_vehicle_two" src="" alt="image">
-                                            <div class="shape shape-1"><img width="83" height="83" class="img-fluid" src="{{ asset('assets2/images/hero/shape/shape-dotted.png') }}" alt="image"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="hero-singel-slide">
-                                    <div class="hero-bg">
-                                        <img width="388" height="160" class="img-full" src="{{ asset('assets2/images/hero/bg/bg-3.jpg') }}" alt="image">
-                                    </div>
-                                    <div class="inner-wrapper">
-                                        <div class="content">
-                                            <p class="title-tag">3rd most</p>
-                                            <h1 class="title">Favourite</h1>
-                                            <h2 class="title">Vehicle</h2>
-                                            <h3 class="title">of the month</h3>
-                                        </div>
-                                        <div class="product-img">
-                                            <img width="127" height="98" class="img-fluid" id="favour_vehicle_three" src="" alt="image">
-                                            <div class="shape shape-1"><img width="83" height="83" class="img-fluid" src="{{ asset('assets2/images/hero/shape/shape-dotted.png') }}" alt="image"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <!-- If we need pagination -->
@@ -365,114 +79,354 @@
         <!-- ...:::End Hero Slider Section:::... -->
     </div>
 </div>
-<!-- ======= Hero Section ======= -->
-<section id="hero">
-    <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
-        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
-
-        <div class="carousel-inner" role="listbox">
-
-            <!-- Slide 1 -->
-            <div class="carousel-item active" style="background-image: url({{asset('assets/img/home_images/home-one.jpg')}})">
-                <div class="carousel-container">
-                    <div class="container">
-                        <h2 class="animate__animated animate__fadeInDown">WELCOME <span> VEHIAUTO</span></h2>
-                        <p class="animate__animated animate__fadeInUp">vehiauto.com is marketplace for buy and sell vehicles online in sri lanka.</p>
-                        <a href="/home" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+<div class="row">
+    <div class="col-12 col-md-2">
+        <section id="search_container" class="mt-2 bg-white">
+            <form id="search_form">
+                @csrf
+                <div class="row m-2">
+                    <div class="form-group col-12">
+                        <label for="cmb_make"><b>MAKE</b></label>
+                        <div>
+                            <select id="cmb_make" name="cmb_make" class="form-control select2"></select>
+                        </div>
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="model"><b>MODEL</b></label>
+                        <div>
+                            <input type="text" id="model" name="model" class="form-control" placeholder="Enter the model of vehicle" max-length="150">
+                        </div>
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="cmb_post_type"><b>POST TYPE</b></label>
+                        <div>
+                            <select id="cmb_post_type" name="cmb_post_type" class="form-control">
+                                <option value="VEHI">Vehicle</option>
+                                <option value="SPARE">Spare Parts</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="cmb_vehi_type"><b>Vehicle Type</b></label>
+                        <div>
+                            <select id="cmb_vehi_type" name="cmb_vehi_type" class="form-control">
+                                <option value="any"> Any Type </option>
+                                <option value="car">Car</option>
+                                <option value="van">Van</option>
+                                <option value="suv">SUV / Jeep</option>
+                                <option value="motorcycle">Motorcycle</option>
+                                <option value="crew-cab">Crew Cab</option>
+                                <option value="wagon">Wagon</option>
+                                <option value="pickup">Pickup / Double Cab</option>
+                                <option value="buse">Bus</option>
+                                <option value="lorry">Lorry</option>
+                                <option value="three-wheel">Three Wheel</option>
+                                <option value="other">Other</option>
+                                <option value="tractor">Tractor</option>
+                                <option value="heavy-dutie">Heavy-Duty</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Slide 2 -->
-            <div class="carousel-item" style="background-image: url({{asset('assets/img/home_images/home-two.jpg')}})">
-                <div class="carousel-container">
-                    <div class="container">
-                        <h2 class="animate__animated animate__fadeInDown">Sell Vehicles Online</span></h2>
-                        <p class="animate__animated animate__fadeInUp">You can sell and promote vehicles online.</p>
-                        <a href="/post_registration" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+                <div class="row m-2">
+                    <div class="form-group col-12">
+                        <label for="cmb_condition"><b>CONDITION</b></label>
+                        <div>
+                            <select id="cmb_condition" name="cmb_condition" class="form-control">
+                                <option value="any">Select Condition</option>
+                                <option value="Used">Used</option>
+                                <option value="New">New</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="cmb_price"><b>PRICE RANGE</b></label>
+                        <div>
+                            <select id="cmb_price" name="cmb_price" class="form-control">
+                                <option value="Any"> Any </option>
+                                <option value="< 100000">&lt; 100,000</option>
+                                <option value="100000-500000">100,000 - 500,000</option>
+                                <option value="500000-1000000">500,000 - 1,000,000</option>
+                                <option value="1000000-1500000">1,000,000 - 1,500,000</option>
+                                <option value="1500000-2000000">1,500,000 - 2,000,000</option>
+                                <option value="2000000-3000000">2,000,000 - 3,000,000</option>
+                                <option value="3000000-4000000">3,000,000 - 4,000,000</option>
+                                <option value="4000000-5000000">4,000,000 - 5,000,000</option>
+                                <option value="5000000-6000000">5,000,000 - 6,000,000</option>
+                                <option value="6000000-7000000">6,000,000 - 7,000,000</option>
+                                <option value="7000000-8000000">7,000,000 - 8,000,000</option>
+                                <option value="8000000-10000000">8,000,000 - 10 Million</option>
+                                <option value="10000000-15000000">10 Million - 15 Million</option>
+                                <option value="> 15000000">&gt; 15 Million</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="cmb_city"><b>LOCATION</b></label>
+                        <div>
+                            <select id="cmb_city" name="cmb_city" class="form-control select2">
+                                <option value="any"> Any City </option>
+                                <option value="Ambalangoda">Ambalangoda</option>
+                                <option value="Ampara">Ampara</option>
+                                <option value="Anuradapura">Anuradapura</option>
+                                <option value="Avissawella">Avissawella</option>
+                                <option value="Bandaragama">Bandaragama</option>
+                                <option value="Badulla">Badulla</option>
+                                <option value="Balangoda">Balangoda</option>
+                                <option value="Bandarawela">Bandarawela</option>
+                                <option value="Battaramulla">Battaramulla</option>
+                                <option value="Batticaloa">Batticaloa</option>
+                                <option value="Beruwala">Beruwala</option>
+                                <option value="Boralesgamuwa">Boralesgamuwa</option>
+                                <option value="Chavakacheri">Chavakacheri</option>
+                                <option value="Chilaw">Chilaw</option>
+                                <option value="Colombo">Colombo</option>
+                                <option value="Daluguma">Daluguma</option>
+                                <option value="Dambulla">Dambulla</option>
+                                <option value="Dehiwala-Mount-Lavinia">Dehiwala-Mount</option>
+                                <option value="Divulapitiya">Divulapitiya</option>
+                                <option value="Dompe">Dompe</option>
+                                <option value="Eheliyagoda">Eheliyagoda</option>
+                                <option value="Embilipitiya">Embilipitiya</option>
+                                <option value="Eravur">Eravur</option>
+                                <option value="Galle">Galle</option>
+                                <option value="Gampaha">Gampaha</option>
+                                <option value="Gampola">Gampola</option>
+                                <option value="Hambantota">Hambantota</option>
+                                <option value="Hanwella">Hanwella</option>
+                                <option value="Haputale">Haputale</option>
+                                <option value="Harispattuwa">Harispattuwa</option>
+                                <option value="Hatton">Hatton</option>
+                                <option value="Hendala">Hendala</option>
+                                <option value="Homagama">Homagama</option>
+                                <option value="Horana">Horana</option>
+                                <option value="Ja-Ela">Ja-Ela</option>
+                                <option value="Jaffna">Jaffna</option>
+                                <option value="Kurunegala">Kurunegala</option>
+                                <option value="Kadawatha">Kadawatha</option>
+                                <option value="Kadugannawa">Kadugannawa</option>
+                                <option value="Kaduwela">Kaduwela</option>
+                                <option value="Kalawana">Kalawana</option>
+                                <option value="Kalmunai">Kalmunai</option>
+                                <option value="Kalutara">Kalutara</option>
+                                <option value="Kandana">Kandana</option>
+                                <option value="Kandy">Kandy</option>
+                                <option value="Kattankudy">Kattankudy</option>
+                                <option value="Katunayake">Katunayake</option>
+                                <option value="Kegalle">Kegalle</option>
+                                <option value="Kelaniya">Kelaniya</option>
+                                <option value="Kesbewa">Kesbewa</option>
+                                <option value="Keselwatta">Keselwatta</option>
+                                <option value="Kilinochchi">Kilinochchi</option>
+                                <option value="Kiribathgoda">Kiribathgoda</option>
+                                <option value="Kolonnawa">Kolonnawa</option>
+                                <option value="Kotikawatta">Kotikawatta</option>
+                                <option value="Kotte">Kotte</option>
+                                <option value="Kottawa">Kottawa</option>
+                                <option value="Kuliyapitiya">Kuliyapitiya</option>
+                                <option value="Kurunegala">Kurunegala</option>
+                                <option value="Maharagama">Maharagama</option>
+                                <option value="Mahiyanganaya">Mahiyanganaya</option>
+                                <option value="Malabe">Malabe</option>
+                                <option value="Mannar">Mannar</option>
+                                <option value="Matale">Matale</option>
+                                <option value="Matara">Matara</option>
+                                <option value="Matugama">Matugama</option>
+                                <option value="Mawanella">Mawanella</option>
+                                <option value="Minuwangoda">Minuwangoda</option>
+                                <option value="Mirigama">Mirigama</option>
+                                <option value="Moneragala">Moneragala</option>
+                                <option value="Moratuwa">Moratuwa</option>
+                                <option value="Mullaitivu">Mullaitivu</option>
+                                <option value="Mulleriyawa">Mulleriyawa</option>
+                                <option value="Nawalapitiya">Nawalapitiya</option>
+                                <option value="Negombo">Negombo</option>
+                                <option value="Nittambuwa">Nittambuwa</option>
+                                <option value="Nuwara-Eliya">Nuwara-Eliya</option>
+                                <option value="Nugegoda">Nugegoda</option>
+                                <option value="Padukka">Padukka</option>
+                                <option value="Panadura">Panadura</option>
+                                <option value="Pannipitiya">Pannipitiya</option>
+                                <option value="Peliyagoda">Peliyagoda</option>
+                                <option value="Piliyandala">Piliyandala</option>
+                                <option value="Polgahawela">Polgahawela</option>
+                                <option value="Polonnaruwa">Polonnaruwa</option>
+                                <option value="Puttalam">Puttalam</option>
+                                <option value="Ragama">Ragama</option>
+                                <option value="Ratnapura">Ratnapura</option>
+                                <option value="Seethawakapura">Seethawakapura</option>
+                                <option value="Sigiriya">Sigiriya</option>
+                                <option value="Talawakele">Talawakele</option>
+                                <option value="Tangalle">Tangalle</option>
+                                <option value="Trincomalee">Trincomalee</option>
+                                <option value="Valvettithurai">Valvettithurai</option>
+                                <option value="Vavuniya">Vavuniya</option>
+                                <option value="Wattala">Wattala</option>
+                                <option value="Wattegama">Wattegama</option>
+                                <option value="Warakapola">Warakapola</option>
+                                <option value="Weligama">Weligama</option>
+                                <option value="Welimada">Welimada</option>
+                                <option value="Welisara">Welisara</option>
+                                <option value="Wennappuwa">Wennappuwa</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Slide 3 -->
-            <div class="carousel-item" style="background-image: url({{asset('assets/img/home_images/home-three.jpg')}})">
-                <div class="carousel-container">
-                    <div class="container">
-                        <h2 class="animate__animated animate__fadeInDown">Buy and contact sellers</span></h2>
-                        <p class="animate__animated animate__fadeInUp">Contact huge number of sellers to analyse and buy your future vehicle.</p>
-                        <a href="/contacts" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+                <div class="row m-2">
+                    <div class="form-group col-12">
+                        <label form="year_range"><b>Year Range</b></label><br>
+                        <div class='input-group' id="year_range">
+                            <input type="text" id="year_min" name="year_min" class="yearpicker col-6 form-control" placeholder="MIN" autocomplete="off">
+                            <input type="text" id="year_max" name="year_max" class="yearpicker col-6 form-control" placeholder="MAX" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="form-group col-12">
+                        <div class="row">
+                            <div class="col-12">
+                                <label for="cmb_gear"><b>Gear</b></label>
+                                <div>
+                                    <select id="cmb_gear" name="cmb_gear" class="form-control">
+                                        <option value="any"> Any Gear </option>
+                                        <option value="Automatic">Auto</option>
+                                        <option value="Manual">Manual</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="cmb_fuel_type"><b>Fuel</b></label>
+                                <div>
+                                    <select id="cmb_fuel_type" name="cmb_fuel_type" class="form-control">
+                                        <option value="any"> Any Fuel </option>
+                                        <option value="petrol">Petrol</option>
+                                        <option value="diesel">Diesel</option>
+                                        <option value="electric">Electric</option>
+                                        <option value="hybrid">Hybrid</option>
+                                        <option value="gas">Gas</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-12">
+                        <div class="row">
+                            <div class="col-12">
+                                <input type="button" class="apply-btn" id="filter_btn" value="APPLY">
+                                <input type="button" class="apply-btn d-none" id="btn_search_cancel" value="CANCEL">
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
-        </a>
-        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
-            <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
-        </a>
+            </form>
+        </section>
     </div>
-</section><!-- End Hero -->
+    <div class="col-12 col-md-10">
+        <!-- ======= Hero Section ======= -->
+        <section id="hero">
+            <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
 
-<!-- ======= Featured Services Section ======= -->
-<section id="featured-services" class="featured-services section-bg">
-    <div class="container">
+                <div class="carousel-inner" role="listbox">
 
-        <div class="row no-gutters">
-            <div class="col-lg-4 col-md-6">
-                <div class="icon-box">
-                    <div class="icon"><i class="bi bi-laptop"></i></div>
-                    <h4 class="title"><a href="">Sell Your Vehicles</a></h4>
-                    <p class="description">Sell Vehicles online on our platform</p>
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active" style="background-image: url({{asset('assets/img/home_images/home-one.jpg')}})">
+                        <div class="carousel-container">
+                            <div class="container">
+                                <h2 class="animate__animated animate__fadeInDown">WELCOME <span> VEHIAUTO</span></h2>
+                                <p class="animate__animated animate__fadeInUp">vehiauto.com is marketplace for buy and sell vehicles online in sri lanka.</p>
+                                <a href="/home" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="carousel-item" style="background-image: url({{asset('assets/img/home_images/home-two.jpg')}})">
+                        <div class="carousel-container">
+                            <div class="container">
+                                <h2 class="animate__animated animate__fadeInDown">Sell Vehicles Online</span></h2>
+                                <p class="animate__animated animate__fadeInUp">You can sell and promote vehicles online.</p>
+                                <a href="/post_registration" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="carousel-item" style="background-image: url({{asset('assets/img/home_images/home-three.jpg')}})">
+                        <div class="carousel-container">
+                            <div class="container">
+                                <h2 class="animate__animated animate__fadeInDown">Buy and contact sellers</span></h2>
+                                <p class="animate__animated animate__fadeInUp">Contact huge number of sellers to analyse and buy your future vehicle.</p>
+                                <a href="/contacts" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+                </a>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="icon-box">
-                    <div class="icon"><i class="bi bi-briefcase"></i></div>
-                    <h4 class="title"><a href="">Buy Vehicles</a></h4>
-                    <p class="description">Buy Vehicles online on our platform</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="icon-box">
-                    <div class="icon"><i class="bi bi-calendar4-week"></i></div>
-                    <h4 class="title"><a href="">Analyse the vehicle market</a></h4>
-                    <p class="description">Analyse vehicle market data with us to get the right decision</p>
-                </div>
-            </div>
-        </div>
+        </section><!-- End Hero -->
 
-    </div>
-</section>
-<!-- hitwebcounter Code START -->
+        <!-- ======= Featured Services Section ======= -->
+        <section id="featured-services" class="featured-services section-bg">
+            <div class="container">
 
-<!-- ======= Portfolio Section ======= -->
-<section id="portfolio" class="portfolio bg-white">
-    <div class="row">
-        <div class="col-md-12">
+                <div class="row no-gutters">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bi bi-laptop"></i></div>
+                            <h4 class="title"><a href="">Sell Your Vehicles</a></h4>
+                            <p class="description">Sell Vehicles online on our platform</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bi bi-briefcase"></i></div>
+                            <h4 class="title"><a href="">Buy Vehicles</a></h4>
+                            <p class="description">Buy Vehicles online on our platform</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bi bi-calendar4-week"></i></div>
+                            <h4 class="title"><a href="">Analyse the vehicle market</a></h4>
+                            <p class="description">Analyse vehicle market data with us to get the right decision</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- hitwebcounter Code START -->
+
+        <!-- ======= Portfolio Section ======= -->
+        <section id="portfolio" class="portfolio bg-white">
+            <div class="row" id="adds">
+                <!-- <div class="col-md-12">
             <table class="table" id="ad_tbl">
                 <thead></thead>
                 <tbody></tbody>
             </table>
-        </div>
-
+        </div> -->
+            </div>
+        </section>
     </div>
-</section>
+</div>
+
 
 <!-- End Portfolio Section -->
 @endsection
 @section('pageScripts')
 <script>
     $(document).ready(function() {
-        load_most_favourite_vehicles();
         // (adsbygoogle = window.adsbygoogle || []).push({});
 
         $('#cmb_make').select2();
         $('#cmb_city').select2();
 
-        loadMakes(function() {
-            $('#filter_btn').removeClass('d-none');
-        });
+        loadMakes();
         //$('.yearpicker').yearpicker();
         let url = '{{asset("/api/get_posts/")}}';
         loadTable(null, url, 'GET');
@@ -487,11 +441,6 @@
 
     $('#main_search_btn').click(function() {
         filter_with_main_search();
-    });
-
-    $('#btn_search_cancel').click(function() {
-        // $('#search_form')[0].reset();
-        alert();
     });
 
     function filter_with_main_search() {
@@ -523,87 +472,118 @@
     }
 
     function loadTable(data, url, method) {
-
-        let ad_tbl = $('#ad_tbl').DataTable({
-            destroy: true,
-            processing: true,
-            serverSide: false,
-            responsive: true,
-            searching: false,
-            dom: 'Bfrtip',
-            "pageLength": 10,
-            language: {
-                searchPlaceholder: "search",
-                zeroRecords: " "
-            },
-            "ajax": {
-                "url": url,
-                "data": data,
-                "type": method,
-                "dataSrc": "",
-                "headers": {
-                    //            "X-XSRF-TOKEN": token,
-                    'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr("content"),
-                    'Accept': "application/json"
-                },
-            },
-            "columns": [{
-                "data": "",
-                "render": function(data, type, row, meta) {
-                    let html = '';
-                    html += '<div class="row">';
-                    html += '<div class="card card-light w-100" style="border-width: 2px; border-color: black">';
-                    html += '<a href="{{ asset("/get_post_profile/id/") }}/' + row.id + '">';
+        let html = '';
+        $('#adds').html(html);
+        ajaxRequest(method, url, data, function(resp) {
+            if (resp == null) {
+                html += '<div class="col-12"><span class="text-center w-100"><h1><b>No Results Found</b></h1></span></div>';
+            } else {
+                $.each(resp, function(key, val) {
+                    html += '<div class="col-12 col-md-2 ml-3">';
+                    html += '<a href="{{ asset("/get_post_profile/id/") }}/' + val.id + '">';
+                    html += '<div class="card card-white" style="height: 371px">';
+                    html += '<img src="' + val.main_image + '" alt="post image" style="width:100%">';
                     html += '<div class="card-body">';
-                    html += '<div class="row">';
-                    html += '<div class="col-6 col-md-3">';
-                    html += '<div class="portfolio-wrap text-center">';
-                    html += "<img src='{{ asset('/') }}"+ row.main_image.substring(1) +"' style='height: 10em; width: 100%;' alt='main_img'/>";
+                    html += '<div><h1>' + val.post_title + '</h1></div>';
+                    html += '<p> <b>Price:</b>' + val.price + '</p>';
+                    html += '<p><b>Location: </b>' + val.location + '</p>';
+                    html += '<p><b>Millage: </b>' + val.millage + '</p>';
                     html += '</div>';
-                    html += '</div>';
-                    html += '<div class="col-4 col-md-8">';
-                    html += '<b style="font-size: 18px" class="text-success">' + row.post_title + '</b><br>';
-                    html += '<span style="font-size: 14px" class="text-dark"><b>Price: </b>' + row.price + ' </span><br>';
-                    html += '<span style="font-size: 14px" class="text-dark"><b>Location: </b>' + row.location + ' </span><br>';
-                    // html += '<span style="font-size: 14px" class="text-dark"><b>Condition: </b>' + row.condition + ' </span><br>';
-                    html += '<span style="font-size: 14px" class="text-dark"><b>Millage: </b>' + row.millage + ' </span>';
-                    html += '</div>';
-                    html += '<div class="col-2 col-md-1">';
-                    html += '<div class="ribbon-wrapper ribbon-sm">';
-                    html += '<div class="ribbon bg-success text-sm">';
-                    let status = (row.status == 0) ? 'NEW' : 'SOLD';
-                    html += status;
-                    html += '</div>';
-                    html += '</div>';
-                    html += '</div>';
+                    html += '<div class="card-footer">';
+                    // html += '<i class="fa fa-heart text-danger text-lg"></i>';
                     html += '</div>';
                     html += '</div>';
                     html += '</a>';
                     html += '</div>';
-                    html += '</div>';
-                    return html;
-                }
-            }, ],
+                });
+            }
+
+            $('#adds').html(html);
         });
 
-        //data table error handling
-        $.fn.dataTable.ext.errMode = 'none';
-        $('#ad_tbl').on('error.dt', function(e, settings, techNote, message) {
-            console.log('DataTables error: ', message);
-        });
+
+        // let ad_tbl = $('#ad_tbl').DataTable({
+        //     destroy: true,
+        //     processing: true,
+        //     serverSide: false,
+        //     responsive: true,
+        //     searching: false,
+        //     dom: 'Bfrtip',
+        //     "pageLength": 10,
+        //     language: {
+        //         searchPlaceholder: "search",
+        //         zeroRecords: " "
+        //     },
+        //     "ajax": {
+        //         "url": url,
+        //         "data": data,
+        //         "type": method,
+        //         "dataSrc": "",
+        //         "headers": {
+        //             //            "X-XSRF-TOKEN": token,
+        //             'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr("content"),
+        //             'Accept': "application/json"
+        //         },
+        //     },
+        //     "columns": [{
+        //         "data": "",
+        //         "render": function(data, type, row, meta) {
+        //             let html = '';
+        //             html += '<div class="row">';
+        //             html += '<div class="card card-light w-100" style="border-width: 2px; border-color: black">';
+        //             html += '<a href="{{ asset("/get_post_profile/id/") }}/' + row.id + '">';
+        //             html += '<div class="card-body">';
+        //             html += '<div class="row">';
+        //             html += '<div class="col-6 col-md-3">';
+        //             html += '<div class="portfolio-wrap text-center">';
+        //             html += "<img src='{{ asset('/') }}"+ row.main_image.substring(1) +"' style='height: 10em; width: 100%;' alt='main_img'/>";
+        //             html += '</div>';
+        //             html += '</div>';
+        //             html += '<div class="col-4 col-md-8">';
+        //             html += '<b style="font-size: 18px" class="text-success">' + row.post_title + '</b><br>';
+        //             html += '<span style="font-size: 14px" class="text-dark"><b>Price: </b>' + row.price + ' </span><br>';
+        //             html += '<span style="font-size: 14px" class="text-dark"><b>Location: </b>' + row.location + ' </span><br>';
+        //             // html += '<span style="font-size: 14px" class="text-dark"><b>Condition: </b>' + row.condition + ' </span><br>';
+        //             html += '<span style="font-size: 14px" class="text-dark"><b>Millage: </b>' + row.millage + ' </span>';
+        //             html += '</div>';
+        //             html += '<div class="col-2 col-md-1">';
+        //             html += '<div class="ribbon-wrapper ribbon-sm">';
+        //             html += '<div class="ribbon bg-success text-sm">';
+        //             let status = (row.status == 0) ? 'NEW' : 'SOLD';
+        //             html += status;
+        //             html += '</div>';
+        //             html += '</div>';
+        //             html += '</div>';
+        //             html += '</div>';
+        //             html += '</div>';
+        //             html += '</a>';
+        //             html += '</div>';
+        //             html += '</div>';
+        //             return html;
+        //         }
+        //     }, ],
+        // });
+
+        // //data table error handling
+        // $.fn.dataTable.ext.errMode = 'none';
+        // $('#ad_tbl').on('error.dt', function(e, settings, techNote, message) {
+        //     console.log('DataTables error: ', message);
+        // });
 
     }
 
-    function load_most_favourite_vehicles() {
+    function generateStars(star_count) {
+        let stars = '';
 
-        let url = "{{asset('/api/most-favourite-vehicles')}}";
-        let Method = "get";
+        for (let i = 0; i < 5; i++) {
+            if (i < star_count) {
+                stars += '<span class="fa fa-star checked"></span>';
+            } else {
+                stars += '<span class="fa fa-star"></span>';
+            }
+        }
 
-        ajaxRequest(Method, url, null, function(result) {
-            $('#favour_vehicle_one').attr('src', result[0].post.main_image);
-            $('#favour_vehicle_two').attr('src', result[1].post.main_image);
-            $('#favour_vehicle_three').attr('src', result[2].post.main_image);
-        });
+        return stars;
     }
 </script>
 @endsection

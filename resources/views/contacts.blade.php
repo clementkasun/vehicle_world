@@ -9,6 +9,14 @@
         font-family: 'Roboto';
         font-size: 16px;
     }
+
+    #send_mail {
+        background: black;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 </style>
 @endsection
 
