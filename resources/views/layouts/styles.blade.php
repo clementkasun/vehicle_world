@@ -71,6 +71,10 @@
             max-width: 340px;
         }
 
+        #footer {
+            display: none;
+        }
+
     }
 
     table.dataTable thead .sorting,

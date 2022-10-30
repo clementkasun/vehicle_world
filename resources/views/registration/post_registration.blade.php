@@ -10,7 +10,9 @@
     }
 
     #save_post {
-        background: blue;
+        background: black;
+        padding-top: 5px;
+        padding-bottom: 5px;
     }
 </style>
 @endsection
