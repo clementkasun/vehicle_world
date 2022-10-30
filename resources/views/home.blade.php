@@ -81,7 +81,7 @@
 </div>
 <div class="row">
     <div class="col-12 col-md-2">
-        <section id="search_container" class="mt-2 bg-white">
+        <section id="search_container" class="bg-white">
             <form id="search_form">
                 @csrf
                 <div class="row m-2">
@@ -479,7 +479,7 @@
                 html += '<div class="col-12"><span class="text-center w-100"><h1><b>No Results Found</b></h1></span></div>';
             } else {
                 $.each(resp, function(key, val) {
-                    html += '<div class="col-12 col-md-2 ml-3">';
+                    html += '<div class="col-12 col-md-2">';
                     html += '<a href="{{ asset("/get_post_profile/id/") }}/' + val.id + '">';
                     html += '<div class="card card-white" style="height: 371px">';
                     html += '<img src="' + val.main_image + '" alt="post image" style="width:100%">';
