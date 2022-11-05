@@ -9,6 +9,7 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Helpers\LogActivity;
+use App\Models\UserFavourite;
 use App\Notifications\CustomerRegisteredNotification;
 use App\Notifications\CustomerPasswordChangedNotification;
 use App\Notifications\CustomerProfileBasicDataChangedNotification;
@@ -47,7 +48,7 @@ class CustomerRepository implements CustomerInterface
             (request('email') != null) ? $user->email = request('email') : '';
             $user->name = $first_name;
             $user->last_name = $last_name;
-            $user->user_name = $first_name . '_' . $last_name;
+            $user->user_name = $request->user_name;
             $user->address = request('address');
             $user->contact_no = request('contactNo');
             $user->nic = request('nic');
@@ -86,9 +87,13 @@ class CustomerRepository implements CustomerInterface
     public function myProfile()
     {
         $user = Auth::user();
-        $user_adds = Post::where('user_id', $user->id)->with('Vehicle')->with('SparePart')->withAvg('UserReview as user_ratings', 'user_star')->withCount('UserReview as review_count')->get();
-
-        return view('user_profile', ['user_profile_data' => $user, 'user_adds' => $user_adds]);
+        $user_adds = Post::where('user_id', $user->id)
+            ->with(['Vehicle', 'SparePart'])
+            ->withAvg('UserReview as user_ratings', 'user_star')
+            ->withCount('UserReview as review_count')
+            ->get();
+        $user_favoured_posts = UserFavourite::where('user_id', $user->id)->with('Post')->get();
+        return view('user_profile', ['user_profile_data' => $user, 'user_adds' => $user_adds, 'user_favoured_posts' => $user_favoured_posts]);
     }
 
     public function changePassword($request, $id)

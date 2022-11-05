@@ -28,7 +28,8 @@ class DashboardController extends Controller
             'saledPostCount' => $saledPostCount,
             'pending_post_count' => $pending_post_count,
             'heighest_sold_vehicles' => $heighest_sold_vehicles,
-            'heighest_sellers' => $heighest_sellers
+            'heighest_sellers' => $heighest_sellers,
+            'percentages' => $this->postRepository->getPercentages()
         ];
 
         return view('analysis', ['analysis' => $data]);

@@ -14,7 +14,7 @@
     @yield('pageStyles')
 </head>
 
-<body class="container-fluid bg-white">
+<body class="container-fluid bg-light">
     <nav>
         @yield('navbar')
     </nav>

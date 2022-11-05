@@ -3,6 +3,15 @@
 @extends('layouts.scripts')
 @extends('layouts.navbar')
 @extends('layouts.footer')
+@section('pageStyles')
+<style>
+    #search_container {
+        font-family: 'Bahnschrift SemiBold';
+        font-size: 16px;
+        overflow-x: hidden;
+    }
+</style>
+@endsection
 @section('content')
 <!-- ...:::Start Search & Filter Section:::... -->
 <div class="search-n-filter-section section-gap-top-25 mb-4">
@@ -61,8 +70,11 @@
                                                 <h2 class="title">Vehicle of the month</h2>
                                         </div>
                                         <div class="product-img">
+                                            <?php
+                                            $main_image_path = (isset($favoured_post->post->main_image)) ? $favoured_post->post->main_image : null;
+                                            ?>
                                             <img width="149" height="127" class="img-fluid" id="favour_vehicle_one" src="" alt="image">
-                                            <div class="shape shape-1"><img width="83" height="83" class="img-fluid" src="{{ asset($favoured_post->post->main_image) }}" alt="image"></div>
+                                            <div class="shape shape-1"><img width="83" height="83" class="img-fluid" src="{{ asset($main_image_path) }}" alt="image"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -80,25 +92,97 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-12 col-md-2">
-        <section id="search_container" class="bg-white">
+    <div class="col-12">
+        <!-- ======= Hero Section ======= -->
+        <section id="hero">
+            <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+                <div class="carousel-inner" role="listbox">
+
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active" style="background-image: url({{asset('assets/img/home_images/home-one.jpg')}})">
+                        <div class="carousel-container">
+                            <div class="container">
+                                <h2 class="animate__animated animate__fadeInDown">WELCOME <span>TO VEHIAUTO</span></h2>
+                                <p class="animate__animated animate__fadeInUp">Vehiauto.com is marketplace for buy and sell vehicles online in sri lanka.</p>
+                                <a href="/home" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="carousel-item" style="background-image: url({{asset('assets/img/home_images/home-two.jpg')}})">
+                        <div class="carousel-container">
+                            <div class="container">
+                                <h2 class="animate__animated animate__fadeInDown">Sell Vehicles Online</span></h2>
+                                <p class="animate__animated animate__fadeInUp">You can sell and promote vehicles online.</p>
+                                <a href="/post_registration" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="carousel-item" style="background-image: url({{asset('assets/img/home_images/home-three.jpg')}})">
+                        <div class="carousel-container">
+                            <div class="container">
+                                <h2 class="animate__animated animate__fadeInDown">Buy and contact sellers</span></h2>
+                                <p class="animate__animated animate__fadeInUp">Contact huge number of sellers to analyse and buy your future vehicle.</p>
+                                <a href="/contacts" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+                </a>
+                <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+                </a>
+            </div>
+        </section><!-- End Hero -->
+
+        <!-- ======= Featured Services Section ======= -->
+        <section id="featured-services" class="featured-services section-bg">
+            <div class="container">
+
+                <div class="row no-gutters">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bi bi-laptop"></i></div>
+                            <h4 class="title"><a href="">Sell Your Vehicles</a></h4>
+                            <p class="description">Sell Vehicles online on our platform</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bi bi-briefcase"></i></div>
+                            <h4 class="title"><a href="">Buy Vehicles</a></h4>
+                            <p class="description">Buy Vehicles online on our platform</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="icon-box">
+                            <div class="icon"><i class="bi bi-calendar4-week"></i></div>
+                            <h4 class="title"><a href="">Analyse the vehicle market</a></h4>
+                            <p class="description">Analyse vehicle market data with us to get the right decision</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- hitwebcounter Code START -->
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <section id="search_container" class="bg-light" style="border-color: black; border-width: 2px">
             <form id="search_form">
                 @csrf
                 <div class="row m-2">
-                    <div class="form-group col-12">
-                        <label for="cmb_make"><b>MAKE</b></label>
-                        <div>
-                            <select id="cmb_make" name="cmb_make" class="form-control select2"></select>
-                        </div>
-                    </div>
-                    <div class="form-group col-12">
-                        <label for="model"><b>MODEL</b></label>
-                        <div>
-                            <input type="text" id="model" name="model" class="form-control" placeholder="Enter the model of vehicle" max-length="150">
-                        </div>
-                    </div>
-                    <div class="form-group col-12">
-                        <label for="cmb_post_type"><b>POST TYPE</b></label>
+                    <div class="form-group col-12 col-md-1">
+                        <label for="cmb_post_type"><b>Post Type</b></label>
                         <div>
                             <select id="cmb_post_type" name="cmb_post_type" class="form-control">
                                 <option value="VEHI">Vehicle</option>
@@ -106,7 +190,29 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group col-12">
+                    <div id="start_type_group" class="form-group col-12 col-md-1">
+                        <label for="cmb_start_type"><b>Start Type</b></label>
+                        <div>
+                            <select id="cmb_start_type" name="cmb_start_type" class="form-control">
+                                <option value="any">Any</option>
+                                <option value="Manual">Manual</option>
+                                <option value="Self">Self</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-12 col-md-2">
+                        <label for="cmb_make"><b>Make</b></label>
+                        <div>
+                            <select id="cmb_make" name="cmb_make" class="form-control select2"></select>
+                        </div>
+                    </div>
+                    <div id="model_group" class="form-group col-12 col-md-2">
+                        <label for="model"><b>Model</b></label>
+                        <div>
+                            <input type="text" id="model" name="model" class="form-control" placeholder="Enter the model of vehicle" max-length="150">
+                        </div>
+                    </div>
+                    <div id="cmb_vehi_type_group" class="form-group col-12 col-md-2">
                         <label for="cmb_vehi_type"><b>Vehicle Type</b></label>
                         <div>
                             <select id="cmb_vehi_type" name="cmb_vehi_type" class="form-control">
@@ -127,10 +233,8 @@
                             </select>
                         </div>
                     </div>
-                </div>
-                <div class="row m-2">
-                    <div class="form-group col-12">
-                        <label for="cmb_condition"><b>CONDITION</b></label>
+                    <div class="form-group col-12 col-md-2">
+                        <label for="cmb_condition"><b>Condition</b></label>
                         <div>
                             <select id="cmb_condition" name="cmb_condition" class="form-control">
                                 <option value="any">Select Condition</option>
@@ -139,8 +243,8 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group col-12">
-                        <label for="cmb_price"><b>PRICE RANGE</b></label>
+                    <div class="form-group col-12 col-md-2">
+                        <label for="cmb_price"><b>Price Range</b></label>
                         <div>
                             <select id="cmb_price" name="cmb_price" class="form-control">
                                 <option value="Any"> Any </option>
@@ -161,8 +265,10 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group col-12">
-                        <label for="cmb_city"><b>LOCATION</b></label>
+                </div>
+                <div class="row m-2">
+                    <div class="form-group col-12 col-md-2">
+                        <label for="cmb_city"><b>Location</b></label>
                         <div>
                             <select id="cmb_city" name="cmb_city" class="form-control select2">
                                 <option value="any"> Any City </option>
@@ -271,42 +377,99 @@
                             </select>
                         </div>
                     </div>
-                </div>
-                <div class="row m-2">
-                    <div class="form-group col-12">
+                    <div id="year_range_group" class="form-group col-12 col-md-4">
                         <label form="year_range"><b>Year Range</b></label><br>
                         <div class='input-group' id="year_range">
                             <input type="text" id="year_min" name="year_min" class="yearpicker col-6 form-control" placeholder="MIN" autocomplete="off">
                             <input type="text" id="year_max" name="year_max" class="yearpicker col-6 form-control" placeholder="MAX" autocomplete="off">
                         </div>
                     </div>
-                    <div class="form-group col-12">
-                        <div class="row">
-                            <div class="col-12">
-                                <label for="cmb_gear"><b>Gear</b></label>
-                                <div>
-                                    <select id="cmb_gear" name="cmb_gear" class="form-control">
-                                        <option value="any"> Any Gear </option>
-                                        <option value="Automatic">Auto</option>
-                                        <option value="Manual">Manual</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <label for="cmb_fuel_type"><b>Fuel</b></label>
-                                <div>
-                                    <select id="cmb_fuel_type" name="cmb_fuel_type" class="form-control">
-                                        <option value="any"> Any Fuel </option>
-                                        <option value="petrol">Petrol</option>
-                                        <option value="diesel">Diesel</option>
-                                        <option value="electric">Electric</option>
-                                        <option value="hybrid">Hybrid</option>
-                                        <option value="gas">Gas</option>
-                                    </select>
-                                </div>
-                            </div>
+                    <div id="cmb_gear_group" class="col-12 col-md-2">
+                        <label for="cmb_gear"><b>Gear</b></label>
+                        <div>
+                            <select id="cmb_gear" name="cmb_gear" class="form-control">
+                                <option value="any"> Any Gear </option>
+                                <option value="Automatic">Auto</option>
+                                <option value="Manual">Manual</option>
+                            </select>
                         </div>
                     </div>
+                    <div id="cmb_fuel_type_group" class="col-12 col-md-2">
+                        <label for="cmb_fuel_type"><b>Fuel</b></label>
+                        <div>
+                            <select id="cmb_fuel_type" name="cmb_fuel_type" class="form-control">
+                                <option value="any"> Any Fuel </option>
+                                <option value="petrol">Petrol</option>
+                                <option value="diesel">Diesel</option>
+                                <option value="electric">Electric</option>
+                                <option value="hybrid">Hybrid</option>
+                                <option value="gas">Gas</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="part_in_category_group" class="col-12 col-md-2 d-none">
+                        <label for="part_category">Part Category</label>
+                        <div>
+                            <select id="part_category" name="part_category" class="form-control" required>
+                                <option value="">Select</option>
+                                <option value="Air Conditioning &amp; Heating">Air Conditioning &amp; Heating
+                                </option>
+                                <option value="Air Intake &amp; Fuel Delivery">Air Intake &amp; Fuel Delivery
+                                </option>
+                                <option value="Axles &amp; Axle Parts">Axles &amp; Axle Parts</option>
+                                <option value="Battery">Battery</option>
+                                <option value="Brakes">Brakes</option>
+                                <option value="Car Audio Systems">Car Audio Systems</option>
+                                <option value="Car DVR">Car DVR</option>
+                                <option value="Car Tuning &amp; Styling">Car Tuning &amp; Styling</option>
+                                <option value="Carburetor">Carburetor</option>
+                                <option value="Chassis">Chassis</option>
+                                <option value="Electrical Components">Electrical Components</option>
+                                <option value="Emission Systems">Emission Systems</option>
+                                <option value="Engine Cooling">Engine Cooling</option>
+                                <option value="Engines &amp; Engine Parts">Engines &amp; Engine Parts</option>
+                                <option value="Exhausts &amp; Exhaust Parts">Exhausts &amp; Exhaust Parts
+                                </option>
+                                <option value="External &amp; Body Parts">External &amp; Body Parts</option>
+                                <option value="External Lights &amp; Indicators">External Lights &amp;
+                                    Indicators</option>
+                                <option value="Footrests, Pedals &amp; Pegs">Footrests, Pedals &amp; Pegs
+                                </option>
+                                <option value="Freezer">Freezer</option>
+                                <option value="Gauges, Dials &amp; Instruments">Gauges, Dials &amp; Instruments
+                                </option>
+                                <option value="Generator">Generator</option>
+                                <option value="GPS &amp; In-Car Technology">GPS &amp; In-Car Technology</option>
+                                <option value="Handlebars, Grips &amp; Levers">Handlebars, Grips &amp; Levers
+                                </option>
+                                <option value="Helmets, Clothing &amp; Protection">Helmets, Clothing &amp;
+                                    Protection</option>
+                                <option value="Interior Parts &amp; Furnishings">Interior Parts &amp;
+                                    Furnishings</option>
+                                <option value="Lighting &amp; Indicators">Lighting &amp; Indicators</option>
+                                <option value="Mirrors">Mirrors</option>
+                                <option value="Oils, Lubricants &amp; Fluids">Oils, Lubricants &amp; Fluids
+                                </option>
+                                <option value="Other">Other</option>
+                                <option value="Reverse Camera">Reverse Camera</option>
+                                <option value="Seating">Seating</option>
+                                <option value="Service Kits">Service Kits</option>
+                                <option value="Silencer">Silencer</option>
+                                <option value="Starter Motors">Starter Motors</option>
+                                <option value="Stickers">Stickers</option>
+                                <option value="Suspension, Steering &amp; Handling">Suspension, Steering &amp;
+                                    Handling</option>
+                                <option value="Transmission &amp; Drivetrain">Transmission &amp; Drivetrain
+                                </option>
+                                <option value="Turbos &amp; Superchargers">Turbos &amp; Superchargers</option>
+                                <option value="Wheels, Tyres &amp; Rims">Wheels, Tyres &amp; Rims</option>
+                                <option value="Windscreen Wipers &amp; Washers">Windscreen Wipers &amp; Washers
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-2">
                     <div class="form-group col-12">
                         <div class="row">
                             <div class="col-12">
@@ -319,124 +482,76 @@
             </form>
         </section>
     </div>
-    <div class="col-12 col-md-10">
-        <!-- ======= Hero Section ======= -->
-        <section id="hero">
-            <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
-
-                <div class="carousel-inner" role="listbox">
-
-                    <!-- Slide 1 -->
-                    <div class="carousel-item active" style="background-image: url({{asset('assets/img/home_images/home-one.jpg')}})">
-                        <div class="carousel-container">
-                            <div class="container">
-                                <h2 class="animate__animated animate__fadeInDown">WELCOME <span> VEHIAUTO</span></h2>
-                                <p class="animate__animated animate__fadeInUp">vehiauto.com is marketplace for buy and sell vehicles online in sri lanka.</p>
-                                <a href="/home" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 2 -->
-                    <div class="carousel-item" style="background-image: url({{asset('assets/img/home_images/home-two.jpg')}})">
-                        <div class="carousel-container">
-                            <div class="container">
-                                <h2 class="animate__animated animate__fadeInDown">Sell Vehicles Online</span></h2>
-                                <p class="animate__animated animate__fadeInUp">You can sell and promote vehicles online.</p>
-                                <a href="/post_registration" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Slide 3 -->
-                    <div class="carousel-item" style="background-image: url({{asset('assets/img/home_images/home-three.jpg')}})">
-                        <div class="carousel-container">
-                            <div class="container">
-                                <h2 class="animate__animated animate__fadeInDown">Buy and contact sellers</span></h2>
-                                <p class="animate__animated animate__fadeInUp">Contact huge number of sellers to analyse and buy your future vehicle.</p>
-                                <a href="/contacts" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
-                </a>
-                <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
-                    <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
-                </a>
-            </div>
-        </section><!-- End Hero -->
-
-        <!-- ======= Featured Services Section ======= -->
-        <section id="featured-services" class="featured-services section-bg">
-            <div class="container">
-
-                <div class="row no-gutters">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bi bi-laptop"></i></div>
-                            <h4 class="title"><a href="">Sell Your Vehicles</a></h4>
-                            <p class="description">Sell Vehicles online on our platform</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bi bi-briefcase"></i></div>
-                            <h4 class="title"><a href="">Buy Vehicles</a></h4>
-                            <p class="description">Buy Vehicles online on our platform</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bi bi-calendar4-week"></i></div>
-                            <h4 class="title"><a href="">Analyse the vehicle market</a></h4>
-                            <p class="description">Analyse vehicle market data with us to get the right decision</p>
-                        </div>
-                    </div>
-                </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <!-- ======= Trending posts ======= -->
+        <div id="trending_posts" class="trending-posts card card-success m-3" style="font-family: 'Bahnschrift SemiCondensed';">
+            <div class="card-header text-center"><b><h1>Trending posts</h1></b></div>
+            <div class="card-body row" id="trends">
 
             </div>
-        </section>
-        <!-- hitwebcounter Code START -->
-
-        <!-- ======= Portfolio Section ======= -->
-        <section id="portfolio" class="portfolio bg-white">
-            <div class="row" id="adds">
-                <!-- <div class="col-md-12">
-            <table class="table" id="ad_tbl">
-                <thead></thead>
-                <tbody></tbody>
-            </table>
-        </div> -->
-            </div>
-        </section>
+        </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-12">
+        <!-- ======= Portfolio Section ======= -->
+        <div id="portfolio" class="card card-success portfolio m-3" style="font-family: 'Bahnschrift SemiCondensed';">
+            <div class="card-header text-center"><b><h1>Published Posts</h1></b></div>
+            <div class="card-body row" id="adds">
 
-
+            </div>
+        </div>
+    </div>
+</div>
 <!-- End Portfolio Section -->
 @endsection
 @section('pageScripts')
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.1/jquery.twbsPagination.min.js"> </script>  
 <script>
     $(document).ready(function() {
         // (adsbygoogle = window.adsbygoogle || []).push({});
+
+        $('#cmb_post_type').change(function() {
+            if ($(this).val() == 'SPARE') {
+                $('#model_group').addClass('d-none');
+                $('#cmb_vehi_type_group').addClass('d-none');
+                $('#year_range_group').addClass('d-none');
+                $('#cmb_gear_group').addClass('d-none');
+                $('#cmb_fuel_type_group').addClass('d-none');
+                $('#part_in_category_group').removeClass('d-none');
+                $('#start_type_group').addClass('d-none');
+            }
+
+            if ($(this).val() == 'VEHI') {
+                $('#model_group').removeClass('d-none');
+                $('#cmb_vehi_type_group').removeClass('d-none');
+                $('#year_range_group').removeClass('d-none');
+                $('#cmb_gear_group').removeClass('d-none');
+                $('#cmb_fuel_type_group').removeClass('d-none');
+                $('#part_in_category_group').addClass('d-none');
+                $('#start_type_group').removeClass('d-none');
+            }
+        });
 
         $('#cmb_make').select2();
         $('#cmb_city').select2();
 
         loadMakes();
         //$('.yearpicker').yearpicker();
-        let url = '{{asset("/api/get_posts/")}}';
-        loadTable(null, url, 'GET');
+        let posts_url = '{{asset("/api/get_posts/")}}';
+        loadTable(null, posts_url, 'GET', '#adds');
+
+        let trending_post_url = '{{asset("/api/get_trending_posts/")}}';
+        loadTable(null, trending_post_url, 'get', '#trends')
     });
 
     $('#filter_btn').click(function() {
         let data = $('#search_form').serializeArray();
-        let url = '{{asset("/api/filtered_posts")}}';
+        let posts_url = '{{asset("/api/filtered_posts")}}';
 
-        loadTable(data, url, 'POST');
+        loadTable(data, posts_url, 'POST', '#adds');
     });
 
     $('#main_search_btn').click(function() {
@@ -447,9 +562,9 @@
         let data = {
             'searched_key': $('#main_search_input').val()
         };
-        let url = '{{asset("/api/filter_by_main_search") }}';
+        let posts_url = '{{asset("/api/filter_by_main_search") }}';
 
-        loadTable(data, url, 'get');
+        loadTable(data, posts_url, 'get', '#adds');
     }
 
     function loadMakes(callBack) {
@@ -471,105 +586,64 @@
         });
     }
 
-    function loadTable(data, url, method) {
+    function loadTable(data, url, method, id) {
         let html = '';
-        $('#adds').html(html);
+        $(id).html(html);
         ajaxRequest(method, url, data, function(resp) {
-            if (resp == null) {
+            if (resp == '') {
                 html += '<div class="col-12"><span class="text-center w-100"><h1><b>No Results Found</b></h1></span></div>';
             } else {
                 $.each(resp, function(key, val) {
-                    html += '<div class="col-12 col-md-2">';
-                    html += '<a href="{{ asset("/get_post_profile/id/") }}/' + val.id + '">';
-                    html += '<div class="card card-white" style="height: 371px">';
-                    html += '<img src="' + val.main_image + '" alt="post image" style="width:100%">';
-                    html += '<div class="card-body">';
-                    html += '<div><h1>' + val.post_title + '</h1></div>';
-                    html += '<p> <b>Price:</b>' + val.price + '</p>';
-                    html += '<p><b>Location: </b>' + val.location + '</p>';
-                    html += '<p><b>Millage: </b>' + val.millage + '</p>';
-                    html += '</div>';
-                    html += '<div class="card-footer">';
-                    // html += '<i class="fa fa-heart text-danger text-lg"></i>';
-                    html += '</div>';
-                    html += '</div>';
-                    html += '</a>';
-                    html += '</div>';
+                    if (id == '#adds') {
+                        html += '<div class="col-12 col-md-2">';
+                        html += '<a href="{{ asset("/get_post_profile/id/") }}/' + val.id + '">';
+                        html += '<div class="card card-white" style="height: 371px">';
+                        html += '<img src="' + val.main_image + '" alt="post image" style="width:100%">';
+                        html += '<div class="card-body">';
+                        let post_title = (val.post_title != null) ? val.post_title : 'N/A';
+                        let location = (val.location != null) ? val.location : 'N/A';
+                        let price = (val.price != null) ? val.price : 'N/A';
+                        let millage = (val.vehicle != null) ? val.vehicle.millage : 'N/A';
+                        html += '<div class="text-lg">' + post_title + '</div>';
+                        html += '<p> <b>Price:</b>' + price + '</p>';
+                        html += '<p><b>Location: </b>' + location + '</p>';
+                        html += '<p><b>Millage: </b>' + millage + '</p>';
+                        html += '</div>';
+                        html += '<div class="card-footer">';
+                        // html += '<i class="fa fa-heart text-danger text-lg"></i>';
+                        html += '</div>';
+                        html += '</div>';
+                        html += '</a>';
+                        html += '</div>';
+                    } else {
+                        html += '<div class="col-12 col-md-2">';
+                        html += '<a href="{{ asset("/get_post_profile/id/") }}/' + val.id + '">';
+                        html += '<div class="card card-white" style="height: 250px">';
+                        html += '<img src="' + val.main_image + '" alt="post image" style="width:100%">';
+                        html += '<div class="card-body">';
+                        let post_title = (val.post_title != null) ? val.post_title : 'N/A';
+                        // let location = (val.location != null) ? val.location : 'N/A';
+                        // let price = (val.price != null) ? val.price : 'N/A';
+                        // let millage = (val.vehicle != null) ? val.vehicle.millage : 'N/A';
+                        html += '<div class="text-lg">' + post_title + '</div>';
+                        // html += '<p> <b>Price:</b>' + price + '</p>';
+                        // html += '<p><b>Location: </b>' + location + '</p>';
+                        // html += '<p><b>Millage: </b>' + millage + '</p>';
+                        html += '</div>';
+                        html += '<div class="card-footer">';
+                        // html += '<i class="fa fa-heart text-danger text-lg"></i>';
+                        html += '</div>';
+                        html += '</div>';
+                        html += '</a>';
+                        html += '</div>';
+                    }
+
+
                 });
             }
 
-            $('#adds').html(html);
+            $(id).html(html);
         });
-
-
-        // let ad_tbl = $('#ad_tbl').DataTable({
-        //     destroy: true,
-        //     processing: true,
-        //     serverSide: false,
-        //     responsive: true,
-        //     searching: false,
-        //     dom: 'Bfrtip',
-        //     "pageLength": 10,
-        //     language: {
-        //         searchPlaceholder: "search",
-        //         zeroRecords: " "
-        //     },
-        //     "ajax": {
-        //         "url": url,
-        //         "data": data,
-        //         "type": method,
-        //         "dataSrc": "",
-        //         "headers": {
-        //             //            "X-XSRF-TOKEN": token,
-        //             'X-CSRF-TOKEN': $('meta[name=csrf-token]').attr("content"),
-        //             'Accept': "application/json"
-        //         },
-        //     },
-        //     "columns": [{
-        //         "data": "",
-        //         "render": function(data, type, row, meta) {
-        //             let html = '';
-        //             html += '<div class="row">';
-        //             html += '<div class="card card-light w-100" style="border-width: 2px; border-color: black">';
-        //             html += '<a href="{{ asset("/get_post_profile/id/") }}/' + row.id + '">';
-        //             html += '<div class="card-body">';
-        //             html += '<div class="row">';
-        //             html += '<div class="col-6 col-md-3">';
-        //             html += '<div class="portfolio-wrap text-center">';
-        //             html += "<img src='{{ asset('/') }}"+ row.main_image.substring(1) +"' style='height: 10em; width: 100%;' alt='main_img'/>";
-        //             html += '</div>';
-        //             html += '</div>';
-        //             html += '<div class="col-4 col-md-8">';
-        //             html += '<b style="font-size: 18px" class="text-success">' + row.post_title + '</b><br>';
-        //             html += '<span style="font-size: 14px" class="text-dark"><b>Price: </b>' + row.price + ' </span><br>';
-        //             html += '<span style="font-size: 14px" class="text-dark"><b>Location: </b>' + row.location + ' </span><br>';
-        //             // html += '<span style="font-size: 14px" class="text-dark"><b>Condition: </b>' + row.condition + ' </span><br>';
-        //             html += '<span style="font-size: 14px" class="text-dark"><b>Millage: </b>' + row.millage + ' </span>';
-        //             html += '</div>';
-        //             html += '<div class="col-2 col-md-1">';
-        //             html += '<div class="ribbon-wrapper ribbon-sm">';
-        //             html += '<div class="ribbon bg-success text-sm">';
-        //             let status = (row.status == 0) ? 'NEW' : 'SOLD';
-        //             html += status;
-        //             html += '</div>';
-        //             html += '</div>';
-        //             html += '</div>';
-        //             html += '</div>';
-        //             html += '</div>';
-        //             html += '</a>';
-        //             html += '</div>';
-        //             html += '</div>';
-        //             return html;
-        //         }
-        //     }, ],
-        // });
-
-        // //data table error handling
-        // $.fn.dataTable.ext.errMode = 'none';
-        // $('#ad_tbl').on('error.dt', function(e, settings, techNote, message) {
-        //     console.log('DataTables error: ', message);
-        // });
-
     }
 
     function generateStars(star_count) {

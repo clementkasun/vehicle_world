@@ -4,7 +4,7 @@
 @extends('layouts.navbar')
 @extends('layouts.footer')
 @section('content')
-<div class="card card-success" style="height: 100em">
+<div class="card card-success" style="height: 100em;">
     <div class="card-header">Notifications</div>
     <div class="card-body">
 
@@ -16,7 +16,7 @@
                     {{ $notification->created_at }} User {{ $notification['data']['user_name'] }} ({{ $notification['data']['email'] }}) {{ $notification['data']['action'] }}.
                 </div>
                 <div class="col-5">
-                    <a href="{{ $notification->markAsRead() }}" class="float-right mark-as-read btn-mark-as-read">
+                    <a href="{{ $notification->markAsRead() }}" class="float-right mark-as-read fa fa-mark-as-read">
                         Mark as read
                     </a>
                 </div>

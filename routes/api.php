@@ -58,11 +58,11 @@ Route::post('/save_post', [PostController::class, 'store']);
 Route::get('/get_posts', [PostController::class, 'show']);
 Route::get('/get_posts_type/id/{post_id}', [PostController::class, 'edit']);
 Route::get('/get_selected_post/id/{post_id}', [PostController::class, 'get_selected_post']);
-//Route::any('/filtered_posts', [PostController::class, 'filtered_adds']);
 Route::post('/update_post/id/{post_id}', [PostController::class, 'update']);
 Route::delete('/delete_post/id/{post_id}', [PostController::class, 'destroy']);
 Route::post('/filtered_posts', [PostController::class, 'filtered_posts']);
 Route::get('/filter_by_main_search', [PostController::class, 'filter_by_main_search']);
+Route::get('/get_trending_posts', [PostController::class, 'getTrendingPosts']);
 
 //basic api's
 Route::get('get_makes', [VehicleMakeController::class, 'get_vehicle_makes']);
