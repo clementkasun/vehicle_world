@@ -28,6 +28,10 @@ class PostController extends Controller
         return view('home', ['user_profile_data' => $user, 'most_favoured_posts' => $most_favoured_posts]);
     }
 
+    public function post_reg_form(){
+        return view('/registration/post_registration');
+    }
+
     public function get_post_profile($post_id)
     {
         $post_profile_data = $this->postRepository->showPostProfile($post_id);
@@ -37,7 +41,7 @@ class PostController extends Controller
     public function get_post_update_form($post_id)
     {
         $post_profile_data = $this->postRepository->showPostProfile($post_id);
-        return view('./registration/post_update', $post_profile_data);
+        return view('./registration/post_registration', $post_profile_data);
     }
 
     /**
@@ -99,5 +103,9 @@ class PostController extends Controller
     public function soldPost($id)
     {
         return $this->postRepository->changePostAsSold($id);
+    }
+
+    public function getTrendingPosts(){
+        return $this->postRepository->getTrendingPosts();
     }
 }

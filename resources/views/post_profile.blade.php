@@ -46,7 +46,7 @@
   }
 
   .preview-thumbnail.nav-tabs li {
-    width: 18%;
+    width: 14%;
     margin-right: 2.5%;
   }
 
@@ -380,6 +380,7 @@ if (auth()->check() == true) {
           <li><a data-target="#pic-3" data-toggle="tab"><img src='{{asset("".$post_data->image_2)}}' /></a></li>
           <li><a data-target="#pic-4" data-toggle="tab"><img src='{{asset("".$post_data->image_3)}}' /></a></li>
           <li><a data-target="#pic-5" data-toggle="tab"><img src='{{asset("".$post_data->image_4)}}' /></a></li>
+          <li><a data-target="#pic-6" data-toggle="tab"><img src='{{asset("".$post_data->image_5)}}' /></a></li>
         </ul>
 
       </div>
@@ -390,6 +391,9 @@ if (auth()->check() == true) {
         <div class="rating">
           <span class="avg_star"></span>
           <span class="review-no"><span class="review_count"></span> Reviews</span>
+        </div>
+        <div class="user-views">
+          <span class="user-view-count"> <i class="fa fa-eye"></i>{{ $post_data->view_count }}</span>
         </div>
         <div class="product-info p-2">
           <div class="row">

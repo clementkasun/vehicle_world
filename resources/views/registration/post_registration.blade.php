@@ -14,6 +14,12 @@
         padding-top: 5px;
         padding-bottom: 5px;
     }
+
+    #update_post {
+        background: black;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
 </style>
 @endsection
 
@@ -27,81 +33,87 @@
     <div class="card-body">
         <form id='post_registration'>
             <div class="row">
-                <div id="post_section" class="col-12 col-md-6">
+                <div id="post_section" class="col-12 col-md-6" data-post-id="{{(isset($post_data)) ? $post_data['id'] : null;}}">
                     <div class="card card-light">
                         <div class="card-body">
                             <input type="text" id="user_id" name="user_id" value="{{ Auth::id() }}" hidden>
-                            <div class="form-group">
-                                <label for="post_type">Post Type</label>
-                                <div>
-                                    <select class="form-control" id="post_type" name="post_type" required>
-                                        <option value="">Not Selected</option>
-                                        <option value="VEHICLE">Vehicle</option>
-                                        <option value="SPARE PART">Spare Part</option>
-                                        <option value="WANTED">Wanted</option>
-                                    </select>
+                            <div class="row">
+                                <div class="form-group col-12 col-md-3">
+                                    <label for="post_type">Post Type</label>
+                                    <div>
+                                        <select class="form-control" id="post_type" name="post_type" data-post-type="{{ (isset($post_data)) ? $post_data['post_type'] : null; }}" required>
+                                            <option value="">Not Selected</option>
+                                            <option value="VEHI">Vehicle</option>
+                                            <option value="SPARE">Spare Part</option>
+                                            <option value="WAN">Wanted</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div id="vehicle_type_group" class="form-group col-12 col-md-3">
+                                    <label for="vehicle_type">Vehicle type</label>
+                                    <div>
+                                        <select id="vehicle_type" name="vehicle_type" class="form-control" data-vehi-type="{{ (isset($post_data)) ? $post_data['vehicle_type'] : null; }}" required>
+                                            <option value="">Select</option>
+                                            <option value="Car">Car</option>
+                                            <option value="Van">Van</option>
+                                            <option value="SUV">SUV</option>
+                                            <option value="Crew Cab">Crew Cab</option>
+                                            <option value="Wagon">Wagon</option>
+                                            <option value="Pickup">Pickup</option>
+                                            <option value="Bus">Bus</option>
+                                            <option value="Lorry">Lorry</option>
+                                            <option value="Three Wheel">Three Wheel</option>
+                                            <option value="Tractor">Tractor</option>
+                                            <option value="Heavy-Duty">Heavy-Duty</option>
+                                            <option value="Other">Other</option>
+                                            <option value="Motorcycle">Motorcycle</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div id="start_type_group" class="form-group col-12 col-md-3">
+                                    <label for="start_type">Start type</label>
+                                    <div>
+                                        <select id="start_type" name="start_type" class="form-control" data-start-type="{{ (isset($post_data)) ? $post_data['start_type'] : null; }}" required>
+                                            <option value="">Select the start type</option>
+                                            <option value="Manual">Manual</option>
+                                            <option value="Self">Self start</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 col-md-3">
+                                    <label for="condition">Condition</label>
+                                    <div>
+                                        <select class="form-control" id="condition" name="condition" data-condition="{{ (isset($post_data)) ? $post_data['condition'] : null; }}" required>
+                                            <option value="">Not Selected</option>
+                                            <option value="Used">Used</option>
+                                            <option value="New">Brand New</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="post_title">Post Title</label>
                                 <div>
-                                    <input type="text" class="form-control" id="post_title" name="post_title" placeholder="Enter the post title" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="vehicle_type">Vehicle type</label>
-                                <div>
-                                    <select id="vehicle_type" name="vehicle_type" class="form-control">
-                                        <option value="All">All</option>
-                                        <option value="Car">Car</option>
-                                        <option value="Van">Van</option>
-                                        <option value="SUV">SUV</option>
-                                        <option value="Crew Cab">Crew Cab</option>
-                                        <option value="Wagon">Wagon</option>
-                                        <option value="Pickup">Pickup</option>
-                                        <option value="Bus">Bus</option>
-                                        <option value="Lorry">Lorry</option>
-                                        <option value="Three Wheel">Three Wheel</option>
-                                        <option value="Tractor">Tractor</option>
-                                        <option value="Heavy-Duty">Heavy-Duty</option>
-                                        <option value="Other">Other</option>
-                                        <option value="Motorcycle">Motorcycle</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="condition">Condition</label>
-                                <div>
-                                    <select class="form-control" id="condition" name="condition" required>
-                                        <option value="">Not Selected</option>
-                                        <option value="Used">Used</option>
-                                        <option value="New">Brand New</option>
-                                    </select>
+                                    <input type="text" class="form-control" id="post_title" name="post_title" placeholder="Enter the post title" maxlength="45" data-title="{{ (isset($post_data)) ? $post_data['post_title'] : null; }}" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="make_id">Make</label>
                                 <div>
-                                    <select class="form-control" id="make_id" name="make_id" required>
+                                    <select class="form-control" id="make_id" name="make_id" data-make-id="{{ (isset($post_data)) ? $post_data['make_id'] : null; }}" required>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="price">Price</label>
-                                <div id="the-basics">
-                                    <input type="number" class="form-control" name="price" id="price" placeholder='Enter the price' max="1999999999" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="address">Address</label>
                                 <div>
-                                    <textarea id="address" name="address" class="form-control" placeholder="Enter the address" required></textarea>
+                                    <input type="number" class="form-control" name="price" id="price" placeholder='Enter the price' max="199999999" data-price="{{ (isset($post_data)) ? $post_data['price'] : null; }}" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="location">City</label>
                                 <div>
-                                    <select id="location" name="cmb_city" class="form-control">
+                                    <select id="location" name="cmb_city" class="form-control" data-location="{{ (isset($post_data)) ? $post_data['location'] : null; }}" required>
                                         <option value=""> Any City </option>
                                         <option value="Ambalangoda">Ambalangoda</option>
                                         <option value="Ampara">Ampara</option>
@@ -203,71 +215,77 @@
                                         <option value="Warakapola">Warakapola</option>
                                         <option value="Weligama">Weligama</option>
                                         <option value="Welimada">Welimada</option>
-                                        <option value="Welisara">Welisara</option <option value="Wennappuwa">Wennappuwa
-                                        </option>
+                                        <option value="Welisara">Welisara</option>
+                                        <option value="Wennappuwa">Wennappuwa</option>
                                     </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <div>
+                                    <textarea id="address" name="address" class="form-control" placeholder="Enter the address" minlength="20" maxlength="255" data-address="{{ (isset($post_data)) ? $post_data['address'] : null; }}" required></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="additional_info">Description</label>
                                 <div>
-                                    <textarea id="additional_info" name="additional_info" class="form-control" placeholder="Enter the description"></textarea>
+                                    <textarea id="additional_info" name="additional_info" class="form-control" minlength="50" maxlength="255" placeholder="Enter the description" data-add-info="{{ (isset($post_data)) ? $post_data['additional_info'] : null; }}" required></textarea>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-12 col-md-6 mt-1">
                     <div class="card card-light">
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="main_image">Main Image</label>
                                 <div>
-                                    <input type="file" class="form-control" id="main_image" name="main_image" accept="image/*" required>
+                                    <input type="file" class="form-control" id="main_image" name="main_image" accept="image/*" {{ (!isset($post_data)) ? 'required' : null; }}>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="image_one">Image 1</label>
                                 <div>
-                                    <input type="file" class="form-control" id="image_one" name="image_one" accept="image/*" required>
+                                    <input type="file" class="form-control" id="image_one" name="image_one" accept="image/*" {{ (!isset($post_data)) ? 'required' : null;  }}>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="image_two">Image 2</label>
                                 <div>
-                                    <input type="file" class="form-control" id="image_two" name="image_two" accept="image/*" required>
+                                    <input type="file" class="form-control" id="image_two" name="image_two" accept="image/*" {{ (!isset($post_data)) ? 'required' : null;  }}>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="image_three">Image 3</label>
                                 <div>
-                                    <input type="file" class="form-control" id="image_three" name="image_three" accept="image/*" required>
+                                    <input type="file" class="form-control" id="image_three" name="image_three" accept="image/*" {{ (!isset($post_data)) ? 'required' : null;  }}>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="image_four">Image 4</label>
                                 <div>
-                                    <input type="file" class="form-control" id="image_four" name="image_four" accept="image/*" required>
+                                    <input type="file" class="form-control" id="image_four" name="image_four" accept="image/*" {{ (!isset($post_data)) ? 'required' : null;  }}>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="image_five">Image 5</label>
                                 <div>
-                                    <input type="file" class="form-control" id="image_five" name="image_five" accept="image/*" required>
+                                    <input type="file" class="form-control" id="image_five" name="image_five" accept="image/*" {{ (!isset($post_data)) ? 'required' : null;  }}>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card card-light mt-1 vehicle-sec">
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="card card-light vehicle-sec">
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="model"> Model *</label>
-                                <div><input type="text" class="form-control" name="model" id="model" placeholder="Enter the model name" required></div>
+                                <div><input type="text" class="form-control" name="model" id="model" placeholder="Enter the model name" data-model="{{ (isset($post_data)) ? $post_data['model'] : null; }}" required></div>
                             </div>
                             <div class="form-group self-start d-none">
                                 <label for="start_type">Start Type</label>
                                 <div>
-                                    <select class="form-control" name="start_type" id="start_type" required>
+                                    <select class="form-control" name="start_type" id="start_type" data-start-type="{{ (isset($post_data)) ? $post_data['condition'] : null; }}" required>
                                         <option value="">Select the Start type</option>
                                         <option value="Manual">Self Start</option>
                                         <option value="Automatic">Kikstart</option>
@@ -276,12 +294,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="manufactured_year">Manufactured Year</label>
-                                <div><input type="text" class="form-control" name="manufactured_year" id="manufactured_year" placeholder="Please enter the manufactured year" required></div>
+                                <div><input type="number" class="form-control" name="manufactured_year" id="manufactured_year" placeholder="Please enter the manufactured year" data-man-year="{{ (isset($post_data)) ? $post_data['manufactured_year'] : null; }}" required></div>
                             </div>
                             <div class="form-group">
                                 <label for="transmission">Transmission</label>
                                 <div>
-                                    <select class="form-control" name="transmission" id="transmission" required>
+                                    <select class="form-control" name="transmission" id="transmission" data-transmission="{{ (isset($post_data)) ? $post_data['transmission'] : null; }}" required>
                                         <option value="">Select the Start type</option>
                                         <option value="Manual">Manual</option>
                                         <option value="Automatic">Automatic</option>
@@ -292,7 +310,7 @@
                             <div class="form-group">
                                 <label for="fuel_type">Fuel Type</label>
                                 <div>
-                                    <select name="fuel_type" id="fuel_type" class="form-control" required>
+                                    <select name="fuel_type" id="fuel_type" class="form-control" data-fuel-type="{{ (isset($post_data)) ? $post_data['fuel_type'] : null; }}" required>
                                         <option value="">Select Fuel Type</option>
                                         <option value="Diesel">Diesel</option>
                                         <option value="Petrol">Petrol</option>
@@ -304,12 +322,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="engine_capacity">Engine Capacity</label>
-                                <div><input type="text" class="form-control" name="engine_capacity" id="engine_capacity" required></div>
+                                <div><input type="number" class="form-control" name="engine_capacity" id="engine_capacity" data-en-cap="{{ (isset($post_data)) ? $post_data['engine_capacity'] : null; }}" required></div>
                             </div>
                             <div class="form-group">
                                 <label for="millage">Millage</label>
                                 <div>
-                                    <input type="text" class="form-control" name="millage" id="millage" required>
+                                    <input type="number" class="form-control" name="millage" id="millage" data-millage="{{ (isset($post_data)) ? $post_data['millage'] : null; }}" required>
                                 </div>
                             </div>
                         </div>
@@ -320,25 +338,25 @@
                                 <div class="form-group col-lg-3">
                                     <label for="isAc">AC</label>
                                     <div>
-                                        <input type="checkbox" name="isAc" id="isAc">
+                                        <input type="checkbox" name="isAc" id="isAc" data-ac="{{ (isset($post_data['isAc'])) ? $post_data['isAc'] : null;}}">
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-3">
                                     <label for="isPowerSteer">Power Steer</label><br>
                                     <div>
-                                        <input type="checkbox" name="isPowerSteer" id="isPowerSteer">
+                                        <input type="checkbox" name="isPowerSteer" id="isPowerSteer" data-power-steer="{{ (isset($post_data)) ? $post_data['isPowerSteer'] : null;}}">
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-3">
                                     <label for="isPowerMirroring">Power Mirroring</label>
                                     <div>
-                                        <input type="checkbox" name="isPowerMirroring" id="isPowerMirroring">
+                                        <input type="checkbox" name="isPowerMirroring" id="isPowerMirroring" data-power-mirror="{{ (isset($post_data)) ? $post_data['isPowerMirroring'] : null;}}">
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-3">
                                     <label for="isPowerWindow">Power Window</label>
                                     <div>
-                                        <input type="checkbox" name="isPowerWindow" id="isPowerWindow">
+                                        <input type="checkbox" name="isPowerWindow" id="isPowerWindow" data-power-window="{{  (isset($post_data)) ? $post_data['isPowerWindow'] : null;}}">
                                     </div>
                                 </div>
                             </div>
@@ -346,7 +364,7 @@
                                 <div class="form-group col-lg-3">
                                     <label for="on_going_lease">On Going Lease</label>
                                     <div>
-                                        <input type="checkbox" name="on_going_lease" id="on_going_lease">
+                                        <input type="checkbox" name="on_going_lease" id="on_going_lease" data-ongoing-lease="{{  (isset($post_data)) ? $post_data['on_going_lease'] : null;}}">
                                     </div>
                                 </div>
                             </div>
@@ -359,7 +377,7 @@
                             <div class="form-group">
                                 <label for="part_category">Part Category</label>
                                 <div>
-                                    <select id="part_category" name="part_category" class="form-control" required>
+                                    <select id="part_category" name="part_category" class="form-control" data-part-cat="{{ (isset($post_data)) ? $post_data['part_category'] : null; }}" required>
                                         <option value="">Select</option>
                                         <option value="Air Conditioning &amp; Heating">Air Conditioning &amp; Heating
                                         </option>
@@ -423,8 +441,9 @@
                 <!--</div>-->
             </div>
             <!-- /.card-body -->
-            <div class="card-footer">
-                <button id="save_post" type="button" class="btn btn-primary pl-5 pr-5">Save Post</button>
+            <div class="card-footer text-right">
+                <button id="save_post" type="button" class="btn btn-primary pl-5 pr-5 d-none">Save Post</button>
+                <button id="update_post" type="button" class="btn btn-primary pl-5 pr-5 d-none">Update Post</button>
             </div>
         </form>
     </div>
@@ -435,19 +454,29 @@
 @section('pageScripts')
 <script>
     $(document).ready(function() {
-        loadMakesCombo();
-        $('#make_id').select2();
-        $('#location').select2();
+        if ($('#post_section').data('post-id') != '') {
+            $('#save_post').addClass('d-none');
+            $('#update_post').removeClass('d-none');
+            load_update_form();
+        } else {
+            $('#save_post').removeClass('d-none')
+            $('#update_post').addClass('d-none')
+            loadMakesCombo();
+            $('#make_id').select2();
+            $('#location').select2();
+        }
     });
 
     $('#post_type').change(function() {
-        if ($(this).val() == 'VEHICLE' || $(this).val() == 'WANTED') {
+        if ($(this).val() == 'VEHI' || $(this).val() == 'WAN') {
             $('#spare_part_sec').addClass('d-none');
             $('.vehicle-sec').removeClass('d-none');
+            $('#start_type_group').removeClass('d-none');
         }
-        if ($(this).val() == 'SPARE PART') {
-            $('.vehicle-sec').addClass('d-none');
+        if ($(this).val() == 'SPARE') {
             $('#spare_part_sec').removeClass('d-none');
+            $('.vehicle-sec').addClass('d-none');
+            $('#start_type_group').addClass('d-none');
         }
         if ($(this).val() == '') {
             $('.vehicle-sec').addClass('d-none');
@@ -458,6 +487,71 @@
     $('#vehicle_type').change(function() {
         ($(this).val() != 'Motorcycle') ? $('#four_wheel_features').removeClass('d-none'): $('#four_wheel_features').addClass('d-none');
     });
+
+    function load_update_form() {
+        let vehicle_type = $('#vehicle_type').data('vehi-type');
+        let post_type = $('#post_type').data('post-type');
+        let start_type = $('#start_type').data('start-type');
+        let fuel_type = $('#fuel_type').data('fuel-type');
+        let transmission = $('#transmission').data('transmission');
+        let make_id = $('#make_id').data('make-id');
+        let model = $('#model').data('model');
+        let post_title = $('#post_title').data('title');
+        let part_cat = $('#part_category').data('part-cat');
+        let condition = $('#condition').data('condition');
+        let price = $('#price').data('price');
+        let address = $('#address').data('address');
+        let location = $('#location').data('location');
+        let desc = $('#additional_info').data('add-info');
+        let manufactured_year = $('#manufactured_year').data('man-year');
+        let engine_capacity = $('#engine_capacity').data('en-cap');
+        let millage = $('#millage').data('millage');
+
+        ($('#isPowerWindow').data('power-window') == '0') ? $('#isPowerWindow').prop('checked', false): $('#isPowerWindow').prop('checked', true);
+        ($('#isPowerMirroring').data('power-mirror') == '0') ? $('#isPowerMirroring').prop('checked', false): $('#isPowerMirroring').prop('checked', true);
+        ($('#isPowerSteer').data('power-steer') == '0') ? $('#isPowerSteer').prop('checked', false): $('#isPowerSteer').prop('checked', true);
+        ($('#isAc').data('ac') == '0') ? $('#isAc').prop('checked', false): $('#isAc').prop('checked', true);
+        ($('#on_going_lease').data('ongoing_lease') == '0') ? $('#on_going_lease').prop('checked', false): $('#on_going_lease').prop('checked', true);
+
+        $('#vehicle_type').val(vehicle_type).change();
+        $('#post_type').val(post_type).change();
+        $('#post_title').val(post_title).change();
+        $('#condition').val(condition).change();
+
+        //change the make combo by previous data
+        loadMakesCombo(make_id, '');
+
+        $('#price').val(price);
+        $('#address').val(address);
+        $('#location').val(location);
+        $('#additional_info').text(desc);
+        $('#model').val(model);
+        $('#start_type').val(start_type);
+        $('#manufactured_year').val(manufactured_year);
+        $("#transmission").val(transmission);
+        $("#fuel_type").val(fuel_type);
+        $("#engine_capacity").val(engine_capacity);
+        $("#millage").val(millage);
+        $('#part_category').val(part_cat);
+
+        $('#make_id').select2();
+        $('#location').select2();
+    }
+
+    function validate_image_size(file_type, img_file) {
+        if (img_file != undefined) {
+            var file = img_file;
+            if (Math.round(file.size / (1024 * 1024)) > 2) { // make it in MB so divide by 1024*1024
+                $("#save_post").prop('disabled', false);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Please select ' + file_type + ' size less than 8 MB'
+                });
+                return false;
+            }
+        }
+    }
 
     function loadMakesCombo(selected, callBack) {
         let option = '';
@@ -484,6 +578,17 @@
     $("#save_post").click(function() {
         $(this).prop('disabled', true);
         var is_valid = jQuery("#post_registration").valid();
+
+        let img_main_status = validate_image_size('main image', $('#main_image')[0].files[0]);
+        let img_one_status = validate_image_size('image one', $('#image_one')[0].files[0]);
+        let img_two_status = validate_image_size('image two', $('#image_two')[0].files[0]);
+        let img_three_status = validate_image_size('image three', $('#image_three')[0].files[0]);
+        let img_four_status = validate_image_size('image four', $('#image_four')[0].files[0]);
+        let img_five_status = validate_image_size('image five', $('#image_five')[0].files[0]);
+
+        if (img_main_status == false || img_one_status == false || img_two_status == false || img_three_status == false || img_four_status == false || img_five_status == false) {
+            return false;
+        }
         if (is_valid) {
             let object = {
                 user_id: $('#user_id').val(),
@@ -520,17 +625,14 @@
 
             let url = "{{ asset('/api/save_post') }}";
             ulploadFileWithData(url, object, function(result) {
-                // ajaxRequest("POST", url, data, function (result) {
                 if (result.status == 1) {
-                    // $("#post_registration")[0].reset;
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Post Registration',
+                        text: 'Successfully post registered!'
+                    })
                     $("#save_post").prop('disabled', false);
-                    Swal.fire(
-                        'Post Registration',
-                        'Successfully Posted!',
-                        'success'
-                    );
                     window.location.href = "{{ asset('/user_profile') }}";
-                    //            location.reload();
                 } else {
                     $("#save_post").prop('disabled', false);
                     Swal.fire({
@@ -539,28 +641,108 @@
                         text: result.msg
                     })
                 }
-                //        $('#degree_registration').trigger("reset");
                 if (typeof callBack !== 'undefined' && callBack != null && typeof callBack ===
                     "function") {
                     callBack(result);
                 }
             });
-        }else{
+        } else {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Post Registration',
+                text: 'Required fields are missing!'
+            });
+
             $("#save_post").prop('disabled', false);
+        }
+    });
+
+    $("#update_post").click(function() {
+        $(this).prop('disabled', true);
+        var is_valid = jQuery("#post_registration").valid();
+
+        let img_main_status = ($('#post_section').data('post-id') != '') ? validate_image_size('main image', $('#main_image')[0].files[0]) : true;
+        let img_one_status = ($('#post_section').data('post-id') != '') ? validate_image_size('image one', $('#image_one')[0].files[0]) : true;
+        let img_two_status = ($('#post_section').data('post-id') != '') ? validate_image_size('image two', $('#image_two')[0].files[0]) : true;
+        let img_three_status = ($('#post_section').data('post-id') != '') ? validate_image_size('image three', $('#image_three')[0].files[0]) : true;
+        let img_four_status = ($('#post_section').data('post-id') != '') ? validate_image_size('image four', $('#image_four')[0].files[0]) : true;
+        let img_five_status = ($('#post_section').data('post-id') != '') ? validate_image_size('image five', $('#image_five')[0].files[0]) : true;
+
+        if (img_main_status == false || img_one_status == false || img_two_status == false || img_three_status == false || img_four_status == false || img_five_status == false) {
+            return false;
+        }
+
+        if (is_valid) {
+            let object = {
+                user_id: $('#user_id').val(),
+                post_type: $('#post_type').val(),
+                post_title: $('#post_title').val(),
+                vehicle_type: $('#vehicle_type').val(),
+                condition: $('#condition').val(),
+                make_id: $('#make_id').val(),
+                price: $('#price').val(),
+                location: $('#location').val(),
+                address: $('#address').val(),
+                additional_info: $('#additional_info').val(),
+                model: $('#model').val(),
+                start_type: $('#start_type').val(),
+                manufactured_year: $('#manufactured_year').val(),
+                on_going_lease: $('input[name="on_going_lease"]:checked').val(),
+                transmission: $("#transmission").val(),
+                fuel_type: $("#fuel_type").val(),
+                engine_capacity: $("#engine_capacity").val(),
+                millage: $("#millage").val(),
+                isAc: $('input[name="isAc"]:checked').val(),
+                isPowerSteer: $('input[name="isPowerSteer"]:checked').val(),
+                isPowerMirroring: $('input[name="isPowerMirroring"]:checked').val(),
+                isPowerWindow: $('input[name="isPowerWindow"]:checked').val(),
+                part_category: $('#part_category').val(),
+            };
+
+            object.main_image = ($('#main_image')[0].files[0] != undefined) ? $('#main_image')[0].files[0] : null;
+            object.image_one = ($('#image_one')[0].files[0] != undefined) ? $('#image_one')[0].files[0] : null;
+            object.image_two = ($('#image_two')[0].files[0] != undefined) ? $('#image_two')[0].files[0] : null;
+            object.image_three = ($('#image_three')[0].files[0] != undefined) ? $('#image_three')[0].files[0] : null;
+            object.image_four = ($('#image_four')[0].files[0] != undefined) ? $('#image_four')[0].files[0] : null;
+            object.image_five = ($('#image_five')[0].files[0] != undefined) ? $('#image_five')[0].files[0] : null;
+
+            let url = "{{ asset('/api/update_post/id/') }}/" + $('#post_section').data('post-id');
+            ulploadFileWithData(url, object, function(result) {
+                if (result.status == 1) {
+                    Swal.fire(
+                        'Post Registration',
+                        'Successfully updated!',
+                        'success'
+                    );
+                    $("#update_post").prop('disabled', false);
+
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: result.msg
+                    });
+                    $("#update_post").prop('disabled', false);
+
+                }
+                if (typeof callBack !== 'undefined' && callBack != null && typeof callBack ===
+                    "function") {
+                    callBack(result);
+                }
+            });
+        } else {
+            Swal.fire(
+                'Post Registration',
+                'Required fields are missing or fields formats are invalid, please cheack again!',
+                'warning'
+            );
+            $("#update_post").prop('disabled', false);
         }
     });
 
     var post_registration;
     post_registration = $("#post_registration").validate({
         errorClass: "invalid",
-        rules: {
-            tel: {
-                valid_lk_phone: true,
-            },
-            email: {
-                valide_email: true,
-            }
-        },
         highlight: function(element) {
             $(element).parent().addClass('has-error');
         },
@@ -602,37 +784,5 @@
             jQuery(element).parents(".validate-parent").removeClass("has-error");
         }
     });
-    jQuery.validator.addMethod("valide_code", function(value, element) {
-        return this.optional(element) || /^[a-zA-Z\s\d\_\-()]{1,100}$/.test(value);
-    }, "Please enter a valid Code");
-    jQuery.validator.addMethod("valid_name", function(value, element) {
-        return this.optional(element) || /^[a-zA-Z\s\.\&\-()]*$/.test(value);
-    }, "Please enter a valid name");
-    jQuery.validator.addMethod("valid_date", function(value, element) {
-        return this.optional(element) || /^\d{4}\-\d{2}\-\d{2}$/.test(value);
-    }, "Please enter a valid date ex. 2017-03-27");
-    jQuery.validator.addMethod("valide_email", function(value, element) {
-        return this.optional(element) || /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/.test(value);
-    }, "Please enter a valid email addresss");
-    jQuery.validator.addMethod("valid_lk_phone", function(value, element) {
-        return this.optional(element) || /^0[7][0-9]{8}$/.test(value);
-    }, "Please enter a valid phone number");
-
-    function formValidation() {
-        let response = true;
-        if ($('#Telephone').val().trim().length !== 10) {
-            alert('Invalid Mobile Number');
-            var elem = document.getElementById("Telephone");
-            input.addEventListener("invalid", function(evt) {
-                //                                                                var elem = evt.srcElement;
-                //                                                                elem.nextSibling.innerText = elem.validationMessage;
-            });
-            return false;
-        } else if ($('#first_name').val() == '') {
-            alert('Enter Firstname');
-            response = false;
-        }
-        return response;
-    }
 </script>
 @endsection

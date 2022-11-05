@@ -10,7 +10,7 @@
   }
 
   .container-fluid {
-    max-width: 1500px;
+    max-width: 1850px;
   }
 
 </style>
@@ -19,49 +19,49 @@
 @section('content')
 <div class="row mt-2">
   <div class="col-md-3">
-    <div class="info-box bg-success">
+    <div class="info-box bg-success text-white">
       <span class="info-box-icon"><i class="fa-solid fa-car"></i></span>
       <div class="info-box-content">
         <span class="info-box-text">Total Vehicles</span>
         <span class="info-box-number">{{ $analysis['vehicle_count']}}</span>
-        <!-- <div class="progress">
-          <div class="progress-bar"></div>
-        </div> -->
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="info-box bg-gradient-warning">
-      <span class="info-box-icon"><i class="fa-solid fa-gear"></i></span>
-      <div class="info-box-content">
-        <span class="info-box-text">Total Spare Parts</span>
-        <span class="info-box-number">{{ $analysis['spare_part_count']}}</span>
-        <!-- <div class="progress">
-          <div class="progress-bar"></div>
-        </div> -->
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="info-box bg-gradient-secondary">
-      <span class="info-box-icon"><i class="fa-solid fa-car text-success"></i></span>
-      <div class="info-box-content">
-        <span class="info-box-text">Total Sold Vehicles</span>
-        <span class="info-box-number">{{ $analysis['saledPostCount'] }}</span>
         <div class="progress">
-          <progress class="progress-bar w-100" id="sold_post" max="100"></progress>
+          <div class="progress-bar"></div>
         </div>
       </div>
     </div>
   </div>
   <div class="col-md-3">
-    <div class="info-box bg-gradient-primary">
+    <div class="info-box bg-gradient-warning text-white">
+      <span class="info-box-icon"><i class="fa-solid fa-gear"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text">Total Spare Parts</span>
+        <span class="info-box-number">{{ $analysis['spare_part_count']}}</span>
+        <div class="progress">
+          <div class="progress-bar"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="info-box bg-gradient-secondary text-white">
+      <span class="info-box-icon"><i class="fa-solid fa-car text-success"></i></span>
+      <div class="info-box-content">
+        <span class="info-box-text">Total Sold Vehicles</span>
+        <span class="info-box-number">{{ $analysis['saledPostCount'] }} / {{ round($analysis['percentages']['saled_vehi_per']).'%' }}</span>
+        <div class="progress text-white">
+          <progressbar class="progress-bar" value="{{ round($analysis['percentages']['saled_vehi_per']).'%' }}" id="sold_post"></progressbar>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="info-box bg-gradient-primary text-white">
       <span class="info-box-icon"><i class="fa-solid fa-car text-warning"></i></span>
       <div class="info-box-content">
         <span class="info-box-text">Total Pending Vehicles</span>
-        <span class="info-box-number">{{ $analysis['pending_post_count']}}</span>
-        <div class="progress">
-          <progress class="progress-bar w-100" value="100" id="pending_post_count" max="100"></progress>
+        <span class="info-box-number">{{ $analysis['pending_post_count']}} / {{ round($analysis['percentages']['pending_vehi_per']).'%' }}</span>
+        <div class="progress text-white">
+          <progress class="progress-bar w-100" value="100" id="pending_post_count">{{ round($analysis['percentages']['pending_vehi_per']) }}</progress>
         </div>
       </div>
     </div>
@@ -75,7 +75,7 @@
       </div>
       <!-- /.card-header -->
       <div class="card-body">
-        <table id="highest_sale_vehicles">
+        <table class="table table-striped" id="highest_sale_vehicles" style="height: 300px">
           <thead>
             <tr>
               <th style="width: 5em">#</th>
@@ -107,7 +107,7 @@
       </div>
       <!-- /.card-header -->
       <div class="card-body">
-        <table id="highest_sallers">
+        <table class="table table-striped" id="highest_sallers" style="height: 300px">
           <thead>
             <tr>
               <th style="width: 5em">#</th>

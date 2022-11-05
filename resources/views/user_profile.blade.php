@@ -122,6 +122,7 @@ function gen_star($star_count)
             <div class="card-header p-2">
                 <ul class="nav nav-pills">
                     <li class="nav-item"><a class="nav-link active" href="#post" data-toggle="tab">Posts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#favourite" data-toggle="tab">Favourites</a></li>
                     <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li>
                 </ul>
             </div><!-- /.card-header -->
@@ -135,7 +136,7 @@ function gen_star($star_count)
                                 <th>Title</th>
                                 <th>Type</th>
                                 <th>Price</th>
-                                <th>Reviews</th>
+                                <th>Ratings/Review Count/Views</th>
                                 <th>Location</th>
                                 <th>Created Date</th>
                             </thead>
@@ -153,7 +154,7 @@ function gen_star($star_count)
                                         <button class="btn btn-danger del" data-id="{{$user_add->id}}"><i class='fa fa-trash'></i></button>
                                     </td>
                                     <td>{{ $loop->index+1 }}</td>
-                                    <td>{{ $user_add->post_title }}</td>
+                                    <td><a href="/get_post_profile/id/{{$user_add->id}}">{{ $user_add->post_title }}</a></td>
                                     @if(isset($user_add->vehicle))
                                     <td>{{ $user_add->vehicle->vehicle_type }}</td>
                                     @elseif(isset($user_add->SparePart))
@@ -162,7 +163,7 @@ function gen_star($star_count)
                                     <td>-</td>
                                     @endif
                                     <td>{{$user_add->price}}</td>
-                                    <td> <b>Rating :</b> <span><?php print gen_star(round($user_add->user_ratings)) ?> </span>/ <b>review count:</b> <span> {{ $user_add->review_count }} </span></td>
+                                    <td> <span><?php print gen_star(round($user_add->user_ratings)) ?> </span>/ <span> {{ $user_add->review_count }} </span> / <span> {{ $user_add->view_count }} </span></td>
                                     <td>{{$user_add->location}}</td>
                                     <td>{{$user_add->created_at}}</td>
 
@@ -172,7 +173,33 @@ function gen_star($star_count)
                         </table>
                     </div>
                     <!-- /.tab-pane -->
+                    <div class="tab-pane" id="favourite">
+                        <table class="table table-striped" id="user_favourites">
+                            <thead>
+                                <th></th>
+                                <th>#</th>
+                                <th>Title</th>
+                                <th>Type</th>
+                                <th>Created Date</th>
+                            </thead>
+                            <tbody>
+                                @foreach($user_favoured_posts as $user_favoured_post)
+                                <tr>
+                                    <td>
+                                        <a href="{{ asset('/api/delete-user-favourite/id/'. $user_favoured_post->id.'') }}'" onclick="return false;" class="float-right">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </td>
+                                    <td>{{ $loop->index+1 }}</td>
+                                    <td>{{ $user_favoured_post->Post->title }}</td>
+                                    <td>{{ $user_favoured_post->Post->post_type }}</td>
+                                    <td>{{ $user_favoured_post->Post->created_at}}</td>
 
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                     <div class="tab-pane" id="settings" data-user-id="{{$user_profile_data['id']}}">
                         <div class="row">
                             <div class="card card-light col-12 col-md-8">

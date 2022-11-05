@@ -29,7 +29,7 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto active" href="{{ asset('/') }}">Home</a></li>
-                    <li><a class="nav-link scrollto" href="{{ asset('analysis') }}">Analyse</a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('analysis') }}">Analytics</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('about_us') }}">About</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('services') }}">Services</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('create-post') }}">Create post</a></li>
@@ -128,7 +128,7 @@
                     <li>
                         <a href="#"><span>Pages</span></a>
                         <ul class="mobile-sub-menu">
-                            <li><a href="/analysis">Analyse</a></li>
+                            <li><a href="/analysis">Analytics</a></li>
                             <li><a href="/create-post">Create post</a></li>
                             <li><a href="/user_profile">User Profile</a></li>
                             <li><a href="/logout">Logout</a></li>
@@ -179,14 +179,14 @@
         <!-- ...:::Start Profile Card Section:::... -->
         <div class="profile-card-section section-gap-top-25">
             <div class="profile-card-wrapper">
-                <div class="image">
+                <div>
                     <?php
 
                     $user = auth()->user();
                     $user_path = '';
                     (isset($user->profile_photo_path)) ? $user_path = '/storage/' . $user->profile_photo_path : $user_path = './dist/img/avatar5.png';
                     ?>
-                    <img class="img-fluid" width="10" height="10" src="{{ asset($user_path) }}" alt="image">
+                    <img class="img-circle" width="45px" height="45px" src="{{ asset($user_path) }}" alt="image">
                 </div>
                 <div class="content">
                     @if($user != null)
