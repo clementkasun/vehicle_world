@@ -25,7 +25,8 @@ class PostController extends Controller
             ->limit(1)
             ->with('post')
             ->get();
-        return view('home', ['user_profile_data' => $user, 'most_favoured_posts' => $most_favoured_posts]);
+        $all_posts = $this->postRepository->getAllPost();
+        return view('home', ['user_profile_data' => $user, 'most_favoured_posts' => $most_favoured_posts, 'post_all' => $all_posts]);
     }
 
     public function post_reg_form(){

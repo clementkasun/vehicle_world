@@ -62,7 +62,7 @@ class PostRepository implements PostInterface
     public function getAllPost()
     {
 
-        $post_all  = Post::with(['Vehicle.VehicleMake', 'SparePart'], 'User')->get();
+        $post_all  = Post::with(['Vehicle.VehicleMake', 'SparePart'], 'User')->paginate(10);
         return $post_all;
     }
 
