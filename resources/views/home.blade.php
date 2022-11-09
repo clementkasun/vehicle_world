@@ -10,6 +10,13 @@
         font-size: 16px;
         overflow-x: hidden;
     }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppings', 'sans-serif';
+    }
 </style>
 @endsection
 @section('content')
@@ -178,7 +185,7 @@
 <div class="row">
     <div class="col-12">
         <section id="search_container" class="bg-light" style="border-color: black; border-width: 2px">
-            <form id="search_form">
+            <form id="search_form" action="/filtered_posts" method="post">
                 @csrf
                 <div class="row m-2">
                     <div class="form-group col-12 col-md-1">
@@ -473,7 +480,7 @@
                     <div class="form-group col-12">
                         <div class="row">
                             <div class="col-12">
-                                <input type="button" class="apply-btn" id="filter_btn" value="APPLY">
+                                <button type="submit" class="apply-btn" id="filter_btn" value="APPLY">APPLY</button>
                                 <input type="button" class="apply-btn d-none" id="btn_search_cancel" value="CANCEL">
                             </div>
                         </div>
@@ -487,7 +494,9 @@
     <div class="col-12">
         <!-- ======= Trending posts ======= -->
         <div id="trending_posts" class="trending-posts card card-success m-3" style="font-family: 'Bahnschrift SemiCondensed';">
-            <div class="card-header text-center"><b><h1>Trending posts</h1></b></div>
+            <div class="card-header text-center"><b>
+                    <h1>Trending posts</h1>
+                </b></div>
             <div class="card-body row" id="trends">
 
             </div>
@@ -498,9 +507,38 @@
     <div class="col-12">
         <!-- ======= Portfolio Section ======= -->
         <div id="portfolio" class="card card-success portfolio m-3" style="font-family: 'Bahnschrift SemiCondensed';">
-            <div class="card-header text-center"><b><h1>Published Posts</h1></b></div>
+            <div class="card-header text-center"><b>
+                    <h1>Published Posts</h1>
+                </b></div>
             <div class="card-body row" id="adds">
 
+                @foreach($post_all as $post)
+                <?php
+                $post_title = ($post['post_title'] != null) ? $post['post_title'] : 'N/A';
+                $location = ($post['location'] != null) ? $post['location'] : 'N/A';
+                $price = ($post['price'] != null) ? $post['price'] : 'N/A';
+                $millage = ($post['vehicle'] != null) ? $post['vehicle']['millage'] : 'N/A';
+                $main_image = $post['main_image'];
+                ?>
+                <div class="col-12 col-md-2">
+                    <a href="{{ asset('/get_post_profile/id/'.$post['id']) }}'">
+                        <div class="card card-white" style="height: 371px">
+                            <img src="{{asset($main_image)}}" alt="post image" style="width:100%">
+                            <div class="card-body">
+                                <div class="text-lg">{{ $post_title }}</div>
+                                <p> <b>Price:</b> {{ $price }}</p>
+                                <p><b>Location: </b> {{ $location }}</p>
+                                <p><b>Millage: </b> {{ $millage}} </p>
+                            </div>
+                            <div class="card-footer">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                @endforeach
+            </div>
+            <div class="card-footer">
+                {{ $post_all->links() }}
             </div>
         </div>
     </div>
@@ -508,11 +546,8 @@
 <!-- End Portfolio Section -->
 @endsection
 @section('pageScripts')
-<script src = "https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.1/jquery.twbsPagination.min.js"> </script>  
 <script>
     $(document).ready(function() {
-        // (adsbygoogle = window.adsbygoogle || []).push({});
-
         $('#cmb_post_type').change(function() {
             if ($(this).val() == 'SPARE') {
                 $('#model_group').addClass('d-none');
@@ -541,31 +576,31 @@
         loadMakes();
         //$('.yearpicker').yearpicker();
         let posts_url = '{{asset("/api/get_posts/")}}';
-        loadTable(null, posts_url, 'GET', '#adds');
+        load_posts('get', posts_url, null, '#adds');
 
         let trending_post_url = '{{asset("/api/get_trending_posts/")}}';
-        loadTable(null, trending_post_url, 'get', '#trends')
+        load_posts('get', trending_post_url, null, '#trends')
     });
 
-    $('#filter_btn').click(function() {
-        let data = $('#search_form').serializeArray();
-        let posts_url = '{{asset("/api/filtered_posts")}}';
+    // $('#filter_btn').click(function() {
+    //     let data = $('#search_form').serializeArray();
+    //     let posts_url = '{{asset("/api/filtered_posts")}}';
 
-        loadTable(data, posts_url, 'POST', '#adds');
-    });
+    //     loadPosts(data, posts_url, 'POST', '#adds');
+    // });
 
-    $('#main_search_btn').click(function() {
-        filter_with_main_search();
-    });
+    // $('#main_search_btn').click(function() {
+    //     filter_with_main_search();
+    // });
 
-    function filter_with_main_search() {
-        let data = {
-            'searched_key': $('#main_search_input').val()
-        };
-        let posts_url = '{{asset("/api/filter_by_main_search") }}';
+    // function filter_with_main_search() {
+    //     let data = {
+    //         'searched_key': $('#main_search_input').val()
+    //     };
+    //     let posts_url = '{{asset("/api/filter_by_main_search") }}';
 
-        loadTable(data, posts_url, 'get', '#adds');
-    }
+    //     loadPosts(data, posts_url, 'get', '#adds');
+    // }
 
     function loadMakes(callBack) {
         let option = '';
@@ -583,66 +618,6 @@
             if (typeof callBack !== 'undefined' && callBack != null && typeof callBack === "function") {
                 callBack();
             }
-        });
-    }
-
-    function loadTable(data, url, method, id) {
-        let html = '';
-        $(id).html(html);
-        ajaxRequest(method, url, data, function(resp) {
-            if (resp == '') {
-                html += '<div class="col-12"><span class="text-center w-100"><h1><b>No Results Found</b></h1></span></div>';
-            } else {
-                $.each(resp, function(key, val) {
-                    if (id == '#adds') {
-                        html += '<div class="col-12 col-md-2">';
-                        html += '<a href="{{ asset("/get_post_profile/id/") }}/' + val.id + '">';
-                        html += '<div class="card card-white" style="height: 371px">';
-                        html += '<img src="' + val.main_image + '" alt="post image" style="width:100%">';
-                        html += '<div class="card-body">';
-                        let post_title = (val.post_title != null) ? val.post_title : 'N/A';
-                        let location = (val.location != null) ? val.location : 'N/A';
-                        let price = (val.price != null) ? val.price : 'N/A';
-                        let millage = (val.vehicle != null) ? val.vehicle.millage : 'N/A';
-                        html += '<div class="text-lg">' + post_title + '</div>';
-                        html += '<p> <b>Price:</b>' + price + '</p>';
-                        html += '<p><b>Location: </b>' + location + '</p>';
-                        html += '<p><b>Millage: </b>' + millage + '</p>';
-                        html += '</div>';
-                        html += '<div class="card-footer">';
-                        // html += '<i class="fa fa-heart text-danger text-lg"></i>';
-                        html += '</div>';
-                        html += '</div>';
-                        html += '</a>';
-                        html += '</div>';
-                    } else {
-                        html += '<div class="col-12 col-md-2">';
-                        html += '<a href="{{ asset("/get_post_profile/id/") }}/' + val.id + '">';
-                        html += '<div class="card card-white" style="height: 250px">';
-                        html += '<img src="' + val.main_image + '" alt="post image" style="width:100%">';
-                        html += '<div class="card-body">';
-                        let post_title = (val.post_title != null) ? val.post_title : 'N/A';
-                        // let location = (val.location != null) ? val.location : 'N/A';
-                        // let price = (val.price != null) ? val.price : 'N/A';
-                        // let millage = (val.vehicle != null) ? val.vehicle.millage : 'N/A';
-                        html += '<div class="text-lg">' + post_title + '</div>';
-                        // html += '<p> <b>Price:</b>' + price + '</p>';
-                        // html += '<p><b>Location: </b>' + location + '</p>';
-                        // html += '<p><b>Millage: </b>' + millage + '</p>';
-                        html += '</div>';
-                        html += '<div class="card-footer">';
-                        // html += '<i class="fa fa-heart text-danger text-lg"></i>';
-                        html += '</div>';
-                        html += '</div>';
-                        html += '</a>';
-                        html += '</div>';
-                    }
-
-
-                });
-            }
-
-            $(id).html(html);
         });
     }
 

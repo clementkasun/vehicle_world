@@ -42,7 +42,6 @@
 <!-- uPlot -->
 <script src="{{ asset('/plugins/uplot/uPlot.iife.min.js') }}"></script>
 <script src="https://kit.fontawesome.com/b13ab8c5a9.js" crossorigin="anonymous"></script>
-<script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
 
 
 <!-- Global Vendor -->
@@ -65,5 +64,5 @@
 
 <!-- validation -->
 <script src="{{ asset('/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
-
+<script src="{{ asset('/js/posts.js') }}" type="text/javascript"></script>
 @endsection
