@@ -62,6 +62,7 @@
                     <div class="swiper">
                         <!-- Additional required wrapper -->
                         <div class="swiper-wrapper">
+                            @if(isset($most_favoured_posts))
                             @foreach($most_favoured_posts as $key => $favoured_post)
                             <!-- Slides -->
                             <div class="swiper-slide">
@@ -87,6 +88,7 @@
                                 </div>
                             </div>
                             @endforeach
+                            @endif
                         </div>
                     </div>
                     <!-- If we need pagination -->
@@ -417,8 +419,8 @@
                     <div id="part_in_category_group" class="col-12 col-md-2 d-none">
                         <label for="part_category">Part Category</label>
                         <div>
-                            <select id="part_category" name="part_category" class="form-control" required>
-                                <option value="">Select</option>
+                            <select id="part_category" name="part_category" class="form-control">
+                                <option value="any">Select</option>
                                 <option value="Air Conditioning &amp; Heating">Air Conditioning &amp; Heating
                                 </option>
                                 <option value="Air Intake &amp; Fuel Delivery">Air Intake &amp; Fuel Delivery
@@ -498,7 +500,28 @@
                     <h1>Trending posts</h1>
                 </b></div>
             <div class="card-body row" id="trends">
-
+                @if(isset($trending_posts))
+                @foreach($trending_posts as $post)
+                <?php
+                $post_id = $post['id'];
+                $post_title = ($post['post_title'] != null) ? $post['post_title'] : 'N/A';
+                $price = ($post['price'] != null) ? $post['price'] : 'N/A';
+                $main_image = $post['main_image'];
+                ?>
+                <div class="col-12 col-md-2">';
+                    <a href="{{ asset('/get_post_profile/id/'.$post_id) }}">
+                        <div class="card card-white" style="height: 250px">
+                            <img src="{{ asset($post->main_image) }}" alt="trending post images" style="width:100%">
+                            <div class="card-body">
+                                <h4 class="container-fluid">{{ $post_title }}</h4>
+                            </div>
+                            <div class="card-footer">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                @endforeach
+                @endif
             </div>
         </div>
     </div>
@@ -511,24 +534,35 @@
                     <h1>Published Posts</h1>
                 </b></div>
             <div class="card-body row" id="adds">
-
-                @foreach($post_all as $post)
+                @if(isset($posts))
+                @foreach($posts as $post)
                 <?php
-                $post_title = ($post['post_title'] != null) ? $post['post_title'] : 'N/A';
-                $location = ($post['location'] != null) ? $post['location'] : 'N/A';
+                $post_id = $post->id;
+                $post_title = ($post->post_title != null) ? $post->post_title : 'N/A';
+                $location = ($post->location != null) ? $post->location : 'N/A';
                 $price = ($post['price'] != null) ? $post['price'] : 'N/A';
                 $millage = ($post['vehicle'] != null) ? $post['vehicle']['millage'] : 'N/A';
                 $main_image = $post['main_image'];
                 ?>
                 <div class="col-12 col-md-2">
-                    <a href="{{ asset('/get_post_profile/id/'.$post['id']) }}'">
+
+                    <a href="{{ '/get_post_profile/id/'.$post_id }}">
                         <div class="card card-white" style="height: 371px">
-                            <img src="{{asset($main_image)}}" alt="post image" style="width:100%">
-                            <div class="card-body">
-                                <div class="text-lg">{{ $post_title }}</div>
-                                <p> <b>Price:</b> {{ $price }}</p>
-                                <p><b>Location: </b> {{ $location }}</p>
-                                <p><b>Millage: </b> {{ $millage}} </p>
+                            @if($post['status'] == '1')
+                            <div class="ribbon-wrapper ribbon-lg">
+                                <div class="ribbon bg-warning text-lg">Sold</div>
+                            </div>
+                            @else
+                            <div class="ribbon-wrapper ribbon-lg">
+                                <div class="ribbon bg-success text-lg">For Sale</div>
+                            </div>
+                            @endif
+                            <img src="{{asset($main_image)}}" alt="post images" style="width:100%">
+                            <div class="card-body bg-success">
+                                <h2 class="container-fluid">{{ $post_title }}</h2>
+                                <h2 class="container-fluid"> <b>Price: </b> රැ . {{ $price }}</h2>
+                                <p class="container-fluid"><b>Location: </b> {{ $location }}</p>
+                                <p class="container-fluid"><b>Millage: </b> {{ $millage}} </p>
                             </div>
                             <div class="card-footer">
                             </div>
@@ -536,9 +570,10 @@
                     </a>
                 </div>
                 @endforeach
+                @endif
             </div>
             <div class="card-footer">
-                {{ $post_all->links() }}
+                {{ (isset($posts)) ? $posts->links() : ''; }}
             </div>
         </div>
     </div>
@@ -574,33 +609,7 @@
         $('#cmb_city').select2();
 
         loadMakes();
-        //$('.yearpicker').yearpicker();
-        let posts_url = '{{asset("/api/get_posts/")}}';
-        load_posts('get', posts_url, null, '#adds');
-
-        let trending_post_url = '{{asset("/api/get_trending_posts/")}}';
-        load_posts('get', trending_post_url, null, '#trends')
     });
-
-    // $('#filter_btn').click(function() {
-    //     let data = $('#search_form').serializeArray();
-    //     let posts_url = '{{asset("/api/filtered_posts")}}';
-
-    //     loadPosts(data, posts_url, 'POST', '#adds');
-    // });
-
-    // $('#main_search_btn').click(function() {
-    //     filter_with_main_search();
-    // });
-
-    // function filter_with_main_search() {
-    //     let data = {
-    //         'searched_key': $('#main_search_input').val()
-    //     };
-    //     let posts_url = '{{asset("/api/filter_by_main_search") }}';
-
-    //     loadPosts(data, posts_url, 'get', '#adds');
-    // }
 
     function loadMakes(callBack) {
         let option = '';
@@ -608,7 +617,7 @@
             if (resp.length == 0) {
                 option += '<option value="">No Data</option>';
             } else {
-                option = '<option value="">Select Make</option>';
+                option = '<option value="any">Select Make</option>';
                 $.each(resp, function(index, row) {
                     option += '<option value="' + row.id + '">' + row.make_name + '</option>';
                 });

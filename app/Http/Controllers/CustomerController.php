@@ -88,4 +88,21 @@ class CustomerController extends Controller
     {
         return $this->customerRepository->changePassword($request, $id);
     }
+
+    public function userMessegesView()
+    {
+        $user_id = auth()->user()->id;
+        return $this->customerRepository->userMessegesView($user_id);
+    }
+
+    public function directMessageView($user_id)
+    {
+        $logged_user = auth()->user()->id;
+        return $this->customerRepository->directMessageView($logged_user, $user_id);
+    }
+
+    public function sendDirectMessage(Request $request, $from_user, $to_user)
+    {
+        return $this->customerRepository->sendDirectMessage($request, $from_user, $to_user);
+    }
 }

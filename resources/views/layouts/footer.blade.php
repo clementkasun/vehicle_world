@@ -6,7 +6,7 @@ if (auth()->check() == true) {
   $user_id = null;
 }
 ?>
-<footer id="footer" style="position: relative;padding: 10px 10px 0px 10px;bottom: 0;width: 100%;height: 20em;background: grey;">
+<footer id="footer" style="position: relative; width: 100%;height: auto;background: grey;">
         <div class="container">
             <h3>Vehiauto.com</h3>
             <p>vehiauto is a emerging web marketplace for your vehicle needs.</p>
@@ -38,7 +38,7 @@ if (auth()->check() == true) {
             </div>
             <div class="user-event user-event--right">
                 <a area-label="order icon" href="{{ asset('/user-notifications') }}" class="event-btn-link"><i class="fa fa-bell" aria-hidden="true" title="notifications"></i><span class="sr-only">notifications</span></a>
-                <a area-label="chat icon" href="{{ asset('/messages') }}" class="event-btn-link"><i class="icon icon-carce-bubbles2" title="messages"></i></a>
+                <a area-label="chat icon" href="{{ asset('/user-messeges') }}" class="event-btn-link"><i class="icon icon-carce-bubbles2" title="messages"></i></a>
             </div>
         </div>
     </div>

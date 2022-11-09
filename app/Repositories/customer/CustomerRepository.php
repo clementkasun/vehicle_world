@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Helpers\LogActivity;
 use App\Models\UserFavourite;
+use App\Models\UserMessage;
 use App\Notifications\CustomerRegisteredNotification;
 use App\Notifications\CustomerPasswordChangedNotification;
 use App\Notifications\CustomerProfileBasicDataChangedNotification;
@@ -182,6 +183,70 @@ class CustomerRepository implements CustomerInterface
             } else {
                 return 0;
             }
+        }
+    }
+
+    public function userMessegesView($user_id)
+    {
+        $get_user_msgs = UserMessage::where('user_to_id', $user_id)
+            ->groupBy('user_from_id')
+            ->orderBy('created_at', 'desc')
+            ->with('User')
+            ->get();
+        return view('./profile/user_messages', ['user_msgs' => $get_user_msgs]);
+    }
+
+    public function directMessageView($logged_user, $user_id)
+    {
+        $get_user_from_msgs = UserMessage::where('user_from_id', $logged_user)
+            ->where('user_to_id', $user_id)
+            ->orderBy('created_at', 'asc')
+            ->with('User')
+            ->get();
+
+        $get_user_to_msgs = UserMessage::where('user_from_id', $user_id)
+            ->where('user_to_id', $logged_user)
+            ->orderBy('created_at', 'asc')
+            ->with('User')
+            ->get();
+
+        $msg_count = $get_user_from_msgs->count() + $get_user_to_msgs->count();
+
+        return view('./profile/direct_chat', ['user_from_msgs' => $get_user_from_msgs, 'user_to_msgs' => $get_user_to_msgs, 'logged_user' => $logged_user, 'sent_user' => $user_id, 'msg_count' => $msg_count]);
+    }
+
+    public function sendDirectMessage($request, $from_user, $to_user)
+    {
+        $request = $request->all();
+
+        $send_message = UserMessage::create([
+            'message' => $request['message'],
+            'user_from_id' => $from_user,
+            'user_to_id' => $to_user,
+            'created_at' => now()
+        ]);
+
+        $get_user_from_msgs = UserMessage::where('user_from_id', $from_user)
+            ->where('user_to_id', $to_user)
+            ->orderBy('created_at', 'asc')
+            ->with('User')
+            ->get();
+
+        $get_user_to_msgs = UserMessage::where('user_from_id', $to_user)
+            ->where('user_to_id', $from_user)
+            ->orderBy('created_at', 'asc')
+            ->with('User')
+            ->get();
+
+        $msg_count = $get_user_from_msgs->count() + $get_user_to_msgs->count();
+
+        $url = '/profile/direct_chat';
+        // Notification::send($from_user, new CustomerProfileBasicDataChangedNotification($to_user));
+        // Notification::send($to_user, new CustomerProfileBasicDataChangedNotification($from_user));
+        if ($send_message == true) {
+            return view($url, ['user_from_msgs' => $get_user_from_msgs, 'user_to_msgs' => $get_user_to_msgs, 'logged_user' => $from_user, 'sent_user' => $to_user, 'msg_count' => $msg_count, 'status' => 1, 'msg' => 'Message sent successfully']);
+        } else {
+            return view($url, ['user_from_msgs' => $get_user_from_msgs, 'user_to_msgs' => $get_user_to_msgs, 'logged_user' => $from_user, 'sent_user' => $to_user, 'msg_count' => $msg_count, 'status' => 0, 'msg' => 'Message send was unsuccessful']);
         }
     }
 }

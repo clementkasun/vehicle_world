@@ -221,13 +221,13 @@
                                     <span class="title">Setting</span>
                                 </li>
                                 <li class="list-item">
-                                    <a href="./user_profile" class="profile-link"><span class="icon"><i class="icon icon-carce-user"></i></span>Account Setting</a>
+                                    <a href="/user_profile" class="profile-link"><span class="icon"><i class="icon icon-carce-user"></i></span>Account Setting</a>
                                 </li>
                                 <!-- <li class="list-item">
                                     <a href="/" class="profile-link"><span class="icon"><i class="icon icon-carce-briefcase"></i></span>Billing & Payment</a>
                                 </li> -->
                                 <li class="list-item">
-                                    <a href="./notifications" class="profile-link"><span class="icon"><i class="icon icon-carce-bell"></i></span>Notification</a>
+                                    <a href="/notifications" class="profile-link"><span class="icon"><i class="icon icon-carce-bell"></i></span>Notification</a>
                                 </li>
                             </ul>
                         </li>
@@ -235,7 +235,7 @@
                         <li class="profile-list-item">
                             <ul class="profile-single-list">
                                 <li class="list-item">
-                                    <a href="./logout" class="profile-link"><span class="icon"><i class="icon icon-carce-login"></i></span>Log Out</a>
+                                    <a href="/logout" class="profile-link"><span class="icon"><i class="icon icon-carce-login"></i></span>Log Out</a>
                                 </li>
                             </ul>
                         </li>

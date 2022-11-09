@@ -20,17 +20,14 @@ class PostController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $most_favoured_posts = UserFavourite::select('post_id')->groupBy('post_id')
-            ->orderByRaw('COUNT(*) DESC')
-            ->limit(1)
-            ->with('post')
-            ->get();
-        $all_posts = $this->postRepository->getAllPost();
-        return view('home', ['user_profile_data' => $user, 'most_favoured_posts' => $most_favoured_posts, 'post_all' => $all_posts]);
+        $favoured_posts = $this->postRepository->mostFavouredPosts();
+        $trending_posts = $this->getTrendingPosts();
+        $posts = $this->postRepository->getAllPost();
+        return view('./home', ['user_profile_data' => $user, 'most_favoured_posts' => $favoured_posts, 'posts' => $posts, 'trending_posts' => $trending_posts]);
     }
 
     public function post_reg_form(){
-        return view('/registration/post_registration');
+        return view('./registration/post_registration');
     }
 
     public function get_post_profile($post_id)

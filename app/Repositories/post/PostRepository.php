@@ -62,7 +62,7 @@ class PostRepository implements PostInterface
     public function getAllPost()
     {
 
-        $post_all  = Post::with(['Vehicle.VehicleMake', 'SparePart'], 'User')->paginate(10);
+        $post_all  = Post::with(['Vehicle.VehicleMake', 'SparePart'], 'User')->paginate(100);
         return $post_all;
     }
 
@@ -351,7 +351,21 @@ class PostRepository implements PostInterface
                 'posts.id AS id',
                 'posts.post_type',
                 'posts.post_title',
-                'posts.vehicle_id',
+                'posts.vehicle_id AS vehicle_id',
+                'posts.condition',
+                'posts.location',
+                'posts.address',
+                'posts.price',
+                'posts.main_image',
+                'posts.image_1',
+                'posts.image_2',
+                'posts.image_3',
+                'posts.image_4',
+                'posts.image_5',
+                'posts.status',
+                'posts.additional_info',
+                'posts.created_at',
+                'posts.view_count',
                 'users.id AS user_id',
                 'users.name',
                 'users.last_name',
@@ -359,14 +373,9 @@ class PostRepository implements PostInterface
                 'users.nic',
                 'users.email',
                 'users.address AS seller_location',
-                'posts.main_image',
-                'posts.condition',
                 'vehicles.model',
-                'posts.location',
-                'posts.address',
                 'vehicles.start_type',
                 'vehicles.manufactured_year',
-                'posts.price',
                 'vehicles.on_going_lease',
                 'vehicles.transmission',
                 'vehicles.fuel_type',
@@ -376,22 +385,12 @@ class PostRepository implements PostInterface
                 'vehicles.isPowerSteer',
                 'vehicles.isPowerMirroring',
                 'vehicles.isPowerWindow',
+                'vehicles.make_id AS make_id',
                 'vehicles.vehicle_type',
+                'vehicle_makes.make_name',
                 'spare_parts.part_used_in',
                 'spare_parts.part_category',
-                'posts.additional_info',
-                'posts.created_at',
-                'posts.image_1',
-                'posts.image_2',
-                'posts.image_3',
-                'posts.image_4',
-                'posts.image_5',
-                'vehicles.make_id',
-                'vehicle_makes.make_name',
-                'posts.status',
-                'posts.view_count'
             )->first();
-
         $vehi_type = $post_data->vehicle_type;
         $post_count = $post_data->view_count + 1;
 
@@ -400,6 +399,13 @@ class PostRepository implements PostInterface
         $posts_view_count_update->save();
 
         $post_by_vehi_type = Post::join('vehicles', 'posts.vehicle_id', 'vehicles.id')
+            ->select(
+                'posts.id AS id',
+                'posts.post_title',
+                'posts.location',
+                'posts.main_image',
+                'posts.price'
+            )
             ->where('vehicles.vehicle_type', $vehi_type)
             ->paginate(3);
 
@@ -412,19 +418,20 @@ class PostRepository implements PostInterface
 
     public function filteredPosts($request)
     {
-        $make = $request->cmb_make;
-        $post_type = $request->cmb_post_type;
-        $model = $request->model;
-        $vehi_type = $request->cmb_vehi_type;
-        $start_type = $request->cmb_start_type;
-        $condition = $request->cmb_condition;
-        $price_range = $request->cmb_price;
-        $location = $request->cmb_city;
-        $year_min = $request->year_min;
-        $year_max = $request->year_max;
-        $gear_type = $request->cmb_gear;
-        $fuel_type = $request->cmb_fuel_type;
-        $part_category = $request->part_category;
+        $request = $request->request->all();
+        $make = $request['cmb_make'];
+        $post_type = $request['cmb_post_type'];
+        $model = $request['model'];
+        $vehi_type = $request['cmb_vehi_type'];
+        $start_type = $request['cmb_start_type'];
+        $condition = $request['cmb_condition'];
+        $price_range = $request['cmb_price'];
+        $location = $request['cmb_city'];
+        $year_min = $request['year_min'];
+        $year_max = $request['year_max'];
+        $gear_type = $request['cmb_gear'];
+        $fuel_type = $request['cmb_fuel_type'];
+        $part_category = $request['part_category'];
 
         if ($post_type == "VEHI") {
 
@@ -434,15 +441,15 @@ class PostRepository implements PostInterface
                 ->leftjoin('vehicles', 'posts.vehicle_id', 'vehicles.id')
                 ->leftjoin('vehicle_makes', 'vehicles.make_id', 'vehicle_makes.id');
 
-            $filtered_post = $filtered_post->when($make != null, function ($p) use ($make) {
+            $filtered_post = $filtered_post->when($make != 'any', function ($p) use ($make) {
                 return $p->where('vehicles.make_id', '=', $make);
             });
 
-            $filtered_post = $filtered_post->when($model != null, function ($p) use ($model) {
+            $filtered_post = $filtered_post->when($model != '', function ($p) use ($model) {
                 return $p->where('vehicles.model', 'like', '%' . $model . '%');
             });
 
-            $filtered_post = $filtered_post->when($start_type != null, function ($p) use ($start_type) {
+            $filtered_post = $filtered_post->when($start_type != 'any', function ($p) use ($start_type) {
                 return $p->where('vehicles.start_type', 'like', '%' . $start_type . '%');
             });
 
@@ -505,11 +512,11 @@ class PostRepository implements PostInterface
                 ->leftjoin('spare_parts', 'posts.spare_part_id', 'spare_parts.id')
                 ->leftjoin('vehicle_makes', 'spare_parts.make_id', 'vehicle_makes.id');
 
-            $filtered_post = $filtered_post->when($make != null, function ($p) use ($make) {
+            $filtered_post = $filtered_post->when($make != 'any', function ($p) use ($make) {
                 return $p->where('spare_parts.make_id', '=', $make);
             });
 
-            $filtered_post = $filtered_post->when($part_category != null, function ($p) use ($part_category) {
+            $filtered_post = $filtered_post->when($part_category != 'any', function ($p) use ($part_category) {
                 return $p->where('spare_parts.part_category', 'like', '%' . $part_category . '%');
             });
 
@@ -554,8 +561,11 @@ class PostRepository implements PostInterface
         });
 
 
-        $filtered_post_data = $filtered_post->get();
-        return $filtered_post_data;
+        $filtered_post_data = $filtered_post->paginate(100);
+        $favoured_posts = $this->mostFavouredPosts();
+        $trending_posts = $this->getTrendingPosts();
+        
+        return view('/home', ['posts' => $filtered_post_data, 'most_favoured_posts' => $favoured_posts, 'trending_posts' => $trending_posts]);
     }
 
     public function postUpdate($request, $id)
@@ -973,5 +983,16 @@ class PostRepository implements PostInterface
             ->get();
 
         return $trending_posts;
+    }
+
+    public function mostFavouredPosts()
+    {
+        $most_favoured_posts = UserFavourite::select('post_id')
+            ->groupBy('post_id')
+            ->orderByRaw('COUNT(*) DESC')
+            ->limit(1)
+            ->with('post')
+            ->get();
+        return $most_favoured_posts;
     }
 }

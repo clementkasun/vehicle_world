@@ -519,7 +519,7 @@ if (auth()->check() == true) {
             <div class="col-6"></div>
           </div>
           <div class="row mt-2">
-            <p class="product-description col-12 w-100 p-1 m-1"><b> {{$post_data->additional_info}} </b></p>
+            <p class="product-description col-12 w-100 p-1 m-1" style="text-transform: lowercase"> {{$post_data->additional_info}} </p>
           </div>
         </div>
         <!-- <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
@@ -689,35 +689,40 @@ if (auth()->check() == true) {
             <div class="row">
               @if($related_posts[0] != null)
               @foreach($related_posts as $post)
-              <div class='col-12 col-md-4'>
-                <div class="card card-light mt-2 w-100" style="border-width: 2px; border-color: black;">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-5">
-                        <img src="{{asset(''.$post->main_image)}}" style="height: 8em;" class="w-100" alt='main_img' />
-                      </div>
-                      <div class="col-7">
-                        <a href="{{ asset('/get_post_profile/id/'.$post->id) }}"><b style="font-size: 14px" class="text-success">{{$post->post_title}}</b></br></a>
-                        <span style="font-size: 12px" class="text-dark"><b>Price: </b> {{$post->price}} </span>
-                        <span style="font-size: 12px" class="text-dark"><b>Location: </b> {{$post->location}} </span>
-                      </div>
+              <?php
+              $post_id = $post->id;
+              $post_title = ($post->post_title != null) ? $post->post_title : 'N/A';
+              $location = ($post->location != null) ? $post->location : 'N/A';
+              $price = ($post['price'] != null) ? $post['price'] : 'N/A';
+              $main_image = $post['main_image'];
+              ?>
+
+              <div class="col-12 col-md-2">
+                <a href="{{ '/get_post_profile/id/'.$post_id }}">
+                  <div class="card card-white" style="height: 371px">
+                    <img src="{{asset($main_image)}}" alt="post images" style="width:100%">
+                    <div class="card-body bg-success">
+                      <div class="text-lg">{{ $post_title }}</div>
+                      <p> <b>Price: </b> {{ $price }} </p>
+                      <p> <b>Location: </b> {{ $location }} </p>
+                    </div>
+                    <div class="card-footer">
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
               @endforeach
+              @endif
             </div>
           </div>
           <div class="card-footer">
+
             @if(isset($request))
             <div class="text-center mt-1">{{ $related_posts->appends($request)->links('pagination::bootstrap-4') }}</div>
-            @endif
-
-            @if(!isset($request))
+            @else
             <div class="text-center mt-1">{{ $related_posts->links('pagination::bootstrap-4') }}</div>
             @endif
 
-            @endif
           </div>
         </div>
       </div>
