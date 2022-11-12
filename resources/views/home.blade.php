@@ -533,6 +533,12 @@
                     </a>
                 </div>
                 @endforeach
+                @else
+                 <div class="row">
+                    <div class="col-12">
+                        <h2>No Trending posts are available yet!</h2>
+                    </div>
+                 </div>
                 @endif
             </div>
         </div>
