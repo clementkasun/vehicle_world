@@ -29,7 +29,7 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto active" href="{{ asset('/') }}">Home</a></li>
-                    <li><a class="nav-link scrollto" href="{{ asset('analysis') }}">Analytics</a></li>
+                    <!-- <li><a class="nav-link scrollto" href="{{ asset('analysis') }}">Analytics</a></li> -->
                     <li><a class="nav-link scrollto" href="{{ asset('about_us') }}">About</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('services') }}">Services</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('create-post') }}">Create post</a></li>

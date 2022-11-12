@@ -495,27 +495,39 @@
 <div class="row">
     <div class="col-12">
         <!-- ======= Trending posts ======= -->
-        <div id="trending_posts" class="trending-posts card card-success m-3" style="font-family: 'Bahnschrift SemiCondensed';">
+        <div id="trending_posts" class="trending-posts card card-success m-3" style="font-family: 'Bahnschrift SemiCondensed'; height:'auto'">
             <div class="card-header text-center"><b>
                     <h1>Trending posts</h1>
                 </b></div>
             <div class="card-body row" id="trends">
-                @if(isset($trending_posts))
-                @foreach($trending_posts as $post)
+                @if(isset($trend_posts))
+                @foreach($trend_posts as $trend_post)
                 <?php
-                $post_id = $post['id'];
-                $post_title = ($post['post_title'] != null) ? $post['post_title'] : 'N/A';
-                $price = ($post['price'] != null) ? $post['price'] : 'N/A';
-                $main_image = $post['main_image'];
+                $post_id = $trend_post['id'];
+                $post_title = ($trend_post['post_title'] != null) ? $trend_post['post_title'] : 'N/A';
+                $price = ($trend_post['price'] != null) ? $trend_post['price'] : 'N/A';
+                $main_image = $trend_post['main_image'];
+                $location = ($trend_post->location != null) ? $trend_post->location : 'N/A';
+                ($trend_post['post_type'] == 'VEHI') ? $type = 'Vehicle Type: ' . $trend_post['vehilce_type'] : $type = 'Part used in: ' . $trend_post['part_used-in'];
                 ?>
                 <div class="col-12 col-md-2">';
                     <a href="{{ asset('/get_post_profile/id/'.$post_id) }}">
-                        <div class="card card-white" style="height: 250px">
-                            <img src="{{ asset($post->main_image) }}" alt="trending post images" style="width:100%">
-                            <div class="card-body">
-                                <h4 class="container-fluid">{{ $post_title }}</h4>
+                        <div class="card card-white" style="height: 400px">
+                            <img src="{{ asset($trend_post->main_image) }}" alt="trending post images" style="width:100%">
+                            <div class="card-body bg-success">
+                                <h2 class="container-fluid"><b>{{ $post_title }}</b></h2>
+                                <h4 class="container-fluid"> <b>Price: </b> රැ . {{ $price }}</h4>
+                                <p class="container-fluid"><b>Location: </b> {{ $location }}</p>
+                                @if($trend_post['post_type'] == 'VEHI')
+                                <p class="container-fluid"><b>Millage: </b> {{ ($trend_post['vehicle'] != null) ? $trend_post['vehicle']['millage'] : 'N/A' }} </p>
+                                @endif
                             </div>
                             <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-4"><i class="fa fa-eye">&nbsp; {{ $trend_post['view_count'] }}</i></div>
+                                    <div class="col-4"><i class="fa-regular fa-message">&nbsp; {{ $trend_post['review_count'] }}</i></div>
+                                    <div class="col-4"><i class="fa-sharp fa-solid fa-heart">&nbsp; {{ $trend_post['favoured_count'] }}</i></div>
+                                </div>
                             </div>
                         </div>
                     </a>
@@ -543,11 +555,12 @@
                 $price = ($post['price'] != null) ? $post['price'] : 'N/A';
                 $millage = ($post['vehicle'] != null) ? $post['vehicle']['millage'] : 'N/A';
                 $main_image = $post['main_image'];
+                ($post->post_type == 'VEHI') ? $type = 'Vehicle Type: ' . $post['vehilce_type'] : $type = 'Part used in: ' . $post['part_used-in'];
                 ?>
                 <div class="col-12 col-md-2">
 
                     <a href="{{ '/get_post_profile/id/'.$post_id }}">
-                        <div class="card card-white" style="height: 371px">
+                        <div class="card card-white" style="height: 400px">
                             @if($post['status'] == '1')
                             <div class="ribbon-wrapper ribbon-lg">
                                 <div class="ribbon bg-warning text-lg">Sold</div>
@@ -559,12 +572,17 @@
                             @endif
                             <img src="{{asset($main_image)}}" alt="post images" style="width:100%">
                             <div class="card-body bg-success">
-                                <h2 class="container-fluid">{{ $post_title }}</h2>
-                                <h2 class="container-fluid"> <b>Price: </b> රැ . {{ $price }}</h2>
+                                <h2 class="container-fluid"><b>{{ $post_title }}</b></h2>
+                                <h4 class="container-fluid"> <b>Price: </b> රැ . {{ $price }}</h4>
                                 <p class="container-fluid"><b>Location: </b> {{ $location }}</p>
                                 <p class="container-fluid"><b>Millage: </b> {{ $millage}} </p>
                             </div>
                             <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-4"><i class="fa fa-eye">&nbsp; {{ $post['view_count'] }}</i></div>
+                                    <div class="col-4"><i class="fa-regular fa-message">&nbsp; {{ $post['review_count'] }}</i></div>
+                                    <div class="col-4"><i class="fa-sharp fa-solid fa-heart">&nbsp; {{ $post['favoured_count'] }}</i></div>
+                                </div>
                             </div>
                         </div>
                     </a>

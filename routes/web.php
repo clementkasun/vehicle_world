@@ -35,7 +35,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/user_profile', [CustomerC
 Route::middleware(['auth:sanctum', 'verified'])->get('/post_edit/id/{post_id}', [PostController::class, 'get_post_update_form']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/analysis', [DashboardController::class, 'index']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/create-post', [PostController::class, 'post_reg_form'])->name('create-post');
-Route::middleware(['auth:sanctum', 'verified'])->get('/get_post_profile/id/{post_id}', [PostController::class, 'get_post_profile']);
+Route::get('/get_post_profile/id/{post_id}', [PostController::class, 'get_post_profile']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/user-favourite-page/id/{user_id}', [UserFavouriteController::class, 'index_data']);
 Route::post('/filtered_posts', [PostController::class, 'filtered_posts']);
 

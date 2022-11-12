@@ -21,9 +21,9 @@ class PostController extends Controller
     {
         $user = Auth::user();
         $favoured_posts = $this->postRepository->mostFavouredPosts();
-        $trending_posts = $this->getTrendingPosts();
+        $trend_posts = $this->getTrendingPosts();
         $posts = $this->postRepository->getAllPost();
-        return view('./home', ['user_profile_data' => $user, 'most_favoured_posts' => $favoured_posts, 'posts' => $posts, 'trending_posts' => $trending_posts]);
+        return view('./home', ['user_profile_data' => $user, 'most_favoured_posts' => $favoured_posts, 'posts' => $posts, 'trend_posts' => $trend_posts]);
     }
 
     public function post_reg_form(){

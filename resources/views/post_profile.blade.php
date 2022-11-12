@@ -76,13 +76,6 @@
     animation-duration: .3s;
   }
 
-  /* .card {
-    margin-top: 50px;
-    background: #eee;
-    padding: 3em;
-    line-height: 1.5em;
-  } */
-
   @media screen and (min-width: 997px) {
     .wrapper {
       display: -webkit-box;
@@ -104,32 +97,18 @@
     flex-direction: column;
   }
 
-  .colors {
-    -webkit-box-flex: 1;
-    -webkit-flex-grow: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-  }
 
   .product-title,
   .price,
-  .sizes,
-  .colors {
+  .sizes {
     text-transform: UPPERCASE;
     font-weight: bold;
-  }
-
-  .checked,
-  .price span {
-    color: #ff9f1a;
   }
 
   .product-title,
   .rating,
   .product-description,
-  .price,
-  .vote,
-  .sizes {
+  .price {
     margin-bottom: 15px;
   }
 
@@ -139,64 +118,6 @@
 
   .size {
     margin-right: 10px;
-  }
-
-  .size:first-of-type {
-    margin-left: 40px;
-  }
-
-  .color {
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 10px;
-    height: 2em;
-    width: 2em;
-    border-radius: 2px;
-  }
-
-  .color:first-of-type {
-    margin-left: 20px;
-  }
-
-  .add-to-cart,
-  .like {
-    background: #ff9f1a;
-    padding: 0.5em 0.5em;
-    border: none;
-    text-transform: UPPERCASE;
-    font-weight: bold;
-    color: #fff;
-    -webkit-transition: background .3s ease;
-    transition: background .3s ease;
-  }
-
-  .add-to-cart:hover,
-  .like:hover {
-    background: #b36800;
-    color: #fff;
-  }
-
-  .not-available {
-    text-align: center;
-    line-height: 2em;
-  }
-
-  .not-available:before {
-    font-family: fontawesome;
-    content: "\f00d";
-    color: #fff;
-  }
-
-  .orange {
-    background: #ff9f1a;
-  }
-
-  .green {
-    background: #85ad00;
-  }
-
-  .blue {
-    background: #0076ad;
   }
 
   .tooltip-inner {
@@ -253,10 +174,6 @@
   .heading {
     font-size: 25px;
     margin-right: 25px;
-  }
-
-  .fa-heart {
-    font-size: 25px;
   }
 
   .checked {
@@ -339,6 +256,13 @@
       display: none;
     }
   }
+
+  .status-fields{
+    border-radius: 5px; 
+    padding-left: 5px; 
+    padding-right: 5px; 
+    font-weight: bold;
+  }
 </style>
 
 @endsection
@@ -384,18 +308,21 @@ if (auth()->check() == true) {
         </ul>
 
       </div>
-      <div class="details col-md-6">
+      <div class="details col-md-6" style="height: auto">
         <span class="product-title text-lg">
           {{ $post_data->post_title}}
         </span>
         <div class="rating">
           <span class="avg_star"></span>
-          <span class="review-no"><span class="review_count"></span> Reviews</span>
-        </div>
-        <div class="user-views">
+          <span class="review-no"><i class="fa-regular fa-message"></i>&nbsp;<span class="review_count"></span></span>
           <span class="user-view-count"> <i class="fa fa-eye"></i>{{ $post_data->view_count }}</span>
+          &nbsp;
+          <span>
+            <button class="btn btn-lg" type="button" id="btn-favourite"><span class="fa fa-heart"></span></button>
+            <label class="pl-2"> {{ $post_likes }} </label>
+          </span>
         </div>
-        <div class="product-info p-2">
+        <div class="product-info p-3 card card-light">
           <div class="row">
             <div class="col-6">
               @if($post_data->price != null)
@@ -470,19 +397,19 @@ if (auth()->check() == true) {
             <div class="col-6">
               <label for="isAc">AC: </label><br>
               @if($post_data->isAc != null)
-              <p class="bg-warning p-1 m-1" style="border-radius: 5px;"></p>
+              <p class="bg-success p-1 m-1 status-fields">Available</p>
               @endif
               @if($post_data->isAc == null)
-              <p class="bg-success p-1 m-1" style="border-radius: 5px;"></p>
+              <p class="bg-warning p-1 m-1 status-fields">N/A</p>
               @endif
             </div>
             <div class="col-6">
               <label for="ongoing_lease">Ongoing Lease: </label>
               @if($post_data->on_going_lease != null)
-              <p class="bg-warning p-1 m-1" style="border-radius: 5px;"></p>
+              <p class="bg-success p-1 m-1 status-fields">Available</p>
               @endif
               @if($post_data->on_going_lease == null)
-              <p class="bg-success p-1 m-1" style="border-radius: 5px;"></p>
+              <p class="bg-warning p-1 m-1 status-fields">N/A</p>
               @endif
             </div>
           </div>
@@ -490,19 +417,19 @@ if (auth()->check() == true) {
             <div class="col-6">
               <label for="isPowerSteer">Power Steering: </label>
               @if($post_data->isPowerSteer != null)
-              <p class="bg-warning p-1 m-1" style="border-radius: 5px;"></p>
+              <p class="bg-success p-1 m-1 status-fields">Available</p>
               @endif
               @if($post_data->isPowerSteer == null)
-              <p class="bg-success p-1 m-1" style="border-radius: 5px;"></p>
+              <p class="bg-warning p-1 m-1 status-fields">N/A</p>
               @endif
             </div>
             <div class="col-6">
               <label for="isPowerWindow">Power Window: </label><br>
               @if($post_data->isPowerWindow != null)
-              <p class="bg-warning p-1 m-1" style="border-radius: 5px;"></p>
+              <p class="bg-success p-1 m-1 status-fields">Available</p>
               @endif
               @if($post_data->isPowerWindow == null)
-              <p class="bg-success p-1 m-1" style="border-radius: 5px;"></p>
+              <p class="bg-warning p-1 m-1 status-fields">N/A</p>
               @endif
             </div>
           </div>
@@ -510,113 +437,119 @@ if (auth()->check() == true) {
             <div class="col-6">
               <label for="soldStatus">Sold Status: </label><br>
               @if($post_data->status != 0)
-              <p class="bg-success" style="border-radius: 5px; padding-left: 5px; padding-right: 5px">Sold</p>
+              <p class="bg-warning p-1 m-1 status-fields">Sold</p>
               @endif
               @if($post_data->status == 0)
-              <p class="bg-primary" style="border-radius: 5px; padding-left: 5px; padding-right: 5px">Not Yet</p>
+              <p class="bg-success p-1 m-1 status-fields">Not Yet</p>
               @endif
             </div>
-            <div class="col-6"></div>
-          </div>
-          <div class="row mt-2">
-            <p class="product-description col-12 w-100 p-1 m-1" style="text-transform: lowercase"> {{$post_data->additional_info}} </p>
           </div>
         </div>
-        <!-- <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
-        <h5 class="sizes">sizes:
-          <span class="size" data-toggle="tooltip" title="small">s</span>
-          <span class="size" data-toggle="tooltip" title="medium">m</span>
-          <span class="size" data-toggle="tooltip" title="large">l</span>
-          <span class="size" data-toggle="tooltip" title="xtra large">xl</span>
-        </h5>
-        <h5 class="colors">colors:
-          <span class="color orange not-available" data-toggle="tooltip" title="Not In store"></span>
-          <span class="color green"></span>
-          <span class="color blue"></span>
-        </h5> -->
-        <div class="action">
-          <!-- <button class="add-to-cart btn btn-default" type="button">add to cart</button> -->
-          <button class="btn btn-lg" type="button" id="btn-favourite"><span class="fa fa-heart"></span></button>
-          <br><label class="pl-2"> {{ $post_likes }} </label>
+        <div class="row mt-2">
+            <div class="col-12">
+              <div class="card card-light" style="height: auto">
+                <div class="card-body">
+                  <h4>Description:</h4>
+                  <p class="product-description col-12 mt-2 ml-0 pl-0" style="text-transform: lowercase; font-size: 16px; font-family: Bahnschrift Condensed"> {{$post_data->additional_info}} </p>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-12">
+        <div class="card card-light">
+          <div class="card-body" style="text-transform: none; font-weight: bold; font-size:18px;">Do not make any payments to advertiser before inspecting the vehicle. <b>vehiauto.com</b> shall not be held responsible for any transaction or agreement reached between the advertiser and you.</div>
         </div>
       </div>
-      <div class="card">
-        <div class="card-body">Do not make any payments to advertiser before inspecting the vehicle. <b>vehiauto.com</b> shall not be held responsible for any transaction or agreement reached between the advertiser and you.</div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-12">
+        <div class="card card-light">
+          <div class="card-body" style="font-weight: bold; font-size:20px;">වාහනය පරික්ෂා කර බැලීමෙන් තොරව වාහන අයිතිකරුවන්ට මුදල් ගෙවීමෙන් වලකින්න. එසේ කරනු ලබන කිසිදු ගෙවීමක් සදහා <b style="font-size:16px;">vehiauto.com</b> වෙබ් අඩවිය වගකීමක් නොදරන බව දන්වා සිටිමු.</div>
+        </div>
+
       </div>
-      <div class="card">
-        <div class="card-body">වාහනය පරික්ෂා කර බැලීමෙන් තොරව වාහන අයිතිකරුවන්ට මුදල් ගෙවීමෙන් වලකින්න. එසේ කරනු ලබන කිසිදු ගෙවීමක් සදහා <b>vehiauto.com</b> වෙබ් අඩවිය වගකීමක් නොදරන බව දන්වා සිටිමු.</div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-12">
+        <div class="card card-light">
+          <div class="card-body" style="font-weight: bold; font-size:16px;">சொத்தை அல்லது உடமையை ஆய்வு செய்வதற்கு முன்பு விளம்பரதாரருக்கு பணம் செலுத்த வேண்டாம். <b>vehiauto.com</b> வளையதளமானது உங்களுடைய எந்த ஒரு வாகனக்கட்டணத்துக்கும்பொறுப்பு கூற மாட்டாது.</div>
+        </div>
       </div>
-      <div class="card">
-        <div class="card-body">சொத்தை அல்லது உடமையை ஆய்வு செய்வதற்கு முன்பு விளம்பரதாரருக்கு பணம் செலுத்த வேண்டாம். <b>vehiauto.com</b> வளையதளமானது உங்களுடைய எந்த ஒரு வாகனக்கட்டணத்துக்கும்பொறுப்பு கூற மாட்டாது.</div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <span class="heading">User Ratings</span><br>
+        <span id="avg_stars"></span>
+        <p> Average <span class="avg_star"></span> based on <span class="review_count"></span> reviews.</p>
+        <hr style="border:3px solid #f1f1f1">
+
+        <div class="row p-5">
+          <div class="side">
+            <div>5 star</div>
+          </div>
+          <div class="middle">
+            <div class="progress">
+              <div class="progress--striped bg-success" id="five_star_progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+          <div class="side right">
+            <div id="five_star_amount"></div>
+          </div>
+          <div class="side">
+            <div>4 star</div>
+          </div>
+          <div class="middle">
+            <div class="progress">
+              <div class="progress-bar-striped bg-info" id="four_star_progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+          <div class="side right">
+            <div id="four_star_amount"></div>
+          </div>
+          <div class="side">
+            <div>3 star</div>
+          </div>
+          <div class="middle">
+            <div class="progress">
+              <div class="progress-bar-striped bg-primary" id="three_star_progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+          <div class="side right">
+            <div id="three_star_amount"></div>
+          </div>
+          <div class="side">
+            <div>2 star</div>
+          </div>
+          <div class="middle">
+            <div class="progress">
+              <div class="progress-bar-striped bg-warning" id="two_star_progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+          <div class="side right">
+            <div id="two_star_amount"></div>
+          </div>
+          <div class="side">
+            <div>1 star</div>
+          </div>
+          <div class="middle">
+            <div class="progress">
+              <div class="progress-bar-striped bg-danger" id="one_star_progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+          <div class="side right">
+            <div id="one_star_amount"></div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <span class="heading">User Ratings</span><br>
-    <span id="avg_stars"></span>
-    <p> Average <span class="avg_star"></span> based on <span class="review_count"></span> reviews.</p>
-    <hr style="border:3px solid #f1f1f1">
-
-    <div class="row p-5">
-      <div class="side">
-        <div>5 star</div>
-      </div>
-      <div class="middle">
-        <div class="progress">
-          <div class="progress--striped bg-success" id="five_star_progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-      </div>
-      <div class="side right">
-        <div id="five_star_amount"></div>
-      </div>
-      <div class="side">
-        <div>4 star</div>
-      </div>
-      <div class="middle">
-        <div class="progress">
-          <div class="progress-bar-striped bg-info" id="four_star_progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-      </div>
-      <div class="side right">
-        <div id="four_star_amount"></div>
-      </div>
-      <div class="side">
-        <div>3 star</div>
-      </div>
-      <div class="middle">
-        <div class="progress">
-          <div class="progress-bar-striped bg-primary" id="three_star_progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-      </div>
-      <div class="side right">
-        <div id="three_star_amount"></div>
-      </div>
-      <div class="side">
-        <div>2 star</div>
-      </div>
-      <div class="middle">
-        <div class="progress">
-          <div class="progress-bar-striped bg-warning" id="two_star_progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-      </div>
-      <div class="side right">
-        <div id="two_star_amount"></div>
-      </div>
-      <div class="side">
-        <div>1 star</div>
-      </div>
-      <div class="middle">
-        <div class="progress">
-          <div class="progress-bar-striped bg-danger" id="one_star_progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-      </div>
-      <div class="side right">
-        <div id="one_star_amount"></div>
-      </div>
-    </div>
     @if($user_id != null)
     <div id="user_review" class="card card-light mt-2">
       <div class="card-header">
-        Review this post
+        <b>Review this post</b>
       </div>
       <div class="card-body">
         <div class="row mt-2 pl-2">
@@ -668,7 +601,7 @@ if (auth()->check() == true) {
       <div class="col-12">
         <div class="card card-light">
           <div class="card-header">
-            <h3><b>Reviews</b></h3>
+            <h3 style="text-transform: none"><b>Reviews</b></h3>
           </div>
           <div class="card-body" id="reviews">
 
@@ -676,7 +609,6 @@ if (auth()->check() == true) {
         </div>
       </div>
     </div>
-
   </div>
   <div class="card-footer">
     <div class="row">
@@ -687,26 +619,34 @@ if (auth()->check() == true) {
           </div>
           <div class="card-body">
             <div class="row">
-              @if($related_posts[0] != null)
-              @foreach($related_posts as $post)
+              @if(isset($related_posts))
+              @foreach($related_posts as $related_post)
               <?php
-              $post_id = $post->id;
-              $post_title = ($post->post_title != null) ? $post->post_title : 'N/A';
-              $location = ($post->location != null) ? $post->location : 'N/A';
-              $price = ($post['price'] != null) ? $post['price'] : 'N/A';
-              $main_image = $post['main_image'];
+              $post_id = $related_post['id'];
+              $post_title = ($related_post['post_title'] != null) ? $related_post['post_title'] : 'N/A';
+              $price = ($related_post['price'] != null) ? $related_post['price'] : 'N/A';
+              $main_image = $related_post['main_image'];
+              $location = ($related_post->location != null) ? $related_post->location : 'N/A';
+              ($related_post['post_type'] == 'VEHI') ? $type = 'Vehicle Type: ' . $related_post['vehilce_type'] : $type = 'Part used in: ' . $related_post['part_used-in'];
               ?>
-
-              <div class="col-12 col-md-2">
-                <a href="{{ '/get_post_profile/id/'.$post_id }}">
-                  <div class="card card-white" style="height: 371px">
-                    <img src="{{asset($main_image)}}" alt="post images" style="width:100%">
+              <div class="col-12 col-md-2">';
+                <a href="{{ asset('/get_post_profile/id/'.$post_id) }}">
+                  <div class="card card-white" style="height: 400px">
+                    <img src="{{ asset($related_post->main_image) }}" alt="trending post images" style="width:100%">
                     <div class="card-body bg-success">
-                      <div class="text-lg">{{ $post_title }}</div>
-                      <p> <b>Price: </b> {{ $price }} </p>
-                      <p> <b>Location: </b> {{ $location }} </p>
+                      <h2 class="container-fluid"><b>{{ $post_title }}</b></h2>
+                      <h4 class="container-fluid"> <b>Price: </b> රැ . {{ $price }}</h4>
+                      <p class="container-fluid"><b>Location: </b> {{ $location }}</p>
+                      @if($related_post['post_type'] == 'VEHI')
+                      <p class="container-fluid"><b>Millage: </b> {{ ($related_post['vehicle'] != null) ? $related_post['vehicle']['millage'] : 'N/A' }} </p>
+                      @endif
                     </div>
                     <div class="card-footer">
+                      <div class="row">
+                        <div class="col-4"><i class="fa fa-eye">&nbsp; {{ $related_post['view_count'] }}</i></div>
+                        <div class="col-4"><i class="fa-regular fa-message">&nbsp; {{ $related_post['review_count'] }}</i></div>
+                        <div class="col-4"><i class="fa-sharp fa-solid fa-heart">&nbsp; {{ $related_post['favoured_count'] }}</i></div>
+                      </div>
                     </div>
                   </div>
                 </a>
@@ -826,7 +766,7 @@ if (auth()->check() == true) {
       $.each(result, (index, item) => {
         stars = generateStars(item.user_star);
         html += '<div class="card card-light">';
-        html += '<div class="card-header"><div class="row"><div class="col-12 col-md-10"><b>User :</b> ' + item.user.name + ' </div><div class="col-12 col-md-2 p-0 m-0">' + stars + '</div></div></div>';
+        html += '<div class="card-header"><div class="row"><div class="col-12 col-md-10" style="text-transform: none"><b>' + item.user.name + '</b></div><div class="col-12 col-md-2 p-0 m-0">' + stars + '</div></div></div>';
         html += '<div class="card-body">' + item.review_desc + '</div>';
         html += '</div>';
       });

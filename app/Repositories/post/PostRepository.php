@@ -62,7 +62,10 @@ class PostRepository implements PostInterface
     public function getAllPost()
     {
 
-        $post_all  = Post::with(['Vehicle.VehicleMake', 'SparePart'], 'User')->paginate(100);
+        $post_all  = Post::with(['Vehicle.VehicleMake', 'SparePart'], 'User')
+            ->withCount('UserReview as review_count')
+            ->withCount('UserFavourite as favoured_count')
+            ->paginate(100);
         return $post_all;
     }
 
@@ -391,27 +394,37 @@ class PostRepository implements PostInterface
                 'spare_parts.part_used_in',
                 'spare_parts.part_category',
             )->first();
+
         $vehi_type = $post_data->vehicle_type;
-        $post_count = $post_data->view_count + 1;
+        $part_used_in = $post_data->part_used_in;
+        $post_type = $post_data->post_type;
 
         $posts_view_count_update = Post::find($post_id);
-        $posts_view_count_update->view_count = $post_count;
+        $posts_view_count_update->view_count = $post_data->view_count + 1;
         $posts_view_count_update->save();
 
-        $post_by_vehi_type = Post::join('vehicles', 'posts.vehicle_id', 'vehicles.id')
-            ->select(
-                'posts.id AS id',
-                'posts.post_title',
-                'posts.location',
-                'posts.main_image',
-                'posts.price'
-            )
-            ->where('vehicles.vehicle_type', $vehi_type)
-            ->paginate(3);
+        if ($post_type == 'VEHi') {
+            $related_post = Post::join('vehicles', 'posts.vehicle_id', 'vehicles.id')
+                ->where('vehicles.vehicle_type', $vehi_type);
+        } else {
+            $related_post = Post::join('spare_parts', 'posts.spare_part_id', 'spare_parts.id')
+                ->where('spare_parts.part_used_in', $part_used_in);;
+        }
+
+        $related_post = $related_post->select(
+            'posts.id AS id',
+            'posts.post_title',
+            'posts.location',
+            'posts.main_image',
+            'posts.price'
+        )
+        ->withCount('UserReview as review_count')
+        ->withCount('UserFavourite as favoured_count')
+        ->paginate(6);
 
         $post_likes = UserFavourite::where('post_id', $post_id)->count();
 
-        return ['post_data' => $post_data, 'related_posts' => $post_by_vehi_type, 'post_likes' => $post_likes];
+        return ['post_data' => $post_data, 'related_posts' => $related_post, 'post_likes' => $post_likes];
     }
 
     public $filtered_post = null;
@@ -436,6 +449,8 @@ class PostRepository implements PostInterface
         if ($post_type == "VEHI") {
 
             $filtered_post = Post::where('posts.post_type', 'VEHI')
+                ->withCount('UserReview as review_count')
+                ->withCount('UserFavourite as favoured_count')
                 ->where('posts.deleted_at', '=', null)
                 ->join('users', 'posts.user_id', 'users.id')
                 ->leftjoin('vehicles', 'posts.vehicle_id', 'vehicles.id')
@@ -507,6 +522,8 @@ class PostRepository implements PostInterface
 
         if ($post_type == "SPARE") {
             $filtered_post = Post::where('posts.post_type', 'SPARE')
+                ->withCount('UserReview as review_count')
+                ->withCount('UserFavourite as favoured_count')
                 ->where('posts.deleted_at', '=', null)
                 ->join('users', 'posts.user_id', 'users.id')
                 ->leftjoin('spare_parts', 'posts.spare_part_id', 'spare_parts.id')
@@ -564,7 +581,7 @@ class PostRepository implements PostInterface
         $filtered_post_data = $filtered_post->paginate(100);
         $favoured_posts = $this->mostFavouredPosts();
         $trending_posts = $this->getTrendingPosts();
-        
+
         return view('/home', ['posts' => $filtered_post_data, 'most_favoured_posts' => $favoured_posts, 'trending_posts' => $trending_posts]);
     }
 
@@ -821,32 +838,34 @@ class PostRepository implements PostInterface
         $thisYear = Carbon::now()->format('Y');
 
         //vehicle sales
-        $januaryVehiSales = Post::where('post_type', 'VEHI')->where('status', 1)->whereYear('created_at', $thisYear)->whereMonth('created_at', '01')->count();
-        $februaryVehiSales = Post::where('post_type', 'VEHI')->where('status', 1)->whereYear('created_at', $thisYear)->whereMonth('created_at', '02')->count();
-        $marchVehiSales = Post::where('post_type', 'VEHI')->where('status', 1)->whereYear('created_at', $thisYear)->whereMonth('created_at', '03')->count();
-        $aprilVehiSales = Post::where('post_type', 'VEHI')->where('status', 1)->whereYear('created_at', $thisYear)->whereMonth('created_at', '04')->count();
-        $mayVehiSales = Post::where('post_type', 'VEHI')->where('status', 1)->whereYear('created_at', $thisYear)->whereMonth('created_at', '05')->count();
-        $juneVehiSales = Post::where('post_type', 'VEHI')->where('status', 1)->whereYear('created_at', $thisYear)->whereMonth('created_at', '06')->count();
-        $julyVehiSales = Post::where('post_type', 'VEHI')->where('status', 1)->whereYear('created_at', $thisYear)->whereMonth('created_at', '07')->count();
-        $auguestVehiSales = Post::where('post_type', 'VEHI')->where('status', 1)->whereYear('created_at', $thisYear)->whereMonth('created_at', '08')->count();
-        $septemberVehiSales = Post::where('post_type', 'VEHI')->where('status', 1)->whereYear('created_at', $thisYear)->whereMonth('created_at', '09')->count();
-        $octomberVehiSales = Post::where('post_type', 'VEHI')->where('status', 1)->whereYear('created_at', $thisYear)->whereMonth('created_at', '10')->count();
-        $novemberVehiSales = Post::where('post_type', 'VEHI')->where('status', 1)->whereYear('created_at', $thisYear)->whereMonth('created_at', '11')->count();
-        $decemberVehiSales = Post::where('post_type', 'VEHI')->where('status', 1)->whereYear('created_at', $thisYear)->whereMonth('created_at', '12')->count();
+        $sales = Post::where('post_type', 'VEHI')->where('status', 1);
+        $januaryVehiSales = $sales->whereYear('created_at', $thisYear)->whereMonth('created_at', '01')->count();
+        $februaryVehiSales = $sales->whereYear('created_at', $thisYear)->whereMonth('created_at', '02')->count();
+        $marchVehiSales = $sales->whereYear('created_at', $thisYear)->whereMonth('created_at', '03')->count();
+        $aprilVehiSales = $sales->whereYear('created_at', $thisYear)->whereMonth('created_at', '04')->count();
+        $mayVehiSales = $sales->whereYear('created_at', $thisYear)->whereMonth('created_at', '05')->count();
+        $juneVehiSales = $sales->whereYear('created_at', $thisYear)->whereMonth('created_at', '06')->count();
+        $julyVehiSales = $sales->whereYear('created_at', $thisYear)->whereMonth('created_at', '07')->count();
+        $auguestVehiSales = $sales->whereYear('created_at', $thisYear)->whereMonth('created_at', '08')->count();
+        $septemberVehiSales = $sales->whereYear('created_at', $thisYear)->whereMonth('created_at', '09')->count();
+        $octomberVehiSales = $sales->whereYear('created_at', $thisYear)->whereMonth('created_at', '10')->count();
+        $novemberVehiSales = $sales->whereYear('created_at', $thisYear)->whereMonth('created_at', '11')->count();
+        $decemberVehiSales = $sales->whereYear('created_at', $thisYear)->whereMonth('created_at', '12')->count();
 
         //pending sales
-        $januaryPendingSales = Post::where('post_type', 'VEHI')->where('status', 0)->whereYear('created_at', $thisYear)->whereMonth('created_at', '01')->count();
-        $februaryPendingSales = Post::where('post_type', 'VEHI')->where('status', 0)->whereYear('created_at', $thisYear)->whereMonth('created_at', '02')->count();
-        $marchPendingSales = Post::where('post_type', 'VEHI')->where('status', 0)->whereYear('created_at', $thisYear)->whereMonth('created_at', '03')->count();
-        $aprilPendingSales = Post::where('post_type', 'VEHI')->where('status', 0)->whereYear('created_at', $thisYear)->whereMonth('created_at', '04')->count();
-        $mayPendingSales = Post::where('post_type', 'VEHI')->where('status', 0)->whereYear('created_at', $thisYear)->whereMonth('created_at', '05')->count();
-        $junePendingSales = Post::where('post_type', 'VEHI')->where('status', 0)->whereYear('created_at', $thisYear)->whereMonth('created_at', '06')->count();
-        $julyPendingSales = Post::where('post_type', 'VEHI')->where('status', 0)->whereYear('created_at', $thisYear)->whereMonth('created_at', '07')->count();
-        $auguestPendingSales = Post::where('post_type', 'VEHI')->where('status', 0)->whereYear('created_at', $thisYear)->whereMonth('created_at', '08')->count();
-        $septemberPendingSales = Post::where('post_type', 'VEHI')->where('status', 0)->whereYear('created_at', $thisYear)->whereMonth('created_at', '09')->count();
-        $octomberPendingSales = Post::where('post_type', 'VEHI')->where('status', 0)->whereYear('created_at', $thisYear)->whereMonth('created_at', '10')->count();
-        $novemberPendingSales = Post::where('post_type', 'VEHI')->where('status', 0)->whereYear('created_at', $thisYear)->whereMonth('created_at', '11')->count();
-        $decemberPendingSales = Post::where('post_type', 'VEHI')->where('status', 0)->whereYear('created_at', $thisYear)->whereMonth('created_at', '12')->count();
+        $pending_sales = Post::where('post_type', 'VEHI')->where('status', 0);
+        $januaryPendingSales = $pending_sales->whereYear('created_at', $thisYear)->whereMonth('created_at', '01')->count();
+        $februaryPendingSales = $pending_sales->whereYear('created_at', $thisYear)->whereMonth('created_at', '02')->count();
+        $marchPendingSales = $pending_sales->whereYear('created_at', $thisYear)->whereMonth('created_at', '03')->count();
+        $aprilPendingSales = $pending_sales->whereYear('created_at', $thisYear)->whereMonth('created_at', '04')->count();
+        $mayPendingSales = $pending_sales->whereYear('created_at', $thisYear)->whereMonth('created_at', '05')->count();
+        $junePendingSales = $pending_sales->whereYear('created_at', $thisYear)->whereMonth('created_at', '06')->count();
+        $julyPendingSales = $pending_sales->whereYear('created_at', $thisYear)->whereMonth('created_at', '07')->count();
+        $auguestPendingSales = $pending_sales->whereYear('created_at', $thisYear)->whereMonth('created_at', '08')->count();
+        $septemberPendingSales = $pending_sales->whereYear('created_at', $thisYear)->whereMonth('created_at', '09')->count();
+        $octomberPendingSales = $pending_sales->whereYear('created_at', $thisYear)->whereMonth('created_at', '10')->count();
+        $novemberPendingSales = $pending_sales->whereYear('created_at', $thisYear)->whereMonth('created_at', '11')->count();
+        $decemberPendingSales = $pending_sales->whereYear('created_at', $thisYear)->whereMonth('created_at', '12')->count();
 
         $vehicleSaleArray = [$januaryVehiSales, $februaryVehiSales, $marchVehiSales, $aprilVehiSales, $mayVehiSales, $juneVehiSales, $julyVehiSales, $auguestVehiSales, $septemberVehiSales, $octomberVehiSales, $novemberVehiSales, $decemberVehiSales];
         $pendingSaleArray = [$januaryPendingSales, $februaryPendingSales, $marchPendingSales, $aprilPendingSales, $mayPendingSales, $junePendingSales, $julyPendingSales, $auguestPendingSales, $septemberPendingSales, $octomberPendingSales, $novemberPendingSales, $decemberPendingSales];
@@ -952,7 +971,10 @@ class PostRepository implements PostInterface
 
     public function searchPosts($request)
     {
-        $posts = Post::where('post_title', 'LIKE', "%{$request->searched_key}%")->get();
+        $posts = Post::where('post_title', 'LIKE', "%{$request->searched_key}%")
+            ->withCount('UserReview as review_count')
+            ->withCount('UserFavourite as favoured_count')
+            ->get();
         return $posts;
     }
 
@@ -961,27 +983,16 @@ class PostRepository implements PostInterface
         $thisYear = Carbon::now()->format('Y');
         $thisMonth = Carbon::now()->format('m');
 
-        $trending_posts = Post::where('view_count', '>=', 999)
-            ->join('users', 'posts.user_id', 'users.id')
-            ->leftjoin('vehicles', 'posts.vehicle_id', 'vehicles.id')
+        $trending_posts = Post::where('posts.view_count', '>=', 1)
             ->whereYear('posts.created_at', $thisYear)
             ->whereMonth('posts.created_at', $thisMonth)
-            ->select(
-                'posts.id',
-                'posts.view_count',
-                'posts.main_image',
-                'posts.post_title',
-                'posts.location',
-                'posts.price',
-                'vehicles.millage',
-                'posts.created_at',
-                'users.user_name',
-            )
-            ->groupBy('posts.view_count')
-            ->orderBy('view_count', 'DESC')
+            ->with(['Vehicle', 'SparePart', 'User'])
+            ->withCount('UserReview as review_count')
+            ->withCount('UserFavourite as favoured_count')
+            ->groupBy('posts.post_type')
+            ->orderBy('posts.view_count', 'DESC')
             ->limit(5)
             ->get();
-
         return $trending_posts;
     }
 
