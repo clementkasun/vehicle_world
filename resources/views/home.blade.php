@@ -495,11 +495,11 @@
 <div class="row">
     <div class="col-12">
         <!-- ======= Trending posts ======= -->
-        <div id="trending_posts" class="trending-posts card card-success m-3" style="font-family: 'Bahnschrift SemiCondensed'; height:'auto'">
+        <div class="trending-posts card card-success m-3" style="font-family: 'Bahnschrift SemiCondensed'; height:'auto'">
             <div class="card-header text-center"><b>
                     <h1>Trending posts</h1>
                 </b></div>
-            <div class="card-body row" id="trends">
+            <div class="card-body row">
                 @if(isset($trend_posts))
                 @foreach($trend_posts as $trend_post)
                 <?php
@@ -534,11 +534,7 @@
                 </div>
                 @endforeach
                 @else
-                 <div class="row">
-                    <div class="col-12">
-                        <h2>No Trending posts are available yet!</h2>
-                    </div>
-                 </div>
+                <h2>No Trending posts are available yet!</h2>
                 @endif
             </div>
         </div>
