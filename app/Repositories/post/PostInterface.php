@@ -25,6 +25,7 @@ interface PostInterface {
     public function vehicleTypeWiseSales();
     public function getPercentages();
     public function getTrendingPosts();
+    public function mostFavouredPosts();
 }
 
 ?>
