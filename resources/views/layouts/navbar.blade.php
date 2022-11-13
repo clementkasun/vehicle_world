@@ -39,7 +39,7 @@
                     <li><a class="nav-link scrollto" href="{{ asset('logout') }}">Logout</a></li>
                     @else
                     <li><a class="nav-link scrollto" href="{{ asset('login_cust') }}">Login</a></li>
-                    <li><a class="nav-link scrollto" href="{{ asset('register_customer') }}">Register</a></li>
+                    <li><a class="nav-link scrollto" href="{{ asset('register') }}">Register</a></li>
                     @endif
                 </ul>
             </nav>

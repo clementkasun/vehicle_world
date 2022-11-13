@@ -166,25 +166,22 @@ class PostRepository implements PostInterface
 
             $path = public_path('/storage/post_images/' . $id . '/');
 
+            $watermark_img_path = public_path('/img/watermark.png');
+            $watermark = \Image::make($watermark_img_path);
+            $watermark->resize(200, 200);
+
             if ($request->hasFile('main_image')) {
 
                 $image_main       = $request->file('main_image');
                 $file_ext_main    = $image_main->extension();
 
                 $image_resize_main = \Image::make($image_main->getRealPath());
-                // $image_resize_main->resize(300, 200);
+                $image_resize_main->resize(300, 200);
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_main = uniqid($id);
-                $image_resize_main
-                // ->text('vehiauto.com', 150, 100, function ($font) {
-                //     $font->size(70);
-                //     $font->color('#1CED33');
-                //     $font->align('center');
-                //     $font->valign('center');
-                //     $font->angle(10);
-                // })
-                ->save($path . $random_name_main . '.' . $file_ext_main);
+                $image_resize_main->insert($watermark, 'center');
+                $image_resize_main->save($path . $random_name_main . '.' . $file_ext_main);
                 $post_main_saved_path = '/storage/post_images/' . $id . '/' . $random_name_main . '.' . $file_ext_main;
             }
 
@@ -194,20 +191,13 @@ class PostRepository implements PostInterface
                 $file_ext_one    = $image_one->extension();
 
                 $image_resize_one = \Image::make($image_one->getRealPath());
-                // $image_resize_one->resize(300, 200);
+                $image_resize_one->resize(300, 200);
 
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_one = uniqid($id);
-                $image_resize_one
-                // ->text('vehiauto.com', 150, 100, function ($font) {
-                //     $font->size(70);
-                //     $font->color('#1CED33');
-                //     $font->align('center');
-                //     $font->valign('center');
-                //     $font->angle(10);
-                // })
-                ->save($path . $random_name_one . '.' . $file_ext_one);
+                $image_resize_one->insert($watermark, 'center');
+                $image_resize_one->save($path . $random_name_one . '.' . $file_ext_one);
                 $post_one_saved_path = '/storage/post_images/' . $id . '/' . $random_name_one . '.' . $file_ext_one;
             }
 
@@ -217,20 +207,13 @@ class PostRepository implements PostInterface
                 $file_ext_two    = $image_two->extension();
 
                 $image_resize_two = \Image::make($image_two->getRealPath());
-                // $image_resize_two->resize(300, 200);
+                $image_resize_two->resize(300, 200);
 
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_two = uniqid($id);
-                $image_resize_two
-                // ->text('vehiauto.com', 150, 100, function ($font) {
-                //     $font->size(70);
-                //     $font->color('#1CED33');
-                //     $font->align('center');
-                //     $font->valign('center');
-                //     $font->angle(10);
-                // })
-                ->save($path . $random_name_two . '.' . $file_ext_two);
+                $image_resize_two->insert($watermark, 'center');
+                $image_resize_two->save($path . $random_name_two . '.' . $file_ext_two);
                 $post_two_saved_path = '/storage/post_images/' . $id . '/' . $random_name_two . '.' . $file_ext_two;
             }
 
@@ -240,19 +223,12 @@ class PostRepository implements PostInterface
                 $file_ext_three    = $image_three->extension();
 
                 $image_resize_three = \Image::make($image_three->getRealPath());
-                // $image_resize_three->resize(300, 200);
+                $image_resize_three->resize(300, 200);
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_three = uniqid($id);
-                $image_resize_three
-                // ->text('vehiauto.com', 150, 100, function ($font) {
-                //     $font->size(70);
-                //     $font->color('#1CED33');
-                //     $font->align('center');
-                //     $font->valign('center');
-                //     $font->angle(10);
-                // })
-                ->save($path . $random_name_three . '.' . $file_ext_three);
+                $image_resize_three->insert($watermark, 'center');
+                $image_resize_three->save($path . $random_name_three . '.' . $file_ext_three);
                 $post_three_saved_path = '/storage/post_images/' . $id . '/' . $random_name_three . '.' . $file_ext_three;
             }
 
@@ -262,20 +238,13 @@ class PostRepository implements PostInterface
                 $file_ext_four   = $image_four->extension();
 
                 $image_resize_four = \Image::make($image_four->getRealPath());
-                // $image_resize_four->resize(300, 200);
+                $image_resize_four->resize(300, 200);
 
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_four = uniqid($id);
-                $image_resize_four
-                // ->text('vehiauto.com', 150, 100, function ($font) {
-                //     $font->size(70);
-                //     $font->color('#1CED33');
-                //     $font->align('center');
-                //     $font->valign('center');
-                //     $font->angle(10);
-                // })
-                ->save($path . $random_name_four . '.' . $file_ext_four);
+                $image_resize_three->insert($watermark, 'center');
+                $image_resize_three->save($path . $random_name_four . '.' . $file_ext_four);
                 $post_four_saved_path = '/storage/post_images/' . $id . '/' . $random_name_four . '.' . $file_ext_four;
             }
 
@@ -285,20 +254,13 @@ class PostRepository implements PostInterface
                 $file_ext_five   = $image_five->extension();
 
                 $image_resize_five = \Image::make($image_five->getRealPath());
-                // $image_resize_five->resize(300, 200);
+                $image_resize_five->resize(300, 200);
 
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_five = uniqid($id);
-                $image_resize_five
-                // ->text('vehiauto.com', 150, 100, function ($font) {
-                //     $font->size(70);
-                //     $font->color('#1CED33');
-                //     $font->align('center');
-                //     $font->valign('center');
-                //     $font->angle(10);
-                // })
-                ->save($path . $random_name_five . '.' . $file_ext_five);
+                $image_resize_five->insert($watermark, 'center');
+                $image_resize_five->save($path . $random_name_five . '.' . $file_ext_five);
                 $post_five_saved_path = '/storage/post_images/' . $id . '/' . $random_name_five . '.' . $file_ext_five;
             }
 
@@ -430,9 +392,9 @@ class PostRepository implements PostInterface
             'posts.main_image',
             'posts.price'
         )
-        ->withCount('UserReview as review_count')
-        ->withCount('UserFavourite as favoured_count')
-        ->paginate(6);
+            ->withCount('UserReview as review_count')
+            ->withCount('UserFavourite as favoured_count')
+            ->paginate(6);
 
         $post_likes = UserFavourite::where('post_id', $post_id)->count();
 
@@ -645,6 +607,9 @@ class PostRepository implements PostInterface
             }
 
             $path = public_path('/storage/post_images/' . $id . '/');
+            $watermark_img_path = public_path('/img/watermark.png');
+            $watermark = \Image::make($watermark_img_path);
+            $watermark->resize(200, 200);
 
             if ($request->hasFile('main_image')) {
                 File::deleteDirectory($path);
@@ -660,13 +625,8 @@ class PostRepository implements PostInterface
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_main = uniqid($id);
-                $image_resize_main->text('vehiauto.com', 150, 100, function ($font) {
-                    $font->size(70);
-                    $font->color('#1CED33');
-                    $font->align('center');
-                    $font->valign('center');
-                    $font->angle(10);
-                })->save($path . $random_name_main . '.' . $file_ext_main);
+                $image_resize_main->insert($watermark, 'center');
+                $image_resize_main->save($path . $random_name_main . '.' . $file_ext_main);
                 $post_update->main_image = '/storage/post_images/' . $id . '/' . $random_name_main . '.' . $file_ext_main;
             }
 
@@ -676,18 +636,14 @@ class PostRepository implements PostInterface
                 $file_ext_one    = $image_one->extension();
 
                 $image_resize_one = \Image::make($image_one->getRealPath());
-                $image_resize_main->resize(300, 200);
+                $image_resize_one->resize(300, 200);
 
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_one = uniqid($id);
-                $image_resize_one->text('vehiauto.com', 150, 100, function ($font) {
-                    $font->size(70);
-                    $font->color('#1CED33');
-                    $font->align('center');
-                    $font->valign('center');
-                    $font->angle(10);
-                })->save($path . $random_name_one . '.' . $file_ext_one);
+                $image_resize_one->insert($watermark, 'center');
+
+                $image_resize_one->save($path . $random_name_one . '.' . $file_ext_one);
                 $post_update->image_1 = '/storage/post_images/' . $id . '/' . $random_name_one . '.' . $file_ext_one;
             }
 
@@ -697,18 +653,13 @@ class PostRepository implements PostInterface
                 $file_ext_two    = $image_two->extension();
 
                 $image_resize_two = \Image::make($image_two->getRealPath());
-                $image_resize_main->resize(300, 200);
+                $image_resize_two->resize(300, 200);
 
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_two = uniqid($id);
-                $image_resize_two->text('vehiauto.com', 150, 100, function ($font) {
-                    $font->size(70);
-                    $font->color('#1CED33');
-                    $font->align('center');
-                    $font->valign('center');
-                    $font->angle(10);
-                })->save($path . $random_name_two . '.' . $file_ext_two);
+                $image_resize_two->insert($watermark, 'center');
+                $image_resize_two->save($path . $random_name_two . '.' . $file_ext_two);
                 $post_update->image_2 = '/storage/post_images/' . $id . '/' . $random_name_two . '.' . $file_ext_two;
             }
 
@@ -718,18 +669,13 @@ class PostRepository implements PostInterface
                 $file_ext_three    = $image_three->extension();
 
                 $image_resize_three = \Image::make($image_three->getRealPath());
-                $image_resize_main->resize(300, 200);
+                $image_resize_three->resize(300, 200);
 
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_three = uniqid($id);
-                $image_resize_three->text('vehiauto.com', 150, 100, function ($font) {
-                    $font->size(70);
-                    $font->color('#1CED33');
-                    $font->align('center');
-                    $font->valign('center');
-                    $font->angle(10);
-                })->save($path . $random_name_three . '.' . $file_ext_three);
+                $image_resize_three->insert($watermark, 'center');
+                $image_resize_three->save($path . $random_name_three . '.' . $file_ext_three);
                 $post_update->image_3 = '/storage/post_images/' . $id . '/' . $random_name_three . '.' . $file_ext_three;
             }
 
@@ -739,20 +685,32 @@ class PostRepository implements PostInterface
                 $file_ext_four   = $image_four->extension();
 
                 $image_resize_four = \Image::make($image_four->getRealPath());
-                $image_resize_main->resize(300, 200);
+                $image_resize_four->resize(300, 200);
 
                 // I am saying to create the dir if it's not there.
                 \File::exists($path) or File::makeDirectory($path);
                 $random_name_four = uniqid($id);
-                $image_resize_four->text('vehiauto.com', 150, 100, function ($font) {
-                    $font->size(70);
-                    $font->color('#1CED33');
-                    $font->align('center');
-                    $font->valign('center');
-                    $font->angle(10);
-                })->save($path . $random_name_four . '.' . $file_ext_four);
+                $image_resize_four->insert($watermark, 'center');
+                $image_resize_four->save($path . $random_name_four . '.' . $file_ext_four);
                 $post_update->image_4 = '/storage/post_images/' . $id . '/' . $random_name_four . '.' . $file_ext_four;
             }
+
+            if ($request->hasFile('image_five')) {
+
+                $image_five       = $request->file('image_five');
+                $file_ext_five   = $image_five->extension();
+
+                $image_resize_five = \Image::make($image_five->getRealPath());
+                $image_resize_five->resize(300, 200);
+
+                // I am saying to create the dir if it's not there.
+                \File::exists($path) or File::makeDirectory($path);
+                $random_name_five = uniqid($id);
+                $image_resize_five->insert($watermark, 'center');
+                $image_resize_five->save($path . $random_name_five . '.' . $file_ext_five);
+                $post_update->image_5 = '/storage/post_images/' . $id . '/' . $random_name_five . '.' . $file_ext_five;
+            }
+
             $post_update->post_title = $request->post_title;
             $post_update->post_type = $post_type;
             $post_update->condition = $request->condition;
@@ -1013,7 +971,7 @@ class PostRepository implements PostInterface
         $most_favoured_posts = UserFavourite::select('post_id')
             ->groupBy('post_id')
             ->orderByRaw('COUNT(*) DESC')
-            ->limit(1)
+            ->limit(5)
             ->with('post')
             ->get();
         return $most_favoured_posts;

@@ -81,7 +81,6 @@
                                             <?php
                                             $main_image_path = (isset($favoured_post->post->main_image)) ? $favoured_post->post->main_image : null;
                                             ?>
-                                            <img width="149" height="127" class="img-fluid" id="favour_vehicle_one" src="" alt="image">
                                             <div class="shape shape-1"><img width="83" height="83" class="img-fluid" src="{{ asset($main_image_path) }}" alt="image"></div>
                                         </div>
                                     </div>
