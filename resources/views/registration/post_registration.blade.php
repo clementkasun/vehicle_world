@@ -24,7 +24,7 @@
 @endsection
 
 @section('content')
-<div class="card card-primary mt-2">
+<div class="card card-primary mt-2 mb-5 pb-5">
     <div class="card-header bg-success text-light">
         <h3 class="card-title text-center">Advertiesment Registration form</h3>
     </div>
@@ -38,7 +38,7 @@
                         <div class="card-body">
                             <input type="text" id="user_id" name="user_id" value="{{ Auth::id() }}" hidden>
                             <div class="row">
-                                <div class="form-group col-12 col-md-3">
+                                <div class="form-group col-12 col-md-6 col-lg-3">
                                     <label for="post_type">Post Type</label>
                                     <div>
                                         <select class="form-control" id="post_type" name="post_type" data-post-type="{{ (isset($post_data)) ? $post_data['post_type'] : null; }}" required>
@@ -49,7 +49,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div id="vehicle_type_group" class="form-group col-12 col-md-3">
+                                <div id="vehicle_type_group" class="form-group col-12 col-md-6 col-lg-3">
                                     <label for="vehicle_type">Vehicle type</label>
                                     <div>
                                         <select id="vehicle_type" name="vehicle_type" class="form-control" data-vehi-type="{{ (isset($post_data)) ? $post_data['vehicle_type'] : null; }}" required>
@@ -70,7 +70,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div id="start_type_group" class="form-group col-12 col-md-3">
+                                <div id="start_type_group" class="form-group col-12 col-md-6 col-lg-3">
                                     <label for="start_type">Start type</label>
                                     <div>
                                         <select id="start_type" name="start_type" class="form-control" data-start-type="{{ (isset($post_data)) ? $post_data['start_type'] : null; }}" required>
@@ -80,7 +80,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group col-12 col-md-3">
+                                <div class="form-group col-12 col-md-6 col-lg-3">
                                     <label for="condition">Condition</label>
                                     <div>
                                         <select class="form-control" id="condition" name="condition" data-condition="{{ (isset($post_data)) ? $post_data['condition'] : null; }}" required>
@@ -441,9 +441,9 @@
                 <!--</div>-->
             </div>
             <!-- /.card-body -->
-            <div class="card-footer text-right">
-                <button id="save_post" type="button" class="btn btn-primary pl-5 pr-5 d-none">Save Post</button>
-                <button id="update_post" type="button" class="btn btn-primary pl-5 pr-5 d-none">Update Post</button>
+            <div class="card-footer row">
+                <button id="save_post" type="button" class="btn btn-primary col-12 col-md-1 d-none">Save Post</button>
+                <button id="update_post" type="button" class="btn btn-primary col-12 col-md-1 d-none">Update Post</button>
             </div>
         </form>
     </div>

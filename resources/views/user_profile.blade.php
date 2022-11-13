@@ -191,7 +191,7 @@ function gen_star($star_count)
                                         </a>
                                     </td>
                                     <td>{{ $loop->index+1 }}</td>
-                                    <td>{{ $user_favoured_post->Post->title }}</td>
+                                    <td>{{ $user_favoured_post->Post->post_title }}</td>
                                     <td>{{ $user_favoured_post->Post->post_type }}</td>
                                     <td>{{ $user_favoured_post->Post->created_at}}</td>
 

@@ -24,24 +24,27 @@ class FavouriteRepository implements FavouriteInterface
         if ($is_post_favoured == true) {
 
             $favourite_item_remove = UserFavourite::where('user_id', $request->user_id)->where('post_id', $request->post_id)->delete();
+            $post_likes = UserFavourite::where('post_id', $request->post_id)->count();
             Notification::send($user, new CustomerFavouriteItemDeleteNotification($user));
+
             if ($favourite_item_remove == true) {
-                return array('status' => 1, 'msg' => 'Successfully removed your favourite item', 'cheacked' => false);
+                return array('status' => 1, 'msg' => 'Successfully removed your favourite item', 'cheacked' => false, 'post_likes' => $post_likes);
             } else {
                 return array('status' => 0, 'msg' => 'Your favourite item removing was unsuccessful');
             }
             
         } else {
-
+            
             $favourite = UserFavourite::create([
                 'user_id' => $request->user_id,
                 'post_id' => $request->post_id,
                 'created_at' => now()
             ]);
+            $post_likes = UserFavourite::where('post_id', $request->post_id)->count();
             Notification::send($user, new CustomerFavouriteItemAddNotification($user));
 
             if ($favourite == true) {
-                return array('status' => 1, 'msg' => 'Successfully saved your favourite item', 'cheacked' => true);
+                return array('status' => 1, 'msg' => 'Successfully saved your favourite item', 'cheacked' => true, 'post_likes' => $post_likes);
             } else {
                 return array('status' => 0, 'msg' => 'Your favourite item saving was unsuccessful');
             }

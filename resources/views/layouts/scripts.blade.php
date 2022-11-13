@@ -65,4 +65,5 @@
 <!-- validation -->
 <script src="{{ asset('/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
 <script src="{{ asset('/js/posts.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/js/postProfile/post_rating.js') }}" type="text/javascript"></script>
 @endsection

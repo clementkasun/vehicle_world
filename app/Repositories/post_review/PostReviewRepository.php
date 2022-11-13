@@ -19,7 +19,7 @@ class PostReviewRepository implements PostReviewInterface
             'user_id' => $user_id,
             'post_id' => $request->post_id,
             'review_desc' => $request->user_review,
-            'user_star' => $request->user_star,
+            'user_star' => $request->rating_index,
             'created_at' => now(),
         ]);
 

@@ -2,7 +2,6 @@
 @extends('layouts.styles')
 @extends('layouts.scripts')
 @extends('layouts.navbar')
-@extends('layouts.footer')
 @section('pageStyles')
 <style>
   /*****************globals*************/
@@ -257,11 +256,99 @@
     }
   }
 
-  .status-fields{
-    border-radius: 5px; 
-    padding-left: 5px; 
-    padding-right: 5px; 
+  .status-fields {
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
     font-weight: bold;
+  }
+
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  /* html {
+    font-size: 10px;
+  } */
+
+  /* body {
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    font-family: Poppins, sans-serif;
+    background: rgb(25, 25, 25);
+  } */
+
+  .container-ratings {
+    display: grid;
+    place-content: center;
+    padding: 2rem;
+    text-align: center;
+    min-height: 200px;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .container-ratings::after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(https://images.unsplash.com/photo-1553356084-58ef4a67b2a7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80) no-repeat center center / cover;
+    filter: blur(50px) brightness(30%);
+  }
+
+  .info {
+    margin-bottom: 1rem;
+  }
+
+  .emoji {
+    font-size: 2rem;
+    height: 20px;
+    margin-bottom: 1rem;
+  }
+
+  .status {
+    font-size: 2rem;
+    color: honeydew;
+  }
+
+  .stars {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row-reverse;
+  }
+
+  .star {
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+  }
+
+  .star svg {
+    fill: none;
+    width: 100%;
+    height: 100%;
+    stroke: none;
+    fill: gray;
+  }
+
+  .selected svg,
+  .selected~.star svg {
+    fill: #ffc107;
+  }
+
+  .star:hover svg,
+  .star:hover~.star svg {
+    fill: gold;
   }
 </style>
 
@@ -319,7 +406,7 @@ if (auth()->check() == true) {
           &nbsp;
           <span>
             <button class="btn btn-lg" type="button" id="btn-favourite"><span class="fa fa-heart"></span></button>
-            <label class="pl-2"> {{ $post_likes }} </label>
+            <span class="pl-2" id="post_likes">{{$post_likes}}</span>
           </span>
         </div>
         <div class="product-info p-3 card card-light">
@@ -354,7 +441,7 @@ if (auth()->check() == true) {
           <div class="row">
             <div class="col-6">
               @if($post_data->manufactured_year != null)
-              <label for="manufactured_year">Manufactured Year: </label>
+              <label for="manufactured_year"> Year: </label>
               <span>{{$post_data->manufactured_year}}</span>
               @endif
             </div>
@@ -368,29 +455,26 @@ if (auth()->check() == true) {
           <div class="row">
             <div class="col-6">
               @if($post_data->fuel_type != null)
-              <label for="fuel_type">Fuel Type: </label>
+              <label for="fuel_type">Fuel: </label>
               <span class="ml-2">{{$post_data->fuel_type}}</span>
               @endif
             </div>
             <div class="col-6">
               @if($post_data->transmission != null)
-              <label for="transmission">Transmission: </label>
+              <label for="transmission">Gear: </label>
               <span class="ml-2">{{$post_data->transmission}}</span>
               @endif
             </div>
           </div>
           <div class="row">
             <div class="col-6">
-              @if($post_data->manufactured_year != null)
-              <label for="manufactured_year">Manufactured Year: </label>
-              <span>{{$post_data->manufactured_year}}</span>
-              @endif
-            </div>
-            <div class="col-6">
               @if($post_data->millage != null)
               <label for="millage">Millage: </label>
               <span>{{$post_data->millage}}</span>
               @endif
+            </div>
+            <div class="col-6">
+
             </div>
           </div>
           <div class="row">
@@ -446,15 +530,15 @@ if (auth()->check() == true) {
           </div>
         </div>
         <div class="row mt-2">
-            <div class="col-12">
-              <div class="card card-light" style="height: auto">
-                <div class="card-body">
-                  <h4>Description:</h4>
-                  <p class="product-description col-12 mt-2 ml-0 pl-0" style="text-transform: lowercase; font-size: 16px; font-family: Bahnschrift Condensed"> {{$post_data->additional_info}} </p>
-                </div>
+          <div class="col-12">
+            <div class="card card-light" style="height: auto">
+              <div class="card-body">
+                <h4>Description:</h4>
+                <p class="product-description col-12 mt-2 ml-0 pl-0" style="text-transform: lowercase; font-size: 16px; font-family: Bahnschrift Condensed"> {{$post_data->additional_info}} </p>
               </div>
             </div>
           </div>
+        </div>
       </div>
     </div>
     <div class="row mt-2">
@@ -549,25 +633,47 @@ if (auth()->check() == true) {
     @if($user_id != null)
     <div id="user_review" class="card card-light mt-2">
       <div class="card-header">
-        <b>Review this post</b>
+        <b>Post Review</b>
       </div>
       <div class="card-body">
         <div class="row mt-2 pl-2">
-          <label class="pl-0 ml-2">Rate:</label>
-          <div class="col-1">
-            <input type="checkbox" name="chk_one" id="chk_one" />
-          </div>
-          <div class="col-1">
-            <input type="checkbox" name="chk_two" id="chk_two" />
-          </div>
-          <div class="col-1">
-            <input type="checkbox" name="chk_three" id="chk_three" />
-          </div>
-          <div class="col-1">
-            <input type="checkbox" name="chk_four" id="chk_four" />
-          </div>
-          <div class="col-1">
-            <input type="checkbox" name="chk_five" id="chk_five" />
+          <div class="container-ratings col-12 col-md-8" style="min-height: auto; display: grid;place-content: center;font-family: Poppins, sans-serif;background: rgb(25, 25, 25);">
+            <div class="info">
+              <div class="emoji"></div>
+              <div class="status"></div>
+            </div>
+            <div class="stars">
+              <div class="star" data-rate="5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                  </polygon>
+                </svg>
+              </div>
+              <div class="star" data-rate="4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                  </polygon>
+                </svg>
+              </div>
+              <div class="star" data-rate="3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                  </polygon>
+                </svg>
+              </div>
+              <div class="star" data-rate="2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                  </polygon>
+                </svg>
+              </div>
+              <div class="star" data-rate="1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                  </polygon>
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
         <div class="row">
@@ -578,7 +684,7 @@ if (auth()->check() == true) {
         </div>
         <div class="row">
           <div class="col-">
-            <button id="save_review" name="save_review" class="btn bg-primary pl-2 pr-2 pt-1 pb-1 mt-2 ml-3"><b>Save review</b></button>
+            <button id="save_review" name="save_review" class="btn bg-primary pl-2 pr-2 pt-1 pb-1 mt-2 ml-3"><b>Review</b></button>
           </div>
         </div>
       </div>
@@ -629,7 +735,7 @@ if (auth()->check() == true) {
               $location = ($related_post->location != null) ? $related_post->location : 'N/A';
               ($related_post['post_type'] == 'VEHI') ? $type = 'Vehicle Type: ' . $related_post['vehilce_type'] : $type = 'Part used in: ' . $related_post['part_used-in'];
               ?>
-              <div class="col-12 col-md-2">';
+              <div class="col-12 col-md-2">
                 <a href="{{ asset('/get_post_profile/id/'.$post_id) }}">
                   <div class="card card-white" style="height: 400px">
                     <img src="{{ asset($related_post->main_image) }}" alt="trending post images" style="width:100%">
@@ -709,14 +815,13 @@ if (auth()->check() == true) {
   }
 
   $('#save_review').click(function() {
-    let stars = calculateStars();
 
-    if (stars > 0 && $('#user_review_input').val() != '') {
+    if (currentRatingIndex > 0 && $('#user_review_input').val() != '') {
       let data = {
         'user_id': $('#user_id').data('user-id'),
         'post_id': post_id,
         'user_review': $('#user_review_input').val(),
-        'user_star': stars
+        'rating_index': currentRatingIndex
       };
 
       let url = "{{ asset('/api/create-post-review') }}";
@@ -732,6 +837,7 @@ if (auth()->check() == true) {
           loadReviews(post_id);
           getPostReviewAnalytics(post_id);
 
+          resetRating();
           $('input:checkbox').removeAttr('checked');
           $('#user_review_input').val("");
         } else {
@@ -788,18 +894,18 @@ if (auth()->check() == true) {
     return stars;
   }
 
-  function calculateStars() {
-    var count = 0;
-    const checkboxes = ["chk_one", "chk_two", "chk_three", "chk_four", "chk_five"];
+  // function calculateStars() {
+  //   var count = 0;
+  //   const checkboxes = ["chk_one", "chk_two", "chk_three", "chk_four", "chk_five"];
 
-    $.each(checkboxes, (index, item) => {
-      if ($('#' + item).prop('checked') == true) {
-        count += 1;
-      }
-    });
+  //   $.each(checkboxes, (index, item) => {
+  //     if ($('#' + item).prop('checked') == true) {
+  //       count += 1;
+  //     }
+  //   });
 
-    return count;
-  }
+  //   return count;
+  // }
 
   function getPostReviewAnalytics(post_id) {
     let url = "{{ asset('/api/get-post-review-analytics/id/') }}/" + post_id;
@@ -854,6 +960,7 @@ if (auth()->check() == true) {
           } else {
             $('#btn-favourite span').removeClass('text-danger');
           }
+          $('#post_likes').html(result.post_likes);
           Swal.fire({
             icon: 'success',
             title: result.msg,
