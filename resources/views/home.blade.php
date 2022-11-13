@@ -190,7 +190,7 @@
             <form id="search_form" action="/filtered_posts" method="post">
                 @csrf
                 <div class="row m-2">
-                    <div class="form-group col-12 col-md-1">
+                    <div class="form-group col-12 col-md-3 col-lg-1">
                         <label for="cmb_post_type"><b>Post Type</b></label>
                         <div>
                             <select id="cmb_post_type" name="cmb_post_type" class="form-control">
@@ -199,7 +199,7 @@
                             </select>
                         </div>
                     </div>
-                    <div id="start_type_group" class="form-group col-12 col-md-1">
+                    <div id="start_type_group" class="form-group col-12 col-md-3 col-lg-1">
                         <label for="cmb_start_type"><b>Start Type</b></label>
                         <div>
                             <select id="cmb_start_type" name="cmb_start_type" class="form-control">
@@ -209,19 +209,19 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group col-12 col-md-2">
+                    <div class="form-group col-12 col-md-3 col-lg-2">
                         <label for="cmb_make"><b>Make</b></label>
                         <div>
                             <select id="cmb_make" name="cmb_make" class="form-control select2"></select>
                         </div>
                     </div>
-                    <div id="model_group" class="form-group col-12 col-md-2">
+                    <div id="model_group" class="form-group col-md-3 col-lg-2">
                         <label for="model"><b>Model</b></label>
                         <div>
                             <input type="text" id="model" name="model" class="form-control" placeholder="Enter the model of vehicle" max-length="150">
                         </div>
                     </div>
-                    <div id="cmb_vehi_type_group" class="form-group col-12 col-md-2">
+                    <div id="cmb_vehi_type_group" class="form-group col-12 col-md-3 col-lg-2">
                         <label for="cmb_vehi_type"><b>Vehicle Type</b></label>
                         <div>
                             <select id="cmb_vehi_type" name="cmb_vehi_type" class="form-control">
@@ -242,7 +242,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group col-12 col-md-2">
+                    <div class="form-group col-12 col-md-3 col-lg-2">
                         <label for="cmb_condition"><b>Condition</b></label>
                         <div>
                             <select id="cmb_condition" name="cmb_condition" class="form-control">
@@ -252,7 +252,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group col-12 col-md-2">
+                    <div class="form-group col-12 col-md-3 col-lg-2">
                         <label for="cmb_price"><b>Price Range</b></label>
                         <div>
                             <select id="cmb_price" name="cmb_price" class="form-control">
@@ -276,7 +276,7 @@
                     </div>
                 </div>
                 <div class="row m-2">
-                    <div class="form-group col-12 col-md-2">
+                    <div class="form-group col-12 col-md-3 col-lg-2">
                         <label for="cmb_city"><b>Location</b></label>
                         <div>
                             <select id="cmb_city" name="cmb_city" class="form-control select2">
@@ -386,14 +386,14 @@
                             </select>
                         </div>
                     </div>
-                    <div id="year_range_group" class="form-group col-12 col-md-4">
+                    <div id="year_range_group" class="form-group col-12 col-md-4 col-lg-2">
                         <label form="year_range"><b>Year Range</b></label><br>
                         <div class='input-group' id="year_range">
                             <input type="text" id="year_min" name="year_min" class="yearpicker col-6 form-control" placeholder="MIN" autocomplete="off">
                             <input type="text" id="year_max" name="year_max" class="yearpicker col-6 form-control" placeholder="MAX" autocomplete="off">
                         </div>
                     </div>
-                    <div id="cmb_gear_group" class="col-12 col-md-2">
+                    <div id="cmb_gear_group" class="col-12 col-md-3 col-lg-1">
                         <label for="cmb_gear"><b>Gear</b></label>
                         <div>
                             <select id="cmb_gear" name="cmb_gear" class="form-control">
@@ -403,7 +403,7 @@
                             </select>
                         </div>
                     </div>
-                    <div id="cmb_fuel_type_group" class="col-12 col-md-2">
+                    <div id="cmb_fuel_type_group" class="col-12 col-md-3 col-lg-1">
                         <label for="cmb_fuel_type"><b>Fuel</b></label>
                         <div>
                             <select id="cmb_fuel_type" name="cmb_fuel_type" class="form-control">
@@ -416,7 +416,7 @@
                             </select>
                         </div>
                     </div>
-                    <div id="part_in_category_group" class="col-12 col-md-2 d-none">
+                    <div id="part_in_category_group" class="col-12 col-md-3 col-lg-2 d-none">
                         <label for="part_category">Part Category</label>
                         <div>
                             <select id="part_category" name="part_category" class="form-control">
@@ -510,7 +510,7 @@
                 $location = ($trend_post->location != null) ? $trend_post->location : 'N/A';
                 ($trend_post['post_type'] == 'VEHI') ? $type = 'Vehicle Type: ' . $trend_post['vehilce_type'] : $type = 'Part used in: ' . $trend_post['part_used-in'];
                 ?>
-                <div class="col-12 col-md-2">';
+                <div class="col-12 col-md-4 col-lg-2">';
                     <a href="{{ asset('/get_post_profile/id/'.$post_id) }}">
                         <div class="card card-white" style="height: 400px">
                             <img src="{{ asset($trend_post->main_image) }}" alt="trending post images" style="width:100%">
@@ -547,7 +547,7 @@
             <div class="card-header text-center"><b>
                     <h1>Published Posts</h1>
                 </b></div>
-            <div class="card-body row" id="adds">
+            <div class="card-body row mb-5" id="adds">
                 @if(isset($posts))
                 @foreach($posts as $post)
                 <?php
@@ -559,7 +559,7 @@
                 $main_image = $post['main_image'];
                 ($post->post_type == 'VEHI') ? $type = 'Vehicle Type: ' . $post['vehilce_type'] : $type = 'Part used in: ' . $post['part_used-in'];
                 ?>
-                <div class="col-12 col-md-2">
+                <div class="col-12 col-md-4 col-lg-2">
 
                     <a href="{{ '/get_post_profile/id/'.$post_id }}">
                         <div class="card card-white" style="height: 400px">

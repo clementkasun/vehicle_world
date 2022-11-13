@@ -35,9 +35,12 @@
                     <li><a class="nav-link scrollto" href="{{ asset('create-post') }}">Create post</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('user_profile') }}">Account</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('contacts') }}">Contact</a></li>
-                    <li><a class="nav-link scrollto" href="{{ asset('login_cust') }}">Login</a></li>
+                    @if(auth()->user() != null)
                     <li><a class="nav-link scrollto" href="{{ asset('logout') }}">Logout</a></li>
+                    @else
+                    <li><a class="nav-link scrollto" href="{{ asset('login_cust') }}">Login</a></li>
                     <li><a class="nav-link scrollto" href="{{ asset('register_customer') }}">Register</a></li>
+                    @endif
                 </ul>
             </nav>
             <!-- .navbar -->
@@ -64,7 +67,7 @@
                                 </svg>
                             </a></li>
                         <a href="/">
-                            <h1>vehiauto.com</h1>
+                            <h1>VEHIAUTO.COM</h1>
                         </a>
                         <!-- <li class="list-item"> -->
                         <!-- <img class="img-fluid" width="147" height="26" src="assets2/images/logo.png" alt="image"> -->
