@@ -397,8 +397,16 @@ class PostRepository implements PostInterface
             ->paginate(6);
 
         $post_likes = UserFavourite::where('post_id', $post_id)->count();
+        $shareComponent = \Share::page(
+            asset('/get_post_profile/id/'.$post_id),
+            'Cheackout '.$post_data->post_title.' via vehiauto.com with this link' ,
+        )
+        ->facebook()
+        ->twitter()
+        ->telegram()
+        ->whatsapp();
 
-        return ['post_data' => $post_data, 'related_posts' => $related_post, 'post_likes' => $post_likes];
+        return ['post_data' => $post_data, 'related_posts' => $related_post, 'post_likes' => $post_likes , 'shareComponent' => $shareComponent];
     }
 
     public $filtered_post = null;
