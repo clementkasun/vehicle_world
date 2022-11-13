@@ -350,6 +350,24 @@
   .star:hover~.star svg {
     fill: gold;
   }
+
+  div#social-links {
+    margin: 0 auto;
+    max-width: 500px;
+  }
+
+  div#social-links ul li {
+    display: inline-block;
+  }
+
+  div#social-links ul li a {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin: 1px;
+    font-size: 24px;
+    color: #222;
+    background-color: #ccc;
+  }
 </style>
 
 @endsection
@@ -396,18 +414,27 @@ if (auth()->check() == true) {
 
       </div>
       <div class="details col-md-6" style="height: auto">
-        <span class="product-title text-lg">
-          {{ $post_data->post_title}}
-        </span>
-        <div class="rating">
-          <span class="avg_star"></span>
-          <span class="review-no"><i class="fa-regular fa-message"></i>&nbsp;<span class="review_count"></span></span>
-          <span class="user-view-count"> <i class="fa fa-eye"></i>{{ $post_data->view_count }}</span>
-          &nbsp;
-          <span>
-            <button class="btn btn-lg" type="button" id="btn-favourite"><span class="fa fa-heart"></span></button>
-            <span class="pl-2" id="post_likes">{{$post_likes}}</span>
-          </span>
+        <div class="row">
+          <div class="col-6">
+            <span class="product-title text-lg">
+              {{ $post_data->post_title}}
+            </span>
+            <div class="rating">
+              <span class="avg_star"></span>
+              <span class="review-no"><i class="fa-regular fa-message"></i>&nbsp;<span class="review_count"></span></span>
+              <span class="user-view-count"> <i class="fa fa-eye"></i>{{ $post_data->view_count }}</span>
+              &nbsp;
+              <span>
+                <button class="btn btn-lg" type="button" id="btn-favourite"><span class="fa fa-heart"></span></button>
+                <span class="pl-2" id="post_likes">{{$post_likes}}</span>
+              </span>
+            </div>
+          </div>
+          <div class="col-6">
+            <span class="text-right">
+              {!! $shareComponent !!}
+            </span>
+          </div>
         </div>
         <div class="product-info p-3 card card-light">
           <div class="row">

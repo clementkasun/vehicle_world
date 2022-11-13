@@ -6,6 +6,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserFavouriteController;
 use App\Models\Notifications;
+use App\Http\Controllers\SocialShareButtonsController;
 
 /*
   |--------------------------------------------------------------------------
@@ -39,7 +40,6 @@ Route::get('/get_post_profile/id/{post_id}', [PostController::class, 'get_post_p
 Route::middleware(['auth:sanctum', 'verified'])->get('/user-favourite-page/id/{user_id}', [UserFavouriteController::class, 'index_data']);
 Route::post('/filtered_posts', [PostController::class, 'filtered_posts']);
 
-
 //basic web routes
 Route::get('/about_us', function () {
     return view('about_us');
@@ -56,4 +56,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/user-notifications', func
     $notifications = Notifications::all();
     return view('notifications', compact('notifications'));
 });
+
+
 
