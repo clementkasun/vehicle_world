@@ -399,7 +399,7 @@ class PostRepository implements PostInterface
         $post_likes = UserFavourite::where('post_id', $post_id)->count();
         $shareComponent = \Share::page(
             asset('/get_post_profile/id/'.$post_id),
-            'Cheackout '.$post_data->post_title.' via @vehiauto.com with this link' ,
+            'Cheackout '.$post_data->post_title.' via @vehiauto_com with this link' ,
         )
         ->facebook()
         ->twitter()
