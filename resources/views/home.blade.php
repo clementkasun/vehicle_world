@@ -604,7 +604,7 @@ function gen_star($star_count)
                                     <div class="col-4"><i class="fa-sharp fa-solid fa-heart">&nbsp; {{ $post['favoured_count'] }}</i></div>
                                 </div>
                                 <div class="row">
-                                    <div class="text-xsm mt-2"><?php print gen_star(round($post['rating'])) ?></div>
+                                    <div class="text-xsm"><?php print gen_star(round($post['rating'])) ?></div>
                                 </div>
                             </div>
                         </div>
