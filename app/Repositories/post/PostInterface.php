@@ -26,6 +26,7 @@ interface PostInterface {
     public function getPercentages();
     public function getTrendingPosts();
     public function mostFavouredPosts();
+    public function renew_post($post_id);
 }
 
 ?>
