@@ -543,9 +543,9 @@ function gen_star($star_count)
                                     <div class="col-4"><i class="fa-regular fa-message">&nbsp; {{ $trend_post['review_count'] }}</i></div>
                                     <div class="col-4"><i class="fa-sharp fa-solid fa-heart">&nbsp; {{ $trend_post['favoured_count'] }}</i></div>
                                 </div>
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="col-12 mt-2 text-xsm"><?php print gen_star(round($trend_post['rating'])) ?></div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </a>
