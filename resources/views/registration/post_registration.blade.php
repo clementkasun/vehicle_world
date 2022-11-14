@@ -538,21 +538,6 @@
         $('#location').select2();
     }
 
-    function validate_image_size(file_type, img_file) {
-        if (img_file != undefined) {
-            var file = img_file;
-            if (Math.round(file.size / (1024 * 1024)) > 2) { // make it in MB so divide by 1024*1024
-                $("#save_post").prop('disabled', false);
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Please select ' + file_type + ' size less than 8 MB'
-                });
-                return false;
-            }
-        }
-    }
-
     function loadMakesCombo(selected, callBack) {
         let option = '';
         ajaxRequest("GET", "{{ asset('/api/get_makes/') }}", null, function(resp) {

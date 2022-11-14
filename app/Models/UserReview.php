@@ -14,6 +14,10 @@ class UserReview extends Model
         'user_star',
         'post_id',
         'user_id',
+        'img_one',
+        'img_two',
+        'img_three',
+        'img_four',
         'created_at',
         'updated_at'
     ];

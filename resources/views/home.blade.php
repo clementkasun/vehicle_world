@@ -20,6 +20,22 @@
 </style>
 @endsection
 @section('content')
+<?php
+function gen_star($star_count)
+{
+    $stars = '';
+
+    for ($i = 0; $i < 5; $i++) {
+        if ($i < $star_count) {
+            $stars .= '<span class="fa fa-star checked text-warning"></span>';
+        } else {
+            $stars .= '<span class="fa fa-star"></span>';
+        }
+    }
+
+    return $stars;
+}
+?>
 <!-- ...:::Start Search & Filter Section:::... -->
 <div class="search-n-filter-section section-gap-top-25 mb-4">
     <div class="container">
@@ -214,7 +230,7 @@
                             <select id="cmb_make" name="cmb_make" class="form-control select2"></select>
                         </div>
                     </div>
-                    <div id="model_group" class="form-group col-md-3 col-lg-2">
+                    <div id="model_group" class="form-group col-12 col-md-3 col-lg-2">
                         <label for="model"><b>Model</b></label>
                         <div>
                             <input type="text" id="model" name="model" class="form-control" placeholder="Enter the model of vehicle" max-length="150">
@@ -527,6 +543,9 @@
                                     <div class="col-4"><i class="fa-regular fa-message">&nbsp; {{ $trend_post['review_count'] }}</i></div>
                                     <div class="col-4"><i class="fa-sharp fa-solid fa-heart">&nbsp; {{ $trend_post['favoured_count'] }}</i></div>
                                 </div>
+                                <div class="row">
+                                    <div class="text-xsm mt-2"><?php print gen_star(round($trend_post['rating'])) ?></div>
+                                </div>
                             </div>
                         </div>
                     </a>
@@ -563,18 +582,18 @@
                     <a href="{{ '/get_post_profile/id/'.$post_id }}">
                         <div class="card card-white" style="height: 400px">
                             @if($post['status'] == '1')
-                            <div class="ribbon-wrapper ribbon-lg">
-                                <div class="ribbon bg-warning text-lg">Sold</div>
+                            <div class="ribbon-wrapper ribbon-md">
+                                <div class="ribbon bg-warning text-md">Sold</div>
                             </div>
                             @else
                             <div class="ribbon-wrapper ribbon-lg">
-                                <div class="ribbon bg-success text-lg">For Sale</div>
+                                <div class="ribbon bg-success text-md">For Sale</div>
                             </div>
                             @endif
                             <img src="{{asset($main_image)}}" alt="post images" style="width:100%">
                             <div class="card-body bg-success">
                                 <h2 class="container-fluid"><b>{{ $post_title }}</b></h2>
-                                <h4 class="container-fluid"> <b>Price: </b> රැ . {{ $price }}</h4>
+                                <h4 class="container-fluid"> <span class="text-lg">රැ.</span> {{ $price }}</h4>
                                 <p class="container-fluid"><b>Location: </b> {{ $location }}</p>
                                 <p class="container-fluid"><b>Millage: </b> {{ $millage}} </p>
                             </div>
@@ -583,6 +602,9 @@
                                     <div class="col-4"><i class="fa fa-eye">&nbsp; {{ $post['view_count'] }}</i></div>
                                     <div class="col-4"><i class="fa-regular fa-message">&nbsp; {{ $post['review_count'] }}</i></div>
                                     <div class="col-4"><i class="fa-sharp fa-solid fa-heart">&nbsp; {{ $post['favoured_count'] }}</i></div>
+                                </div>
+                                <div class="row">
+                                    <div class="text-xsm mt-2"><?php print gen_star(round($post['rating'])) ?></div>
                                 </div>
                             </div>
                         </div>
@@ -647,20 +669,6 @@
                 callBack();
             }
         });
-    }
-
-    function generateStars(star_count) {
-        let stars = '';
-
-        for (let i = 0; i < 5; i++) {
-            if (i < star_count) {
-                stars += '<span class="fa fa-star checked"></span>';
-            } else {
-                stars += '<span class="fa fa-star"></span>';
-            }
-        }
-
-        return stars;
     }
 </script>
 @endsection

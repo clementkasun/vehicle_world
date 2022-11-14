@@ -394,7 +394,6 @@ if (auth()->check() == true) {
   <div class="card-body">
     <div class="wrapper row">
       <div class="preview col-md-6">
-
         <div class="preview-pic tab-content">
           <div class="tab-pane active" id="pic-1"><img src='{{asset("".$post_data->main_image)}}' /></div>
           <div class="tab-pane" id="pic-2"><img src='{{asset("".$post_data->image_1)}}' /></div>
@@ -411,11 +410,10 @@ if (auth()->check() == true) {
           <li><a data-target="#pic-5" data-toggle="tab"><img src='{{asset("".$post_data->image_4)}}' /></a></li>
           <li><a data-target="#pic-6" data-toggle="tab"><img src='{{asset("".$post_data->image_5)}}' /></a></li>
         </ul>
-
       </div>
       <div class="details col-md-6" style="height: auto">
         <div class="row">
-          <div class="col-6">
+          <div class="col-12 col-lg-6">
             <span class="product-title text-lg">
               {{ $post_data->post_title}}
             </span>
@@ -430,8 +428,8 @@ if (auth()->check() == true) {
               </span>
             </div>
           </div>
-          <div class="col-6">
-            <span class="text-right">
+          <div class="col-12 col-lg-6">
+            <span>
               {!! $shareComponent !!}
             </span>
           </div>
@@ -481,6 +479,20 @@ if (auth()->check() == true) {
           </div>
           <div class="row">
             <div class="col-6">
+              @if($post_data->location != null)
+              <label for="city"> City: </label>
+              <span>{{$post_data->location}}</span>
+              @endif
+            </div>
+            <div class="col-6">
+              @if($post_data->address != null)
+              <label for="address">Address: </label>
+              <span>{{$post_data->address}}</span>
+              @endif
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
               @if($post_data->fuel_type != null)
               <label for="fuel_type">Fuel: </label>
               <span class="ml-2">{{$post_data->fuel_type}}</span>
@@ -501,7 +513,10 @@ if (auth()->check() == true) {
               @endif
             </div>
             <div class="col-6">
-
+              @if($post_data->Vehicle != null)
+              <label for="brand">Brand: </label>
+              <span>{{$post_data->Vehicle->VehicleMake->make_name}}</span>
+              @endif
             </div>
           </div>
           <div class="row">
@@ -556,14 +571,47 @@ if (auth()->check() == true) {
             </div>
           </div>
         </div>
-        <div class="row mt-2">
-          <div class="col-12">
-            <div class="card card-light" style="height: auto">
-              <div class="card-body">
-                <h4>Description:</h4>
-                <p class="product-description col-12 mt-2 ml-0 pl-0" style="text-transform: lowercase; font-size: 16px; font-family: Bahnschrift Condensed"> {{$post_data->additional_info}} </p>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-12">
+        <div class="card card-success" style="height: auto">
+          <div class="card-header">
+            <h5>Seller Details:</h5>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12 col-md-6">
+                @if($post_data->User->contact_no != null)
+                <label for="Contact No">Contact No: </label><br>
+                <span> {{ $post_data->User->contact_no }} </span>
+                @endif
+              </div>
+              <div class="col-12 col-md-6">
+                @if($post_data->User->address != null)
+                <label for="address">Address: </label><br>
+                <span> {{ $post_data->User->address }} </span>
+                @endif
               </div>
             </div>
+            <div class="row mt-2">
+              <div class="col-12 col-md-6">
+                @if($post_data->User->email != null)
+                <label for="Email">Email: </label><br>
+                <span> {{ $post_data->User->email }} </span>
+                @endif
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-12">
+        <div class="card card-light" style="height: auto">
+          <div class="card-body">
+            <h4>Description:</h4>
+            <p class="product-description col-12 mt-2 ml-0 pl-0" style="text-transform: lowercase; font-size: 16px; font-family: Bahnschrift Condensed"> {{$post_data->additional_info}} </p>
           </div>
         </div>
       </div>
@@ -699,6 +747,34 @@ if (auth()->check() == true) {
                   <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
                   </polygon>
                 </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-8">
+            <div class="form-group">
+              <label for="image_one">Image 1</label>
+              <div>
+                <input type="file" class="form-control" id="image_one" name="image_one" accept="image/*" {{ (!isset($post_data)) ? 'required' : null;  }}>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="image_two">Image 2</label>
+              <div>
+                <input type="file" class="form-control" id="image_two" name="image_two" accept="image/*" {{ (!isset($post_data)) ? 'required' : null;  }}>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="image_three">Image 3</label>
+              <div>
+                <input type="file" class="form-control" id="image_three" name="image_three" accept="image/*" {{ (!isset($post_data)) ? 'required' : null;  }}>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="image_four">Image 4</label>
+              <div>
+                <input type="file" class="form-control" id="image_four" name="image_four" accept="image/*" {{ (!isset($post_data)) ? 'required' : null;  }}>
               </div>
             </div>
           </div>
@@ -841,9 +917,20 @@ if (auth()->check() == true) {
     // x[slideIndex - 1].setAttribute(style.display) = "block";
   }
 
+
   $('#save_review').click(function() {
 
     if (currentRatingIndex > 0 && $('#user_review_input').val() != '') {
+
+      let img_one_status = validate_image_size('image one', $('#image_one')[0].files[0]);
+      let img_two_status = validate_image_size('image two', $('#image_two')[0].files[0]);
+      let img_three_status = validate_image_size('image three', $('#image_three')[0].files[0]);
+      let img_four_status = validate_image_size('image four', $('#image_four')[0].files[0]);
+
+      if (img_one_status == false || img_two_status == false || img_three_status == false || img_four_status == false) {
+        return false;
+      }
+
       let data = {
         'user_id': $('#user_id').data('user-id'),
         'post_id': post_id,
@@ -854,7 +941,12 @@ if (auth()->check() == true) {
       let url = "{{ asset('/api/create-post-review') }}";
       let Method = "post";
 
-      ajaxRequest(Method, url, data, function(result) {
+      data.img_one = ($('#image_one')[0].files[0] != undefined) ? $('#image_one')[0].files[0] : null;
+      data.img_two = ($('#image_two')[0].files[0] != undefined) ? $('#image_two')[0].files[0] : null;
+      data.img_three = ($('#image_three')[0].files[0] != undefined) ? $('#image_three')[0].files[0] : null;
+      data.img_four = ($('#image_four')[0].files[0] != undefined) ? $('#image_four')[0].files[0] : null;
+
+      ulploadFileWithData(url, data, function(result) {
         if (result.status == 1) {
           Swal.fire(
             'Post Review',
@@ -874,7 +966,6 @@ if (auth()->check() == true) {
             text: result.msg
           })
         }
-        //        $('#degree_registration').trigger("reset");
         if (typeof callBack !== 'undefined' && callBack != null && typeof callBack ===
           "function") {
           callBack(result);
@@ -897,42 +988,44 @@ if (auth()->check() == true) {
     ajaxRequest(Method, url, null, function(result) {
       let html = '';
       $.each(result, (index, item) => {
+        let img_one_path = (item.img_one != null) ? item.img_one : null;
+        let img_two_path = (item.img_two != null) ? item.img_two : null;
+        let img_three_path = (item.img_three != null) ? item.img_three : null;
+        let img_four_path = (item.img_four != null) ? item.img_four : null;
         stars = generateStars(item.user_star);
+
         html += '<div class="card card-light">';
         html += '<div class="card-header"><div class="row"><div class="col-12 col-md-10" style="text-transform: none"><b>' + item.user.name + '</b></div><div class="col-12 col-md-2 p-0 m-0">' + stars + '</div></div></div>';
-        html += '<div class="card-body">' + item.review_desc + '</div>';
+        html += '<div class="card-body">';
+        html += '<div class="row">';
+        html += '<div class="col-7">';
+        html += '<span>' + item.review_desc + '</span>';
+        html += '</div>';
+        html += '<div class="col-5">';
+        html += '<div class="wrapper">';
+        html += '<div class="preview">';
+        html += '<ul class="preview-thumbnail nav nav-tabs">';
+        (item.img_one != null) ? html += '<li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="' + img_one_path + '" /></a></li>' : html += '';
+        (item.img_one != null) ? html += '<li><a data-target="#pic-2" data-toggle="tab"><img src="' + img_two_path + '" /></a><li>': html += '';
+        (item.img_one != null) ? html += '<li><a data-target="#pic-3" data-toggle="tab"><img src="' + img_three_path + '" /></a></li>': html += '';
+        (item.img_one != null) ? html += '<li><a data-target="#pic-4" data-toggle="tab"><img src="' + img_four_path + '" /></a></li>': html += '';
+        html += '</ul>';
+        html += '<div class="preview-pic tab-content">';
+        (item.img_one != null) ? html +=  '<div class="tab-pane active" id="pic-1"><img src="' + item.img_one + '" width="100px" height="250px"/></div>': html += '';
+        (item.img_one != null) ? html +=  '<div class="tab-pane" id="pic-2"><img src="' + item.img_two + '" width="100px" height="250px"/></div>': html += '';
+        (item.img_one != null) ? html +=  '<div class="tab-pane" id="pic-3"><img src="' + item.img_three + '" width="100px" height="250px"/></div>': html += '';
+        (item.img_one != null) ? html +=  '<div class="tab-pane" id="pic-4"><img src="' + item.img_four + '" width="100px" height="250px"/></div>': html += '';
+        html += '</div>';
+        html += '</div>';
+        html += '</div>';
+        html += '</div>';
+        html += '</div>';
+        html += '</div>';
         html += '</div>';
       });
       $('#reviews').html(html);
     });
   }
-
-  function generateStars(star_count) {
-    let stars = '';
-
-    for (let i = 0; i < 5; i++) {
-      if (i < star_count) {
-        stars += '<span class="fa fa-star checked"></span>';
-      } else {
-        stars += '<span class="fa fa-star"></span>';
-      }
-    }
-
-    return stars;
-  }
-
-  // function calculateStars() {
-  //   var count = 0;
-  //   const checkboxes = ["chk_one", "chk_two", "chk_three", "chk_four", "chk_five"];
-
-  //   $.each(checkboxes, (index, item) => {
-  //     if ($('#' + item).prop('checked') == true) {
-  //       count += 1;
-  //     }
-  //   });
-
-  //   return count;
-  // }
 
   function getPostReviewAnalytics(post_id) {
     let url = "{{ asset('/api/get-post-review-analytics/id/') }}/" + post_id;
