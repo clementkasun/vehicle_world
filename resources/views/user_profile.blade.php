@@ -43,6 +43,7 @@
 @endsection
 @section('content')
 <?php
+use Illuminate\Support\Carbon;
 function gen_star($star_count)
 {
     $stars = '';
@@ -131,13 +132,17 @@ function gen_star($star_count)
                                 <tr>
                                     <td>
                                         @if($user_add->status != '1')
-                                        <button class="btn btn-warning ch-sold " style="padding-left: 17px; padding-right: 17px" data-id="{{$user_add->id}}"><i class="fa fa-usd" aria-hidden="true" alt="sell"></i></i></button>
-                                        <a href="{{ asset('/post_edit/id/'.$user_add->id) }}" style="padding-left: 14px; padding-right: 14px" class="btn btn-primary edit"><i class='fa fa-edit'></i></a>
+                                        <button title="Mark as sold" class="btn btn-warning ch-sold " style="padding-left: 17px; padding-right: 17px" data-id="{{$user_add->id}}"><i class="fa fa-usd" aria-hidden="true" alt="sell"></i></i></button>
+                                        <a title="Edit Post" href="{{ asset('/post_edit/id/'.$user_add->id) }}" style="padding-left: 14px; padding-right: 14px" class="btn btn-primary edit"><i class='fa fa-edit'></i></a>
                                         @else
-                                        <button class="btn btn-warning ch-sold p-2" style="padding-left: 17px; padding-right: 17px" disabled><i class="fa fa-usd" aria-hidden="true" alt="sold"></i></button>
+                                        <button title="Mark as sold" class="btn btn-warning ch-sold p-2" style="padding-left: 17px; padding-right: 17px" disabled><i class="fa fa-usd" aria-hidden="true" alt="sold"></i></button>
                                         <a href="#" class="btn btn-primary edit" style="padding-left: 14px; padding-right: 14px"><i class='fa fa-edit' style="pointer-events: none; cursor: default; opacity: .4;"></i></a>
                                         @endif
-                                        <button class="btn btn-danger del" style="padding-left: 15px; padding-right: 15px" data-id="{{$user_add->id}}"><i class='fa fa-trash'></i></button>
+                                        <button title="Delete the post" class="btn btn-danger del" style="padding-left: 15px; padding-right: 15px" data-id="{{$user_add->id}}"><i class='fa fa-trash'></i></button>
+                                        <?php  $predicat_date = carbon::now()->addMonth()->format('Y-m-d'); ($user_add->expire_date == $predicat_date) ? $renew_status = true : $renew_status = false; ?>
+                                        @if($renew_status)
+                                        <a title="Renew post" href="{{ asset('/renew_post/id/'.$user_add->id) }}" class="btn btn-danger renew" style="padding-left: 14px; padding-right: 14px"><i class="fa fa-refresh"></i></a>
+                                        @endif
                                     </td>
                                     <td><a href="/get_post_profile/id/{{$user_add->id}}">{{ $user_add->post_title }}</a></td>
                                     @if(isset($user_add->vehicle))

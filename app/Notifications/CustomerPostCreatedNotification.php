@@ -45,7 +45,7 @@ class CustomerPostCreatedNotification extends Notification
     {
         return (new MailMessage)
                     ->line('Successfully your post has created')
-                    ->action('You have successfully created the post in the system.', url('https://vehiauto.com/public/login_cust'))
+                    ->action('You have successfully created the post in the system.', url('https://vehiauto.com/login'))
                     ->line('Thank you for using our application!');
     }
 

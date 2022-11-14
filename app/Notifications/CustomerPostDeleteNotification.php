@@ -45,7 +45,7 @@ class CustomerPostDeleteNotification extends Notification
     {
         return (new MailMessage)
                     ->line('Successfully your post has removed')
-                    ->action('You have successfully removed the post in the system.', url('https://vehiauto.com/public/login_cust'))
+                    ->action('You have successfully removed the post in the system.', url('https://vehiauto.com/login'))
                     ->line('Thank you for using our application!');
     }
 

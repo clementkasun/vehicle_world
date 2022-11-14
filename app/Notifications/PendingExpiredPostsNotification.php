@@ -7,21 +7,23 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class CustomerRegisteredNotification extends Notification
+class PendingExpiredPostsNotification extends Notification
 {
-    use Queueable;
 
-    public $user;
+    private $to;
+    private $pending_exp_date;
+    private $post_title;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($user, $exp_date, $post_title)
     {
         $this->user = $user;
-        
+        $this->post_title = $post_title;
+        $this->exp_date = $exp_date;
     }
 
     /**
@@ -32,7 +34,7 @@ class CustomerRegisteredNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -44,9 +46,10 @@ class CustomerRegisteredNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Successfully Registered')
-                    ->action('You have successfully registered in to the system.', url('https://vehiauto.com/login'))
-                    ->line('Thank you for using our application!');
+            ->greeting('Hi!')
+            ->line('Your post with titled as ' . $this->post_title . ' will be deleted at ' . $this->exp_date . ' please renew it!')
+            ->action('Renew Now', url('./user_profile'))
+            ->line('Thank you for using vehiauto.com!');
     }
 
     /**
@@ -61,8 +64,7 @@ class CustomerRegisteredNotification extends Notification
             'user_id' => $this->user->id,
             'user_name' => $this->user->user_name,
             'email' => $this->user->email,
-            'action' => 'You have successfully registered in to the system!'
+            'action' => 'Your post with titled as ' . $this->post_title . ' will be deleted at ' . $this->exp_date . ' please renew it!'
         ];
     }
-    
 }

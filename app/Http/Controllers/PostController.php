@@ -106,4 +106,8 @@ class PostController extends Controller
     public function getTrendingPosts(){
         return $this->postRepository->getTrendingPosts();
     }
+
+    public function renewPost($post_id){
+        return $this->postRepository->renew_post($post_id);
+    }
 }

@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Notification;
 use File;
 use App\Models\User;
 use App\Models\UserFavourite;
+use Illuminate\Support\Facades\Auth;
 
 class PostRepository implements PostInterface
 {
@@ -265,6 +266,8 @@ class PostRepository implements PostInterface
                 $post_five_saved_path = '/storage/post_images/' . $id . '/' . $random_name_five . '.' . $file_ext_five;
             }
 
+            $expire_date = Carbon::now()->addYear()->format('Y-m-d');
+
             if ($post_type == "VEHI" || $post_type == "WAN") {
                 Post::create([
                     'post_title' => $request->post_title,
@@ -282,10 +285,11 @@ class PostRepository implements PostInterface
                     'image_2' => $post_two_saved_path,
                     'image_3' => $post_three_saved_path,
                     'image_4' => $post_four_saved_path,
-                    'image_5' => $post_five_saved_path
+                    'image_5' => $post_five_saved_path,
+                    'expire_date' => $expire_date
                 ]);
             }
-
+            
             if ($post_type == "SPARE") {
                 Post::create([
                     'post_title' => $request->post_title,
@@ -303,7 +307,8 @@ class PostRepository implements PostInterface
                     'image_2' => $post_two_saved_path,
                     'image_3' => $post_three_saved_path,
                     'image_4' => $post_four_saved_path,
-                    'image_5' => $post_five_saved_path
+                    'image_5' => $post_five_saved_path,
+                    'expire_date' => $expire_date
                 ]);
             }
 
@@ -400,15 +405,15 @@ class PostRepository implements PostInterface
 
         $post_likes = UserFavourite::where('post_id', $post_id)->count();
         $shareComponent = \Share::page(
-            asset('/get_post_profile/id/'.$post_id),
-            'Cheackout '.$post_data->post_title.' via @vehiauto_com with this link' ,
+            asset('/get_post_profile/id/' . $post_id),
+            'Cheackout ' . $post_data->post_title . ' via @vehiauto_com with this link',
         )
-        ->facebook()
-        ->twitter()
-        ->telegram()
-        ->whatsapp();
+            ->facebook()
+            ->twitter()
+            ->telegram()
+            ->whatsapp();
 
-        return ['post_data' => $post_data, 'related_posts' => $related_post, 'post_likes' => $post_likes , 'shareComponent' => $shareComponent];
+        return ['post_data' => $post_data, 'related_posts' => $related_post, 'post_likes' => $post_likes, 'shareComponent' => $shareComponent];
     }
 
     public $filtered_post = null;
@@ -432,10 +437,10 @@ class PostRepository implements PostInterface
 
         if ($post_type == "VEHI") {
 
-            $filtered_post = Post::where('posts.post_type', 'VEHI')
-                ->withCount('UserReview as review_count')
+            $filtered_post = Post::withCount('UserReview as review_count')
                 ->withCount('UserFavourite as favoured_count')
                 ->withAvg('UserReview as rating', 'user_star')
+                ->where('posts.post_type', 'VEHI')
                 ->where('posts.deleted_at', '=', null)
                 ->join('users', 'posts.user_id', 'users.id')
                 ->leftjoin('vehicles', 'posts.vehicle_id', 'vehicles.id')
@@ -477,31 +482,34 @@ class PostRepository implements PostInterface
                 return $p->where('vehicles.vehicle_type', 'like', '%' . $vehi_type . '%');
             });
 
-            $filtered_post->select(
-                'posts.id AS id',
-                'posts.post_type',
-                'posts.post_title',
-                'posts.main_image',
-                'posts.condition',
-                'model',
-                'start_type',
-                'manufactured_year',
-                'posts.price',
-                'on_going_lease',
-                'transmission',
-                'fuel_type',
-                'engine_capacity',
-                'millage',
-                'isAc',
-                'isPowerSteer',
-                'isPowerMirroring',
-                'isPowerWindow',
-                'posts.additional_info',
-                'posts.location',
-                'posts.address',
-                'posts.created_at',
-                'posts.status'
-            );
+            // $filtered_post->select(
+            //     'posts.id AS id',
+            //     'posts.post_type',
+            //     'posts.post_title',
+            //     'posts.main_image',
+            //     'posts.condition',
+            //     'model',
+            //     'start_type',
+            //     'manufactured_year',
+            //     'posts.price',
+            //     'on_going_lease',
+            //     'transmission',
+            //     'fuel_type',
+            //     'engine_capacity',
+            //     'millage',
+            //     'isAc',
+            //     'isPowerSteer',
+            //     'isPowerMirroring',
+            //     'isPowerWindow',
+            //     'posts.additional_info',
+            //     'posts.location',
+            //     'posts.address',
+            //     'posts.created_at',
+            //     'posts.status',
+            //     'review_count',
+            //     'favoured_count',
+            //     'rating'
+            // );
         }
 
 
@@ -523,20 +531,23 @@ class PostRepository implements PostInterface
                 return $p->where('spare_parts.part_category', 'like', '%' . $part_category . '%');
             });
 
-            $filtered_post = $filtered_post->select(
-                'posts.id AS id',
-                'posts.post_type',
-                'posts.post_title',
-                'posts.main_image',
-                'posts.location',
-                'posts.address',
-                'posts.condition',
-                'spare_parts.part_used_in',
-                'spare_parts.part_category',
-                'posts.price',
-                'posts.additional_info',
-                'posts.created_at'
-            );
+            // $filtered_post = $filtered_post->select(
+            //     'posts.id AS id',
+            //     'posts.post_type',
+            //     'posts.post_title',
+            //     'posts.main_image',
+            //     'posts.location',
+            //     'posts.address',
+            //     'posts.condition',
+            //     'spare_parts.part_used_in',
+            //     'spare_parts.part_category',
+            //     'posts.price',
+            //     'posts.additional_info',
+            //     'posts.created_at',
+            //     'review_count',
+            //     'favoured_count',
+            //     'rating'
+            // );
         }
 
         $filtered_post = $filtered_post->when($condition != 'any', function ($p) use ($condition) {
@@ -565,10 +576,11 @@ class PostRepository implements PostInterface
 
 
         $filtered_post_data = $filtered_post->paginate(100);
+
         $favoured_posts = $this->mostFavouredPosts();
         $trending_posts = $this->getTrendingPosts();
 
-        return view('/home', ['posts' => $filtered_post_data, 'most_favoured_posts' => $favoured_posts, 'trending_posts' => $trending_posts]);
+        return view('/home', ['posts' => $filtered_post_data, 'favoured_posts' => $favoured_posts, 'trend_posts' => $trending_posts]);
     }
 
     public function postUpdate($request, $id)
@@ -608,6 +620,7 @@ class PostRepository implements PostInterface
                 $vehicle->isPowerMirroring = $isPowerMirroring;
                 $vehicle->isPowerWindow = $isPowerWindow;
                 $vehicle->save();
+                $file_id = $post_update->vehicle_id;
             }
 
             if (strstr($post_type, "SPARE")) {
@@ -616,9 +629,10 @@ class PostRepository implements PostInterface
                 $spare_part_update->part_used_in = $request->part_used_in;
                 $spare_part_update->part_category = $request->part_category;
                 $spare_part_update->save();
+                $file_id = $post_update->spare_part_id;
             }
 
-            $path = public_path('/storage/post_images/' . $id . '/');
+            $path = public_path('/storage/post_images/' . $file_id . '/');
             $watermark_img_path = public_path('/img/watermark.png');
             $watermark = \Image::make($watermark_img_path);
             $watermark->resize(200, 200);
@@ -953,11 +967,24 @@ class PostRepository implements PostInterface
 
     public function searchPosts($request)
     {
-        $posts = Post::where('post_title', 'LIKE', "%{$request->searched_key}%")
+        $key = $request->key;
+        $posts = Post::where('post_title', 'LIKE', "%{$key}%")
+            ->orWhere('price', 'LIKE', "%{$key}%")
+            ->orWhere('post_type', 'LIKE', "%{$key}%")
+            ->orWhere('location', 'LIKE', "%{$key}%")
+            ->orWhere('address', 'LIKE', "%{$key}%")
+            ->orWhere('additional_info', 'LIKE', "%{$key}%")
+            ->orWhere('condition', 'LIKE', "%{$key}%")
+            ->with(['Vehicle.VehicleMake', 'SparePart'], 'User')
             ->withCount('UserReview as review_count')
             ->withCount('UserFavourite as favoured_count')
-            ->get();
-        return $posts;
+            ->withAvg('UserReview as rating', 'user_star')
+            ->paginate(100);
+
+        $favoured_posts = $this->mostFavouredPosts();
+        $trending_posts = $this->getTrendingPosts();
+
+        return view('/home', ['posts' => $posts, 'favoured_posts' => $favoured_posts, 'trend_posts' => $trending_posts]);
     }
 
     public function getTrendingPosts()
@@ -988,5 +1015,20 @@ class PostRepository implements PostInterface
             ->with('post')
             ->get();
         return $most_favoured_posts;
+    }
+
+    public function renew_post($post_id){
+        $post = Post::find($post_id);
+        $post->expire_date = Carbon::now()->addYear()->format('Y-m-d');
+        $post->save();
+        
+        $user = Auth::user();
+        $user_adds = Post::where('user_id', $user->id)
+            ->with(['Vehicle', 'SparePart'])
+            ->withAvg('UserReview as user_ratings', 'user_star')
+            ->withCount('UserReview as review_count')
+            ->get();
+        $user_favoured_posts = UserFavourite::where('user_id', $user->id)->with('Post')->get();
+        return view('user_profile', ['user_profile_data' => $user, 'user_adds' => $user_adds, 'user_favoured_posts' => $user_favoured_posts]);
     }
 }

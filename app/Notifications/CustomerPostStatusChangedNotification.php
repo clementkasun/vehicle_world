@@ -42,7 +42,7 @@ class CustomerPostStatusChangedNotification extends Notification
     {
         return (new MailMessage)
         ->line('Successfully your post status has change')
-        ->action('You have successfully change the status of the post in the system.', url('https://vehiauto.com/public/login_cust'))
+        ->action('You have successfully change the status of the post in the system.', url('https://vehiauto.com/login'))
         ->line('Thank you for using our application!');
     }
 

@@ -11,7 +11,27 @@ class Post extends Model {
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = array('post_title', 'price', 'additional_info', 'location', 'address', 'condition','post_type', 'main_image', 'image_1', 'image_2', 'image_3', 'image_4', 'image_5', 'vehicle_id', 'spare_part_id', 'user_id', 'status', 'view_count');
+    protected $fillable = [
+        'post_title',
+        'price',
+        'additional_info',
+        'location',
+        'address',
+        'condition',
+        'post_type',
+        'main_image',
+        'image_1',
+        'image_2',
+        'image_3',
+        'image_4',
+        'image_5',
+        'vehicle_id',
+        'spare_part_id',
+        'user_id',
+        'status',
+        'view_count',
+        'expire_date'
+    ];
 
     public function SparePart() {
         return $this->belongsTo(SparePart::class);

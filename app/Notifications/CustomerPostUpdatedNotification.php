@@ -42,7 +42,7 @@ class CustomerPostUpdatedNotification extends Notification
     {
         return (new MailMessage)
         ->line('Successfully updated your post details')
-        ->action('You have successfully updated the post.', url('https://vehiauto.com/public/login_cust'))
+        ->action('You have successfully updated the post.', url('https://vehiauto.com/login'))
         ->line('Thank you for using our application!');
     }
 

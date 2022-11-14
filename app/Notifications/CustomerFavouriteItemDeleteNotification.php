@@ -45,7 +45,7 @@ class CustomerFavouriteItemDeleteNotification extends Notification
     {
         return (new MailMessage)
                     ->line('Successfully deleted item from favourited list')
-                    ->action('You have successfully added post item to your favourites.', url('https://vehiauto.com/public/login_cust'))
+                    ->action('You have successfully added post item to your favourites.', url('https://vehiauto.com/login'))
                     ->line('Thank you for using our application!');
     }
 

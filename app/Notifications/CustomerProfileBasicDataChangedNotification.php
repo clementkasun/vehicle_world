@@ -45,7 +45,7 @@ class CustomerProfileBasicDataChangedNotification extends Notification
     {
         return (new MailMessage)
                     ->line('Successfully Changed')
-                    ->action('You have successfully changed the details of your account.', url('https://vehiauto.com/public/login_cust'))
+                    ->action('You have successfully changed the details of your account.', url('https://vehiauto.com/login'))
                     ->line('Thank you for using our application!');
     }
 
