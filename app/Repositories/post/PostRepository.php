@@ -65,6 +65,7 @@ class PostRepository implements PostInterface
         $post_all  = Post::with(['Vehicle.VehicleMake', 'SparePart'], 'User')
             ->withCount('UserReview as review_count')
             ->withCount('UserFavourite as favoured_count')
+            ->withAvg('UserReview as rating', 'user_star')
             ->paginate(100);
         return $post_all;
     }
@@ -324,6 +325,7 @@ class PostRepository implements PostInterface
             ->leftjoin('spare_parts', 'posts.spare_part_id', 'spare_parts.id')
             ->leftjoin('vehicles', 'posts.vehicle_id', 'vehicles.id')
             ->leftjoin('vehicle_makes', 'vehicles.make_id', 'vehicle_makes.id')
+            ->with('Vehicle.VehicleMake', 'User')
             ->select(
                 'posts.id AS id',
                 'posts.post_type',
@@ -433,6 +435,7 @@ class PostRepository implements PostInterface
             $filtered_post = Post::where('posts.post_type', 'VEHI')
                 ->withCount('UserReview as review_count')
                 ->withCount('UserFavourite as favoured_count')
+                ->withAvg('UserReview as rating', 'user_star')
                 ->where('posts.deleted_at', '=', null)
                 ->join('users', 'posts.user_id', 'users.id')
                 ->leftjoin('vehicles', 'posts.vehicle_id', 'vehicles.id')
@@ -506,6 +509,7 @@ class PostRepository implements PostInterface
             $filtered_post = Post::where('posts.post_type', 'SPARE')
                 ->withCount('UserReview as review_count')
                 ->withCount('UserFavourite as favoured_count')
+                ->withAvg('UserReview as rating', 'user_star')
                 ->where('posts.deleted_at', '=', null)
                 ->join('users', 'posts.user_id', 'users.id')
                 ->leftjoin('spare_parts', 'posts.spare_part_id', 'spare_parts.id')
@@ -967,6 +971,7 @@ class PostRepository implements PostInterface
             ->with(['Vehicle', 'SparePart', 'User'])
             ->withCount('UserReview as review_count')
             ->withCount('UserFavourite as favoured_count')
+            ->withAvg('UserReview as rating', 'user_star')
             ->groupBy('posts.post_type')
             ->orderBy('posts.view_count', 'DESC')
             ->limit(5)

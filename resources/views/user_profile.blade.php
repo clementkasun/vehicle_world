@@ -86,31 +86,16 @@ function gen_star($star_count)
             <!-- /.card-header -->
             <div class="card-body">
                 <strong><i class="fas fa-user mr-1"></i> Full Name</strong>
-
                 <p class="text-muted pl-1"> {{$user_profile_data['name']}} {{$user_profile_data['last_name']}}</p>
-
                 <hr>
-
                 <strong><i class="fas fa-map-marker-alt mr-1"></i> Address</strong>
-
                 <p class="text-muted pl-1">{{$user_profile_data['address']}}</p>
-
                 <hr>
-
                 <strong><i class="fas fa-pencil-alt mr-1"></i> Email </strong>
-
-                <p class="text-muted pl-1">
-                    {{$user_profile_data['email']}}
-                </p>
-
+                <p class="text-muted pl-1">{{$user_profile_data['email']}}</p>
                 <hr>
-
                 <strong><i class="fas fa-pencil-alt mr-1"></i> Mobile No </strong>
-
-                <p class="text-muted pl-1">
-                    {{$user_profile_data['contact_no']}}
-                </p>
-
+                <p class="text-muted pl-1">{{$user_profile_data['contact_no']}}</p>
             </div>
             <!-- /.card-body -->
         </div>
@@ -132,11 +117,12 @@ function gen_star($star_count)
                         <table class="table table-striped" id="user_posts">
                             <thead>
                                 <th></th>
-                                <th>#</th>
                                 <th>Title</th>
                                 <th>Type</th>
                                 <th>Price</th>
-                                <th>Ratings/Review Count/Views</th>
+                                <th>Ratings</th>
+                                <th>Reviews</th>
+                                <th>Views</th>
                                 <th>Location</th>
                                 <th>Created Date</th>
                             </thead>
@@ -145,15 +131,14 @@ function gen_star($star_count)
                                 <tr>
                                     <td>
                                         @if($user_add->status != '1')
-                                        <button class="btn btn-warning ch-sold" data-id="{{$user_add->id}}"><i class="fa fa-usd" aria-hidden="true" alt="sell"></i></i></button>
-                                        <a href="{{ asset('/post_edit/id/'.$user_add->id) }}" class="btn btn-primary edit"><i class='fa fa-edit'></i></a>
+                                        <button class="btn btn-warning ch-sold " style="padding-left: 17px; padding-right: 17px" data-id="{{$user_add->id}}"><i class="fa fa-usd" aria-hidden="true" alt="sell"></i></i></button>
+                                        <a href="{{ asset('/post_edit/id/'.$user_add->id) }}" style="padding-left: 14px; padding-right: 14px" class="btn btn-primary edit"><i class='fa fa-edit'></i></a>
                                         @else
-                                        <button class="btn btn-warning ch-sold" disabled><i class="fa fa-usd" aria-hidden="true" alt="sold"></i></button>
-                                        <a href="#" class="btn btn-primary edit"><i class='fa fa-edit' style="pointer-events: none; cursor: default; opacity: .4;"></i></a>
+                                        <button class="btn btn-warning ch-sold p-2" style="padding-left: 17px; padding-right: 17px" disabled><i class="fa fa-usd" aria-hidden="true" alt="sold"></i></button>
+                                        <a href="#" class="btn btn-primary edit" style="padding-left: 14px; padding-right: 14px"><i class='fa fa-edit' style="pointer-events: none; cursor: default; opacity: .4;"></i></a>
                                         @endif
-                                        <button class="btn btn-danger del" data-id="{{$user_add->id}}"><i class='fa fa-trash'></i></button>
+                                        <button class="btn btn-danger del" style="padding-left: 15px; padding-right: 15px" data-id="{{$user_add->id}}"><i class='fa fa-trash'></i></button>
                                     </td>
-                                    <td>{{ $loop->index+1 }}</td>
                                     <td><a href="/get_post_profile/id/{{$user_add->id}}">{{ $user_add->post_title }}</a></td>
                                     @if(isset($user_add->vehicle))
                                     <td>{{ $user_add->vehicle->vehicle_type }}</td>
@@ -163,10 +148,11 @@ function gen_star($star_count)
                                     <td>-</td>
                                     @endif
                                     <td>{{$user_add->price}}</td>
-                                    <td> <span><?php print gen_star(round($user_add->user_ratings)) ?> </span>/ <span> {{ $user_add->review_count }} </span> / <span> {{ $user_add->view_count }} </span></td>
+                                    <td><span> <?php print gen_star(round($user_add->user_ratings)) ?> </span></td>
+                                    <td><span> {{ $user_add->review_count }} </span></td>
+                                    <td><span> {{ $user_add->view_count }} </span></td>
                                     <td>{{$user_add->location}}</td>
                                     <td>{{$user_add->created_at}}</td>
-
                                 </tr>
                                 @endforeach
                             </tbody>

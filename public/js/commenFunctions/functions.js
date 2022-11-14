@@ -53,6 +53,36 @@ function submitDataWithFile(url, frmDta, callBack, metod = false) {
     }, metod);
 }
 
+
+function validate_image_size(file_type, img_file) {
+    if (img_file != undefined) {
+        var file = img_file;
+        if (Math.round(file.size / (1024 * 1024)) > 8) { // make it in MB so divide by 1024*1024
+            $("#save_post").prop('disabled', false);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please select ' + file_type + ' size less than 8 MB'
+            });
+            return false;
+        }
+    }
+}
+
+function generateStars(star_count) {
+    let stars = '';
+
+    for (let i = 0; i < 5; i++) {
+      if (i < star_count) {
+        stars += '<span class="fa fa-star checked"></span>';
+      } else {
+        stars += '<span class="fa fa-star"></span>';
+      }
+    }
+
+    return stars;
+}
+
 function filterFunction(that, event) {
     let container, input, filter, li, input_val;
     container = $(that).closest(".searchable");
