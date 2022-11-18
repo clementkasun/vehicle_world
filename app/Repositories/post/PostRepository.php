@@ -92,7 +92,7 @@ class PostRepository implements PostInterface
             $post_five_saved_path = null;
             $post_saved_vehicle_id = null;
             $post_saved_spare_id = null;
-            $id = null;
+            $file_id = null;
 
             $request->validate([
                 'vehicle_type' => 'nullable|sometimes',
@@ -152,7 +152,7 @@ class PostRepository implements PostInterface
                     'isPowerWindow' => $isPowerWindow,
                 ]);
                 $post_saved_vehicle_id = $vehicle_data_save->id;
-                $id = $post_saved_vehicle_id;
+                $file_id = $post_saved_vehicle_id;
             }
 
             if ($post_type == "SPARE") {
@@ -163,12 +163,12 @@ class PostRepository implements PostInterface
                     'part_used_in' => $request->vehicle_type
                 ]);
                 $post_saved_spare_id = $spare_part_save->id;
-                $id = $post_saved_spare_id;
+                $file_id = $post_saved_spare_id;
             }
 
-            $path = public_path('/storage/post_images/' . $id . '/');
+            $path = public_path('/storage/post_images/' . $file_id . '/');
             \File::exists($path) or File::makeDirectory($path);
-            $random_name = uniqid($id);
+            $random_name = uniqid($file_id);
 
             $watermark = \Image::make(public_path('/img/watermark.png'))->resize(200, 200);
 
@@ -179,8 +179,8 @@ class PostRepository implements PostInterface
 
                 // I am saying to create the dir if it's not there.
                 $image_main = \Image::make($image_main->getRealPath())->resize(300, 200);
-                $image_main->insert($watermark, 'center')->save($path .'main_image'. $random_name . '.' . $file_ext_main);
-                $post_main_saved_path = '/storage/post_images/' . $id . '/main_image' . $random_name . '.' . $file_ext_main;
+                $image_main->insert($watermark, 'center')->save($path . 'main_image' . $random_name . '.' . $file_ext_main);
+                $post_main_saved_path = '/storage/post_images/' . $file_id . '/main_image' . $random_name . '.' . $file_ext_main;
             }
 
             if ($request->hasFile('image_one')) {
@@ -190,8 +190,8 @@ class PostRepository implements PostInterface
 
                 // I am saying to create the dir if it's not there.
                 $image_one = \Image::make($image_one->getRealPath())->resize(300, 200);
-                $image_one->insert($watermark, 'center')->save($path .'image_one'. $random_name . '.' . $file_ext_one);
-                $post_one_saved_path = '/storage/post_images/' . $id . '/image_one' . $random_name . '.' . $file_ext_one;
+                $image_one->insert($watermark, 'center')->save($path . 'image_one' . $random_name . '.' . $file_ext_one);
+                $post_one_saved_path = '/storage/post_images/' . $file_id . '/image_one' . $random_name . '.' . $file_ext_one;
             }
 
             if ($request->hasFile('image_two')) {
@@ -201,8 +201,8 @@ class PostRepository implements PostInterface
 
                 // I am saying to create the dir if it's not there.
                 $image_two = \Image::make($image_two->getRealPath())->resize(300, 200);
-                $image_two->insert($watermark, 'center')->save($path  .'image_two'. $random_name . '.' . $file_ext_two);
-                $post_two_saved_path = '/storage/post_images/' . $id . '/image_two' . $random_name . '.' . $file_ext_two;
+                $image_two->insert($watermark, 'center')->save($path  . 'image_two' . $random_name . '.' . $file_ext_two);
+                $post_two_saved_path = '/storage/post_images/' . $file_id . '/image_two' . $random_name . '.' . $file_ext_two;
             }
 
             if ($request->hasFile('image_three')) {
@@ -212,8 +212,8 @@ class PostRepository implements PostInterface
 
                 // I am saying to create the dir if it's not there.
                 $image_three = \Image::make($image_three->getRealPath());
-                $image_three->resize(300, 200)->insert($watermark, 'center')->save($path .'image_three'. $random_name . '.' . $file_ext_three);
-                $post_three_saved_path = '/storage/post_images/' . $id . '/image_three' . $random_name . '.' . $file_ext_three;
+                $image_three->resize(300, 200)->insert($watermark, 'center')->save($path . 'image_three' . $random_name . '.' . $file_ext_three);
+                $post_three_saved_path = '/storage/post_images/' . $file_id . '/image_three' . $random_name . '.' . $file_ext_three;
             }
 
             if ($request->hasFile('image_four')) {
@@ -223,8 +223,8 @@ class PostRepository implements PostInterface
 
                 // I am saying to create the dir if it's not there.
                 $image_four = \Image::make($image_four->getRealPath())->resize(300, 200)->insert($watermark, 'center');
-                $image_four->save($path  .'image_four'. $random_name . '.' . $file_ext_four);
-                $post_four_saved_path = '/storage/post_images/' . $id . '/image_four' . $random_name . '.' . $file_ext_four;
+                $image_four->save($path  . 'image_four' . $random_name . '.' . $file_ext_four);
+                $post_four_saved_path = '/storage/post_images/' . $file_id . '/image_four' . $random_name . '.' . $file_ext_four;
             }
 
             if ($request->hasFile('image_five')) {
@@ -234,8 +234,8 @@ class PostRepository implements PostInterface
 
                 // I am saying to create the dir if it's not there. 
                 $image_five = \Image::make($image_five->getRealPath());
-                $image_five->resize(300, 200)->insert($watermark, 'center')->save($path  .'image_five'. $random_name . '.' . $file_ext_five);
-                $post_five_saved_path = '/storage/post_images/' . $id . '/image_five' . $random_name . '.' . $file_ext_five;
+                $image_five->resize(300, 200)->insert($watermark, 'center')->save($path  . 'image_five' . $random_name . '.' . $file_ext_five);
+                $post_five_saved_path = '/storage/post_images/' . $file_id . '/image_five' . $random_name . '.' . $file_ext_five;
             }
 
             $expire_date = Carbon::now()->addYear()->format('Y-m-d');
@@ -250,7 +250,7 @@ class PostRepository implements PostInterface
                     'user_id' => $user_id,
                     'location' => $request->location,
                     'address' => $request->address,
-                    'vehicle_id' => $id,
+                    'vehicle_id' => $file_id,
                     'spare_part_id' => null,
                     'main_image' => $post_main_saved_path,
                     'image_1' => $post_one_saved_path,
@@ -273,7 +273,7 @@ class PostRepository implements PostInterface
                     'location' => $request->location,
                     'address' => $request->address,
                     'vehicle_id' => null,
-                    'spare_part_id' => $id,
+                    'spare_part_id' => $file_id,
                     'main_image' => $post_main_saved_path,
                     'image_1' => $post_one_saved_path,
                     'image_2' => $post_two_saved_path,
@@ -545,7 +545,7 @@ class PostRepository implements PostInterface
                 $vehicle->isPowerMirroring = $isPowerMirroring;
                 $vehicle->isPowerWindow = $isPowerWindow;
                 $vehicle->save();
-                $file_id = $post_update->vehicle_id;
+                // $file_id = $post_update->vehicle_id;
             }
 
             if (strstr($post_type, "SPARE")) {
@@ -554,10 +554,10 @@ class PostRepository implements PostInterface
                 $spare_part_update->part_used_in = $request->part_used_in;
                 $spare_part_update->part_category = $request->part_category;
                 $spare_part_update->save();
-                $file_id = $post_update->spare_part_id;
+                // $file_id = $post_update->spare_part_id;
             }
 
-            $path = public_path('/storage/post_images/' . $file_id . '/');
+            $path = public_path('/storage/post_images/' . $id . '/');
             $watermark = \Image::make(public_path('/img/watermark.png'))->resize(200, 200);
             $random_name = uniqid($id);
 
@@ -568,10 +568,9 @@ class PostRepository implements PostInterface
                 $image_main       = $request->file('main_image');
                 $file_ext_main    = $image_main->extension();
 
-                \Image::make($image_main->getRealPath())
-                    ->resize(300, 200)
-                    ->insert($watermark, 'center')
-                    ->save($path .'main_image'. $random_name . '.' . $file_ext_main);
+                $main_image_update = \Image::make($image_main->getRealPath())
+                    ->resize(300, 200)->insert($watermark, 'center');
+                $main_image_update->save($path . '/main_image' . $random_name . '.' . $file_ext_main);
 
                 $post_update->main_image = '/storage/post_images/' . $id . '/main_image' . $random_name . '.' . $file_ext_main;
             }
@@ -581,10 +580,10 @@ class PostRepository implements PostInterface
                 $image_one     = $request->file('image_one');
                 $file_ext_one    = $image_one->extension();
 
-                \Image::make($image_one->getRealPath())
-                    ->resize(300, 200)
-                    ->insert($watermark, 'center')
-                    ->save($path .'image_one'. $random_name . '.' . $file_ext_one);
+                $image_one_update = \Image::make($image_one->getRealPath())
+                    ->resize(300, 200)->insert($watermark, 'center');
+
+                $image_one_update->save($path . '/image_one' . $random_name . '.' . $file_ext_one);
 
                 $post_update->image_1 = '/storage/post_images/' . $id . '/image_one' . $random_name . '.' . $file_ext_one;
             }
@@ -594,10 +593,10 @@ class PostRepository implements PostInterface
                 $image_two       = $request->file('image_two');
                 $file_ext_two    = $image_two->extension();
 
-                \Image::make($image_two->getRealPath())
-                    ->resize(300, 200)
-                    ->insert($watermark, 'center')
-                    ->save($path .'image_two'. $random_name . '.' . $file_ext_two);
+                $image_two_update = \Image::make($image_two->getRealPath())
+                    ->resize(300, 200)->insert($watermark, 'center');
+
+                $image_two_update->save($path . '/image_two' . $random_name . '.' . $file_ext_two);
 
                 $post_update->image_2 = '/storage/post_images/' . $id . '/image_two' . $random_name . '.' . $file_ext_two;
             }
@@ -607,10 +606,10 @@ class PostRepository implements PostInterface
                 $image_three       = $request->file('image_three');
                 $file_ext_three    = $image_three->extension();
 
-                \Image::make($image_three->getRealPath())
-                    ->resize(300, 200)
-                    ->insert($watermark, 'center')
-                    ->save($path .'image_three'. $random_name . '.' . $file_ext_three);
+                $image_three_update = \Image::make($image_three->getRealPath())
+                    ->resize(300, 200)->insert($watermark, 'center');
+
+                $image_three_update->save($path . '/image_three' . $random_name . '.' . $file_ext_three);
 
                 $post_update->image_3 = '/storage/post_images/' . $id . '/image_three' . $random_name . '.' . $file_ext_three;
             }
@@ -620,10 +619,11 @@ class PostRepository implements PostInterface
                 $image_four       = $request->file('image_four');
                 $file_ext_four   = $image_four->extension();
 
-                \Image::make($image_four->getRealPath())
+                $image_four_update = \Image::make($image_four->getRealPath())
                     ->resize(300, 200)
-                    ->insert($watermark, 'center')
-                    ->save($path .'image_four'. $random_name . '.' . $file_ext_four);
+                    ->insert($watermark, 'center');
+
+                $image_four_update->save($path . '/image_four' . $random_name . '.' . $file_ext_four);
 
                 $post_update->image_4 = '/storage/post_images/' . $id . '/image_four' . $random_name . '.' . $file_ext_four;
             }
@@ -633,10 +633,11 @@ class PostRepository implements PostInterface
                 $image_five       = $request->file('image_five');
                 $file_ext_five   = $image_five->extension();
 
-                \Image::make($image_five->getRealPath())
+                $image_five = \Image::make($image_five->getRealPath())
                     ->resize(300, 200)
-                    ->insert($watermark, 'center')
-                    ->save($path .'image_five'. $random_name . '.' . $file_ext_five);
+                    ->insert($watermark, 'center');
+
+                $image_five->save($path . '/image_five' . $random_name . '.' . $file_ext_five);
 
                 $post_update->image_5 = '/storage/post_images/' . $id . '/image_five' . $random_name . '.' . $file_ext_five;
             }

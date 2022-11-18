@@ -234,46 +234,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card card-light">
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="main_image">Main Image</label>
-                                <div>
-                                    <input type="file" class="form-control" id="main_image" name="main_image" accept="image/*" {{ (!isset($post_data)) ? 'required' : null; }}>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="image_one">Image 1</label>
-                                <div>
-                                    <input type="file" class="form-control" id="image_one" name="image_one" accept="image/*" {{ (!isset($post_data)) ? 'required' : null;  }}>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="image_two">Image 2</label>
-                                <div>
-                                    <input type="file" class="form-control" id="image_two" name="image_two" accept="image/*" {{ (!isset($post_data)) ? 'required' : null;  }}>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="image_three">Image 3</label>
-                                <div>
-                                    <input type="file" class="form-control" id="image_three" name="image_three" accept="image/*" {{ (!isset($post_data)) ? 'required' : null;  }}>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="image_four">Image 4</label>
-                                <div>
-                                    <input type="file" class="form-control" id="image_four" name="image_four" accept="image/*" {{ (!isset($post_data)) ? 'required' : null;  }}>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="image_five">Image 5</label>
-                                <div>
-                                    <input type="file" class="form-control" id="image_five" name="image_five" accept="image/*" {{ (!isset($post_data)) ? 'required' : null;  }}>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="col-12 col-md-6">
                     <div class="card card-light vehicle-sec">
@@ -440,12 +400,58 @@
                 </div>
                 <!--</div>-->
             </div>
-            <!-- /.card-body -->
-            <div class="card-footer row">
-                <button id="save_post" type="button" class="btn btn-primary col-12 col-md-1 d-none">Save Post</button>
-                <button id="update_post" type="button" class="btn btn-primary col-12 col-md-1 d-none">Update Post</button>
+            <div class="row">
+                <div class="card card-light col-12">
+                    <div class="card-body row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="main_image">Main Image</label>
+                                <div>
+                                    <input type="file" class="form-control" id="main_image" name="main_image" accept="image/*" {{ (!isset($post_data)) ? 'required' : null; }}>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="image_one">Image 1</label>
+                                <div>
+                                    <input type="file" class="form-control" id="image_one" name="image_one" accept="image/*" {{ (!isset($post_data)) ? 'required' : null;  }}>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="image_two">Image 2</label>
+                                <div>
+                                    <input type="file" class="form-control" id="image_two" name="image_two" accept="image/*" {{ (!isset($post_data)) ? 'required' : null;  }}>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="image_three">Image 3</label>
+                                <div>
+                                    <input type="file" class="form-control" id="image_three" name="image_three" accept="image/*" {{ (!isset($post_data)) ? 'required' : null;  }}>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="image_four">Image 4</label>
+                                <div>
+                                    <input type="file" class="form-control" id="image_four" name="image_four" accept="image/*" {{ (!isset($post_data)) ? 'required' : null;  }}>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="image_five">Image 5</label>
+                                <div>
+                                    <input type="file" class="form-control" id="image_five" name="image_five" accept="image/*" {{ (!isset($post_data)) ? 'required' : null;  }}>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </form>
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer row">
+        <button id="save_post" type="button" class="btn btn-primary col-12 col-md-1 d-none">Save Post</button>
+        <button id="update_post" type="button" class="btn btn-primary col-12 col-md-1 d-none">Update Post</button>
     </div>
     <!-- /.card -->
 </div>
@@ -465,7 +471,7 @@
             $('#make_id').select2();
             $('#location').select2();
         }
-
+        
         $('#post_type').change(function() {
             if ($(this).val() == 'VEHI' || $(this).val() == 'WAN') {
                 $('#spare_part_sec').addClass('d-none');
@@ -482,34 +488,34 @@
                 $('#spare_part_sec').addClass('d-none');
             }
         });
-
+        
         $('#vehicle_type').change(function() {
             ($(this).val() != 'Motorcycle') ? $('#four_wheel_features').removeClass('d-none'): $('#four_wheel_features').addClass('d-none');
         });
-
+        
     }); //onready
-
+    
     $("#save_post").click(function() {
         $(this).prop('disabled', true);
+        let object1 = getPostFormData();
         let is_valid = jQuery("#post_registration").valid();
-        let object = getPostFormData();
-        console.log(object);
-
-        let img_main_status = validate_image_size('main image', object.main_image);
-        let img_one_status = validate_image_size('image one', object.image_one);
-        let img_two_status = validate_image_size('image two', object.image_two);
-        let img_three_status = validate_image_size('image three', object.image_three);
-        let img_four_status = validate_image_size('image four', object.image_four);
-        let img_five_status = validate_image_size('image five', object.image_five);
-
+        // let object = getPostFormData();
+        
+        let img_main_status = validate_image_size('main image', object1.main_image);
+        let img_one_status = validate_image_size('image one', object1.image_one);
+        let img_two_status = validate_image_size('image two', object1.image_two);
+        let img_three_status = validate_image_size('image three', object1.image_three);
+        let img_four_status = validate_image_size('image four', object1.image_four);
+        let img_five_status = validate_image_size('image five', object1.image_five);
+        
         if (img_main_status == false || img_one_status == false || img_two_status == false || img_three_status == false || img_four_status == false || img_five_status == false) {
             return false;
         }
-
+        
         if (is_valid) {
 
             let url = "{{ asset('/api/save_post') }}";
-            ulploadFileWithData(url, object, function(result) {
+            ulploadFileWithData(url, object1, function(result) {
                 if (result.status == 1) {
                     Swal.fire({
                         icon: 'success',
@@ -527,7 +533,7 @@
                     })
                 }
                 if (typeof callBack !== 'undefined' && callBack != null && typeof callBack ===
-                    "function") {
+                "function") {
                     callBack(result);
                 }
             });
@@ -537,30 +543,32 @@
                 title: 'Post Registration',
                 text: 'Required fields are missing!'
             });
-
+            
             $("#save_post").prop('disabled', false);
         }
     });
-
+    
     $("#update_post").click(function(object) {
         $(this).prop('disabled', true);
+        let object2 = getPostFormData();
         let is_valid = jQuery("#post_registration").valid();
-        getPostFromData();
-
-        let img_main_status = ($('#post_section').data('post-id') != '') ? validate_image_size('main image', object.main_image) : true;
-        let img_one_status = ($('#post_section').data('post-id') != '') ? validate_image_size('image one', object.image_one) : true;
-        let img_three_status = ($('#post_section').data('post-id') != '') ? validate_image_size('image three', object.image_three) : true;
-        let img_four_status = ($('#post_section').data('post-id') != '') ? validate_image_size('image four', object.image_four) : true;
-        let img_five_status = ($('#post_section').data('post-id') != '') ? validate_image_size('image five', object.image_five) : true;
-
+        // let object = getPostFormData();
+        
+        let img_main_status = ($('#post_section').data('post-id') != '') ? validate_image_size('main image', object2.main_image) : true;
+        let img_one_status = ($('#post_section').data('post-id') != '') ? validate_image_size('image one', object2.image_one) : true;
+        let img_two_status = ($('#post_section').data('post-id') != '') ? validate_image_size('image two', object2.image_two) : true;
+        let img_three_status = ($('#post_section').data('post-id') != '') ? validate_image_size('image three', object2.image_three) : true;
+        let img_four_status = ($('#post_section').data('post-id') != '') ? validate_image_size('image four', object2.image_four) : true;
+        let img_five_status = ($('#post_section').data('post-id') != '') ? validate_image_size('image five', object2.image_five) : true;
+        
         if (img_main_status == false || img_one_status == false || img_two_status == false || img_three_status == false || img_four_status == false || img_five_status == false) {
             return false;
         }
-
+        
         if (is_valid) {
-
+            
             let url = "{{ asset('/api/update_post/id/') }}/" + $('#post_section').data('post-id');
-            ulploadFileWithData(url, object, function(result) {
+            ulploadFileWithData(url, object2, function(result) {
                 if (result.status == 1) {
                     Swal.fire(
                         'Post Registration',

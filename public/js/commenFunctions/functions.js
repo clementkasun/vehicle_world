@@ -86,12 +86,12 @@ function generateStars(star_count) {
 
 function loadMakesCombo(selected, callBack) {
     let option = '';
-    ajaxRequest("GET", "/api/get_makes/", null, function(resp) {
+    ajaxRequest("GET", "/api/get_makes/", null, function (resp) {
         if (resp.length == 0) {
             option += '<option value="">No Data</option>';
         } else {
             option += '<option value="">Select</option>';
-            $.each(resp, function(index, row) {
+            $.each(resp, function (index, row) {
                 if (!isNaN(parseInt(selected)) && selected == row.id) {
                     option += '<option value="' + row.id + '" selected>' + row.make_name +
                         '</option>';
@@ -107,7 +107,7 @@ function loadMakesCombo(selected, callBack) {
     });
 }
 
-function getPostFormData(){
+function getPostFormData() {
     var object = {
         user_id: $('#user_id').val(),
         post_type: $('#post_type').val(),
@@ -141,6 +141,51 @@ function getPostFormData(){
     object.image_four = ($('#image_four')[0].files[0] != undefined) ? $('#image_four')[0].files[0] : null;
     object.image_five = ($('#image_five')[0].files[0] != undefined) ? $('#image_five')[0].files[0] : null;
     return object;
+}
+
+function load_update_form() {
+    let vehicle_type = $('#vehicle_type').data('vehi-type');
+    let post_type = $('#post_type').data('post-type');
+    let start_type = $('#start_type').data('start-type');
+    let fuel_type = $('#fuel_type').data('fuel-type');
+    let transmission = $('#transmission').data('transmission');
+    let make_id = $('#make_id').data('make-id');
+    let model = $('#model').data('model');
+    let post_title = $('#post_title').data('title');
+    let part_cat = $('#part_category').data('part-cat');
+    let condition = $('#condition').data('condition');
+    let price = $('#price').data('price');
+    let address = $('#address').data('address');
+    let location = $('#location').data('location');
+    let desc = $('#additional_info').data('add-info');
+    let manufactured_year = $('#manufactured_year').data('man-year');
+    let engine_capacity = $('#engine_capacity').data('en-cap');
+    let millage = $('#millage').data('millage');
+    ($('#isPowerWindow').data('power-window') == '0') ? $('#isPowerWindow').prop('checked', false) : $('#isPowerWindow').prop('checked', true);
+    ($('#isPowerMirroring').data('power-mirror') == '0') ? $('#isPowerMirroring').prop('checked', false) : $('#isPowerMirroring').prop('checked', true);
+    ($('#isPowerSteer').data('power-steer') == '0') ? $('#isPowerSteer').prop('checked', false) : $('#isPowerSteer').prop('checked', true);
+    ($('#isAc').data('ac') == '0') ? $('#isAc').prop('checked', false) : $('#isAc').prop('checked', true);
+    ($('#on_going_lease').data('ongoing_lease') == '0') ? $('#on_going_lease').prop('checked', false) : $('#on_going_lease').prop('checked', true);
+    $('#vehicle_type').val(vehicle_type).change();
+    $('#post_type').val(post_type).change();
+    $('#post_title').val(post_title).change();
+    $('#condition').val(condition).change();
+    //change the make combo by previous data
+    loadMakesCombo(make_id, '');
+    $('#price').val(price);
+    $('#address').val(address);
+    $('#location').val(location);
+    $('#additional_info').text(desc);
+    $('#model').val(model);
+    $('#start_type').val(start_type);
+    $('#manufactured_year').val(manufactured_year);
+    $("#transmission").val(transmission);
+    $("#fuel_type").val(fuel_type);
+    $("#engine_capacity").val(engine_capacity);
+    $("#millage").val(millage);
+    $('#part_category').val(part_cat);
+    $('#make_id').select2();
+    $('#location').select2();
 }
 
 
