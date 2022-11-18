@@ -100,7 +100,7 @@
                             <div class="form-group">
                                 <label for="make_id">Make</label>
                                 <div>
-                                    <select class="form-control" id="make_id" name="make_id" data-make-id="{{ (isset($post_data)) ? $post_data['make_id'] : null; }}" required>
+                                    <select class="form-control makes" id="make_id" name="make_id" data-make-id="{{ (isset($post_data)) ? $post_data['make_id'] : null; }}" required>
                                     </select>
                                 </div>
                             </div>
@@ -223,13 +223,13 @@
                             <div class="form-group">
                                 <label for="address">Address</label>
                                 <div>
-                                    <textarea id="address" name="address" class="form-control" placeholder="Enter the address" minlength="20" maxlength="255" data-address="{{ (isset($post_data)) ? $post_data['address'] : null; }}" required></textarea>
+                                    <textarea id="address" name="address" class="form-control" placeholder="Enter the address" maxlength="255" data-address="{{ (isset($post_data)) ? $post_data['address'] : null; }}" autocomplete="on" required></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="additional_info">Description</label>
                                 <div>
-                                    <textarea id="additional_info" name="additional_info" class="form-control" minlength="50" maxlength="255" placeholder="Enter the description" data-add-info="{{ (isset($post_data)) ? $post_data['additional_info'] : null; }}" required></textarea>
+                                    <textarea id="additional_info" name="additional_info" class="form-control" maxlength="255" placeholder="Enter the description" data-add-info="{{ (isset($post_data)) ? $post_data['additional_info'] : null; }}" required></textarea>
                                 </div>
                             </div>
                         </div>
@@ -465,148 +465,48 @@
             $('#make_id').select2();
             $('#location').select2();
         }
-    });
 
-    $('#post_type').change(function() {
-        if ($(this).val() == 'VEHI' || $(this).val() == 'WAN') {
-            $('#spare_part_sec').addClass('d-none');
-            $('.vehicle-sec').removeClass('d-none');
-            $('#start_type_group').removeClass('d-none');
-        }
-        if ($(this).val() == 'SPARE') {
-            $('#spare_part_sec').removeClass('d-none');
-            $('.vehicle-sec').addClass('d-none');
-            $('#start_type_group').addClass('d-none');
-        }
-        if ($(this).val() == '') {
-            $('.vehicle-sec').addClass('d-none');
-            $('#spare_part_sec').addClass('d-none');
-        }
-    });
-
-    $('#vehicle_type').change(function() {
-        ($(this).val() != 'Motorcycle') ? $('#four_wheel_features').removeClass('d-none'): $('#four_wheel_features').addClass('d-none');
-    });
-
-    function load_update_form() {
-        let vehicle_type = $('#vehicle_type').data('vehi-type');
-        let post_type = $('#post_type').data('post-type');
-        let start_type = $('#start_type').data('start-type');
-        let fuel_type = $('#fuel_type').data('fuel-type');
-        let transmission = $('#transmission').data('transmission');
-        let make_id = $('#make_id').data('make-id');
-        let model = $('#model').data('model');
-        let post_title = $('#post_title').data('title');
-        let part_cat = $('#part_category').data('part-cat');
-        let condition = $('#condition').data('condition');
-        let price = $('#price').data('price');
-        let address = $('#address').data('address');
-        let location = $('#location').data('location');
-        let desc = $('#additional_info').data('add-info');
-        let manufactured_year = $('#manufactured_year').data('man-year');
-        let engine_capacity = $('#engine_capacity').data('en-cap');
-        let millage = $('#millage').data('millage');
-
-        ($('#isPowerWindow').data('power-window') == '0') ? $('#isPowerWindow').prop('checked', false): $('#isPowerWindow').prop('checked', true);
-        ($('#isPowerMirroring').data('power-mirror') == '0') ? $('#isPowerMirroring').prop('checked', false): $('#isPowerMirroring').prop('checked', true);
-        ($('#isPowerSteer').data('power-steer') == '0') ? $('#isPowerSteer').prop('checked', false): $('#isPowerSteer').prop('checked', true);
-        ($('#isAc').data('ac') == '0') ? $('#isAc').prop('checked', false): $('#isAc').prop('checked', true);
-        ($('#on_going_lease').data('ongoing_lease') == '0') ? $('#on_going_lease').prop('checked', false): $('#on_going_lease').prop('checked', true);
-
-        $('#vehicle_type').val(vehicle_type).change();
-        $('#post_type').val(post_type).change();
-        $('#post_title').val(post_title).change();
-        $('#condition').val(condition).change();
-
-        //change the make combo by previous data
-        loadMakesCombo(make_id, '');
-
-        $('#price').val(price);
-        $('#address').val(address);
-        $('#location').val(location);
-        $('#additional_info').text(desc);
-        $('#model').val(model);
-        $('#start_type').val(start_type);
-        $('#manufactured_year').val(manufactured_year);
-        $("#transmission").val(transmission);
-        $("#fuel_type").val(fuel_type);
-        $("#engine_capacity").val(engine_capacity);
-        $("#millage").val(millage);
-        $('#part_category').val(part_cat);
-
-        $('#make_id').select2();
-        $('#location').select2();
-    }
-
-    function loadMakesCombo(selected, callBack) {
-        let option = '';
-        ajaxRequest("GET", "{{ asset('/api/get_makes/') }}", null, function(resp) {
-            if (resp.length == 0) {
-                option += '<option value="">No Data</option>';
-            } else {
-                $.each(resp, function(index, row) {
-                    if (!isNaN(parseInt(selected)) && selected == row.id) {
-                        option += '<option value="' + row.id + '" selected>' + row.make_name +
-                            '</option>';
-                    } else {
-                        option += '<option value="' + row.id + '">' + row.make_name + '</option>';
-                    }
-                });
+        $('#post_type').change(function() {
+            if ($(this).val() == 'VEHI' || $(this).val() == 'WAN') {
+                $('#spare_part_sec').addClass('d-none');
+                $('.vehicle-sec').removeClass('d-none');
+                $('#start_type_group').removeClass('d-none');
             }
-            $('#make_id').html(option);
-            if (typeof callBack !== 'undefined' && callBack != null && typeof callBack === "function") {
-                callBack();
+            if ($(this).val() == 'SPARE') {
+                $('#spare_part_sec').removeClass('d-none');
+                $('.vehicle-sec').addClass('d-none');
+                $('#start_type_group').addClass('d-none');
+            }
+            if ($(this).val() == '') {
+                $('.vehicle-sec').addClass('d-none');
+                $('#spare_part_sec').addClass('d-none');
             }
         });
-    }
+
+        $('#vehicle_type').change(function() {
+            ($(this).val() != 'Motorcycle') ? $('#four_wheel_features').removeClass('d-none'): $('#four_wheel_features').addClass('d-none');
+        });
+
+    }); //onready
 
     $("#save_post").click(function() {
         $(this).prop('disabled', true);
-        var is_valid = jQuery("#post_registration").valid();
+        let is_valid = jQuery("#post_registration").valid();
+        let object = getPostFormData();
+        console.log(object);
 
-        let img_main_status = validate_image_size('main image', $('#main_image')[0].files[0]);
-        let img_one_status = validate_image_size('image one', $('#image_one')[0].files[0]);
-        let img_two_status = validate_image_size('image two', $('#image_two')[0].files[0]);
-        let img_three_status = validate_image_size('image three', $('#image_three')[0].files[0]);
-        let img_four_status = validate_image_size('image four', $('#image_four')[0].files[0]);
-        let img_five_status = validate_image_size('image five', $('#image_five')[0].files[0]);
+        let img_main_status = validate_image_size('main image', object.main_image);
+        let img_one_status = validate_image_size('image one', object.image_one);
+        let img_two_status = validate_image_size('image two', object.image_two);
+        let img_three_status = validate_image_size('image three', object.image_three);
+        let img_four_status = validate_image_size('image four', object.image_four);
+        let img_five_status = validate_image_size('image five', object.image_five);
 
         if (img_main_status == false || img_one_status == false || img_two_status == false || img_three_status == false || img_four_status == false || img_five_status == false) {
             return false;
         }
-        if (is_valid) {
-            let object = {
-                user_id: $('#user_id').val(),
-                post_type: $('#post_type').val(),
-                post_title: $('#post_title').val(),
-                vehicle_type: $('#vehicle_type').val(),
-                condition: $('#condition').val(),
-                make_id: $('#make_id').val(),
-                price: $('#price').val(),
-                location: $('#location').val(),
-                address: $('#address').val(),
-                additional_info: $('#additional_info').val(),
-                model: $('#model').val(),
-                start_type: $('#start_type').val(),
-                manufactured_year: $('#manufactured_year').val(),
-                on_going_lease: $('input[name="on_going_lease"]:checked').val(),
-                transmission: $("#transmission").val(),
-                fuel_type: $("#fuel_type").val(),
-                engine_capacity: $("#engine_capacity").val(),
-                millage: $("#millage").val(),
-                isAc: $('input[name="isAc"]:checked').val(),
-                isPowerSteer: $('input[name="isPowerSteer"]:checked').val(),
-                isPowerMirroring: $('input[name="isPowerMirroring"]:checked').val(),
-                isPowerWindow: $('input[name="isPowerWindow"]:checked').val(),
-                part_category: $('#part_category').val(),
-            };
 
-            object.main_image = ($('#main_image')[0].files[0] != undefined) ? $('#main_image')[0].files[0] : null;
-            object.image_one = ($('#image_one')[0].files[0] != undefined) ? $('#image_one')[0].files[0] : null;
-            object.image_two = ($('#image_two')[0].files[0] != undefined) ? $('#image_two')[0].files[0] : null;
-            object.image_three = ($('#image_three')[0].files[0] != undefined) ? $('#image_three')[0].files[0] : null;
-            object.image_four = ($('#image_four')[0].files[0] != undefined) ? $('#image_four')[0].files[0] : null;
-            object.image_five = ($('#image_five')[0].files[0] != undefined) ? $('#image_five')[0].files[0] : null;
+        if (is_valid) {
 
             let url = "{{ asset('/api/save_post') }}";
             ulploadFileWithData(url, object, function(result) {
@@ -642,54 +542,22 @@
         }
     });
 
-    $("#update_post").click(function() {
+    $("#update_post").click(function(object) {
         $(this).prop('disabled', true);
-        var is_valid = jQuery("#post_registration").valid();
+        let is_valid = jQuery("#post_registration").valid();
+        getPostFromData();
 
-        let img_main_status = ($('#post_section').data('post-id') != '') ? validate_image_size('main image', $('#main_image')[0].files[0]) : true;
-        let img_one_status = ($('#post_section').data('post-id') != '') ? validate_image_size('image one', $('#image_one')[0].files[0]) : true;
-        let img_two_status = ($('#post_section').data('post-id') != '') ? validate_image_size('image two', $('#image_two')[0].files[0]) : true;
-        let img_three_status = ($('#post_section').data('post-id') != '') ? validate_image_size('image three', $('#image_three')[0].files[0]) : true;
-        let img_four_status = ($('#post_section').data('post-id') != '') ? validate_image_size('image four', $('#image_four')[0].files[0]) : true;
-        let img_five_status = ($('#post_section').data('post-id') != '') ? validate_image_size('image five', $('#image_five')[0].files[0]) : true;
+        let img_main_status = ($('#post_section').data('post-id') != '') ? validate_image_size('main image', object.main_image) : true;
+        let img_one_status = ($('#post_section').data('post-id') != '') ? validate_image_size('image one', object.image_one) : true;
+        let img_three_status = ($('#post_section').data('post-id') != '') ? validate_image_size('image three', object.image_three) : true;
+        let img_four_status = ($('#post_section').data('post-id') != '') ? validate_image_size('image four', object.image_four) : true;
+        let img_five_status = ($('#post_section').data('post-id') != '') ? validate_image_size('image five', object.image_five) : true;
 
         if (img_main_status == false || img_one_status == false || img_two_status == false || img_three_status == false || img_four_status == false || img_five_status == false) {
             return false;
         }
 
         if (is_valid) {
-            let object = {
-                user_id: $('#user_id').val(),
-                post_type: $('#post_type').val(),
-                post_title: $('#post_title').val(),
-                vehicle_type: $('#vehicle_type').val(),
-                condition: $('#condition').val(),
-                make_id: $('#make_id').val(),
-                price: $('#price').val(),
-                location: $('#location').val(),
-                address: $('#address').val(),
-                additional_info: $('#additional_info').val(),
-                model: $('#model').val(),
-                start_type: $('#start_type').val(),
-                manufactured_year: $('#manufactured_year').val(),
-                on_going_lease: $('input[name="on_going_lease"]:checked').val(),
-                transmission: $("#transmission").val(),
-                fuel_type: $("#fuel_type").val(),
-                engine_capacity: $("#engine_capacity").val(),
-                millage: $("#millage").val(),
-                isAc: $('input[name="isAc"]:checked').val(),
-                isPowerSteer: $('input[name="isPowerSteer"]:checked').val(),
-                isPowerMirroring: $('input[name="isPowerMirroring"]:checked').val(),
-                isPowerWindow: $('input[name="isPowerWindow"]:checked').val(),
-                part_category: $('#part_category').val(),
-            };
-
-            object.main_image = ($('#main_image')[0].files[0] != undefined) ? $('#main_image')[0].files[0] : null;
-            object.image_one = ($('#image_one')[0].files[0] != undefined) ? $('#image_one')[0].files[0] : null;
-            object.image_two = ($('#image_two')[0].files[0] != undefined) ? $('#image_two')[0].files[0] : null;
-            object.image_three = ($('#image_three')[0].files[0] != undefined) ? $('#image_three')[0].files[0] : null;
-            object.image_four = ($('#image_four')[0].files[0] != undefined) ? $('#image_four')[0].files[0] : null;
-            object.image_five = ($('#image_five')[0].files[0] != undefined) ? $('#image_five')[0].files[0] : null;
 
             let url = "{{ asset('/api/update_post/id/') }}/" + $('#post_section').data('post-id');
             ulploadFileWithData(url, object, function(result) {

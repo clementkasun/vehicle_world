@@ -1,3 +1,4 @@
+
 function ajaxRequest(Method, url, data, callBack) {
     $.ajax({
         type: Method,
@@ -73,125 +74,74 @@ function generateStars(star_count) {
     let stars = '';
 
     for (let i = 0; i < 5; i++) {
-      if (i < star_count) {
-        stars += '<span class="fa fa-star checked"></span>';
-      } else {
-        stars += '<span class="fa fa-star"></span>';
-      }
+        if (i < star_count) {
+            stars += '<span class="fa fa-star checked"></span>';
+        } else {
+            stars += '<span class="fa fa-star"></span>';
+        }
     }
 
     return stars;
 }
 
-// function filterFunction(that, event) {
-//     let container, input, filter, li, input_val;
-//     container = $(that).closest(".searchable");
-//     input_val = container.find("input").val().toUpperCase();
-//     if (["ArrowDown", "ArrowUp", "Enter"].indexOf(event.key) != -1) {
-//         keyControl(event, container);
-//     } else {
-//         li = container.find("ul li");
-//         li.each(function(i, obj) {
-//             if ($(this).text().toUpperCase().indexOf(input_val) > -1) {
-//                 $(this).show();
-//             } else {
-//                 $(this).hide();
-//             }
-//         });
-//         container.find("ul li").removeClass("selected");
-//         setTimeout(function() {
-//             container.find("ul li:visible").first().addClass("selected");
-//         }, 100);
-//     }
-// }
+function loadMakesCombo(selected, callBack) {
+    let option = '';
+    ajaxRequest("GET", "/api/get_makes/", null, function(resp) {
+        if (resp.length == 0) {
+            option += '<option value="">No Data</option>';
+        } else {
+            option += '<option value="">Select</option>';
+            $.each(resp, function(index, row) {
+                if (!isNaN(parseInt(selected)) && selected == row.id) {
+                    option += '<option value="' + row.id + '" selected>' + row.make_name +
+                        '</option>';
+                } else {
+                    option += '<option value="' + row.id + '">' + row.make_name + '</option>';
+                }
+            });
+        }
+        $('.makes').html(option);
+        if (typeof callBack !== 'undefined' && callBack != null && typeof callBack === "function") {
+            callBack();
+        }
+    });
+}
 
-// function keyControl(e, container) {
-//     if (e.key == "ArrowDown") {
-//         if (container.find("ul li").hasClass("selected")) {
-//             if (
-//                 container
-//                 .find("ul li:visible")
-//                 .index(container.find("ul li.selected")) +
-//                 1 <
-//                 container.find("ul li:visible").length
-//             ) {
-//                 container
-//                     .find("ul li.selected")
-//                     .removeClass("selected")
-//                     .nextAll()
-//                     .not('[style*="display: none"]')
-//                     .first()
-//                     .addClass("selected");
-//             }
-//         } else {
-//             container.find("ul li:first-child").addClass("selected");
-//         }
-//     } else if (e.key == "ArrowUp") {
-//         if (
-//             container.find("ul li:visible").index(container.find("ul li.selected")) >
-//             0
-//         ) {
-//             container
-//                 .find("ul li.selected")
-//                 .removeClass("selected")
-//                 .prevAll()
-//                 .not('[style*="display: none"]')
-//                 .first()
-//                 .addClass("selected");
-//         }
-//     } else if (e.key == "Enter") {
-//         container.find("input").val(container.find("ul li.selected").text()).blur();
-//         onSelect(container.find("ul li.selected").text());
-//     }
-// }
+function getPostFormData(){
+    var object = {
+        user_id: $('#user_id').val(),
+        post_type: $('#post_type').val(),
+        post_title: $('#post_title').val(),
+        vehicle_type: $('#vehicle_type').val(),
+        condition: $('#condition').val(),
+        make_id: $('#make_id').val(),
+        price: $('#price').val(),
+        location: $('#location').val(),
+        address: $('#address').val(),
+        additional_info: $('#additional_info').val(),
+        model: $('#model').val(),
+        start_type: $('#start_type').val(),
+        manufactured_year: $('#manufactured_year').val(),
+        on_going_lease: $('input[name="on_going_lease"]:checked').val(),
+        transmission: $("#transmission").val(),
+        fuel_type: $("#fuel_type").val(),
+        engine_capacity: $("#engine_capacity").val(),
+        millage: $("#millage").val(),
+        isAc: $('input[name="isAc"]:checked').val(),
+        isPowerSteer: $('input[name="isPowerSteer"]:checked').val(),
+        isPowerMirroring: $('input[name="isPowerMirroring"]:checked').val(),
+        isPowerWindow: $('input[name="isPowerWindow"]:checked').val(),
+        part_category: $('#part_category').val(),
+    };
 
-// function onSelect(val) {}
-// $(".searchable input").focus(function() {
-//     $(this).closest(".searchable").find("ul").show();
-//     $(this).closest(".searchable").find("ul li").show();
-//     $('.submit__btn').css({
-//         "display": "block"
-//     })
-//     $('.close__btn').css({
-//         "display": "block"
-//     })
-//     $('.search__btn').css({
-//         'display': "none"
-//     })
-// });
-// $(".searchable input").blur(function() {
-//     let that = this;
-//     setTimeout(function() {
-//         $(that).closest(".searchable").find("ul").hide();
-//         $('.search__btn').css({
-//             'display': "block"
-//         })
-//         $('.submit__btn').css({
-//             "display": "none"
-//         })
-//         $('.close__btn').css({
-//             "display": "none"
-//         })
-//     }, 300);
-// });
-// $('.search__btn').on("click", function() {
-//     $(this).closest(".searchable").find("input").val($(this).text()).blur();
-//     onSelect($(this).text());
-// });
-// $(document).on("click", ".searchable ul li", function() {
-//     $(this).closest(".searchable").find("input").val($(this).text()).blur();
-//     onSelect($(this).text());
-// });
-// $(".searchable ul li").hover(function() {
-//     $(this).closest(".searchable").find("ul li.selected").removeClass("selected");
-//     $(this).addClass("selected");
-// });
-// $('.close__btn').on('click', function() {
-//     $('.searchable').find("input").val($(this).text()).blur()
-//     $(this).css({
-//         "display": "none"
-//     })
-// })
+    object.main_image = ($('#main_image')[0].files[0] != undefined) ? $('#main_image')[0].files[0] : null; // compress to 200 kB or null
+    object.image_one = ($('#image_one')[0].files[0] != undefined) ? $('#image_one')[0].files[0] : null;
+    object.image_two = ($('#image_two')[0].files[0] != undefined) ? $('#image_two')[0].files[0] : null;
+    object.image_three = ($('#image_three')[0].files[0] != undefined) ? $('#image_three')[0].files[0] : null;
+    object.image_four = ($('#image_four')[0].files[0] != undefined) ? $('#image_four')[0].files[0] : null;
+    object.image_five = ($('#image_five')[0].files[0] != undefined) ? $('#image_five')[0].files[0] : null;
+    return object;
+}
 
 
 
