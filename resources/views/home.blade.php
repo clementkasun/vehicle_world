@@ -231,7 +231,7 @@ function gen_star($star_count)
                     <div class="form-group col-12 col-md-3 col-lg-2">
                         <label for="cmb_make"><b>Make</b></label>
                         <div>
-                            <select id="cmb_make" name="cmb_make" class="form-control select2"></select>
+                            <select id="cmb_make" name="cmb_make" class="form-control select2 makes"></select>
                         </div>
                     </div>
                     <div id="model_group" class="form-group col-12 col-md-3 col-lg-2">
@@ -659,26 +659,7 @@ function gen_star($star_count)
         $('#cmb_make').select2();
         $('#cmb_city').select2();
 
-        loadMakes();
     });
-
-    function loadMakes(callBack) {
-        let option = '';
-        ajaxRequest("GET", "{{ asset('/api/get_makes') }}", null, function(resp) {
-            if (resp.length == 0) {
-                option += '<option value="">No Data</option>';
-            } else {
-                option = '<option value="any">Select Make</option>';
-                $.each(resp, function(index, row) {
-                    option += '<option value="' + row.id + '">' + row.make_name + '</option>';
-                });
-            }
-            $('#cmb_make').html(option);
-            //                    $('#cmb_make').select2();
-            if (typeof callBack !== 'undefined' && callBack != null && typeof callBack === "function") {
-                callBack();
-            }
-        });
-    }
+    loadMakesCombo();
 </script>
 @endsection

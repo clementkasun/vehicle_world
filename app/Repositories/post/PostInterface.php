@@ -11,7 +11,6 @@ interface PostInterface {
     public function searchPosts($request);
     public function removePost($id);
     public function postUpdate($request, $id);
-    public function removeExpiredPost();
     public function changePostAsSold($id);
     public function vehiclePostCount();
     public function sparePartsCount();

@@ -32,7 +32,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // Route::get('/survey_object', [ResultController::class, 'getSurveyObject']);
 Route::apiResource('/json', TestJsonController::class); // get payment history by id
-Route::apiResource('/result/json', JsonResultsController::class); // save json results
+// Route::apiResource('/result/json', JsonResultsController::class); // save json results
 Route::get('/result/export/{id}', [JsonResultsController::class, 'export']); // save json results
 
 //api rolls, privileges and users
