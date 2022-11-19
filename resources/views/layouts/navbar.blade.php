@@ -8,41 +8,74 @@
                 <i class="bi bi-phone-fill phone-icon"></i> +94 763993288
             </div>
             <div class="social-links d-none d-md-block">
-                <a area-label="order icon" href="{{ asset('/user-notifications') }}" class="event-btn-link notification">
-                    <i class="fa fa-bell text-danger" aria-hidden="true" title="notifications"></i>
-                    <span class="sr-only">notifications</span>
-                    <span class="badge text-danger">{{ (auth()->user() != null) ? auth()->user()->unreadNotifications->count() : null }}</span>
-                </a>
                 <a href="https://twitter.com/VehiautoC" target="_blank" class="twitter"><i class="bi bi-twitter"></i></a>
                 <a href="https://www.facebook.com/kasunclement/" class="facebook"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
             </div>
+            <nav class="navbar navbar-expand-lg">
+                <ul class="navbar-nav d-flex flex-row me-1">
+                    <li class="nav-item me-3 me-lg-0">
+                        <div class="dropdown">
+                            <a class="me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-bell text-danger" aria-hidden="true" title="notifications"></i>
+                                <span class="sr-only">notifications</span>
+                                <span class="badge text-danger">{{ (auth()->user() != null) ? auth()->user()->unreadNotifications->count() : null }}</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+
+                                <?php (isset(auth()->user()->unreadNotifications)) ? $notifications = auth()->user()->unreadNotifications : $notifications = null ?>
+                                @if($notifications)
+                                @forelse($notifications as $notification)
+                                <li>
+                                    <div class="alert alert-info" role="alert" id="{{ $notification->id }}">
+                                        <div class="row">
+                                            <div class="col-7">
+                                                {{ $notification->created_at }} {{ $notification['data']['action'] }}.
+                                            </div>
+                                            <div class="col-5">
+                                                <button class="float-right mark-as-read fa fa-mark-as-read btn btn-warning" data-id="{{ $notification->id }}">Mark as read</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                @if($loop->last)
+                                <a href="{{ $notifications->markAsRead() }}" class="btn btn-warning float-right mark-all-as-read">
+                                    Mark all as read
+                                </a>
+                                @endif
+                                @empty
+                                <li>There are no new notifications</li>
+                                @endforelse
+                                @endif
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </section>
 
 
     <!-- ======= Header ======= -->
-    <header id="header" class="d-flex align-items-center header">
-        <div class="container d-flex align-items-center">
-            <h2 class="logo me-auto">VEHIAUTO.COM</h2><i class="bi bi-list mobile-nav-toggle"></i>
-            <nav id="navbar" class="navbar">
-                <ul>
-                    <li><a class="nav-link scrollto active" href="{{ asset('/') }}">Home</a></li>
-                    <!-- <li><a class="nav-link scrollto" href="{{ asset('analysis') }}">Analytics</a></li> -->
-                    <li><a class="nav-link scrollto" href="{{ asset('about_us') }}">About</a></li>
-                    <li><a class="nav-link scrollto" href="{{ asset('services') }}">Services</a></li>
-                    <li><a class="nav-link scrollto" href="{{ asset('create-post') }}">Create post</a></li>
-                    <li><a class="nav-link scrollto" href="{{ asset('user_profile') }}">Account</a></li>
-                    <li><a class="nav-link scrollto" href="{{ asset('contacts') }}">Contact</a></li>
-                    @if(auth()->user() != null)
-                    <li><a class="nav-link scrollto" href="{{ asset('logout') }}">Logout</a></li>
-                    @else
-                    <li><a class="nav-link scrollto" href="{{ asset('login_cust') }}">Login</a></li>
-                    <li><a class="nav-link scrollto" href="{{ asset('register') }}">Register</a></li>
-                    @endif
-                </ul>
-            </nav>
+    <header id="header" class="header">
+        <div class="container-fluid">
+            <ul id="lg-links-ul">
+                <li class="lg-links-li">
+                    <h2 class="logo me-auto text-light m-3">VEHIAUTO.COM</h2>
+                </li>
+                <li class="lg-links-li"><a class="nav-link scrollto lg-links-a link-active" href="{{ asset('/') }}">Home</a></li>
+                <li class="lg-links-li"><a class="nav-link scrollto lg-links-a" href="{{ asset('about_us') }}">About</a></li>
+                <li class="lg-links-li"><a class="nav-link scrollto lg-links-a" href="{{ asset('services') }}">Services</a></li>
+                <li class="lg-links-li"><a class="nav-link scrollto lg-links-a" href="{{ asset('create-post') }}">Create post</a></li>
+                <li class="lg-links-li"><a class="nav-link scrollto lg-links-a" href="{{ asset('user_profile') }}">Account</a></li>
+                <li class="lg-links-li"><a class="nav-link scrollto lg-links-a" href="{{ asset('contacts') }}">Contact</a></li>
+                @if(auth()->user() != null)
+                <li class="lg-links-li"><a class="nav-link scrollto lg-links-a" href="{{ asset('logout') }}">Logout</a></li>
+                @else
+                <li class="lg-links-li"><a class="nav-link scrollto lg-links-a" href="{{ asset('login_cust') }}">Login</a></li>
+                <li class="lg-links-li"><a class="nav-link scrollto lg-links-a" href="{{ asset('register') }}">Register</a></li>
+                @endif
+            </ul>
             <!-- .navbar -->
         </div>
     </header>

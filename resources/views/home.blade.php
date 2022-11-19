@@ -15,7 +15,7 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: 'Poppings', 'sans-serif';
+        /* font-family: 'Poppings', 'sans-serif'; */
     }
 </style>
 @endsection
@@ -83,7 +83,7 @@ function gen_star($star_count)
                         <!-- Additional required wrapper -->
                         <div class="swiper-wrapper">
                             @if(isset($most_favoured_posts))
-                            @foreach($most_favoured_posts as $key => $favoured_post)
+                            <!-- @foreach($most_favoured_posts as $key => $favoured_post) -->
                             <!-- Slides -->
                             <div class="swiper-slide">
                                 <div class="hero-singel-slide ">
@@ -92,21 +92,20 @@ function gen_star($star_count)
                                     </div>
                                     <div class="inner-wrapper">
                                         <div class="content">
-                                            <h1 class="title"><b> {{ $key+1 }} </b></p>
-                                                <h1 class="title">Most</h1>
-                                                <h1 class="title">Favourite</h1>
-                                                <h2 class="title">Vehicle of the month</h2>
+                                            <h1 class="title">Most</h1>
+                                            <h1 class="title">Favourite</h1>
+                                            <h2 class="title">Vehicle of the month</h2>
                                         </div>
                                         <div class="product-img">
                                             <?php
-                                            $main_image_path = (isset($favoured_post->post->main_image)) ? $favoured_post->post->main_image : null;
+                                            $main_image_path = (isset($most_favoured_posts->post->main_image)) ? $most_favoured_posts->post->main_image : null;
                                             ?>
                                             <div class="shape shape-1"><img width="83" height="83" class="img-fluid" src="{{ asset($main_image_path) }}" alt="image"></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
+                            <!-- @endforeach -->
                             @endif
                         </div>
                     </div>

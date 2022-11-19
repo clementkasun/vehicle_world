@@ -6,7 +6,7 @@ if (auth()->check() == true) {
   $user_id = null;
 }
 ?>
-<footer id="footer" style="position: relative; width: 100%;height: auto;background: grey;">
+<footer id="footer" style="position: relative; width: 100%;height: auto;background: grey; margin-top: 100px">
         <div class="container">
             <h3>Vehiauto.com</h3>
             <p>vehiauto is a emerging web marketplace for your vehicle needs.</p>
@@ -18,7 +18,8 @@ if (auth()->check() == true) {
                 <a href="https://www.linkedin.com" class="linkedin"><i class="bx bxl-linkedin"></i></a>
             </div>
             <div class="copyright">
-                <strong>Copyright &copy; <?php echo date("Y"); ?> <a href="#">Vehiauto.com</a></strong>
+                <strong>Copyright &copy; <?php echo date("Y"); ?> <a href="./">Vehiauto.com</a></strong><br>
+                <strong style="font-size: 18px; font-family:'Courier New', Courier, monospace">Designed by: Clementechs</strong>
             </div>
         </div>
         <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a> -->

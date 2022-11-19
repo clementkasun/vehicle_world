@@ -17,6 +17,10 @@
         padding-left: 10px;
         padding-right: 10px;
     }
+
+    .has-error {
+        color: red;
+    }
 </style>
 @endsection
 
@@ -31,7 +35,7 @@
                     <div class="card">
                         <div class="card-body row">
                             <div class="col-md-5 text-center d-flex align-items-center justify-content-center">
-                                <div class="">
+                                <div>
                                     <h2>Vehiauto.com</h2>
                                     <p class="lead mb-5">Kurunegala, Srilanka<br>
                                         Phone: 0763993288
@@ -42,19 +46,21 @@
                                 <form id="contact_form">
                                     <div class="form-group">
                                         <label for="inputName">Name</label>
-                                        <input type="text" id="inputName" class="form-control" />
+                                        <div>
+                                            <input type="text" id="inputName" class="form-control" required/>
+                                        </div>
                                     </div>
-                                    <!-- <div class="form-group">
-                                    <label for="inputEmail">E-Mail</label>
-                                    <input type="email" id="inputEmail" class="form-control" />
-                                </div> -->
                                     <div class="form-group">
                                         <label for="inputSubject">Subject</label>
-                                        <input type="text" id="inputSubject" class="form-control" />
+                                        <div>
+                                            <input type="text" id="inputSubject" class="form-control" required/>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputMessage">Message</label>
-                                        <textarea id="inputMessage" class="form-control" rows="4"></textarea>
+                                        <div>
+                                            <textarea id="inputMessage" class="form-control" rows="4" required></textarea>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <input type="button" class="btn btn-primary" id="send_mail" value="Send message">
@@ -74,25 +80,76 @@
 @section('pageScripts')
 <script>
     $('#send_mail').click(function() {
-        $(this).prop('disabled', true);
-        let mail_url = "./api/send_mail";
-        let details = {
-            'title': $('#inputSubject').val(),
-            'body': $('#inputMessage').val(),
-            'user_name': $('#inputName').val()
-        };
-        ajaxRequest("POST", mail_url, details, function(result) {
+        let is_valid = jQuery("#contact_form").valid();
+        if (is_valid) {
+            $(this).prop('disabled', true);
+            let mail_url = "./api/send_mail";
+            let details = {
+                'title': $('#inputSubject').val(),
+                'body': $('#inputMessage').val(),
+                'user_name': $('#inputName').val()
+            };
+            ajaxRequest("POST", mail_url, details, function(result) {
 
-            if (result.status == 1) {
-                $('#contact_form')[0].reset();
-                $('#send_mail').prop('disabled', false);
-                swal.fire('success', 'Successfully sent the mail!', 'success');
+                if (result.status == 1) {
+                    $(this).prop('disabled', true);
+                    $('#contact_form')[0].reset();
+                    $('#send_mail').prop('disabled', false);
+                    swal.fire('success', 'Successfully sent the mail!', 'success');
+                } else {
+                    $(this).prop('disabled', true);
+                    $('#send_mail').prop('disabled', false);
+                    swal.fire('error', 'Email sending was unsuccessful!', 'error');
+                }
+
+            });
+        }
+
+    });
+
+    var contact_form;
+    contact_form = $("#contact_form").validate({
+        errorClass: "invalid",
+        highlight: function(element) {
+            $(element).parent().addClass('has-error');
+        },
+        unhighlight: function(element) {
+            $(element).parent().removeClass('has-error');
+        },
+        errorElement: 'span',
+        errorClass: 'validation-error-message help-block form-helper bold',
+        errorPlacement: function(error, element) {
+            if (element.parent('.input-group').length) {
+                error.insertAfter(element.parent());
             } else {
-                $('#send_mail').prop('disabled', false);
-                swal.fire('error', 'Email sending was unsuccessful!', 'error');
+                error.insertAfter(element);
             }
+        }
+    });
 
-        });
+    jQuery.validator.setDefaults({
+        errorElement: "span",
+        ignore: ":hidden:not(select.chosen-select)",
+        errorPlacement: function(error, element) {
+            // Add the `help-block` class to the error element
+            error.addClass("help-block");
+            if (element.prop("type") === "checkbox") {
+                //                error.insertAfter(element.parent("label"));
+                error.appendTo(element.parents("validate-parent"));
+            } else if (element.is("select.chosen-select")) {
+                error.insertAfter(element.siblings(".chosen-container"));
+            } else if (element.prop("type") === "radio") {
+                error.appendTo(element.parents("div.validate-parent"));
+            } else {
+                error.insertAfter(element);
+            }
+        },
+        highlight: function(element, errorClass, validClass) {
+            jQuery(element).parents(".validate-parent").addClass("has-error").removeClass("has-success");
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            jQuery(element).parents(".validate-parent").removeClass("has-error");
+        }
     });
 </script>
 @endsection
