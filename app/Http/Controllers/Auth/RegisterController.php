@@ -53,6 +53,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'avatar' => ['required', 'image'],
         ]);
     }
 
@@ -64,10 +65,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        if (isset($data['avatar'])) {
+            $main_ext = $data['avatar']->extension();
+            $random_name = uniqid('user_image');
+            $path_main = $data['avatar']->storeAs(
+                '/public/user_images',
+                $random_name . '.' . $main_ext
+            );
+            $image_path = str_replace("public/", "/", $path_main);
+        }
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'profile_photo_path' => !empty(isset($data['avatar'])) ? $image_path : '/dist/avatar5.png'
         ]);
     }
 }

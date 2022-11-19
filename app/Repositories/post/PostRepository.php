@@ -898,9 +898,9 @@ class PostRepository implements PostInterface
         $most_favoured_posts = UserFavourite::select('post_id')
             ->groupBy('post_id')
             ->orderByRaw('COUNT(*) DESC')
-            ->limit(5)
+            ->limit(1)
             ->with('post')
-            ->get();
+            ->first();
         return $most_favoured_posts;
     }
 

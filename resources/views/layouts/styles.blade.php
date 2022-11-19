@@ -45,7 +45,41 @@
 <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
 <style>
-    @media (min-width: 700px) {
+    #lg-links-ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    .lg-links-li {
+        float: left;
+    }
+
+    .lg-links-li .lg-links-a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .lg-links-li .lg-links-a:hover:not(.active) {
+        background-color: #111;
+    }
+
+    .link-active {
+        background-color: #04AA6D;
+    }
+
+    #lg-links-ul {
+        padding-top: 10px;
+    }
+
+    @media (min-width: 1000px) {
         #mobile-nav {
             display: none;
         }
@@ -63,7 +97,7 @@
         }
     }
 
-    @media (max-width: 700px) {
+    @media (max-width: 1000px) {
         #featured-services {
             display: none;
         }
