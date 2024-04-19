@@ -43,7 +43,9 @@
 @endsection
 @section('content')
 <?php
+
 use Illuminate\Support\Carbon;
+
 function gen_star($star_count)
 {
     $stars = '';
@@ -68,8 +70,9 @@ function gen_star($star_count)
                 <div class="text-center">
                     <?php
                     $user_path = '';
-                    (isset($user_profile_data['profile_photo_path'])) ? $user_path = './storage/' . $user_profile_data['profile_photo_path'] : $user_path = '/public/dist/img/avtr_emp.jpg';
+                    (isset($user_profile_data['profile_photo_path'])) ? $user_path = './storage/' . $user_profile_data['profile_photo_path'] : $user_path = './dist/img/avtr_emp.jpg';
                     ?>
+                    <img src="{{ $user_path}}" class="avatar img-circle" alt="avatar" width="100em" height="100em">
                     <img src="{{ $user_path}}" class="avatar img-circle" alt="avatar" width="100em" height="100em">
                 </div>
 
@@ -139,7 +142,8 @@ function gen_star($star_count)
                                         <a href="#" class="btn btn-primary edit" style="padding-left: 14px; padding-right: 14px"><i class='fa fa-edit' style="pointer-events: none; cursor: default; opacity: .4;"></i></a>
                                         @endif
                                         <button title="Delete the post" class="btn btn-danger del" style="padding-left: 15px; padding-right: 15px" data-id="{{$user_add->id}}"><i class='fa fa-trash'></i></button>
-                                        <?php  $predicat_date = carbon::now()->addMonth()->format('Y-m-d'); ($user_add->expire_date == $predicat_date) ? $renew_status = true : $renew_status = false; ?>
+                                        <?php $predicat_date = carbon::now()->addMonth()->format('Y-m-d');
+                                        ($user_add->expire_date == $predicat_date) ? $renew_status = true : $renew_status = false; ?>
                                         @if($renew_status)
                                         <a title="Renew post" href="{{ asset('/renew_post/id/'.$user_add->id) }}" class="btn btn-danger renew" style="padding-left: 14px; padding-right: 14px"><i class="fa fa-refresh"></i></a>
                                         @endif
