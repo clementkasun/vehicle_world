@@ -208,7 +208,7 @@ function gen_star($star_count)
             <form id="search_form" action="/filtered_posts" method="post">
                 @csrf
                 <div class="row m-2">
-                    <div class="form-group col-12 col-md-3 col-lg-1">
+                    <div class="form-group col-12 col-md-3 col-lg-2">
                         <label for="cmb_post_type"><b>Post Type</b></label>
                         <div>
                             <select id="cmb_post_type" name="cmb_post_type" class="form-control">
@@ -233,7 +233,7 @@ function gen_star($star_count)
                             <select id="cmb_make" name="cmb_make" class="form-control select2 makes"></select>
                         </div>
                     </div>
-                    <div id="model_group" class="form-group col-12 col-md-3 col-lg-2">
+                    <div id="model_group" class="form-group col-12 col-md-3 col-lg-3">
                         <label for="model"><b>Model</b></label>
                         <div>
                             <input type="text" id="model" name="model" class="form-control" placeholder="Enter the model of vehicle" max-length="150">
@@ -292,8 +292,6 @@ function gen_star($star_count)
                             </select>
                         </div>
                     </div>
-                </div>
-                <div class="row m-2">
                     <div class="form-group col-12 col-md-3 col-lg-2">
                         <label for="cmb_city"><b>Location</b></label>
                         <div>
@@ -411,7 +409,7 @@ function gen_star($star_count)
                             <input type="text" id="year_max" name="year_max" class="yearpicker col-6 form-control" placeholder="MAX" autocomplete="off">
                         </div>
                     </div>
-                    <div id="cmb_gear_group" class="col-12 col-md-3 col-lg-1">
+                    <div id="cmb_gear_group" class="col-12 col-md-3 col-lg-2">
                         <label for="cmb_gear"><b>Gear</b></label>
                         <div>
                             <select id="cmb_gear" name="cmb_gear" class="form-control">
@@ -421,7 +419,7 @@ function gen_star($star_count)
                             </select>
                         </div>
                     </div>
-                    <div id="cmb_fuel_type_group" class="col-12 col-md-3 col-lg-1">
+                    <div id="cmb_fuel_type_group" class="col-12 col-md-3 col-lg-2">
                         <label for="cmb_fuel_type"><b>Fuel</b></label>
                         <div>
                             <select id="cmb_fuel_type" name="cmb_fuel_type" class="form-control">
@@ -528,13 +526,17 @@ function gen_star($star_count)
                 $location = ($trend_post->location != null) ? $trend_post->location : 'N/A';
                 ($trend_post['post_type'] == 'VEHI') ? $type = 'Vehicle Type: ' . $trend_post['vehilce_type'] : $type = 'Part used in: ' . $trend_post['part_used-in'];
                 ?>
-                <div class="col-12 col-md-4 col-lg-2">';
+                <div class="col-12 col-md-4 col-lg-2">
                     <a href="{{ asset('/get_post_profile/id/'.$post_id) }}">
-                        <div class="card card-white" style="height: 400px">
+                        <div class="card card-white" style="height: 350px">
+                             <div class="ribbon-wrapper ribbon-md">
+                                <div class="ribbon bg-danger text-sm">Trending</div>
+                            </div>
                             <img src="{{ asset($trend_post->main_image) }}" alt="trending post images" style="width:100%">
                             <div class="card-body bg-success">
                                 <h2 class="container-fluid"><b>{{ $post_title }}</b></h2>
-                                <h4 class="container-fluid"> <b>Price: </b> රැ . {{ $price }}</h4>
+                                <p class="container-fluid"><b>Price: </b>
+                                {{ $price }}</p>
                                 <p class="container-fluid"><b>Location: </b> {{ $location }}</p>
                                 @if($trend_post['post_type'] == 'VEHI')
                                 <p class="container-fluid"><b>Millage: </b> {{ ($trend_post['vehicle'] != null) ? $trend_post['vehicle']['millage'] : 'N/A' }} </p>
@@ -583,9 +585,8 @@ function gen_star($star_count)
                 ($post->post_type == 'VEHI') ? $type = 'Vehicle Type: ' . $post['vehilce_type'] : $type = 'Part used in: ' . $post['part_used-in'];
                 ?>
                 <div class="col-12 col-md-4 col-lg-2">
-
                     <a href="{{ '/get_post_profile/id/'.$post_id }}">
-                        <div class="card card-white" style="height: 400px">
+                        <div class="card card-white" style="height: 350px">
                             @if($post['status'] == '1')
                             <div class="ribbon-wrapper ribbon-md">
                                 <div class="ribbon bg-warning text-md">Sold</div>
@@ -598,7 +599,8 @@ function gen_star($star_count)
                             <img src="{{asset($main_image)}}" alt="post images" style="width:100%">
                             <div class="card-body bg-success">
                                 <h2 class="container-fluid"><b>{{ $post_title }}</b></h2>
-                                <h4 class="container-fluid"> <span class="text-lg">රැ.</span> {{ $price }}</h4>
+                                <p class="container-fluid"><b> <b>Price: </b>
+                                {{ $price }}</p>
                                 <p class="container-fluid"><b>Location: </b> {{ $location }}</p>
                                 <p class="container-fluid"><b>Millage: </b> {{ $millage}} </p>
                             </div>

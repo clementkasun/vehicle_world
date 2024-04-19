@@ -64,6 +64,7 @@
                     <h2 class="logo me-auto text-light m-3">VEHIAUTO.COM</h2>
                 </li>
                 <li class="lg-links-li"><a class="nav-link scrollto lg-links-a link-active" href="{{ asset('/') }}">Home</a></li>
+                <li class="lg-links-li"><a class="nav-link scrollto lg-links-a" href="{{ asset('/analysis') }}">Analysis</a></li>
                 <li class="lg-links-li"><a class="nav-link scrollto lg-links-a" href="{{ asset('about_us') }}">About</a></li>
                 <li class="lg-links-li"><a class="nav-link scrollto lg-links-a" href="{{ asset('services') }}">Services</a></li>
                 <li class="lg-links-li"><a class="nav-link scrollto lg-links-a" href="{{ asset('create-post') }}">Create post</a></li>

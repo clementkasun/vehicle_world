@@ -17,7 +17,7 @@
 @endsection
 
 @section('content')
-<div class="row mt-2">
+<div class="row m-2">
   <div class="col-md-3">
     <div class="info-box bg-success text-white">
       <span class="info-box-icon"><i class="fa-solid fa-car"></i></span>
@@ -67,7 +67,7 @@
     </div>
   </div>
 </div>
-<div class="row">
+<div class="row m-2">
   <div class="col-md-6">
     <div class="card card-success">
       <div class="card-header">
@@ -133,7 +133,7 @@
     <!-- /.card -->
   </div>
 </div>
-<div class="row">
+<div class="row m-2">
   <div class="col-md-6">
     <!-- LINE CHART -->
     <div class="card card-info">
@@ -183,7 +183,7 @@
     <!-- /.card -->
   </div>
 </div>
-<div class="row">
+<div class="row m-2">
   <div class="col-md-6">
     <!-- DONUT CHART -->
     <div class="card card-danger">
