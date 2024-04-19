@@ -73,7 +73,6 @@ function gen_star($star_count)
                     (isset($user_profile_data['profile_photo_path'])) ? $user_path = './storage/' . $user_profile_data['profile_photo_path'] : $user_path = './dist/img/avtr_emp.jpg';
                     ?>
                     <img src="{{ $user_path}}" class="avatar img-circle" alt="avatar" width="100em" height="100em">
-                    <img src="{{ $user_path}}" class="avatar img-circle" alt="avatar" width="100em" height="100em">
                 </div>
 
                 <h3 class="profile-username text-center">{{$user_profile_data['name']}} {{$user_profile_data['last_name']}}</h3>

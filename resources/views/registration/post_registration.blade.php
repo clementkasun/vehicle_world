@@ -403,43 +403,51 @@
             <div class="row">
                 <div class="card card-light col-12">
                     <div class="card-body row">
-                        <div class="col-12 col-md-6">
+                        <div  class="col-12 col-md-6">
                             <div class="form-group">
                                 <label for="main_image">Main Image</label>
                                 <div>
                                     <input type="file" class="form-control" id="main_image" name="main_image" accept="image/*" {{ (!isset($post_data)) ? 'required' : null; }}>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label for="image_one">Image 1</label>
                                 <div>
-                                    <input type="file" class="form-control" id="image_one" name="image_one" accept="image/*" {{ (!isset($post_data)) ? 'required' : null;  }}>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="image_two">Image 2</label>
-                                <div>
-                                    <input type="file" class="form-control" id="image_two" name="image_two" accept="image/*" {{ (!isset($post_data)) ? 'required' : null;  }}>
+                                    <input type="file" class="form-control" id="image_one" name="image_one" accept="image/*">
                                 </div>
                             </div>
                         </div>
-                        <div class="col-6 col-md-6">
+                        <div class="col-12 col-md-6">
+                         <div class="form-group">
+                                <label for="image_two">Image 2</label>
+                                <div>
+                                    <input type="file" class="form-control" id="image_two" name="image_two" accept="image/*">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label for="image_three">Image 3</label>
                                 <div>
-                                    <input type="file" class="form-control" id="image_three" name="image_three" accept="image/*" {{ (!isset($post_data)) ? 'required' : null;  }}>
+                                    <input type="file" class="form-control" id="image_three" name="image_three" accept="image/*">
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label for="image_four">Image 4</label>
                                 <div>
-                                    <input type="file" class="form-control" id="image_four" name="image_four" accept="image/*" {{ (!isset($post_data)) ? 'required' : null;  }}>
+                                    <input type="file" class="form-control" id="image_four" name="image_four" accept="image/*">
                                 </div>
                             </div>
-                            <div class="form-group">
+                        </div>
+                        <div class="col-12 col-md-6">
+                             <div class="form-group">
                                 <label for="image_five">Image 5</label>
                                 <div>
-                                    <input type="file" class="form-control" id="image_five" name="image_five" accept="image/*" {{ (!isset($post_data)) ? 'required' : null;  }}>
+                                    <input type="file" class="form-control" id="image_five" name="image_five" accept="image/*">
                                 </div>
                             </div>
                         </div>
